@@ -162,5 +162,4 @@ public class DeviceSessionHandler {
             log.log(Level.SEVERE, null, ex);
         }
     }
-
 }

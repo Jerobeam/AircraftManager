@@ -1,5 +1,6 @@
 package com.server;
 
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +8,7 @@ import java.util.Set;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.spi.JsonProvider;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -24,6 +26,8 @@ public class JsonServerEndpoint {
     public void open(Session session) {
 		sessions.add(session);
 		System.out.println("Server created");
+		JsonObject initialMessage = this.createInitialMessage();
+		this.sendToAllConnectedSessions(initialMessage);
     }
 	
 	@OnClose
@@ -33,28 +37,36 @@ public class JsonServerEndpoint {
 	
 	@OnMessage
     public void handleMessage(String message, Session session) {
-        try (JsonReader reader = Json.createReader(new StringReader(message))) {
+		System.out.println("Incoming Message:");
+        try (JsonReader reader = Json.createReader(new StringReader(message))) {        	
             JsonObject jsonMessage = reader.readObject();
-
-//            if ("add".equals(jsonMessage.getString("action"))) {
-//                Device device = new Device();
-//                device.setName(jsonMessage.getString("name"));
-//                device.setDescription(jsonMessage.getString("description"));
-//                device.setType(jsonMessage.getString("type"));
-//                device.setStatus("Off");
-//                sessionHandler.addDevice(device);
-//            }
-//
-//            if ("remove".equals(jsonMessage.getString("action"))) {
-//                int id = (int) jsonMessage.getInt("id");
-//                sessionHandler.removeDevice(id);
-//            }
-//
-//            if ("toggle".equals(jsonMessage.getString("action"))) {
-//                int id = (int) jsonMessage.getInt("id");
-//                sessionHandler.toggleDevice(id);
-//            }
+            System.out.println("First Name: " + jsonMessage.getString("firstName"));
+            System.out.println("Last Name: " + jsonMessage.getString("lastName"));
+            
+            JsonObject initialMessage = this.createInitialMessage();
+    		this.sendToAllConnectedSessions(initialMessage);
         }
     }
 	
+	private JsonObject createInitialMessage() {
+        JsonProvider provider = JsonProvider.provider();
+        JsonObject message = provider.createObjectBuilder()
+                .add("firstName", "Vincent=")
+                .add("lastName", "Snitch")
+                .build();
+        return message;
+    }
+	
+	private void sendToAllConnectedSessions(JsonObject message) {
+        for (Session session : sessions) {
+            sendToSession(session, message);
+        }
+    }
+
+    private void sendToSession(Session session, JsonObject message) {
+        try {
+            session.getBasicRemote().sendText(message.toString());
+            System.out.println("Message " + message.toString() + " sent to Session: " + session.toString());
+        } catch (IOException ex) {}
+    }
 }

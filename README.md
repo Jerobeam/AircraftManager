@@ -1,2 +1,2 @@
-# AircraftManager
+# AirlineManager
 Fallstudien Planspiel SAuE

@@ -8,6 +8,10 @@ function onMessage(event) {
 	var data = JSON.parse(event.data);
 	document.getElementById("firstName").value = data.firstName;
 	document.getElementById("lastName").value = data.lastName;
+	
+	if(data.action==="showAlert"){
+		alert("Welcome Session" + data.sessionId);
+	}
 }
 
 function onChangeClick() {

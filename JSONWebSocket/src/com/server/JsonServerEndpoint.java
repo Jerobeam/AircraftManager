@@ -20,6 +20,7 @@ public class JsonServerEndpoint {
 	
 	//Create Sessions Array
 	private final Set<Session> sessions = new HashSet<>();
+	private int sessionIds = 0;
 	
 	//Create Session
 	@OnOpen
@@ -28,6 +29,14 @@ public class JsonServerEndpoint {
 		System.out.println("Server created");
 		JsonObject initialMessage = this.createInitialMessage();
 		this.sendToAllConnectedSessions(initialMessage);
+		
+		//Give Session an unique Id
+		String sessionId = (String) session.getUserProperties().get("sessionId");
+			if (sessionId == null) {
+				session.getUserProperties().put("username", Integer.toString(sessionIds));
+				System.out.println("new SessionId: " + sessionIds);
+				sessionIds++;
+			}
     }
 	
 	@OnClose
@@ -43,7 +52,7 @@ public class JsonServerEndpoint {
             System.out.println("First Name: " + jsonMessage.getString("firstName"));
             System.out.println("Last Name: " + jsonMessage.getString("lastName"));
             
-            JsonObject initialMessage = this.createInitialMessage();
+            JsonObject initialMessage = this.createChangeMessage();
     		this.sendToAllConnectedSessions(initialMessage);
         }
     }
@@ -53,6 +62,16 @@ public class JsonServerEndpoint {
         JsonObject message = provider.createObjectBuilder()
                 .add("firstName", "Vincent=")
                 .add("lastName", "Snitch")
+                .add("action", "showAlert")
+                .build();
+        return message;
+    }
+	
+	private JsonObject createChangeMessage() {
+        JsonProvider provider = JsonProvider.provider();
+        JsonObject message = provider.createObjectBuilder()
+                .add("firstName", "Peter")
+                .add("lastName", "Truckenbrod")
                 .build();
         return message;
     }

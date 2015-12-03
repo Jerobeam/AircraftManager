@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Airline Manager</title>
+
+<link rel="stylesheet" href="pure.css">
+<style>
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	color: #6C6C6C;
+}
+
+#header {
+	color: white;
+	text-align: center;
+	width: 100%;
+	height: 50px;
+}
+
+#section {
+	width: 100%;
+	height: 30%;
+	float: left;
+	text-align: center;
+}
+
+#m2{ 
+	width: 100%;
+	height: 100px;
+	margin-top: 5px;
+}
+
+.content{
+	text-align: center; 
+	width: 100%; 
+	height: 100%; 
+	padding-top: 15px;
+}
+
+.content label{
+	width: 100%;
+}
+	
+</style>
+</head>
+
+<body bgcolor="white">
+	<header style="height: 15px; text-align: center;">
+		<div id="m2"><b>Name der Fluggesellschaft eingeben</b></div>      
+	</header>
+    <hr>
+	<section>
+		<div class="content">
+            <form class="pure-form">
+            	<div>
+            		<label>Fluggesellschaft</label>
+                	<input id="name" type="text" placeholder="Name" align="middle" width="300" required><br/>
+                </div>
+                <button type="submit" class="pure-button pure-button-primary" style="margin-top: 15px;">Sign in</button>               
+            </form>
+		</div>
+	</section>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.server;
 
-import com.backend;
+import com.backend.Airline;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashSet;
@@ -36,14 +37,8 @@ public class AirlineServerEndpoint {
 	
 	@OnMessage
     public void handleMessage(String message, Session session){
-		String request[];
-		request = message.split("$");
-
-		if (requestCode[0].equals("Create")){
-			Airline airline = new Airline(request[1]);
-		}
-
-		airline.setMoney(2000000);
+		
+		splitMessage(message);
 		
 		String airlineName = (String) session.getUserProperties().get("airlineName");
 		if (airlineName == null) {
@@ -63,5 +58,14 @@ public class AirlineServerEndpoint {
         try {
             session.getBasicRemote().sendText(message.toString());
         } catch (IOException ex) {}
+    }
+    
+    private void splitMessage(String message){
+		String request[];
+		request = message.split("$");
+
+		if (request[0].equals("Create")){
+			Airline airline = new Airline(request[1], 2000000);
+		}
     }
 }

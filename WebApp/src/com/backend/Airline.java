@@ -3,13 +3,16 @@ package com.backend;
 
 public class Airline {
 	
- public int money;
- public String name;
+ private int money;
+ private String name;
  private static int airlineCount;
  
-public Airline(){
+public Airline(String name, int money){
 	airlineCount++;
+	this.setName(name);
+	this.setMoney(money);
 }
+
 public int getMoney() {
 	return money;
 }

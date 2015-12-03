@@ -7,6 +7,11 @@ import java.io.StringReader;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -24,6 +29,8 @@ public class AirlineServerEndpoint {
 	// Create Sessions Array
 	private final Set<Session> sessions = new HashSet<Session>();
 	public Game game;
+	static ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+	
 
 	// Create Session
 	@OnOpen
@@ -62,6 +69,15 @@ public class AirlineServerEndpoint {
 		} catch (IOException ex) {
 		}
 	}
+	
+	class MyTimerTask extends TimerTask
+	{
+	     public void run()
+	     {
+	          game.tick();
+	          System.out.println(game.getDate());
+	     }
+	}
 
 	private void splitMessage(String message) {
 		String[] request = message.split("§");
@@ -71,8 +87,13 @@ public class AirlineServerEndpoint {
 
 				System.out.println("Game does not exist");
 				game = new Game();
+				
 
+				TimerTask task = new MyTimerTask();
+				timer.scheduleAtFixedRate(task, 2, 1 ,TimeUnit.SECONDS);
+				
 			}
+			
 			game.addPlayer(request[1]);
 			System.out.println(game.getPlayerCount());
 

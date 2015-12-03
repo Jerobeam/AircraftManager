@@ -45,7 +45,7 @@ public class JsonServerEndpoint {
     }
 	
 	@OnMessage
-    public void handleMessage(String message, Session session) {
+    public void handleMessage(String message, Session session){
 		System.out.println("Incoming Message: "+message);
         
 		

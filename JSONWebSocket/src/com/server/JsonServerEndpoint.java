@@ -19,7 +19,7 @@ import javax.websocket.server.ServerEndpoint;
 public class JsonServerEndpoint {
 	
 	//Create Sessions Array
-	private final Set<Session> sessions = new HashSet<>();
+	private final Set<Session> sessions = new HashSet<Session>();
 	private int sessionIds = 0;
 	
 	//Create Session
@@ -46,15 +46,9 @@ public class JsonServerEndpoint {
 	
 	@OnMessage
     public void handleMessage(String message, Session session) {
-		System.out.println("Incoming Message:");
-        try (JsonReader reader = Json.createReader(new StringReader(message))) {        	
-            JsonObject jsonMessage = reader.readObject();
-            System.out.println("First Name: " + jsonMessage.getString("firstName"));
-            System.out.println("Last Name: " + jsonMessage.getString("lastName"));
-            
-            JsonObject initialMessage = this.createChangeMessage();
-    		this.sendToAllConnectedSessions(initialMessage);
-        }
+		System.out.println("Incoming Message: "+message);
+        
+		
     }
 	
 	private JsonObject createInitialMessage() {

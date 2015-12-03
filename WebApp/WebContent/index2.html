@@ -75,12 +75,24 @@
 	<iframe src="index.html" height= "100%" width = "100%"></iframe>
 </section>
   <script>
-			
-  
 			var board = new DepartureBoard (document.getElementById ('test'), { rowCount: 1, letterCount: 15 }); 
 			board.setValue (['Airline Manager']);
 			
+			var websocket = new WebSocket("ws://localhost:8080/WebApp/AirlineServerEndpoint");
 			
+			websocket.onmessage = onMessage;
+			
+			function onMessage(event) {
+				var data = JSON.parse(event.data);
+				
+				if(data.action==="showAlert"){
+					alert("Welcome Session" + data.sessionId);
+				}
+			}
+			
+			function send(s){
+				websocket.send(s);
+			}
 			
 		</script>
 </body>

@@ -43,6 +43,8 @@ canvas {
 		var pt, radians, axis, tangent;
 		var up = new THREE.Vector3(0, 0, 1);
 		var axis = new THREE.Vector3();
+		
+		
 
 		loader.load('plane01.json', function(geometry) {
 			plane = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
@@ -166,7 +168,7 @@ canvas {
 			
 			
 			var element = document.createElement( 'div' );
-			element.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='menu02.html'></iframe>";
+			element.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='setNameDialog.html'></iframe>";
 			element.style.width = '340px';
 			element.style.height = '200px';
 			objectCSS = new THREE.CSS3DObject( element );

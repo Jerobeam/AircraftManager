@@ -67,7 +67,7 @@ body {
             		<label>Fluggesellschaft</label>
                 	<input id="name" type="text" placeholder="Name" align="middle" width="300" required><br/>
                 </div>
-                <button type="submit" class="pure-button pure-button-primary" style="margin-top: 15px;">Sign in</button>               
+                <button type="submit" onclick="parent.parent.send('Create$'+document.getElementById('name').value);" class="pure-button pure-button-primary" style="margin-top: 15px;">Sign in</button>               
             </form>
 		</div>
 	</section>

@@ -66,16 +66,6 @@ public class AirlineServerEndpoint {
 		} catch (IOException ex) {
 		}
 	}
-	
-	class MyTimerTask extends TimerTask
-	{
-	     public void run()
-	     {
-	          game.tick();
-	          //System.out.println(game.getDate());
-	          
-	     }
-	}
 
 	private void splitMessage(String message) {
 		String[] request = message.split("§");
@@ -84,12 +74,7 @@ public class AirlineServerEndpoint {
 			if (game == null) {
 
 				System.out.println("Game does not exist");
-				game = new Game();
-				
-
-				TimerTask task = new MyTimerTask();
-				timer.scheduleAtFixedRate(task, 2, 1 ,TimeUnit.SECONDS);
-				
+				game = new Game();			
 			}
 			
 			game.addPlayer(request[1]);

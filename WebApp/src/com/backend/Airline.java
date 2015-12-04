@@ -32,8 +32,7 @@ public class Airline {
 	}
 
 	public void buyPlane(String name) {
-		Plane p = new Plane();
-		planes.add(p);
+		
 	}
 
 	public ArrayList getPlanes() {

@@ -31,8 +31,13 @@ public class Airline {
 		this.money = money;
 	}
 
-	public void buyPlane(String name) {
-		
+	public void buyPlane(String type,String name) {
+		if (type.equals("A320")){
+			if (this.money >= A320.buyPrice){
+				Airport air = new Airport();//
+				A320 P =  new A320(name, air);
+			}
+		}
 	}
 
 	public ArrayList getPlanes() {

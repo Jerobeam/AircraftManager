@@ -1,13 +1,14 @@
 package com.backend;
 
 public abstract class Plane {
-	private String name;
-	private Airport location;
-	private int capacity;
-	private int range;
-	private int fuelCosts;
-	private int buyPrice;
-	private int comfort;
+	protected String name;
+	protected Airport location;
+	protected int capacity;
+	protected int range;
+	protected int fuelCosts;
+	protected int comfort;
+	protected int upkeepCosts;
+	protected int speed;
 	
 
 

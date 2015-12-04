@@ -14,14 +14,21 @@ public class Test {
 		Game game = null;
 		game = new Game();
 		
-		if (game==null){fail("Game not created");}
+		if (game==null){fail("Game creation failed!");}
 		
 		Airline airline = null;
 		airline = new Airline("AirBerlin",50);
 		
-		if (!"AirBerlin".equals(airline.getName())) {fail("Airline name not correct");}
+		if (airline==null){fail("Airline creation failed!");}
 		
-		Assert.assertTrue(50 == airline.getMoney());
+		int startMoney = airline.getMoney();
+		
+		airline.buyPlane("A320", "AB01");
+		
+		if (airline.getMoney() == startMoney - 68000000){fail("Plane Price calculation failed!");}
+		
+		if (airline.getPlanes().isEmpty()){fail("Plane Buy failed!");}
+		
 		
 	}
 

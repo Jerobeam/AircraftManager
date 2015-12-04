@@ -1,5 +1,6 @@
 package com.backend;
 
+import com.server.*;
 import java.util.Calendar;
 
 public class Gameloop extends Thread {
@@ -17,7 +18,9 @@ public class Gameloop extends Thread {
 			for(int i = 0; i < g.getAirlines().size(); i++){
 				g.getAirlines().get(i).calculateNewMoney();
 			}
+			g.server.sendJSONToAll();
 			System.out.println(g.getDate());
+			
 			try {
 				this.sleep(TICKTIME);
 			} catch (InterruptedException e) {

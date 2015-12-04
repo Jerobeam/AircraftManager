@@ -3,6 +3,7 @@ package com.server;
 import com.backend.Game;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TimerTask;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.json.Json;
 import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
 import javax.json.spi.JsonProvider;
 import javax.websocket.OnClose;
@@ -74,12 +76,17 @@ public class AirlineServerEndpoint {
 			if (game == null) {
 
 				System.out.println("Game does not exist");
-				game = new Game();			
+				game = new Game(this);			
 			}
 			
 			game.addPlayer(request[1]);
 			System.out.println(game.getPlayerCount());
 
 		}
+	}
+
+	public void sendJSONToAll(String s) {
+		JsonObject json = Json.createReader(new StringReader(s)).readObject();
+		sendToAllConnectedSessions(json);
 	}
 }

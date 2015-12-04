@@ -6,10 +6,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import com.server.AirlineServerEndpoint;
+
 public class Game {
 	private int playerCount;
 	private final int maxPlayers = 4;
 	private ArrayList<Airline> airlines = new ArrayList<Airline>();
+	protected AirlineServerEndpoint server;
 	public ArrayList<Airline> getAirlines() {
 		return airlines;
 	}
@@ -18,7 +21,8 @@ public class Game {
 	protected Calendar calendar = new GregorianCalendar(2015,Calendar.MARCH,17); 
 	private Gameloop loop;
 	
-	public Game() {
+	public Game(AirlineServerEndpoint s) {
+		server = s;
 		this.playerCount = 0;
 		loop = new Gameloop(this);
 		loop.start();

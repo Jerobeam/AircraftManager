@@ -12,7 +12,8 @@ public class Test {
 	public void test() {
 		
 		Game game = null;
-		game = new Game();
+		
+		game = new Game(new AirlineServerEndpointMock());
 		
 		if (game==null){fail("Game creation failed!");}
 		

@@ -48,6 +48,13 @@
     width:89%;
     float:left;
 	}
+	sectionRight{
+	height:10%;
+    float:right;
+    background: rgb(30, 30, 30);
+    text-transform: uppercase; 
+	}
+	
 	</style>
 </head>
 
@@ -55,6 +62,7 @@
 
 	<header>
 	<div id="test" style="padding:1.75%"></div>
+	<sectionRight> <label id = "time">000000000</label> </sectionRight>
 	</header>
 
   <nav>
@@ -84,8 +92,8 @@
 			
 			function onMessage(event) {
 				var data = JSON.parse(event.data);
+				document.getElementById("time").innerHTML = data.date;
 				
-				board.setValue(data.date);
 			}
 			
 			function send(s){

@@ -167,11 +167,11 @@ canvas {
 			renderer.setSize(window.innerWidth, window.innerHeight);
 			
 			
-			var element = document.createElement( 'div' );
-			element.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='setNameDialog.html'></iframe>";
-			element.style.width = '340px';
-			element.style.height = '200px';
-			objectCSS = new THREE.CSS3DObject( element );
+			var login = document.createElement( 'div' );
+			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='setNameDialog.html'></iframe>";
+			login.style.width = '340px';
+			login.style.height = '200px';
+			objectCSS = new THREE.CSS3DObject( login );
 			
 			//objectCSS.scale.multiplyScalar( 0.0018);
 			objectCSS.scale.multiplyScalar( 0.004);
@@ -263,6 +263,17 @@ canvas {
 			document.body.appendChild(renderer.domElement);
 			document.body.appendChild(cssRenderer.domElement);menuActive = true;	
 			}
+			
+		
+		}
+		function changeMenu(){
+			cssScene.remove(objectCSS02);
+			var login = document.createElement( 'div' );
+			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='waitingDialog.html'></iframe>";
+			login.style.width = '340px';
+			login.style.height = '200px';
+			objectCSS02 = new THREE.CSS3DObject( login );
+			cssScene.add(objectCSS02);
 		}
 
 		window.onload = init;

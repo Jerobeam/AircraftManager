@@ -72,7 +72,7 @@ public class AirlineServerEndpoint {
 	     public void run()
 	     {
 	          game.tick();
-	          System.out.println(game.getDate());
+	          //System.out.println(game.getDate());
 	          
 	     }
 	}

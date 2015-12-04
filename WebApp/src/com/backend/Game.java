@@ -1,5 +1,6 @@
 package com.backend;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -9,10 +10,17 @@ public class Game {
 	private final int maxPlayers = 4;
 	private Airline[] airlines = new Airline[maxPlayers];
 	private final int startMoney = 2000000;
-	private Calendar calendar = new GregorianCalendar(2015,Calendar.MARCH,17); 
+	protected Calendar calendar = new GregorianCalendar(2015,Calendar.MARCH,17); 
+	private Gameloop loop;
 	
 	public Game() {
 		this.playerCount = 0;
+		loop = new Gameloop(this);
+		loop.start();
+	}
+
+	public Gameloop getLoop() {
+		return loop;
 	}
 
 	public void addPlayer(String name) {

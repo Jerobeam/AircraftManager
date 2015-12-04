@@ -2,7 +2,6 @@ package com.backend;
 
 public class A320 extends Plane {
 
-	public static int buyPrice = 68000000;
 	
 	public A320(String name, Airport location) {
 

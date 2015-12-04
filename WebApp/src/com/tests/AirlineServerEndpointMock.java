@@ -6,5 +6,6 @@ public class AirlineServerEndpointMock extends AirlineServerEndpoint {
 	public AirlineServerEndpointMock(){
 		
 	}
+	
 
 }

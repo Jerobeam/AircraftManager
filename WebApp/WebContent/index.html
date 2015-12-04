@@ -76,7 +76,7 @@
 </section>
   <script>
 			var board = new DepartureBoard (document.getElementById ('test'), { rowCount: 1, letterCount: 15 }); 
-			board.setValue (['Airline Manager']);
+			board.setValue ('Airline Manager');
 			
 			var websocket = new WebSocket("ws://localhost:8080/WebApp/AirlineServerEndpoint");
 			
@@ -85,9 +85,7 @@
 			function onMessage(event) {
 				var data = JSON.parse(event.data);
 				
-				if(data.action==="showAlert"){
-					alert("Welcome Session" + data.sessionId);
-				}
+				board.setValue(data.date);
 			}
 			
 			function send(s){

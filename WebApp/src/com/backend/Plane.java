@@ -9,7 +9,7 @@ public abstract class Plane {
 	protected int comfort;
 	protected int upkeepCosts;
 	protected int speed;
-	protected Flight fight;
+	protected Flight flight;
 	
 
 

@@ -5,10 +5,11 @@ public class Airline {
 	
  private int money;
  private String name;
- private static int airlineCount;
+ private Plane[] planes; 
+ private int planeCount = 0;
  
 public Airline(String name, int money){
-	airlineCount++;
+	
 	this.setName(name);
 	this.setMoney(money);
 }
@@ -28,6 +29,11 @@ public void setMoney(int money) {
 	this.money = money;
 }
 
-
-
+public void buyPlane(String name){
+	
+	
+}
+public void getPlanes(){
+	
+}
 }

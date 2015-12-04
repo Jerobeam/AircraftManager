@@ -3,11 +3,8 @@ package com.server;
 import com.backend.Game;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
-import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -76,6 +73,7 @@ public class AirlineServerEndpoint {
 	     {
 	          game.tick();
 	          System.out.println(game.getDate());
+	          
 	     }
 	}
 

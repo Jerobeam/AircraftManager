@@ -14,6 +14,9 @@ public class Gameloop extends Thread {
 	public void run(){
 		while(true){
 			g.calendar.add(Calendar.HOUR_OF_DAY, 1);
+			for(int i = 0; i < g.getAirlines().size(); i++){
+				g.getAirlines().get(i).calculateNewMoney();
+			}
 			System.out.println(g.getDate());
 			try {
 				this.sleep(TICKTIME);

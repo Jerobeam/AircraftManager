@@ -45,4 +45,9 @@ public class Airline {
 	public ArrayList getPlanes() {
 		return planes;
 	}
+
+	public void calculateNewMoney() {
+		//Berechnung wie viel Geld pro tick hinzukommt
+		
+	}
 }

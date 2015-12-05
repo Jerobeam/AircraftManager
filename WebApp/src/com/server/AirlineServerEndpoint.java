@@ -4,6 +4,7 @@ import com.backend.Game;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TimerTask;
@@ -26,10 +27,9 @@ import javax.websocket.server.ServerEndpoint;
 public class AirlineServerEndpoint {
 
 	// Create Sessions Array
-	private final Set<Session> sessions = new HashSet<Session>();
-	public Game game;
-	static ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
-	
+	private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());;
+
+	public static Game game;
 
 	// Create Session
 	@OnOpen
@@ -48,8 +48,7 @@ public class AirlineServerEndpoint {
 
 		splitMessage(message);
 
-		String airlineName = (String) session.getUserProperties().get(
-				"airlineName");
+		String airlineName = (String) session.getUserProperties().get("airlineName");
 		if (airlineName == null) {
 			session.getUserProperties().put("airlineName", message);
 		}
@@ -76,13 +75,16 @@ public class AirlineServerEndpoint {
 			if (game == null) {
 
 				System.out.println("Game does not exist");
-				game = new Game(this);			
+				game = new Game(this);
 			}
-			
+
 			game.addPlayer(request[1]);
 			System.out.println(game.getPlayerCount());
-
+			
+		} else if (request[0].equals("buyPlane")) {
+			game.buyPlane(game.getAirlineByName(request[1]),request[2],request[3]);
 		}
+		
 	}
 
 	public void sendJSONToAll(String s) {

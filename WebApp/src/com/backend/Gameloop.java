@@ -3,6 +3,10 @@ package com.backend;
 import com.server.*;
 import java.util.Calendar;
 
+import javax.json.Json;
+import javax.json.JsonBuilderFactory;
+import javax.json.JsonObject;
+
 public class Gameloop extends Thread {
 	
 	private Game g;
@@ -18,7 +22,15 @@ public class Gameloop extends Thread {
 			for(int i = 0; i < g.getAirlines().size(); i++){
 				g.getAirlines().get(i).calculateNewMoney();
 			}
-			g.server.sendJSONToAll("{ \"date\": \""+ g.getDate().toString()+ "\" }");
+			
+			String json = Json.createObjectBuilder()
+		            .add("date", g.getDate().toString())
+		            .add("players", g.getGameData())
+		            .build()
+		            .toString();
+			
+			System.out.println(json);		 
+			g.server.sendJSONToAll(json);
 			
 			try {
 				this.sleep(TICKTIME);

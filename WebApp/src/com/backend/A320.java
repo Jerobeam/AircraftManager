@@ -13,6 +13,7 @@ public class A320 extends Plane {
 		this.comfort = 30;
 		this.fuelCosts = 2700;
 		this.upkeepCosts = 3000;//
+		this.value = 600000;//
 
 	}
 

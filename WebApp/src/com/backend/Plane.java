@@ -10,7 +10,10 @@ public abstract class Plane {
 	protected int upkeepCosts;
 	protected int speed;
 	protected Flight flight;
+	protected int value;
 	
-
+	public int getValue(){
+		return this.value;
+	}
 
 }

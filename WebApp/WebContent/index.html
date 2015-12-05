@@ -45,7 +45,7 @@
 	
 	section {
     height:89%;
-    width:89%;
+    width:90%;
     float:left;
 	}
 	sectionRight{
@@ -62,7 +62,9 @@
 
 	<header>
 	<div id="test" style="padding:1.75%"></div>
-	<sectionRight> <label id = "time">000000000</label> </sectionRight>
+	<sectionRight> <li id= "time">000000000</li>
+				   <li id= "bank">000000000</li>
+	 </sectionRight>
 	</header>
 
   <nav>
@@ -72,7 +74,7 @@
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Flugzeuge</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Routen</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Marketing</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Bilanz</a></li>
+        <li class="pure-menu-item" ><a  onclick="document.getElementById('globe').contentWindow.openBilanz()"href="#" class="pure-menu-link">Bilanz</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Personal</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">IT</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Kredit</a></li>
@@ -80,9 +82,12 @@
 </div>
   </nav>
   <section id="section">
-	<iframe src="globe.html" height= "100%" width = "100%"></iframe>
+	<iframe id= "globe" src="globe.html" frameBorder='0' height= "100%" width = "100%"></iframe>
 </section>
   <script>
+  			var playerName;
+  			var playerData;
+  			
 			var board = new DepartureBoard (document.getElementById ('test'), { rowCount: 1, letterCount: 15 }); 
 			board.setValue ('Airline Manager');
 			
@@ -92,12 +97,30 @@
 			
 			function onMessage(event) {
 				var data = JSON.parse(event.data);
-				document.getElementById("time").innerHTML = data.date;
 				
+				var playerNumber;
+				for(var i = 0;i<4;i++){
+					if (data.players[i].name === playerName){
+						playerNumber = i;
+						break;
+					}
+				}
+				playerData = data.players[playerNumber];
+				document.getElementById("time").innerHTML = data.date;
+				document.getElementById("bank").innerHTML = data.players[playerNumber].bank + "€";
+				
+			}
+			function setPlayerName(s){
+				playerName = s.substring(7);
+				websocket.send(s);
 			}
 			
 			function send(s){
 				websocket.send(s);
+			}
+			
+			function getPlayerData(){
+				return playerData;
 			}
 			
 		</script>

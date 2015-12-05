@@ -34,7 +34,7 @@ canvas {
 		var loader = new THREE.JSONLoader();
 		
 		var menuActive = true;
-
+		var login;
 		var spline;
 		var curve;
 
@@ -167,13 +167,12 @@ canvas {
 			renderer.setSize(window.innerWidth, window.innerHeight);
 			
 			
-			var login = document.createElement( 'div' );
+			login = document.createElement( 'div' );
 			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='setNameDialog.html'></iframe>";
 			login.style.width = '340px';
 			login.style.height = '200px';
 			objectCSS = new THREE.CSS3DObject( login );
 			
-			//objectCSS.scale.multiplyScalar( 0.0018);
 			objectCSS.scale.multiplyScalar( 0.004);
 			objectCSS.position.set(0,0.5,-4);
 			cssScene.add(objectCSS);
@@ -267,13 +266,19 @@ canvas {
 		
 		}
 		function changeMenu(){
-			cssScene.remove(objectCSS02);
-			var login = document.createElement( 'div' );
+			cssScene.remove(objectCSS);
 			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='waitingDialog.html'></iframe>";
-			login.style.width = '340px';
-			login.style.height = '200px';
-			objectCSS02 = new THREE.CSS3DObject( login );
-			cssScene.add(objectCSS02);
+			objectCSS = new THREE.CSS3DObject( login );
+			objectCSS.scale.multiplyScalar( 0.004);
+			objectCSS.position.set(0,0.5,-4);
+			cssScene.add(objectCSS);
+		}
+		
+		function closeMenu(){
+			if (menuActive){
+				document.body.removeChild(cssRenderer.domElement);menuActive = false;}
+		}
+		
 		}
 
 		window.onload = init;

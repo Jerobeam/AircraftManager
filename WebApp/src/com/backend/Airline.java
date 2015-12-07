@@ -84,7 +84,7 @@ public class Airline {
 //		}
 		
 		switch (name) {
-		case "FraJfk":
+		case "FraPmi":
 			break;
 
 		default:

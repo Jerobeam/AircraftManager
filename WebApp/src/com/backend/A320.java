@@ -4,7 +4,7 @@ public class A320 extends Plane {
 
 	
 	public A320(String name, Airport location) {
-
+		this.type = "A320";
 		this.location = location;
 		this.name = name;
 		this.capacity = 180;
@@ -13,12 +13,11 @@ public class A320 extends Plane {
 		this.comfort = 30;
 		this.fuelCosts = 2700;
 		this.upkeepCosts = 3000;//
+		this.price = 600000;//
 		this.value = 600000;//
 
 	}
 
-	public int getCosts() {
-		return this.fuelCosts + this.upkeepCosts;
-	}
+	
 
 }

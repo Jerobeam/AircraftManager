@@ -2,6 +2,10 @@ package com.backend;
 
 import java.util.ArrayList;
 
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+
 public class Airline {
 
 	private int money;
@@ -33,12 +37,13 @@ public class Airline {
 
 	public void buyPlane(String type,String name) {
 		if (type.equals("A320")){
-			if (this.money >= 600000){
+			
 				Airport air = new Airport();//Change!
 				A320 p =  new A320(name, air);
+				if (this.getMoney()>= p.getPrice()){
 				this.planes.add(p);
-				this.money = this.money - 600000;
-			}
+				this.money = this.money - p.getPrice();}
+			
 		}
 	}
 
@@ -46,7 +51,25 @@ public class Airline {
 		return planes;
 	}
 	
+	public JsonArrayBuilder getPlanesJSON(){
+		JsonObject json;
+		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
+
+		for (Plane p : planes) {
+			json = Json.createObjectBuilder()
+					.add("type", p.getType())
+					.add("name", p.getName())
+					.add("value", p.getValue())
+					.add("capacity", p.getCapacity())
+					.build();
+			
+			jsonArray.add(json);
+		}
+		return jsonArray;
+	}
+	
 	public int getAV() {
+		//Anlagevermögen
 		int av = 0;
 		for (Plane p : planes) {
 			av = p.getValue();
@@ -55,6 +78,7 @@ public class Airline {
 	}
 	
 	public int getUV() {
+		//Umlaufvermögen
 		int uv = 0;
 		
 		return uv;

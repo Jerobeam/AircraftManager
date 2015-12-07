@@ -66,6 +66,7 @@ public class Game {
 					.add("bank", a.getMoney())
 					.add("av", a.getAV())
 					.add("uv", a.getUV())
+					.add("planes", a.getPlanesJSON())
 					.build();
 
 			jsonArray.add(json);

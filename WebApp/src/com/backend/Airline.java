@@ -11,6 +11,7 @@ public class Airline {
 	private int money;
 	private String name;
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
+	private ArrayList<Route> routes = new ArrayList<Route>();
 	private int planeCount = 0;
 
 	public Airline(String name, int money) {
@@ -61,6 +62,52 @@ public class Airline {
 					.add("name", p.getName())
 					.add("value", p.getValue())
 					.add("capacity", p.getCapacity())
+					.build();
+			
+			jsonArray.add(json);
+		}
+		return jsonArray;
+	}
+	
+	public void buyRoute(String name) {
+		//TODO: Buy Route
+		//TODO: Create Airports
+		//TODO: Buy/ rent Airport
+//		if (type.equals("A320")){
+//			
+//				Airport air = new Airport();//Change!
+//				A320 p =  new A320(name, air);
+//				if (this.getMoney()>= p.getPrice()){
+//				this.planes.add(p);
+//				this.money = this.money - p.getPrice();}
+//			
+//		}
+		
+		switch (name) {
+		case "FraJfk":
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	public ArrayList getRoutes() {
+		return routes;
+	}
+	
+	public JsonArrayBuilder getRoutesJSON(){
+		JsonObject json;
+		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
+
+		for (Route r : routes) {
+			json = Json.createObjectBuilder()
+					.add("name", r.getName())
+					.add("distance", r.getDistance())
+					.add("demand", r.getDemand())
+					.add("costs", r.getCosts())
+					.add("airport1", r.getAirport1().getName())
+					.add("airport2", r.getAirport2().getName())
 					.build();
 			
 			jsonArray.add(json);

@@ -10,14 +10,54 @@ public class Route {
 	private Airport airport2;
 	
 	public Route(String name){
-		
+		this.setName(name);
 	}
 	
-	public void setDistance(int length){
-		
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDistance(int distance){
+		this.distance = distance;
 	}
 	
 	public int getDistance(){
 		return this.distance;
+	}
+	
+	public int getDemand() {
+		return demand;
+	}
+
+	public void setDemand(int demand) {
+		this.demand = demand;
+	}
+
+	public int getCosts() {
+		return costs;
+	}
+
+	public void setCosts(int costs) {
+		this.costs = costs;
+	}
+
+	public Airport getAirport1() {
+		return airport1;
+	}
+
+	public void setAirport1(Airport airport1) {
+		this.airport1 = airport1;
+	}
+
+	public Airport getAirport2() {
+		return airport2;
+	}
+
+	public void setAirport2(Airport airport2) {
+		this.airport2 = airport2;
 	}
 }

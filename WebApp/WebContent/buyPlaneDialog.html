@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Airline Manager</title>
+
+<link rel="stylesheet" href="pure.css">
+<style>
+body {
+	width: 400px;
+	height: 100%;
+	color: #6C6C6C;
+}
+
+header {
+	height: 15px; 
+	text-align: center; 
+	margin-left: 10px;
+}
+
+#section {
+	width: 100%;
+	height: 30%;
+	float: left;
+	text-align: center;
+}
+
+#m2{ 
+	width: 100%;
+	margin-top: 5px;
+}
+
+.content{
+	text-align: center;
+	width: 100%; 
+	height: 100%; 
+}
+
+</style>
+</head>
+
+<body bgcolor="white">
+	<header style="">
+		<div id="m2"><b>Flugzeug kaufen</b></div>      
+	</header>
+    <hr>
+	<section>
+		<div class="content">
+        	<img src="./Content/airbus320.gif" width="339" height="126">
+            <div style="margin-left: 20px; margin-right: 20px">
+            	<div style="float: left;">
+                    <table class="pure-table pure-table-bordered" width="164" height="50px" align="center" style="text-align: left; font-size:8pt; margin-top: 10px;">
+                        <thead>
+                            <tr>
+                                <th width="50%">Eigenschaft</th>
+                                <th width="50%">Wert</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            <tr>
+                                <td>Typ</td>
+                                <td id="type"></td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Tempo</td>
+                                <td id="speed"></td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Reichweite</td>
+                                <td id="range"></td>
+                            </tr>
+        
+                            <tr>
+                                <td>Verbrauch</td>
+                                <td id="fuelCosts"></td>
+                            </tr>
+        
+                            <tr>
+                                <td>Wartungskosten</td>
+                                <td id="upkeepCosts"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Preis</td>
+                                <td id="price"></td>
+                            </tr>                                 
+                        </tbody>
+                    </table>
+            	</div>
+            
+                <div style="float: right; height: 171px">
+                    <table class="pure-table pure-table-bordered" width="164" height="50px" align="center" style="text-align: left; font-size:8pt; margin-top: 10px;">
+                        <thead>
+                            <tr>
+                                <th width="50%">Eigenschaft</th>
+                                <th width="50%">Wert</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td><input id="name" type="text" style=" width: 65px"></td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Standort</td>
+                                <td><select>
+                                      <option value="airport">Frankfurt</option>
+                                    </select>  
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Kapazität</td>
+                                <td><input id="capacity" type="text" style=" width: 65px"></td>
+                            </tr>
+        
+                            <tr>
+                                <td>Komfort</td>
+                                <td id="comfort"></td>
+                            </tr>                           
+                        </tbody>
+                    </table>
+                </div>
+          </div>
+          <button type="submit" class="pure-button pure-button-primary" style="margin-top: 15px; margin-bottom: 5px;">Kaufen</button>
+	  </div>
+	</section>
+
+</body>
+</html>

@@ -272,7 +272,7 @@ canvas {
 		
 		function changeMenu(){
 			cssScene.remove(objectCSS);
-			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='waitingDialog.html'></iframe>";
+			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='waitingDialog.html' scrolling='no'></iframe>";
 			objectCSS = new THREE.CSS3DObject( login );
 			objectCSS.scale.multiplyScalar( 0.004);
 			objectCSS.position.set(0,0.5,-4);

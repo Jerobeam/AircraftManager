@@ -39,6 +39,10 @@ public abstract class Plane {
 	public int getCosts() {
 		return this.fuelCosts + this.upkeepCosts;
 	}
+
+	public int getComfort() {
+		return this.comfort;
+	}
 	
 	
 

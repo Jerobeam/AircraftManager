@@ -62,7 +62,9 @@ public class Airline {
 					.add("type", p.getType())
 					.add("name", p.getName())
 					.add("value", p.getValue())
+					.add("comfort", p.getComfort())
 					.add("capacity", p.getCapacity())
+					.add("costs", p.getCosts())
 					.build();
 			
 			jsonArray.add(json);

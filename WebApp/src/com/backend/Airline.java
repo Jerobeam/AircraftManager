@@ -12,6 +12,7 @@ public class Airline {
 	private String name;
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	private ArrayList<Route> routes = new ArrayList<Route>();
+	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
 
 	public Airline(String name, int money) {
@@ -133,6 +134,12 @@ public class Airline {
 
 	public void calculateNewMoney() {
 		//Berechnung wie viel Geld pro tick hinzukommt
-		
+		for(int i = 0; i < credits.size(); i++){
+			credits.get(i).tick();
+		}
+	}
+	
+	public void takeCreditType1(){
+		credits.add(new Credit(this,10000,1,200));
 	}
 }

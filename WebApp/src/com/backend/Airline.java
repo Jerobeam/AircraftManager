@@ -127,8 +127,7 @@ public class Airline {
 	
 	public int getUV() {
 		//Umlaufvermögen
-		int uv = 0;
-		
+		int uv = 0;	
 		return uv;
 	}
 

@@ -66,6 +66,9 @@ public class Game {
 					.add("bank", a.getMoney())
 					.add("av", a.getAV())
 					.add("uv", a.getUV())
+					.add("ek", a.getEK())
+					.add("fk", a.getFK())
+					.add("sum", a.getBilanzSum())
 					.add("planes", a.getPlanesJSON())
 					.build();
 

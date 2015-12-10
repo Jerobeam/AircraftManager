@@ -38,26 +38,26 @@ th {
   </tr>
   <tr>
     <td>Anlageverm&ouml;gen</td>
-    <td id="av" style="border-right: 4px solid #000000"></td>
-    <td></td>
+    <td id="av" style="text-align: right; border-right: 4px solid #000000"></td>
+    <td id="ek"></td>
     <td style="text-align: right">Eigenkapital</td>
   </tr>
   <tr>
     <td>Umlaufverm&ouml;gen</td>
-    <td style="border-right: 4px solid #000000" ></td>
-    <td></td>
-    <td style="text-align: right">Fremdkapital</td>
+    <td id="uv" style="text-align: right; border-right: 4px solid #000000" ></td>
+    <td id="fk"></td>
+    <td  style="text-align: right">Fremdkapital</td>
   </tr>
   <tr>
     <td>Bank</td>
-    <td id="bank" style="border-right: 4px solid #000000"></td>
+    <td id="bank" style="text-align: right; border-right: 4px solid #000000"></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td>Summe</td>
-    <td style="border-right: 4px solid #000000"></td>
-    <td></td>
+    <td  >Summe</td>
+    <td id="sum" style="text-align: right; border-right: 4px solid #000000"></td>
+    <td id="sum2"></td>
     <td style="text-align: right">Summe</td>
 </tr>
 </table>
@@ -65,6 +65,11 @@ th {
 playerData = parent.parent.getPlayerData();
 document.getElementById("av").innerHTML = playerData.av;
 document.getElementById("bank").innerHTML = playerData.bank;
+document.getElementById("uv").innerHTML = playerData.uv;
+document.getElementById("fk").innerHTML = playerData.fk;
+document.getElementById("ek").innerHTML = playerData.ek;
+document.getElementById("sum").innerHTML = playerData.sum;
+document.getElementById("sum2").innerHTML = playerData.sum;
 </script>
 </body>
 </html>

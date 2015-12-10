@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import javax.json.JsonValue;
 
 public class Airline {
 
 	private int money;
+	private int ek;
+	private int fk;
 	private String name;
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	private ArrayList<Route> routes = new ArrayList<Route>();
@@ -19,6 +22,7 @@ public class Airline {
 
 		this.setName(name);
 		this.setMoney(money);
+		this.ek = this.money;
 	}
 
 	public int getMoney() {
@@ -142,5 +146,19 @@ public class Airline {
 	
 	public void takeCreditType1(){
 		credits.add(new Credit(this,10000,1,200));
+	}
+
+	public int getEK() {
+		// TODO Auto-generated method stub
+		return this.ek;
+	}
+	public int getFK() {
+		// TODO Auto-generated method stub
+		return this.fk;
+	}
+
+	public int getBilanzSum() {
+		// TODO Auto-generated method stub
+		return this.getFK()+this.getEK();
 	}
 }

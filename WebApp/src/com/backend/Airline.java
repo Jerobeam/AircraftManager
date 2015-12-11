@@ -76,27 +76,9 @@ public class Airline {
 		return jsonArray;
 	}
 	
-	public void buyRoute(String name) {
+	public void bookRoute(String name, Plane plane) {
 		//TODO: Buy Route
 		//TODO: Create Airports
-		//TODO: Buy/ rent Airport
-//		if (type.equals("A320")){
-//			
-//				Airport air = new Airport();//Change!
-//				A320 p =  new A320(name, air);
-//				if (this.getMoney()>= p.getPrice()){
-//				this.planes.add(p);
-//				this.money = this.money - p.getPrice();}
-//			
-//		}
-		
-		switch (name) {
-		case "FraPmi":
-			break;
-
-		default:
-			break;
-		}
 	}
 
 	public ArrayList getRoutes() {

@@ -2,6 +2,10 @@ package com.backend;
 
 import java.util.ArrayList;
 
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+
 public class Route {
 
 	private String name;
@@ -10,7 +14,7 @@ public class Route {
 	private Airport airport1;
 	private Airport airport2;
 	private int costs;
-	private ArrayList<Plane> occupyingPlanes = new ArrayList<Plane>();
+	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	
 	public Route(String name, Airport airport1, Airport airport2){
 		this.setName(name);
@@ -62,6 +66,21 @@ public class Route {
 	}
 	
 	public void occupyRoute(Plane plane){
-		this.occupyingPlanes.add(plane);
+		this.planes.add(plane);
+	}
+
+	public JsonArrayBuilder getPlanesJSON(){
+		JsonObject json;
+		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
+
+		for (Plane p : planes) {
+			json = Json.createObjectBuilder()
+					.add("type", p.getType())
+					.add("name", p.getName())
+					.build();
+			
+			jsonArray.add(json);
+		}
+		return jsonArray;
 	}
 }

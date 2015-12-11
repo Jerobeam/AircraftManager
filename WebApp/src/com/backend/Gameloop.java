@@ -26,6 +26,7 @@ public class Gameloop extends Thread {
 			String json = Json.createObjectBuilder()
 		            .add("date", g.getDate().toString())
 		            .add("players", g.getGameData())
+		            .add("routes", g.getRoutesJSON())
 		            .build()
 		            .toString();
 			

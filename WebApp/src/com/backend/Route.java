@@ -12,8 +12,8 @@ public class Route {
 	private int costs;
 	private ArrayList<Plane> occupyingPlanes = new ArrayList<Plane>();
 	
-	public Route(Airport airport1, Airport airport2){
-		this.setName(airport1.getName() + " - " + airport2.getName());
+	public Route(String name, Airport airport1, Airport airport2){
+		this.setName(name);
 		this.costs = airport1.getSlotCosts() + airport2.getSlotCosts();
 	}
 	

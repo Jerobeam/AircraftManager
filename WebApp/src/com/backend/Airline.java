@@ -76,27 +76,20 @@ public class Airline {
 		return jsonArray;
 	}
 	
-	public void buyRoute(String name) {
+	public void occupyRoute(String name, Plane plane) {
 		//TODO: Buy Route
 		//TODO: Create Airports
-		//TODO: Buy/ rent Airport
-//		if (type.equals("A320")){
-//			
-//				Airport air = new Airport();//Change!
-//				A320 p =  new A320(name, air);
-//				if (this.getMoney()>= p.getPrice()){
-//				this.planes.add(p);
-//				this.money = this.money - p.getPrice();}
-//			
-//		}
-		
-		switch (name) {
-		case "FraPmi":
-			break;
-
-		default:
-			break;
+	}
+	
+	public Plane getPlaneByName(String name){
+		Plane ret = null;
+		for (Plane p : planes) {
+			if (p.getName().equals(name)) {
+				ret = p;
+				break;
+			}
 		}
+		return ret;
 	}
 
 	public ArrayList getRoutes() {
@@ -137,10 +130,9 @@ public class Airline {
 		return uv;
 	}
 
-	public void calculateNewMoney() {
-		//Berechnung wie viel Geld pro tick hinzukommt
-		for(int i = 0; i < credits.size(); i++){
-			credits.get(i).tick();
+	public void monthlyCalculation() {
+		for (Credit c : credits) {
+			c.tick();
 		}
 	}
 	

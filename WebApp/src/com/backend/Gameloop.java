@@ -20,7 +20,7 @@ public class Gameloop extends Thread {
 		while(true){
 			g.calendar.add(Calendar.HOUR_OF_DAY, 1);
 			for(int i = 0; i < g.getAirlines().size(); i++){
-				g.getAirlines().get(i).calculateNewMoney();
+				g.getAirlines().get(i).monthlyCalculation();
 			}
 			
 			String json = Json.createObjectBuilder()

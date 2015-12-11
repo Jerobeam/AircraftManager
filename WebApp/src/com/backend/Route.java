@@ -1,16 +1,20 @@
 package com.backend;
 
+import java.util.ArrayList;
+
 public class Route {
 
 	private String name;
 	private int distance;
 	private int demand;
-	private int costs;
 	private Airport airport1;
 	private Airport airport2;
+	private int costs;
+	private ArrayList<Plane> occupyingPlanes = new ArrayList<Plane>();
 	
-	public Route(String name){
-		this.setName(name);
+	public Route(Airport airport1, Airport airport2){
+		this.setName(airport1.getName() + " - " + airport2.getName());
+		this.costs = airport1.getSlotCosts() + airport2.getSlotCosts();
 	}
 	
 	public String getName() {
@@ -41,10 +45,6 @@ public class Route {
 		return costs;
 	}
 
-	public void setCosts(int costs) {
-		this.costs = costs;
-	}
-
 	public Airport getAirport1() {
 		return airport1;
 	}
@@ -59,5 +59,9 @@ public class Route {
 
 	public void setAirport2(Airport airport2) {
 		this.airport2 = airport2;
+	}
+	
+	public void occupyRoute(Plane plane){
+		this.occupyingPlanes.add(plane);
 	}
 }

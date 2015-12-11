@@ -14,6 +14,7 @@ import com.server.AirlineServerEndpoint;
 
 public class Game {
 	private int playerCount;
+	private int currentMonth = 2;
 	private final int maxPlayers = 4;
 	private ArrayList<Airline> airlines = new ArrayList<Airline>();
 	protected AirlineServerEndpoint server;
@@ -31,6 +32,10 @@ public class Game {
 		this.playerCount = 0;
 		loop = new Gameloop(this);
 		loop.start();
+		
+		Airport fraport = new Airport("Frankfurt Airport", 1337);
+		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
+		Route fraPmi = new Route(pmi, fraport);
 	}
 
 	public Gameloop getLoop() {
@@ -50,6 +55,12 @@ public class Game {
 
 	public void tick() {
 		this.calendar.add(Calendar.HOUR_OF_DAY, 1);
+		if (calendar.get(Calendar.MONTH)!= currentMonth){
+			tickMonth();
+		}
+	}
+	public void tickMonth(){
+		
 	}
 
 	public Date getDate() {
@@ -86,13 +97,11 @@ public class Game {
 				break;
 			}
 		}
-
 		return ret;
-
 	}
 
-	public void buyPlane(Airline airline, String type, String name) {
-		airline.buyPlane(type, name);
-	}
+//	public void buyPlane(Airline airline, String type, String name) {
+//		airline.buyPlane(type, name);
+//	}
 
 }

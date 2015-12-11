@@ -70,8 +70,9 @@ public class AirlineServerEndpoint {
 
 	private void splitMessage(String message) {
 		String[] request = message.split("§");
-
-		if (request[0].equals("Create")) {
+		
+		switch (request[0]) {
+		case "create":
 			if (game == null) {
 
 				System.out.println("Game does not exist");
@@ -80,10 +81,31 @@ public class AirlineServerEndpoint {
 
 			game.addPlayer(request[1]);
 			System.out.println(game.getPlayerCount());
-			
-		} else if (request[0].equals("buyPlane")) {
-			game.buyPlane(game.getAirlineByName(request[1]),request[2],request[3]);
+			break;
+		case "buyPlane":
+			game.getAirlineByName(request[1]).buyPlane(request[2],request[3]);
+//			game.buyPlane(game.getAirlineByName(request[1]),request[2],request[3]);
+			break;
+		case "occupyRoute":
+			game.getAirlineByName(request[1]).occupyRoute(request[2], game.getAirlineByName(request[1]).getPlaneByName(request[2]));;
+			break;
+		default:
+			break;
 		}
+		
+//		if (request[0].equals("Create")) {
+//			if (game == null) {
+//
+//				System.out.println("Game does not exist");
+//				game = new Game(this);
+//			}
+//
+//			game.addPlayer(request[1]);
+//			System.out.println(game.getPlayerCount());
+//			
+//		} else if (request[0].equals("buyPlane")) {
+//			game.buyPlane(game.getAirlineByName(request[1]),request[2],request[3]);
+//		}
 		
 	}
 

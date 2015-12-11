@@ -1,5 +1,6 @@
 package com.server;
 
+import com.backend.Airline;
 import com.backend.Game;
 
 import java.io.IOException;
@@ -87,7 +88,10 @@ public class AirlineServerEndpoint {
 //			game.buyPlane(game.getAirlineByName(request[1]),request[2],request[3]);
 			break;
 		case "occupyRoute":
-			game.getAirlineByName(request[1]).occupyRoute(request[2], game.getAirlineByName(request[1]).getPlaneByName(request[2]));;
+			Airline airline = game.getAirlineByName(request[1]);
+			String planeName = request[2];
+			String routeName = request[3];
+			airline.occupyRoute(routeName, airline.getPlaneByName(planeName));;
 			break;
 		default:
 			break;

@@ -14,7 +14,6 @@ public class Airline {
 	private int fk;
 	private String name;
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
-	private ArrayList<Route> routes = new ArrayList<Route>();
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
 

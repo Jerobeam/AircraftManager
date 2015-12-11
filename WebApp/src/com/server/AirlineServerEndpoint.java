@@ -91,7 +91,7 @@ public class AirlineServerEndpoint {
 			Airline airline = game.getAirlineByName(request[1]);
 			String planeName = request[2];
 			String routeName = request[3];
-			airline.occupyRoute(routeName, airline.getPlaneByName(planeName));;
+			game.occupyRoute(game.getRouteByName(routeName), airline.getPlaneByName(planeName));;
 			break;
 		default:
 			break;

@@ -79,7 +79,10 @@ public class Airline {
 	public void occupyRoute(String name, Plane plane) {
 		//TODO: Buy Route
 		//TODO: Create Airports
-		
+	}
+	
+	public Plane getPlaneByName(String name){
+		return null;
 	}
 
 	public ArrayList getRoutes() {

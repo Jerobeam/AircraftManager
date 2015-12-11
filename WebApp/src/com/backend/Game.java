@@ -97,13 +97,11 @@ public class Game {
 				break;
 			}
 		}
-
 		return ret;
-
 	}
 
-	public void buyPlane(Airline airline, String type, String name) {
-		airline.buyPlane(type, name);
-	}
+//	public void buyPlane(Airline airline, String type, String name) {
+//		airline.buyPlane(type, name);
+//	}
 
 }

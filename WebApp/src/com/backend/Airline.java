@@ -82,7 +82,14 @@ public class Airline {
 	}
 	
 	public Plane getPlaneByName(String name){
-		return null;
+		Plane ret = null;
+		for (Plane p : planes) {
+			if (p.getName().equals(name)) {
+				ret = p;
+				break;
+			}
+		}
+		return ret;
 	}
 
 	public ArrayList getRoutes() {

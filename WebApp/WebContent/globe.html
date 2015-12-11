@@ -80,11 +80,11 @@ canvas {
 		function createLine() {
 
 			var a = new THREE.Vector3(0, 0, 0);
-			cityMesh[0].position.distanceTo(cityMesh[3].position);
+			cityMesh[0].position.distanceTo(cityMesh[1].position);
 			var v1 = new THREE.Vector3(0, 0, 0);
 			var v2 = new THREE.Vector3(0, 0, 0);
 			v1.copy(cityMesh[0].position);
-			v2.copy(cityMesh[3].position);
+			v2.copy(cityMesh[1].position);
 			v1.multiplyScalar(1);
 			v2.multiplyScalar(1);
 			a.addVectors(v1, v2);

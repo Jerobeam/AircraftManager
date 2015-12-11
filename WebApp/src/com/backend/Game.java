@@ -17,6 +17,7 @@ public class Game {
 	private int currentMonth = 2;
 	private final int maxPlayers = 4;
 	private ArrayList<Airline> airlines = new ArrayList<Airline>();
+	private ArrayList<Route> routes = new ArrayList<Route>();
 	protected AirlineServerEndpoint server;
 
 	public ArrayList<Airline> getAirlines() {
@@ -99,9 +100,20 @@ public class Game {
 		}
 		return ret;
 	}
+	
+	public Route getRouteByName(String name) {
+		Route route = null;
+		for (Route r : routes) {
+			if (r.getName().equals(name)) {
+				route = r;
+				break;
+			}
+		}
+		return route;
+	}
 
-//	public void buyPlane(Airline airline, String type, String name) {
-//		airline.buyPlane(type, name);
-//	}
+	public void occupyRoute(Route route, Plane plane){
+		route.occupyRoute(plane);
+	}
 
 }

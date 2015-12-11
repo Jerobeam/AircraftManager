@@ -137,10 +137,9 @@ public class Airline {
 		return uv;
 	}
 
-	public void calculateNewMoney() {
-		//Berechnung wie viel Geld pro tick hinzukommt
-		for(int i = 0; i < credits.size(); i++){
-			credits.get(i).tick();
+	public void monthlyCalculation() {
+		for (Credit c : credits) {
+			c.tick();
 		}
 	}
 	

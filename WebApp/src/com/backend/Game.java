@@ -34,8 +34,8 @@ public class Game {
 		loop = new Gameloop(this);
 		loop.start();
 		
-		Airport fraport = new Airport("Frankfurt", 1337);
-		Airport pmi = new Airport("Mallorca", 8888);
+		Airport fraport = new Airport("Frankfurt Airport", 1337);
+		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
 		Route fraPmi = new Route("Frankfurt-Mallorca", pmi, fraport);
 		routes.add(fraPmi);
 	}

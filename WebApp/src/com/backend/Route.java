@@ -1,5 +1,7 @@
 package com.backend;
 
+import java.util.ArrayList;
+
 public class Route {
 
 	private String name;
@@ -8,9 +10,10 @@ public class Route {
 	private Airport airport1;
 	private Airport airport2;
 	private int costs;
+	private ArrayList<Plane> occupyingPlanes = new ArrayList<Plane>();
 	
-	public Route(String name, Airport airport1, Airport airport2){
-		this.setName(name);
+	public Route(Airport airport1, Airport airport2){
+		this.setName(airport1.getName() + " - " + airport2.getName());
 		this.costs = airport1.getSlotCosts() + airport2.getSlotCosts();
 	}
 	
@@ -56,5 +59,9 @@ public class Route {
 
 	public void setAirport2(Airport airport2) {
 		this.airport2 = airport2;
+	}
+	
+	public void occupyRoute(Plane plane){
+		this.occupyingPlanes.add(plane);
 	}
 }

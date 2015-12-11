@@ -76,9 +76,10 @@ public class Airline {
 		return jsonArray;
 	}
 	
-	public void bookRoute(String name, Plane plane) {
+	public void occupyRoute(String name, Plane plane) {
 		//TODO: Buy Route
 		//TODO: Create Airports
+		
 	}
 
 	public ArrayList getRoutes() {

@@ -31,6 +31,10 @@ public class Game {
 		this.playerCount = 0;
 		loop = new Gameloop(this);
 		loop.start();
+		
+		Airport fraport = new Airport("Frankfurt Airport", 1337);
+		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
+		Route fraPmi = new Route(pmi, fraport);
 	}
 
 	public Gameloop getLoop() {

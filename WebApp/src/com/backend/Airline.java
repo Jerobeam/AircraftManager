@@ -90,29 +90,8 @@ public class Airline {
 		}
 		return ret;
 	}
-
-	public ArrayList getRoutes() {
-		return routes;
-	}
 	
-	public JsonArrayBuilder getRoutesJSON(){
-		JsonObject json;
-		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
 
-		for (Route r : routes) {
-			json = Json.createObjectBuilder()
-					.add("name", r.getName())
-					.add("distance", r.getDistance())
-					.add("demand", r.getDemand())
-					.add("costs", r.getCosts())
-					.add("airport1", r.getAirport1().getName())
-					.add("airport2", r.getAirport2().getName())
-					.build();
-			
-			jsonArray.add(json);
-		}
-		return jsonArray;
-	}
 	
 	public int getAV() {
 		//Anlagevermögen

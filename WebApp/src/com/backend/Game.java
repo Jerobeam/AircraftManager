@@ -14,6 +14,7 @@ import com.server.AirlineServerEndpoint;
 
 public class Game {
 	private int playerCount;
+	private int currentMonth = 2;
 	private final int maxPlayers = 4;
 	private ArrayList<Airline> airlines = new ArrayList<Airline>();
 	protected AirlineServerEndpoint server;
@@ -54,6 +55,12 @@ public class Game {
 
 	public void tick() {
 		this.calendar.add(Calendar.HOUR_OF_DAY, 1);
+		if (calendar.get(Calendar.MONTH)!= currentMonth){
+			tickMonth();
+		}
+	}
+	public void tickMonth(){
+		
 	}
 
 	public Date getDate() {

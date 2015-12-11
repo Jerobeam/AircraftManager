@@ -34,9 +34,10 @@ public class Game {
 		loop = new Gameloop(this);
 		loop.start();
 		
-		Airport fraport = new Airport("Frankfurt Airport", 1337);
-		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
+		Airport fraport = new Airport("Frankfurt", 1337);
+		Airport pmi = new Airport("Mallorca", 8888);
 		Route fraPmi = new Route(pmi, fraport);
+		routes.add(fraPmi);
 	}
 
 	public Gameloop getLoop() {
@@ -82,7 +83,6 @@ public class Game {
 					.add("fk", a.getFK())
 					.add("sum", a.getBilanzSum())
 					.add("planes", a.getPlanesJSON())
-					.add("routes", getRoutesJSON())
 					.build();
 
 			jsonArray.add(json);
@@ -101,8 +101,7 @@ public class Game {
 					.add("distance", r.getDistance())
 					.add("demand", r.getDemand())
 					.add("costs", r.getCosts())
-					.add("airport1", r.getAirport1().getName())
-					.add("airport2", r.getAirport2().getName())
+					.add("planes",r.getPlanesJSON())
 					.build();
 			
 			jsonArray.add(json);

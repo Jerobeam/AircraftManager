@@ -50,7 +50,7 @@ header {
     <hr>
 	<section>
 		<div class="content">
-        	<img src="./Content/airbus320.gif" width="339" height="126">
+        	<img src="./content/airbus320.gif" width="339" height="126">
             <div style="margin-left: 20px; margin-right: 20px">
             	<div style="float: left;">
                     <table class="pure-table pure-table-bordered" width="164" height="50px" align="center" style="text-align: left; font-size:8pt; margin-top: 10px;">
@@ -64,7 +64,7 @@ header {
                         <tbody>
                             <tr>
                                 <td>Typ</td>
-                                <td id="type"></td>
+                                <td id="type">A320</td>
                             </tr>
                     
                             <tr>
@@ -131,9 +131,15 @@ header {
                     </table>
                 </div>
           </div>
-          <button type="submit" class="pure-button pure-button-primary" style="margin-top: 15px; margin-bottom: 5px;">Kaufen</button>
+          <button onclick="sendBuyRequest()" type="submit" class="pure-button pure-button-primary" style="margin-top: 15px; margin-bottom: 5px;">Kaufen</button>
 	  </div>
 	</section>
-
+	<script type="text/javascript">
+	function sendBuyRequest(){
+		var type = document.getElementById('type').innerHTML;
+		var name = document.getElementById('name').value;
+		parent.parent.send("buyPlane§"+parent.parent.getPlayerName()+"§"+type+"§"+name);
+	}
+	</script>
 </body>
 </html>

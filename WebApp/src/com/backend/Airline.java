@@ -97,7 +97,7 @@ public class Airline {
 		//Anlagevermögen
 		int av = 0;
 		for (Plane p : planes) {
-			av = p.getValue();
+			av = av + p.getValue();
 		}
 		return av;
 	}

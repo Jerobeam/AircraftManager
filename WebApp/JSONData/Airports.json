@@ -1,0 +1,10 @@
+"Airports":[
+{
+	"name":"Frankfurt Airport",
+	"slotCosts":"1337"
+},
+{
+	"name":"Palma de Mallorca Airport",
+	"slotCosts":"8888"
+}
+]

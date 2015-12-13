@@ -44,6 +44,12 @@ public abstract class Plane {
 		return this.comfort;
 	}
 	
-	
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 
 }

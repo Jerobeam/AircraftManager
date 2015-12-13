@@ -12,10 +12,6 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
 import com.server.AirlineServerEndpoint;
 
 public class Game {
@@ -39,8 +35,6 @@ public class Game {
 		this.playerCount = 0;
 		loop = new Gameloop(this);
 		loop.start();
-		
-		this.createAirportsFromJson();
 		
 		Airport fraport = new Airport("Frankfurt Airport", 1337);
 		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
@@ -143,29 +137,4 @@ public class Game {
 		route.occupyRoute(plane);
 	}
 	
-	public void createAirportsFromJson(){
-		JSONParser parser = new JSONParser();
-		 
-        try {
- 
-            Object obj = parser.parse(new FileReader("/JSONData/Airports.json"));
- 
-            JSONObject jsonObject = (JSONObject) obj;
- 
-            JSONArray airports = (JSONArray) jsonObject.get("Airports");
- 
-            Iterator<String> iterator = airports.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-                String name = (String) jsonObject.get("name");
-                String slotCosts = (String) jsonObject.get("slotCosts");
-                System.out.println("Name: " + name);
-                System.out.println("Author: " + slotCosts);
-            }
- 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-	}
-
 }

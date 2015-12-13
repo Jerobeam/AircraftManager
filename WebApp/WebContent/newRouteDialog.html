@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Airline Manager</title>
+
+<link rel="stylesheet" href="pure.css">
+<style>
+body {
+	width: 600px;
+	height: 100%;
+	color: #6C6C6C;
+}
+
+header {
+	height: 15px; 
+	text-align: center; 
+	margin-left: 10px;
+}
+
+#section {
+	width: 100%;
+	height: 30%;
+	text-align: center;
+}
+
+#m2{ 
+	width: 100%;
+	margin-top: 5px;
+}
+
+.content{
+	width: auto;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.choose{
+	width: 33%;
+	height: 100%;
+	float: left;
+}
+
+.chooseHead{
+	height: 20%; 
+	text-align:center
+}
+
+</style>
+</head>
+
+<body bgcolor="white">
+	<header>
+		<div id="m2"><b>Von Frankfurt nach Palma de Mallorca</b></div>      
+	</header>
+    <hr>
+	<section>
+		<div class="content">
+        	<b style="font-size: 15px">Konkurrenz auf der Route</b>
+            <div>
+                <table class="pure-table pure-table-bordered" width="100%" style="text-align: left; font-size:8pt;">                    
+                    <tr style="height: 30px">
+                    	<td><b>Airline</b></td>
+                        <td><b>Typ</b></td>
+                        <td><b>Ticketpreis</b></td>
+                        <td><b>Ø Passagiere</b></td>
+                        <td><b>Komfort</b></td>
+                        <td><b>Image</b></td>
+                    </tr>
+                    <tr>
+                    	<td id="airline">Lufthansa</td>
+                        <td id="typ">A320</td>
+                        <td id="price">140</td>
+                        <td id="pax">150</td>
+                        <td id="comfort">60</td>
+                        <td id="image">70</td>
+                    </tr>                 
+              </table>
+            </div>  
+        </div>       
+    	<hr>
+        <div class="content">
+        		<form style="pure-form">	
+                    <div style=" width: 100%; height: 170px">
+                        <div class="choose">	
+                        	<div class="chooseHead" style="text-align: left"><b>verfügbare Flugzeuge</b></div>
+                            <div style="border-radius: 20px; border: 1px solid black; height: 78%; width:90%">				
+                            	<div style="margin: 10px">	
+                                    <input type="radio" name="typ" value="a320" checked>Airbus A320<br/>
+                                    <input type="radio" name="typ" value="b737">Boeing 737<br/>
+                                    <input type="radio" name="typ" value="c190">Embraer 190<br/>
+                                </div>
+                            </div>
+                        </div>	
+                        <div class="choose">
+                        	<div class="chooseHead"><b>Ticketpreis</b></div>
+                            <div style="text-align:center">
+                            	<input type="text" name="price" style="width: 80%;">
+                            </div>
+                        </div>
+                        <div class="choose">	
+                        	<div class="chooseHead"><b>Details</b></div>
+                            <div>
+                            	<table class="pure-table pure-table-bordered" align="right" style="font-size:8pt; width: 90%">
+                                	<tr>
+                    					<td><b>Eigenschaft</b></td>
+                                        <td><b>Wert</b></td>
+                                    </tr>
+                                    <tr>
+                    					<td>Nachfrage</td>
+                                        <td>500</td>
+                                    </tr>
+                                    <tr>
+                    					<td>Entfernung</td>
+                                        <td>1000</td>
+                                    </tr>
+                                    <tr>
+                    					<td>Gebühren Frankfurt</td>
+                                        <td>50000</td>
+                                    </tr>
+                                    <tr>
+                    					<td>Gebühren Palma</td>
+                                        <td>40000</td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>	
+                    <div style="width: 100%; text-align:center">
+                        <button type="submit" class="pure-button pure-button-primary" style="margin-top: 10px; text-align:center">Route wählen</button>
+                    </div>
+                </form>
+        </div> 
+   </section>
+
+</body>
+</html>

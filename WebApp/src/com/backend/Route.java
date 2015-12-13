@@ -9,19 +9,16 @@ import javax.json.JsonObject;
 public class Route {
 
 	private String name;
-	//Distance in km/h
 	private int distance;
 	private int demand;
 	private Airport airport1;
 	private Airport airport2;
 	private int costs;
-	private int defaultTicketPrice;
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	
-	public Route(String name, Airport airport1, Airport airport2, int defaultTicketPrice){
+	public Route(String name, Airport airport1, Airport airport2){
 		this.setName(name);
 		this.costs = airport1.getSlotCosts() + airport2.getSlotCosts();
-		this.setDefaultTicketPrice(defaultTicketPrice);
 	}
 	
 	public String getName() {
@@ -70,18 +67,6 @@ public class Route {
 	
 	public void occupyRoute(Plane plane){
 		this.planes.add(plane);
-	}
-	
-	public int getDefaultTicketPrice() {
-		return defaultTicketPrice;
-	}
-
-	public void setDefaultTicketPrice(int defaultTicketPrice) {
-		this.defaultTicketPrice = defaultTicketPrice;
-	}
-	
-	public ArrayList<Plane> getPlanes(){
-		return this.planes;
 	}
 
 	public JsonArrayBuilder getPlanesJSON(){

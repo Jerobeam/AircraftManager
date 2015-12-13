@@ -1,12 +1,10 @@
 package com.backend;
 
-import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Iterator;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -38,7 +36,7 @@ public class Game {
 		
 		Airport fraport = new Airport("Frankfurt Airport", 1337);
 		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
-		Route fraPmi = new Route("Frankfurt-Mallorca", pmi, fraport,156);
+		Route fraPmi = new Route("Frankfurt-Mallorca", pmi, fraport);
 		routes.add(fraPmi);
 	}
 
@@ -136,5 +134,5 @@ public class Game {
 	public void occupyRoute(Route route, Plane plane){
 		route.occupyRoute(plane);
 	}
-	
+
 }

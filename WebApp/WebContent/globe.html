@@ -37,6 +37,7 @@ canvas {
 		var login;
 		var spline;
 		var curve;
+		var routeSelection = "";
 
 		var plane;
 		var t = 0;
@@ -52,7 +53,7 @@ canvas {
 				shading : THREE.FlatShading
 			}));
 			plane.scale.multiplyScalar(0.1);
-			scene.add(plane);
+			//scene.add(plane);
 		});
 
 		function render() {
@@ -105,6 +106,8 @@ canvas {
 
 			spline = new THREE.Line(geometry, material);
 			scene.add(spline);
+			//!TODO:CHANGE
+			spline.name = "Frankfurt-Mallorca"
 		}
 
 		function createCities(file) {
@@ -246,6 +249,9 @@ canvas {
 			raycaster.setFromCamera(mouse, camera);
 			var intersects = raycaster.intersectObjects(scene.children);
 			if (intersects[0]) {
+				if (intersects[0].object.name != undefined && intersects[0].object.name!=""){
+				routeSelection= intersects[0].object.name;
+				openRoute(intersects[0].object.name);}
 			}
 		}
 
@@ -258,6 +264,9 @@ canvas {
 			switchRenderer();
 			
 		
+		}
+		function getRouteSelection(){
+			return routeSelection;
 		}
 		
 		function switchRenderer(){
@@ -303,6 +312,18 @@ canvas {
 			cssScene.add(objectCSS);
 		}
 		
+		function openRoute(routeName){
+			switchRenderer();
+			cssScene.remove(objectCSS);
+			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='routeDialog.html' scrolling='no'></iframe>";
+			login.style.width = '340px';
+			login.style.height = '200px';
+			objectCSS = new THREE.CSS3DObject( login );
+			objectCSS.scale.multiplyScalar( 0.004);
+			objectCSS.position.set(0,0.5,-4);
+			cssScene.add(objectCSS);
+		}
+		
 		function openPlaneList(){
 			switchRenderer();
 			cssScene.remove(objectCSS);
@@ -329,8 +350,8 @@ canvas {
 		function openPlaneBuy(){
 			//switchRenderer();
 			cssScene.remove(objectCSS);
-			login.innerHTML = "<iframe frameBorder='0' width='800' height='400' src='buyPlaneDialog.html' scrolling='no'></iframe>";
-			login.style.width = '800px';
+			login.innerHTML = "<iframe frameBorder='0' width='400' height='400' src='buyPlaneDialog.html' scrolling='no'></iframe>";
+			login.style.width = '400px';
 			login.style.height = '400px';
 			objectCSS = new THREE.CSS3DObject( login );
 			objectCSS.scale.multiplyScalar( 0.004);

@@ -15,6 +15,10 @@ public class A320 extends Plane {
 		this.upkeepCosts = 3000;//
 		this.price = 600000;//
 		this.value = 600000;//
+		this.flightsPerDay = 0;
+		this.earnings = 0;
+		this.bookingPrice = 0;
+		this.routeCosts = 0;
 
 	}
 

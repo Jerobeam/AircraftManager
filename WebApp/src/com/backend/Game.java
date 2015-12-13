@@ -36,7 +36,9 @@ public class Game {
 		
 		Airport fraport = new Airport("Frankfurt Airport", 1337);
 		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
-		Route fraPmi = new Route("Frankfurt-Mallorca", pmi, fraport);
+		Route fraPmi = new Route("Frankfurt-Mallorca", pmi, fraport,120);
+		fraPmi.setDistance(1612);
+		fraPmi.setDemand(800);
 		routes.add(fraPmi);
 	}
 
@@ -60,9 +62,39 @@ public class Game {
 		if (calendar.get(Calendar.MONTH)!= currentMonth){
 			tickMonth();
 		}
+		if (calendar.get(Calendar.HOUR_OF_DAY)== 0){
+			tickDay();
+		}
 	}
 	public void tickMonth(){
 		
+	}
+	public void tickDay(){
+		createFlights();
+		for (Airline a : airlines) {
+			a.guvDay();
+		}
+	}
+
+	private void createFlights() {
+		ArrayList<Plane> planes = new ArrayList<Plane>();
+		ArrayList<Flight> flights = new ArrayList<Flight>();
+		
+		for (Route r : routes) {
+			r.cleanFlights();
+			planes = r.getPlanes();
+			
+			for (Plane p : planes){
+				p.resetEarnings();
+				int numberOfFlights = (int) (24/((double)r.getDistance()/(double)p.getSpeed()+1));
+				p.setFlightsPerDay(numberOfFlights);
+				for (int i=0;i<numberOfFlights;i++){
+					Flight flight = new Flight(p);
+					r.addFlight(flight);
+				}
+			}
+			r.createBookings();	
+		}	
 	}
 
 	public Date getDate() {
@@ -102,6 +134,7 @@ public class Game {
 					.add("demand", r.getDemand())
 					.add("costs", r.getCosts())
 					.add("planes",r.getPlanesJSON())
+					//.add("flights", r.getFlightsJSON())
 					.build();
 			
 			jsonArray.add(json);
@@ -133,6 +166,8 @@ public class Game {
 
 	public void occupyRoute(Route route, Plane plane){
 		route.occupyRoute(plane);
+		plane.setRouteCosts(route.getCosts());
+		plane.setBookingPrice(route.getBasePrice());
 	}
 
 }

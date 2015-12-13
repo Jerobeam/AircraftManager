@@ -67,7 +67,9 @@ public class Airline {
 					.add("value", p.getValue())
 					.add("comfort", p.getComfort())
 					.add("capacity", p.getCapacity())
+					.add("flightsPerDay", p.getFlightsPerDay())
 					.add("costs", p.getCosts())
+					.add("earnings", p.getEarnings())
 					.build();
 			
 			jsonArray.add(json);
@@ -75,10 +77,6 @@ public class Airline {
 		return jsonArray;
 	}
 	
-	public void occupyRoute(String name, Plane plane) {
-		//TODO: Buy Route
-		//TODO: Create Airports
-	}
 	
 	public Plane getPlaneByName(String name){
 		Plane ret = null;
@@ -91,7 +89,15 @@ public class Airline {
 		return ret;
 	}
 	
-
+	public void guvDay(){
+		int sum = 0;
+		
+		for (Plane p : planes) {
+			sum = p.getEarnings() - p.getCosts();
+		}
+		this.ek = this.ek + sum;
+		this.money = this.money + sum;
+	}
 	
 	public int getAV() {
 		//Anlagevermögen

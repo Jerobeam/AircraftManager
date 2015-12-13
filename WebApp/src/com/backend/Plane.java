@@ -12,9 +12,12 @@ public abstract class Plane {
 	protected int comfort;
 	protected int upkeepCosts;
 	protected int speed;
-	protected Flight flight;
 	protected int price;
 	protected int value;
+	protected int flightsPerDay;
+	protected int earnings;
+	protected int bookingPrice;
+	protected int routeCosts;
 	
 	public int getPrice(){
 		return this.price;
@@ -37,7 +40,21 @@ public abstract class Plane {
 	}
 	
 	public int getCosts() {
-		return this.fuelCosts + this.upkeepCosts;
+		return this.fuelCosts + this.upkeepCosts + this.routeCosts;
+	}
+	
+	public int getEarnings() {
+		return this.earnings;
+	}
+	public void setEarnings(int e) {
+		this.earnings = e;
+	}
+	public int getBookingPrice() {
+		return this.bookingPrice;
+	}
+	
+	public void setBookingPrice(int p) {
+		this.bookingPrice = p;
 	}
 
 	public int getComfort() {
@@ -50,6 +67,29 @@ public abstract class Plane {
 
 	public void setSpeed(int speed) {
 		this.speed = speed;
+	}
+	
+	public int getFlightsPerDay() {
+		return this.flightsPerDay;
+	}
+	
+	public void setFlightsPerDay(int i) {
+		this.flightsPerDay = i;
+		
+	}
+
+	public void addEarnings(int i) {
+		this.earnings = this.earnings +i;
+		
+	}
+
+	public void resetEarnings() {
+		this.earnings = 0;
+		
+	}
+
+	public void setRouteCosts(int costs) {
+		this.routeCosts = costs;		
 	}
 
 }

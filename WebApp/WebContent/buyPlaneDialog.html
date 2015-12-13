@@ -69,27 +69,27 @@ header {
                     
                             <tr>
                                 <td>Tempo</td>
-                                <td id="speed"></td>
+                                <td id="speed">891</td>
                             </tr>
                     
                             <tr>
                                 <td>Reichweite</td>
-                                <td id="range"></td>
+                                <td id="range">6150</td>
                             </tr>
         
                             <tr>
                                 <td>Verbrauch</td>
-                                <td id="fuelCosts"></td>
+                                <td id="fuelCosts">2000</td>
                             </tr>
         
                             <tr>
                                 <td>Wartungskosten</td>
-                                <td id="upkeepCosts"></td>
+                                <td id="upkeepCosts">5700</td>
                             </tr>
                             
                             <tr>
                                 <td>Preis</td>
-                                <td id="price"></td>
+                                <td id="price">600.000€</td>
                             </tr>                                 
                         </tbody>
                     </table>
@@ -120,12 +120,12 @@ header {
                     
                             <tr>
                                 <td>Kapazität</td>
-                                <td><input id="capacity" type="text" style=" width: 65px"></td>
+                                <td>150</td>
                             </tr>
         
                             <tr>
                                 <td>Komfort</td>
-                                <td id="comfort"></td>
+                                <td id="comfort">30</td>
                             </tr>                           
                         </tbody>
                     </table>
@@ -139,6 +139,7 @@ header {
 		var type = document.getElementById('type').innerHTML;
 		var name = document.getElementById('name').value;
 		parent.parent.send("buyPlane§"+parent.parent.getPlayerName()+"§"+type+"§"+name);
+		parent.closeMenu();
 	}
 	</script>
 </body>

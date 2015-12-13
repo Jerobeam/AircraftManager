@@ -144,6 +144,9 @@ sectionRight {
 		function getPlayerName() {
 			return playerName;
 		}
+		function occupyRoute(s){
+			websocket.send("occupyRoute§"+playerName+"§"+s)
+		}
 	</script>
 </body>
 </html>

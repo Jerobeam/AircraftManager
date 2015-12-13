@@ -120,8 +120,8 @@ public class Airline {
 		}
 	}
 	
-	public void takeCreditType1(){
-		credits.add(new Credit(this,10000,1,200));
+	public void takeCreditType1(int amount){
+		credits.add(new Credit(this,amount,1,amount / 50));
 	}
 
 	public int getEK() {

@@ -92,6 +92,10 @@ public class AirlineServerEndpoint {
 			String routeName = request[3];
 			game.occupyRoute(game.getRouteByName(routeName), airline.getPlaneByName(planeName));;
 			break;
+		case "takeCredit":
+			Airline a = game.getAirlineByName(request[1]);
+			a.takeCreditType1(Integer.parseInt(request[2]));
+			break;
 		default:
 			break;
 		}

@@ -18,6 +18,7 @@ public class Game {
 	private final int maxPlayers = 4;
 	private ArrayList<Airline> airlines = new ArrayList<Airline>();
 	private ArrayList<Route> routes = new ArrayList<Route>();
+	private ArrayList<Airport> airports = new ArrayList<Airport>();
 	protected AirlineServerEndpoint server;
 
 	public ArrayList<Airline> getAirlines() {
@@ -35,7 +36,9 @@ public class Game {
 		loop.start();
 		
 		Airport fraport = new Airport("Frankfurt Airport", 1337);
+		airports.add(fraport);
 		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
+		airports.add(pmi);
 		Route fraPmi = new Route("Frankfurt-Mallorca", pmi, fraport,120);
 		fraPmi.setDistance(1612);
 		fraPmi.setDemand(800);
@@ -162,6 +165,17 @@ public class Game {
 			}
 		}
 		return route;
+	}
+	
+	public Airport getAirportByName(String name) {
+		Airport airport = null;
+		for (Airport a : airports) {
+			if (a.getName().equals(name)) {
+				airport = a;
+				break;
+			}
+		}
+		return airport;
 	}
 
 	public void occupyRoute(Route route, Plane plane){

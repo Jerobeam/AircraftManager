@@ -30,7 +30,7 @@ public class Gameloop extends Thread {
 		            .build()
 		            .toString();
 			
-			System.out.println(json);		 
+//			System.out.println(json);		 
 			g.server.sendJSONToAll(json);
 			
 			try {

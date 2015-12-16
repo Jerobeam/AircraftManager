@@ -69,7 +69,7 @@ public class Airline {
 		 
         try {
  
-            Object obj = parser.parse(new FileReader("Files/planes.json"));
+            Object obj = parser.parse(new FileReader("JSONFiles/Planes.json"));
  
             JSONObject planesJSON = (JSONObject) obj;
  

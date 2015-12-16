@@ -1,11 +1,15 @@
 package com.backend;
 
+import java.io.FileReader;
 import java.util.ArrayList;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonValue;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class Airline {
 
@@ -40,16 +44,56 @@ public class Airline {
 		this.money = money;
 	}
 
-	public void buyPlane(String type,String name) {
-		if (type.equals("A320")){
-			
-				Airport air = new Airport();//Change!
-				A320 p =  new A320(name, air);
-				if (this.getMoney()>= p.getPrice()){
-				this.planes.add(p);
-				this.money = this.money - p.getPrice();}
-			
+	public void buyPlane(String type,String name, Airport location) {
+		
+//		if (type.equals("A320")){
+//			
+//				Airport air = new Airport();//Change!
+//				A320 p =  new A320(name, air);
+//				if (this.getMoney()>= p.getPrice()){
+//				this.planes.add(p);
+//				this.money = this.money - p.getPrice();}
+//			
+//		}
+		System.out.println("buyPlane called");
+		Plane p = this.createPlaneFromJson(name, type, location);
+		if (this.getMoney()>= p.getPrice()){
+			this.planes.add(p);
+			this.money = this.money - p.getPrice();
+			System.out.println("Plane bought" + p.getName());
 		}
+	}
+	@SuppressWarnings("unchecked")
+	public Plane createPlaneFromJson(String name, String type, Airport location){
+		JSONParser parser = new JSONParser();
+		 
+        try {
+ 
+            Object obj = parser.parse(new FileReader("Files/planes.json"));
+ 
+            JSONObject planesJSON = (JSONObject) obj;
+ 
+            JSONObject planeTypeJSON = (JSONObject) planesJSON.get(type);
+            
+            Plane p = new Plane(name, type);
+            p.setLocation(location);
+            
+            p.setCapacity((int)planeTypeJSON.get("capacity"));
+            p.setComfort((int)planeTypeJSON.get("comfort"));
+            p.setSpeed((int)planeTypeJSON.get("speed"));
+            p.setRange((int)planeTypeJSON.get("range"));
+            p.setFuelCosts((int)planeTypeJSON.get("fuelCosts"));
+            p.setUpkeepCosts((int)planeTypeJSON.get("upkeepCosts"));
+            p.setPrice((int)planeTypeJSON.get("price"));
+            p.setPilot((int)planeTypeJSON.get("pilot"));
+            p.setSteward((int)planeTypeJSON.get("steward"));
+
+            return p;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return null;
 	}
 
 	public ArrayList getPlanes() {

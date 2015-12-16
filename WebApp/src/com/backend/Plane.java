@@ -2,22 +2,98 @@ package com.backend;
 
 import javax.json.JsonValue;
 
-public abstract class Plane {
-	protected String name;
-	protected String type;
-	protected Airport location;
-	protected int capacity;
-	protected int range;
-	protected int fuelCosts;
-	protected int comfort;
-	protected int upkeepCosts;
-	protected int speed;
-	protected int price;
-	protected int value;
-	protected int flightsPerDay;
-	protected int earnings;
-	protected int bookingPrice;
-	protected int routeCosts;
+public class Plane {
+
+	private String name;
+	private String type;
+	private Airport location;
+	private int capacity;
+	private int range;
+	private int fuelCosts;
+	private int comfort;
+	private int upkeepCosts;
+	private int speed;
+	private int price;
+	private int value;
+	private int flightsPerDay;
+	private int earnings;
+	private int bookingPrice;
+	private int routeCosts;
+	private int steward;
+	private int pilot;
+
+	public int getPilot() {
+		return pilot;
+	}
+
+	public void setPilot(int pilot) {
+		this.pilot = pilot;
+	}
+
+	public Plane(String name, String type){
+		this.setName(name);
+		this.setType(type);
+	}
+	
+	public Airport getLocation() {
+		return location;
+	}
+
+	public void setLocation(Airport location) {
+		this.location = location;
+	}
+
+	public int getRange() {
+		return range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
+	}
+
+	public int getFuelCosts() {
+		return fuelCosts;
+	}
+
+	public void setFuelCosts(int fuelCosts) {
+		this.fuelCosts = fuelCosts;
+	}
+
+	public int getUpkeepCosts() {
+		return upkeepCosts;
+	}
+
+	public void setUpkeepCosts(int upkeepCosts) {
+		this.upkeepCosts = upkeepCosts;
+	}
+
+	public int getRouteCosts() {
+		return routeCosts;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public void setComfort(int comfort) {
+		this.comfort = comfort;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
 	
 	public int getPrice(){
 		return this.price;
@@ -92,4 +168,13 @@ public abstract class Plane {
 		this.routeCosts = costs;		
 	}
 
+
+	public int getSteward() {
+		return steward;
+	}
+
+	public void setSteward(int steward) {
+		this.steward = steward;
+	}
+	
 }

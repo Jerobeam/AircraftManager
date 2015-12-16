@@ -13,22 +13,22 @@ import org.json.simple.parser.JSONParser;
 
 public class Airline {
 
-	private int money;
-	private int ek;
-	private int fk;
+	private long money;
+	private long ek;
+	private long fk;
 	private String name;
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
 
-	public Airline(String name, int money) {
+	public Airline(String name, long money) {
 
 		this.setName(name);
 		this.setMoney(money);
 		this.ek = this.money;
 	}
 
-	public int getMoney() {
+	public long getMoney() {
 		return money;
 	}
 
@@ -40,7 +40,7 @@ public class Airline {
 		this.name = name;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(long money) {
 		this.money = money;
 	}
 
@@ -168,17 +168,14 @@ public class Airline {
 		credits.add(new Credit(this,amount,1,amount / 50));
 	}
 
-	public int getEK() {
-		// TODO Auto-generated method stub
+	public long getEK() {
 		return this.ek;
 	}
-	public int getFK() {
-		// TODO Auto-generated method stub
+	public long getFK() {
 		return this.fk;
 	}
 
-	public int getBilanzSum() {
-		// TODO Auto-generated method stub
+	public long getBilanzSum() {
 		return this.getFK()+this.getEK();
 	}
 }

@@ -23,7 +23,7 @@ public class Test {
 		if (airline==null){fail("Airline creation failed!");}
 		
 		int startMoney = airline.getMoney();
-		
+		//TODO: Add locationairport to Buy Plane Test
 		airline.buyPlane("A320", "AB01");
 		
 		if (airline.getMoney() == startMoney - 68000000){fail("Plane Price calculation failed!");}

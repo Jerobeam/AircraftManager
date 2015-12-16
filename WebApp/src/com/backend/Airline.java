@@ -63,15 +63,16 @@ public class Airline {
 			System.out.println("Plane bought" + p.getName());
 		}
 	}
-	@SuppressWarnings("unchecked")
+
 	public Plane createPlaneFromJson(String name, String type, Airport location){
 		JSONParser parser = new JSONParser();
 		 
         try {
  
-            Object obj = parser.parse(new FileReader("JSONFiles/Planes.json"));
- 
-            JSONObject planesJSON = (JSONObject) obj;
+//            Object obj = parser.parse(new FileReader("WebContent/content/JSONFiles/planes.json"));
+        	//I dare you
+            Object fileObject = parser.parse(new FileReader("WebContent/content/JSONFIles/planes.json"));
+            JSONObject planesJSON = (JSONObject) fileObject;
  
             JSONObject planeTypeJSON = (JSONObject) planesJSON.get(type);
             

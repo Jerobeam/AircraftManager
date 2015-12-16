@@ -22,7 +22,7 @@ Game game = null;
 		
 		if (airline==null){fail("Airline creation failed!");}
 		
-		int startMoney = airline.getMoney();
+		long startMoney = airline.getMoney();
 		
 		airline.takeCreditType1(1000);
 		

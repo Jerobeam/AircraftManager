@@ -69,9 +69,8 @@ public class Airline {
 		 
         try {
  
-//            Object obj = parser.parse(new FileReader("WebContent/content/JSONFiles/planes.json"));
-        	//I dare you
-            Object fileObject = parser.parse(new FileReader("WebContent/content/JSONFIles/planes.json"));
+        	//TODO: Make path generic
+            Object fileObject = parser.parse(new FileReader("D:\\Programme\\Eclipse\\workspaces\\Fallstudie Planspiel\\AirlineManager\\WebApp\\WebContent\\content\\JSONFiles\\planes.json"));
             JSONObject planesJSON = (JSONObject) fileObject;
  
             JSONObject planeTypeJSON = (JSONObject) planesJSON.get(type);
@@ -79,15 +78,15 @@ public class Airline {
             Plane p = new Plane(name, type);
             p.setLocation(location);
             
-            p.setCapacity((int)planeTypeJSON.get("capacity"));
-            p.setComfort((int)planeTypeJSON.get("comfort"));
-            p.setSpeed((int)planeTypeJSON.get("speed"));
-            p.setRange((int)planeTypeJSON.get("range"));
-            p.setFuelCosts((int)planeTypeJSON.get("fuelCosts"));
-            p.setUpkeepCosts((int)planeTypeJSON.get("upkeepCosts"));
-            p.setPrice((int)planeTypeJSON.get("price"));
-            p.setPilot((int)planeTypeJSON.get("pilot"));
-            p.setSteward((int)planeTypeJSON.get("steward"));
+            p.setCapacity((int)(long)planeTypeJSON.get("capacity"));
+            p.setComfort((int)(long)planeTypeJSON.get("comfort"));
+            p.setSpeed((int)(long)planeTypeJSON.get("speed"));
+            p.setRange((int)(long)planeTypeJSON.get("range"));
+            p.setFuelCosts((int)(long)planeTypeJSON.get("fuelCosts"));
+            p.setUpkeepCosts((int)(long)planeTypeJSON.get("upkeepCosts"));
+            p.setPrice((int)(long)planeTypeJSON.get("price"));
+            p.setPilot((int)(long)planeTypeJSON.get("pilot"));
+            p.setSteward((int)(long)planeTypeJSON.get("steward"));
 
             return p;
             

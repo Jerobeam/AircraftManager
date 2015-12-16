@@ -1,6 +1,7 @@
 package com.server;
 
 import com.backend.Airline;
+import com.backend.Airport;
 import com.backend.Game;
 
 import java.io.IOException;
@@ -45,8 +46,6 @@ public class AirlineServerEndpoint {
 
 	@OnMessage
 	public void handleMessage(String message, Session session) {
-		System.out.println("Erhalten: " + message);
-
 		splitMessage(message);
 
 		String airlineName = (String) session.getUserProperties().get("airlineName");
@@ -84,13 +83,20 @@ public class AirlineServerEndpoint {
 			System.out.println(game.getPlayerCount());
 			break;
 		case "buyPlane":
-			game.getAirlineByName(request[1]).buyPlane(request[2],request[3]);
+			//Messagetype of (Airline,Planetype, Planename, Planelocationairport)
+			System.out.println("Buy Function from Client");
+			Airline airlineBuy = game.getAirlineByName(request[1]);
+			String planeType = request[2];
+			String planeNameBuy = request[3];
+			Airport location = game.getAirportByName(request[4]);
+			airlineBuy.buyPlane(planeType, planeNameBuy, location);
+//			game.getAirlineByName(request[1]).buyPlane(request[2],request[3]);
 			break;
 		case "occupyRoute":
-			Airline airline = game.getAirlineByName(request[1]);
-			String planeName = request[2];
+			Airline airlineOccupy = game.getAirlineByName(request[1]);
+			String planeNameOccupy = request[2];
 			String routeName = request[3];
-			game.occupyRoute(game.getRouteByName(routeName), airline.getPlaneByName(planeName));;
+			game.occupyRoute(game.getRouteByName(routeName), airlineOccupy.getPlaneByName(planeNameOccupy));;
 			break;
 		case "takeCredit":
 			Airline a = game.getAirlineByName(request[1]);

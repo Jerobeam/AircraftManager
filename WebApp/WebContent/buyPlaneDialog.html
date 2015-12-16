@@ -112,8 +112,9 @@ header {
                     
                             <tr>
                                 <td>Standort</td>
-                                <td><select>
-                                      <option value="airport">Frankfurt</option>
+                                <td><select id="location">
+                                      <option value="Frankfurt Airport">Frankfurt</option>
+                                      <option value="Palma de Mallorca Airport">Mallorca</option>
                                     </select>  
                                 </td>
                             </tr>
@@ -138,7 +139,8 @@ header {
 	function sendBuyRequest(){
 		var type = document.getElementById('type').innerHTML;
 		var name = document.getElementById('name').value;
-		parent.parent.send("buyPlane§"+parent.parent.getPlayerName()+"§"+type+"§"+name);
+		var location = document.getElementById('location').value;
+		parent.parent.send("buyPlane§"+parent.parent.getPlayerName()+"§"+type+"§"+name+"§"+location);
 		parent.closeMenu();
 	}
 	</script>

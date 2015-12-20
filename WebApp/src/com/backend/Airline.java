@@ -11,16 +11,29 @@ import javax.json.JsonValue;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.backend.departments.Accounting;
+import com.backend.departments.HR;
+import com.backend.departments.IT;
+import com.backend.departments.Marketing;
+
 public class Airline {
 
 	private long money;
+	private int monthlyCosts;
 	private long ek;
 	private long fk;
 	private String name;
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
-
+	private int image;
+	
+	//Set Departments
+	private final Marketing MarketingDept = new Marketing();
+	private final IT ITDept = new IT();
+	private final HR HRDept = new HR();
+	private final Accounting AccountingDept = new Accounting();
+	
 	public Airline(String name, long money) {
 
 		this.setName(name);
@@ -178,4 +191,39 @@ public class Airline {
 	public long getBilanzSum() {
 		return this.getFK()+this.getEK();
 	}
+
+	public Marketing getMarketingDept() {
+		return MarketingDept;
+	}
+
+	public IT getITDept() {
+		return ITDept;
+	}
+
+	public HR getHRDept() {
+		return HRDept;
+	}
+
+	public Accounting getAccountingDept() {
+		return AccountingDept;
+	}
+
+	public int getImage() {
+		return image;
+	}
+
+	public void setImage(int image) {
+		this.image = image;
+	}
+
+	public int getMonthlyCosts() {
+		return monthlyCosts;
+	}
+
+	public void setMonthlyCosts(int monthlyCosts) {
+		this.monthlyCosts = monthlyCosts;
+	}
+	
+	
+	
 }

@@ -38,6 +38,7 @@ public class IT {
 		if (!this.isBoughtHRModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
 			airline.getHRDept().setCostReduction(airline.getHRDept().getCostReduction() - 0.1);
+			this.setBoughtHRModule(true);
 		}
 
 	}
@@ -47,6 +48,7 @@ public class IT {
 		if (!this.isBoughtAccountingModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
 			airline.getAccountingDept().setCostReduction(airline.getAccountingDept().getCostReduction() - 0.1);
+			this.setBoughtAccountingModule(true);
 		}
 	}
 

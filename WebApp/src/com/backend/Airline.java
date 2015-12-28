@@ -1,6 +1,7 @@
 package com.backend;
 
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.json.Json;
@@ -83,14 +84,14 @@ public class Airline {
         try {
  
         	//TODO: Make path generic
-            Object fileObject = parser.parse(new FileReader("D:\\Programme\\Eclipse\\workspaces\\Fallstudie Planspiel\\AirlineManager\\WebApp\\WebContent\\content\\JSONFiles\\planes.json"));
+            Object fileObject = parser.parse(new InputStreamReader(getClass().getResourceAsStream("planes.json")));
             JSONObject planesJSON = (JSONObject) fileObject;
  
             JSONObject planeTypeJSON = (JSONObject) planesJSON.get(type);
             
             Plane p = new Plane(name, type);
             p.setLocation(location);
-            
+            p.setValue((int)(long)planeTypeJSON.get("value"));
             p.setCapacity((int)(long)planeTypeJSON.get("capacity"));
             p.setComfort((int)(long)planeTypeJSON.get("comfort"));
             p.setSpeed((int)(long)planeTypeJSON.get("speed"));

@@ -1,0 +1,51 @@
+{
+  "A320": {
+    "picture": "/content/airbus320.gif",
+    "capacity": 180,
+    "comfort": 30,
+    "speed": 891,
+    "range": 6150,
+    "fuelCosts": 2700,
+    "upkeepCosts": 3500,
+    "price": 8000000,
+    "value": 8000000,
+    "pilot": 2,
+    "steward": 3
+  },
+  "A350": {
+    "picture": "/content/airbus350.png",
+    "capacity": 314,
+    "comfort": 40,
+    "speed": 910,
+    "range": 14.35,
+    "fuelCosts": 3000,
+    "upkeepCosts": 3000,
+    "price": 21600000,
+    "pilot": 2,
+    "steward": 6
+  },
+  "C190": {
+    "picture": "/content/Embraer190.png",
+    "capacity": 118,
+    "comfort": 20,
+    "speed": 835,
+    "range": 3.39,
+    "fuelCosts": 1700,
+    "upkeepCosts": 2500,
+    "price": 6000000,
+    "pilot": 2,
+    "steward": 2
+  },
+  "B787": {
+    "picture": "/content/Boeing787.png",
+    "capacity": 380,
+    "comfort": 35,
+    "speed": 956,
+    "range": 14800,
+    "fuelCosts": 3500,
+    "upkeepCosts": 4000,
+    "price": 235000000,
+    "pilot": 2,
+    "steward": 7
+  }
+}

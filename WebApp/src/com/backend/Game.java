@@ -25,7 +25,7 @@ public class Game {
 		return airlines;
 	}
 
-	private final int startMoney = 2000000;
+	private final int startMoney = 20000000;
 	protected Calendar calendar = new GregorianCalendar(2015, Calendar.MARCH, 17);
 	private Gameloop loop;
 

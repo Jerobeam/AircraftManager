@@ -101,6 +101,7 @@ public class Airline {
             p.setPrice((int)(long)planeTypeJSON.get("price"));
             p.setPilot((int)(long)planeTypeJSON.get("pilot"));
             p.setSteward((int)(long)planeTypeJSON.get("steward"));
+            
 
             return p;
             

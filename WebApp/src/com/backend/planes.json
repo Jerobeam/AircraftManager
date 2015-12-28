@@ -21,6 +21,7 @@
     "fuelCosts": 3000,
     "upkeepCosts": 3000,
     "price": 21600000,
+    "value": 21600000,
     "pilot": 2,
     "steward": 6
   },
@@ -33,6 +34,7 @@
     "fuelCosts": 1700,
     "upkeepCosts": 2500,
     "price": 6000000,
+    "value": 6000000,
     "pilot": 2,
     "steward": 2
   },
@@ -45,6 +47,7 @@
     "fuelCosts": 3500,
     "upkeepCosts": 4000,
     "price": 235000000,
+    "value": 235000000,
     "pilot": 2,
     "steward": 7
   }

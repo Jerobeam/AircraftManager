@@ -177,6 +177,10 @@ public class Airline {
 		for (Credit c : credits) {
 			c.tick();
 		}
+		
+		//billing departments
+		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts() - this.getHRDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts();
+		this.setMoney(moneyNew);
 	}
 	
 	public void takeCreditType1(int amount){

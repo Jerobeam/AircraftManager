@@ -9,7 +9,8 @@ public class IT {
 	private boolean boughtAccountingModule;
 
 	public IT() {
-		this.setMonthlyCosts(0);
+		// TODO: realistic values
+		this.setMonthlyCosts(10000);
 		this.setBoughtAccountingModule(false);
 		this.setBoughtHRModule(false);
 		this.setBoughtSocialMediaModule(false);

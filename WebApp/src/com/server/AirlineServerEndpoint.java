@@ -84,7 +84,6 @@ public class AirlineServerEndpoint {
 			break;
 		case "buyPlane":
 			//Messagetype of (Airline,Planetype, Planename, Planelocationairport)
-			System.out.println("Buy Function from Client");
 			Airline airlineBuy = game.getAirlineByName(request[1]);
 			String planeType = request[2];
 			String planeNameBuy = request[3];
@@ -101,6 +100,18 @@ public class AirlineServerEndpoint {
 		case "takeCredit":
 			Airline a = game.getAirlineByName(request[1]);
 			a.takeCreditType1(Integer.parseInt(request[2]));
+			break;
+		case "buySocialMediaSoftware":
+			Airline b = game.getAirlineByName(request[1]);
+			b.getITDept().buySocialMediaSoftware(b);
+			break;
+		case "buyHRModule":
+			Airline c = game.getAirlineByName(request[1]);
+			c.getITDept().buyHRModule(c);
+			break;
+		case "buyAccountingModule":
+			Airline d = game.getAirlineByName(request[1]);
+			d.getITDept().buyAccountingModule(d);;
 			break;
 		default:
 			break;

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body bgcolor="white">
+	<!DOCTYPE html>
+<html>
+<body>
+
+	<table style="width: 100%">
+		<th>Modul</th>
+		<th>Nutzen</th>
+		<th>Kosten</th>
+		<tr>
+			<td>Accouting Module</td>
+			<td>Verringert die monatlichen Buchhaltungskosten</td>
+			<td>1000€/Monat</td>
+			<td><Button onclick="sendBuyAccountingModuleRequest()"
+					type="submit" class="pure-button pure-button-primary">Kaufen</Button></td>
+		</tr>
+		<tr>
+			<td>HR Module</td>
+			<td>Verringert Abrechnungskosten in der Personalabteilung</td>
+			<td>1000€/Monat</td>
+			<td><Button onclick="buyHRModule()" type="submit"
+					class="pure-button pure-button-primary">Kaufen</Button></td>
+		</tr>
+		<tr>
+			<td>Social Media Analyse Software</td>
+			<td>Verbessert die Marketingeffizienz</td>
+			<td>1000€/Monat</td>
+			<td><Button onclick="sendBuySocialMediaSoftwareRequest()"
+					type="submit" class="pure-button pure-button-primary">Kaufen</Button></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		function sendBuyAccountingModuleRequest() {
+			parent.parent.send("buyAccountingModule§"
+					+ parent.parent.getPlayerName());
+			parent.closeMenu();
+		}
+		function sendBuyHRModuleRequest() {
+			parent.parent.send("buyHRModule§" + parent.parent.getPlayerName());
+			parent.closeMenu();
+		}
+		function sendBuySocialMediaSoftwareRequest() {
+			parent.parent.send("buySocialMediaSoftware§"
+					+ parent.parent.getPlayerName());
+			parent.closeMenu();
+		}
+	</script>
+
+</body>
+</html>
+
+</body>
+</html>

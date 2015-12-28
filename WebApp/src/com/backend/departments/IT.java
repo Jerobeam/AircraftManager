@@ -26,7 +26,7 @@ public class IT {
 	public void buySocialMediaSoftware(Airline airline) {
 		// TODO: realistic values
 		if (!this.isBoughtSocialMediaModule()) {
-			airline.setMoney(airline.getMoney() - 1000000);
+			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
 			double efficiency = airline.getMarketingDept().getEfficiency();
 			airline.getMarketingDept().setEfficiency(efficiency + 0.05);
 			this.setBoughtSocialMediaModule(true);

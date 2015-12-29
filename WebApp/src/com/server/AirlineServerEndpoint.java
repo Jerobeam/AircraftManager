@@ -102,16 +102,22 @@ public class AirlineServerEndpoint {
 			a.takeCreditType1(Integer.parseInt(request[2]));
 			break;
 		case "buySocialMediaSoftware":
-			Airline b = game.getAirlineByName(request[1]);
-			b.getITDept().buySocialMediaSoftware(b);
+			game.getAirlineByName(request[1]).getITDept().buySocialMediaSoftware(game.getAirlineByName(request[1]));
 			break;
 		case "buyHRModule":
-			Airline c = game.getAirlineByName(request[1]);
-			c.getITDept().buyHRModule(c);
+			game.getAirlineByName(request[1]).getITDept().buyHRModule(game.getAirlineByName(request[1]));
 			break;
 		case "buyAccountingModule":
-			Airline d = game.getAirlineByName(request[1]);
-			d.getITDept().buyAccountingModule(d);;
+			game.getAirlineByName(request[1]).getITDept().buyAccountingModule(game.getAirlineByName(request[1]));
+			break;
+		case "sellSocialMediaSoftware":
+			game.getAirlineByName(request[1]).getITDept().sellSocialMediaSoftware(game.getAirlineByName(request[1]));
+			break;
+		case "sellHRModule":
+			game.getAirlineByName(request[1]).getITDept().sellHRModule(game.getAirlineByName(request[1]));
+			break;
+		case "sellAccountingModule":
+			game.getAirlineByName(request[1]).getITDept().sellAccountingModule(game.getAirlineByName(request[1]));
 			break;
 		default:
 			break;

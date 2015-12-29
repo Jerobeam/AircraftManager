@@ -10,7 +10,7 @@ import javax.json.JsonObject;
 public class Gameloop extends Thread {
 	
 	private Game g;
-	final private int TICKTIME = 1000;
+	final private int TICKTIME = 1000/24;
 	
 	public Gameloop(Game g){
 		this.g = g;

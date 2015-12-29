@@ -53,7 +53,7 @@ canvas {
 				shading : THREE.FlatShading
 			}));
 			plane.scale.multiplyScalar(0.1);
-			//scene.add(plane);
+			scene.add(plane);
 		});
 
 		function render() {
@@ -78,14 +78,14 @@ canvas {
 			//stats.update();
 		}
 
-		function createLine() {
+		function createLine(cityMesh0, cityMesh1) {
 
 			var a = new THREE.Vector3(0, 0, 0);
-			cityMesh[0].position.distanceTo(cityMesh[1].position);
+			cityMesh[0].position.distanceTo(cityMesh1.position);
 			var v1 = new THREE.Vector3(0, 0, 0);
 			var v2 = new THREE.Vector3(0, 0, 0);
-			v1.copy(cityMesh[0].position);
-			v2.copy(cityMesh[1].position);
+			v1.copy(cityMesh0.position);
+			v2.copy(cityMesh1.position);
 			v1.multiplyScalar(1);
 			v2.multiplyScalar(1);
 			a.addVectors(v1, v2);
@@ -152,7 +152,7 @@ canvas {
 			}
 
 			//TEMP
-			createLine();
+			createLine(cityMesh[0],cityMesh[1]);
 			//
 		}
 
@@ -352,6 +352,18 @@ canvas {
 			cssScene.remove(objectCSS);
 			login.innerHTML = "<iframe frameBorder='0' width='400' height='400' src='buyPlaneDialog.html' scrolling='no'></iframe>";
 			login.style.width = '400px';
+			login.style.height = '400px';
+			objectCSS = new THREE.CSS3DObject( login );
+			objectCSS.scale.multiplyScalar( 0.004);
+			objectCSS.position.set(0,0.5,-4);
+			cssScene.add(objectCSS);
+		}
+		
+		function openITDialog(){
+			switchRenderer();
+			cssScene.remove(objectCSS);
+			login.innerHTML = "<iframe frameBorder='0' width='800' height='400' src='ITDialog.html' scrolling='no'></iframe>";
+			login.style.width = '800px';
 			login.style.height = '400px';
 			objectCSS = new THREE.CSS3DObject( login );
 			objectCSS.scale.multiplyScalar( 0.004);

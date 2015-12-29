@@ -125,14 +125,18 @@ public class Route {
 	public void createBookings() {
 		
 		int toBook = this.getDemand();
-		boolean planeEmpty = true;
+		boolean planesFull= true;
 		
-		//while (toBook>0 && planeEmpty){
+		for(Flight f : flights){
+			f.setBenefit();
+		}
+		
+		while (toBook>0 && !planesFull){
 			for(Flight f : flights){
 				f.setNumberOfBookings(toBook/flights.size());
 				f.getPlane().addEarnings(f.getNumberOfBookings()*f.getPlane().getBookingPrice());
 			}
-		//}
+		}
 		
 	}
 }

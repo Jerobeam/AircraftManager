@@ -21,6 +21,7 @@ public class Plane {
 	private int routeCosts;
 	private int steward;
 	private int pilot;
+	private int benefit;
 
 	public int getPilot() {
 		return pilot;

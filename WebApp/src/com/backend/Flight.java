@@ -30,5 +30,7 @@ public class Flight {
 	public void setNumberOfBookings(int numberOfBookings) {
 		this.numberOfBookings = numberOfBookings;
 	}
+
+	
 	
 }

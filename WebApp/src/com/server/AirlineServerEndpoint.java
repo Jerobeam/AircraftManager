@@ -99,7 +99,9 @@ public class AirlineServerEndpoint {
 			break;
 		case "takeCredit":
 			Airline a = game.getAirlineByName(request[1]);
-			a.takeCreditType1(Integer.parseInt(request[2]));
+			if(request[2].equals("1"))a.takeCreditType1(Integer.parseInt(request[3]));
+			if(request[2].equals("2"))a.takeCreditType2(Integer.parseInt(request[3]));
+			if(request[2].equals("3"))a.takeCreditType3(Integer.parseInt(request[3]));
 			break;
 		case "buySocialMediaSoftware":
 			game.getAirlineByName(request[1]).getITDept().buySocialMediaSoftware(game.getAirlineByName(request[1]));

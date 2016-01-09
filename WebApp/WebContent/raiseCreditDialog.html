@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Airline Manager</title>
+
+<link rel="stylesheet" href="pure.css">
+<style>
+body {
+	width: 600px;
+	height: 100%;
+	color: #6C6C6C;
+}
+
+header {
+	height: 15px; 
+	text-align: center; 
+	margin-left: 10px;
+}
+
+#section {
+	width: 100%;
+	height: 30%;
+	float: left;
+	text-align: center;
+}
+
+#m2{ 
+	width: 100%;
+	margin-top: 5px;
+}
+
+.content{
+	height: 70px; 
+	width: auto;
+	margin-left: 10px;
+}
+
+.pure-table th {
+	border-bottom: 1px solid #cbcbcb;
+	text-align: left;
+	width: 35%;
+}
+
+
+</style>
+</head>
+
+<body bgcolor="white">
+	<script type="text/javascript">
+		function kreditType1(){
+			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§1§" + document.getElementById('sum').value);			
+		}
+		function kreditType2(){
+			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§2§" + document.getElementById('sum').value);
+			
+		}
+		function kreditType3(){
+			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sum').value);			
+		}
+	</script>
+	<header>
+		<div id="m2"><b>Kredit auswählen</b></div>      
+	</header>
+    <hr>
+	<section>
+    	<div class="content">
+            <div style="float:left;">
+            	<form class="pure-form pure-form-stacked">
+                    <label for="credit">Kredithöhe</label>
+                    <input id="sum" type="text" placeholder="Betrag">
+                </form>
+            </div>
+        </div> 
+        <hr>  
+		<div class="content">
+            <div style="float:left">
+                Kredit Option 1
+            </div>
+            <div style="float:left; width: auto; margin-left: 10px">
+				<table class="pure-table pure-table-bordered" width="340px" style="text-align: right; font-size:8pt;">
+                	<tr>
+                    	<th>Tilgungsrate</td>
+                        <td>10%</td>
+                    </tr>
+                    <tr>
+                    	<th>Zinsen</td>
+                        <td>2%</td>
+                    </tr>
+                    <tr>
+                    	<th>Aufnahmebedingung</td>
+                        <td>Neues Fremdkapital < Eigenkapital / 2</td>
+                    </tr>
+               </table>
+            </div>
+        	<div style="float:right">	
+            	<button id="type1" onclick="kreditType1()" type="submit" class="pure-button pure-button-primary" style="margin-top: 35px; margin-bottom: 5px;">Auswählen</button>
+            </div>
+        </div> 
+        <hr>  
+        <div class="content">
+            <div style="float:left; max-width:150; max-height:60;">
+                Kredit Option 2
+            </div>
+            <div style="float:left; width: auto; margin-left: 10px">
+                <table class="pure-table pure-table-bordered" width="340px" style="text-align: right; font-size:8pt;">
+                	<tr>
+                    	<th>Tilgungsrate</td>
+                        <td>8%</td>
+                    </tr>
+                    <tr>
+                    	<th>Zinsen</td>
+                        <td>3%</td>
+                    </tr>
+                    <tr>
+                    	<th>Aufnahmebedingung</td>
+                        <td>Neues Fremdkapital < Eigenkapital/1.5</td>
+                    </tr>
+               </table>
+            </div>
+        	<div style="float:right">	
+            	<button id="type2" onclick="kreditType2()" type="submit" class="pure-button pure-button-primary" style="margin-top: 35px; margin-bottom: 5px;">Auswählen</button>
+            </div>
+            
+        </div>  
+        <hr>
+        <div class="content">
+            <div style="float:left; max-width:150; max-height:60;">
+                Kredit Option 3
+            </div>
+            <div style="float:left; width: auto; margin-left: 10px">
+                <table class="pure-table pure-table-bordered" width="340px" style="text-align: right; font-size:8pt;">
+                	<tr>
+                    	<th>Tilgungsrate</td>
+                        <td>6%</td>
+                    </tr>
+                    <tr>
+                    	<th>Zinsen</td>
+                        <td>5%</td>
+                    </tr>
+                    <tr>
+                    	<th>Aufnahmebedingung</td>
+                        <td>Neues Fremdkapital < Eigenkapital </td>
+                    </tr>
+               </table>
+            </div>
+        	<div style="float:right">	
+            	<button id="type3" onclick="kreditType3()" type="submit" class="pure-button pure-button-primary" style="margin-top: 35px; margin-bottom: 5px;">Auswählen</button>
+            </div> 
+        </div> 
+        <hr>  
+	</section>
+
+</body>
+</html>

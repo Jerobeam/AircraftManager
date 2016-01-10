@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <link rel="stylesheet" href="pure.css">
 <style>
 
@@ -46,9 +47,10 @@ th {
   </tr>
   
 </table>
-<end>
-<button onclick="parent.openAllPlanesDialog()" class="pure-button pure-button-primary" style="margin-top: 15px margin-bottom: 5px; float: left;">Flugzeuge kaufen</button>
-</end>
+
+<button onclick="closeDialog()" class="pure-button" style="margin-top: 15px margin-bottom: 5px; float: right;">Schließen</button>
+<button onclick="parent.openAllPlanesDialog()" class="pure-button pure-button-primary" style="margin-top: 15px margin-bottom: 5px; float: right;">Flugzeuge kaufen</button>
+
 <script>
 playerData = parent.parent.getPlayerData();
 
@@ -80,6 +82,9 @@ cell7.innerHTML = playerData.planes[i].earnings;
 cell8.innerHTML = playerData.planes[i].costs;
 }
 
+function closeDialog(){
+	parent.closeMenu();
+}
 </script>
 </body>
 </html>

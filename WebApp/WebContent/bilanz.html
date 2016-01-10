@@ -1,75 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta charset="utf-8">
+<link rel="stylesheet" href="pure.css">
 <style>
-
 table {
-	border: 1px solid #ddd;
-    text-align: left;
-    border-collapse: collapse;
-    width: 100%;
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	border-collapse: collapse;
+	height: 90%;
+	width: 100%;
+}
+
+end {
+	height: 10%;
+	width: 100%;
 }
 
 th, td {
-	border: 1px solid #000000;
-    text-align: left;
-    padding: 8px;
-    background-color: #d6d6d6
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	padding: 8px;
+	background-color: #F2F2F2
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even) {
+	background-color: white
+}
 
 th {
-    background-color: #4CAF50;
-    color: white;
+	background-color: black;
+	color: white;
 }
 </style>
 
 </head>
 <body>
 
-<table>
-  <tr>
-    <th>Aktiva</th>
-    <th style="border-right: 4px solid #000000"></th>
-    <th></th>
-    <th style="text-align: right">Passiva</th>
-  </tr>
-  <tr>
-    <td>Anlageverm&ouml;gen</td>
-    <td id="av" style="text-align: right; border-right: 4px solid #000000"></td>
-    <td id="ek"></td>
-    <td style="text-align: right">Eigenkapital</td>
-  </tr>
-  <tr>
-    <td>Umlaufverm&ouml;gen</td>
-    <td id="uv" style="text-align: right; border-right: 4px solid #000000" ></td>
-    <td id="fk"></td>
-    <td  style="text-align: right">Fremdkapital</td>
-  </tr>
-  <tr>
-    <td>Bank</td>
-    <td id="bank" style="text-align: right; border-right: 4px solid #000000"></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td  >Summe</td>
-    <td id="sum" style="text-align: right; border-right: 4px solid #000000"></td>
-    <td id="sum2"></td>
-    <td style="text-align: right">Summe</td>
-</tr>
-</table>
-<script>
-playerData = parent.parent.getPlayerData();
-document.getElementById("av").innerHTML = playerData.av;
-document.getElementById("bank").innerHTML = playerData.bank;
-document.getElementById("uv").innerHTML = playerData.uv;
-document.getElementById("fk").innerHTML = playerData.fk;
-document.getElementById("ek").innerHTML = playerData.ek;
-document.getElementById("sum").innerHTML = playerData.sum;
-document.getElementById("sum2").innerHTML = playerData.sum;
-</script>
+	<table id="Table">
+
+		<tr>
+			<th>Aktiva</th>
+			<th style="border-right: 4px solid #000000"></th>
+			<th></th>
+			<th style="text-align: right">Passiva</th>
+		</tr>
+
+		<tr>
+			<td>Anlagevermögen</td>
+			<td id="av"
+				style="text-align: right; border-right: 4px solid #000000"></td>
+			<td>Eigenkapital</td>
+			<td id="ek"
+				style="text-align: right; border-right: 4px solid #000000"></td>
+		</tr>
+		<tr>
+			<td>Umlaufvermögen</td>
+			<td id="uv"
+				style="text-align: right; border-right: 4px solid #000000"></td>
+			<td>Fremdkapital</td>
+			<td id="fk"
+				style="text-align: right; border-right: 4px solid #000000"></td>
+		</tr>
+		<tr>
+			<td>Bank</td>
+			<td id="bank"
+				style="text-align: right; border-right: 4px solid #000000"></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Summe</td>
+			<td id="sum"
+				style="text-align: right; border-right: 4px solid #000000"></td>
+			<td>Summe</td>
+			<td id="sum2"
+				style="text-align: right; border-right: 4px solid #000000"></td>
+		</tr>
+
+	</table>
+	<script>
+		playerData = parent.parent.getPlayerData();
+		document.getElementById("av").innerHTML = playerData.av;
+		document.getElementById("bank").innerHTML = playerData.bank;
+		document.getElementById("uv").innerHTML = playerData.uv;
+		document.getElementById("fk").innerHTML = playerData.fk;
+		document.getElementById("ek").innerHTML = playerData.ek;
+		document.getElementById("sum").innerHTML = playerData.sum;
+		document.getElementById("sum2").innerHTML = playerData.sum;
+	</script>
 </body>
 </html>
+

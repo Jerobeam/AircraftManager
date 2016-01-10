@@ -142,6 +142,7 @@ header {
 		var location = document.getElementById('location').value;
 		parent.parent.send("buyPlane§"+parent.parent.getPlayerName()+"§"+type+"§"+name+"§"+location);
 		parent.closeMenu();
+		parent.parent.document.getElementById('globe').contentWindow.openPlaneList();
 	}
 	</script>
 </body>

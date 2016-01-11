@@ -125,7 +125,7 @@ public class Game {
 					.add("boughtHRModule", a.getITDept().isBoughtHRModule())
 					.add("boughtAccountingModule", a.getITDept().isBoughtAccountingModule())
 					.build();
-			System.out.println(a.getFK());
+			System.out.println("FK:" + a.getFK());
 			jsonArray.add(json);
 		}
 

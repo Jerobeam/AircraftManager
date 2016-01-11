@@ -121,6 +121,9 @@ public class Game {
 					.add("fk", a.getFK())
 					.add("sum", a.getBilanzSum())
 					.add("planes", a.getPlanesJSON())
+					.add("boughtSocialMediaModule", a.getITDept().isBoughtSocialMediaModule())
+					.add("boughtHRModule", a.getITDept().isBoughtHRModule())
+					.add("boughtAccountingModule", a.getITDept().isBoughtAccountingModule())
 					.build();
 			System.out.println(a.getFK());
 			jsonArray.add(json);

@@ -26,11 +26,11 @@ public class Credit {
 		if(amount > 0){
 			if(amount > repayment){
 				owner.setMoney(owner.getMoney() - repayment);
-				amount = amount + amount * payRent;
+				amount = amount + ((amount * payRent)/100);
 				amount = amount - repayment;
 			}
 			else {
-				amount = amount + amount * payRent;
+				amount = amount + ((amount * payRent)/100);
 				owner.setMoney(owner.getMoney() - amount);
 				amount = 0;
 			}

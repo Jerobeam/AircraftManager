@@ -32,6 +32,7 @@ public class IT {
 			airline.getMarketingDept().setEfficiency(efficiency + 0.05);
 			this.setBoughtSocialMediaModule(true);
 		}
+		System.out.println("buySocialMediaSoftware called");
 	}
 	
 	public void sellSocialMediaSoftware(Airline airline) {
@@ -42,6 +43,7 @@ public class IT {
 			airline.getMarketingDept().setEfficiency(efficiency - 0.05);
 			this.setBoughtSocialMediaModule(false);
 		}
+		System.out.println("sellSocialMediaSoftware called");
 	}
 
 	public void buyHRModule(Airline airline) {
@@ -51,6 +53,7 @@ public class IT {
 			airline.getHRDept().setCostReduction(airline.getHRDept().getCostReduction() - 0.1);
 			this.setBoughtHRModule(true);
 		}
+		System.out.println("buyHRModule called");
 	}
 	
 	public void sellHRModule(Airline airline) {
@@ -60,6 +63,7 @@ public class IT {
 			airline.getHRDept().setCostReduction(airline.getHRDept().getCostReduction() + 0.1);
 			this.setBoughtHRModule(false);
 		}
+		System.out.println("sellHRModule called");
 	}
 
 	public void buyAccountingModule(Airline airline) {
@@ -69,6 +73,7 @@ public class IT {
 			airline.getAccountingDept().setCostReduction(airline.getAccountingDept().getCostReduction() - 0.1);
 			this.setBoughtAccountingModule(true);
 		}
+		System.out.println("buyAccountingModule called");
 	}
 	
 	public void sellAccountingModule(Airline airline) {
@@ -78,6 +83,7 @@ public class IT {
 			airline.getAccountingDept().setCostReduction(airline.getAccountingDept().getCostReduction() + 0.1);
 			this.setBoughtAccountingModule(false);
 		}
+		System.out.println("sellAccountingModule called");
 	}
 
 	public boolean isBoughtSocialMediaModule() {

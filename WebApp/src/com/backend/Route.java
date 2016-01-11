@@ -127,9 +127,9 @@ public class Route {
 		int toBook = this.getDemand();
 		boolean planesFull= true;
 		
-		for(Flight f : flights){
+/*		for(Flight f : flights){
 			f.setBenefit();
-		}
+		}*/
 		
 		while (toBook>0 && !planesFull){
 			for(Flight f : flights){

@@ -64,13 +64,16 @@ public class Game {
 		this.calendar.add(Calendar.HOUR_OF_DAY, 1);
 		if (calendar.get(Calendar.MONTH)!= currentMonth){
 			tickMonth();
+			currentMonth = calendar.get(Calendar.MONTH); 
 		}
 		if (calendar.get(Calendar.HOUR_OF_DAY)== 0){
 			tickDay();
 		}
 	}
 	public void tickMonth(){
-		
+		for(Airline airline : airlines){
+			airline.monthlyCalculation();
+		}
 	}
 	public void tickDay(){
 		createFlights();
@@ -119,7 +122,7 @@ public class Game {
 					.add("sum", a.getBilanzSum())
 					.add("planes", a.getPlanesJSON())
 					.build();
-
+			System.out.println(a.getFK());
 			jsonArray.add(json);
 		}
 

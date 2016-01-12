@@ -245,6 +245,7 @@ public class Airline {
 		//billing departments
 		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts() - this.getHRDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts();
 		this.setMoney(moneyNew);
+		this.ek = this.ek - this.getITDept().getMonthlyCosts() - this.getHRDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts(); 
 	}
 	
 	public void takeCreditType1(int amount){

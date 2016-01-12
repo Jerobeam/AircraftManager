@@ -1,0 +1,1889 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<Workbook xmlns:html='http://www.w3.org/TR/REC-html40'
+          xmlns:o='urn:schemas-microsoft-com:office:office'
+          xmlns:ss='urn:schemas-microsoft-com:office:spreadsheet'
+          xmlns:x='urn:schemas-microsoft-com:office:excel'
+          xmlns='urn:schemas-microsoft-com:office:spreadsheet'>
+  <DocumentProperties xmlns='urn:schemas-microsoft-com:office:office'>
+    <LastAuthor>Alex</LastAuthor>
+    <Created>2015-12-18 08:29:13 UTC</Created>
+    <LastSaved>%= Time.now.utc %></LastSaved>
+    <Version>1.0</Version>
+  </DocumentProperties>
+  <OfficeDocumentSettings xmlns='urn:schemas-microsoft-com:office:office'>
+    <AllowPNG />
+  </OfficeDocumentSettings>
+  <ExcelWorkbook xmlns='urn:schemas-microsoft-com:office:excel'>
+    <ProtectStructure>False</ProtectStructure>
+    <ProtectWindows>False</ProtectWindows>
+  </ExcelWorkbook>
+  <Styles>
+    <Style ss:ID='Default' ss:Name='Normal'>
+      <Alignment ss:Vertical='Top' ss:WrapText='1' />
+      <Borders />
+      <Font ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' x:Family='Swiss' />
+      <Interior />
+      <NumberFormat />
+      <Protection />
+    </Style>
+    <Style ss:ID='title'>
+      <Alignment ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='15' />
+    </Style>
+    <Style ss:ID='top-base-stats'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Center' ss:WrapText='1' />
+      <Font ss:Bold='0' ss:Color='#000000' ss:FontName='Calibri' ss:Size='11' />
+    </Style>
+    <Style ss:ID='table-header'>
+      <Alignment ss:Horizontal='Center' ss:Vertical='Center' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='numeric'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Top'/>
+      <Font ss:Bold='0' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+    </Style>
+    <Style ss:ID='theme-summary'>
+      <Alignment ss:Horizontal='Left' ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#C0C0C0' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='theme-total'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#C0C0C0' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='theme-cell'>
+      <Alignment ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+    </Style>
+    <Style ss:ID='backlog-summary'>
+      <Alignment ss:Horizontal='Left' ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='14' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='backlog-total'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='14' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+          <Style ss:ID='story-color-0'>
+        <Borders>
+          <Border ss:Position='Left' ss:Color='#ff0000' ss:Weight='3' ss:LineStyle='Continuous' />
+        </Borders>
+      </Style>
+
+      <Style ss:ID='story-color-1'>
+        <Borders>
+          <Border ss:Position='Left' ss:Color='#00ffff' ss:Weight='3' ss:LineStyle='Continuous' />
+        </Borders>
+      </Style>
+
+      <Style ss:ID='story-color-2'>
+        <Borders>
+          <Border ss:Position='Left' ss:Color='#00ff00' ss:Weight='3' ss:LineStyle='Continuous' />
+        </Borders>
+      </Style>
+
+      <Style ss:ID='story-color-3'>
+        <Borders>
+          <Border ss:Position='Left' ss:Color='#bbbbbb' ss:Weight='3' ss:LineStyle='Continuous' />
+        </Borders>
+      </Style>
+
+      <Style ss:ID='story-color-4'>
+        <Borders>
+          <Border ss:Position='Left' ss:Color='#999999' ss:Weight='3' ss:LineStyle='Continuous' />
+        </Borders>
+      </Style>
+
+  </Styles>
+  <Worksheet ss:Name='Backlog Report'>
+  <Table>
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Theme-->
+    <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--ID-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--User Story-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Acceptance Criteria-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Comments-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Sprint-->
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Status-->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Score -->
+    <Row ss:AutoFitHeight='0' ss:Height='18'>
+      <Cell ss:MergeAcross='3' ss:StyleID='title'>
+        <Data ss:Type='String'>AirlineManager</Data>
+      </Cell>
+      <Cell ss:MergeAcross='4' ss:StyleID='top-base-stats'>
+        <Data ss:Type='String'></Data>
+      </Cell>
+    </Row>
+    <Row>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Thema</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>ID</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>User Story</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Akzeptanzkriterien</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Kommentare</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Sprint</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Status</Data>
+      </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'><span class="translation_missing" title="translation missing: de.backlog.points">Points</span></Data>
+        </Cell>
+    </Row>
+        <Row>
+      <Cell ss:MergeDown='4' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Konzept</Data>
+      </Cell>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>KON1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> ein Spielkonzept der Simulation nachlesen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>ANE</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>1.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>KON3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> ein Aktivitätsdiagramm oder Use Case Diagramm erhalten
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> eine Übersicht aller Interaktionen darzustellen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>ANE</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>1.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>KON2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> das Architektur Konzept des Backends als UML-Diagramm erhalten 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>PTR</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>KON5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> ein Konzeptpapier mit betriebswirtschaftliche Möglichkeiten einer Airline erhalten 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> mögliche Szenarios zu implemntieren</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>HBA</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Summe für Thema &#x27;Konzept&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>7.0 punkte</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='13' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Spielprinzip</Data>
+      </Cell>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>SPI4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> einen Airlinenamen selbst definieren können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Benutzer gibt Namen ein&#10;&#13;b) Server erhält Namen und ordnet diesen dem User zu</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>PTR, VMA</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>SPI1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> unterschiedliche Flugzeuge kaufen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) planeListDialog umbauen&#10;&#13;b) showPlanesDialog implementieren</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>SPI2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Route planen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Route auswählen&#10;&#13;b) Konkurrenz auf der Route anzeigen&#10;&#13;c) Flugzeug aufwählen&#10;&#13;d) Ticketpreis definieren&#10;&#13;e) Route belegen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI10</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> einen Flughafen selektieren können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> von ihm ausgehende mögliche Routen angezeigt zu bekommen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Flughafen selektieren&#10;&#13;b) Routen anzeigen/auswählen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI6</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> meine Routen verwalten können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) showRoutesDialog implementieren&#10;&#13;b) Edit Felder für Ticketpreis, Kapazität&#10;&#13;c) Routendetails anzeigen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>SPI8</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> Kredite aufnehmen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Zinsen werden berechnet&#10;&#13;b) Zinsen werden automatisch abgezogen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Auswahl an Kreditgebern erhalten
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) chooseKreditDialog implementieren&#10;&#13;b) Auswahl an verschieden Krediten</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI7</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> den Standort meiner Flugzeuge ändern können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> neue Routen auswählen zu können</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Wird bei Auswahl einer Route als extra Kosten dazu gerechnet</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> mit mindestens einem weiteren User gemeinsam Spielen
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI9</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> Personal verwalten können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Personal einstellen&#10;&#13;b) Personal kündigen&#10;&#13;c) Personal schulen&#10;&#13;d) Personalkategorien</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-3&#x27;>
+  <Data ss:Type='String'>SPI11</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> mein Flugzeug auf eine 0-Route setzten 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> Flugzeuge für eine neue Route einsetzten zu können</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) 0 Route beim Flugzeug kauf (Flugzeug im Hanger)&#10;&#13;b) Flugzeug von bestehender Route auf 0 Route setzten können</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI12</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> meine IT verwalten können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> um Kosten einzusparen, Image zu steigern</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Webauftritt&#10;&#13;b) ERP-System</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI13</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Auswahl an Service Leistungen haben
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> meinen Firmenimage oder Komfort zu verbessern </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Auswahl an Service Leistungen&#10;&#13;b) Überblick welche Leistung welchen Effekt mit sich bringt</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Summe für Thema &#x27;Spielprinzip&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>5.0 punkte</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='1' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Client Server Kommunikation</Data>
+      </Cell>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>CSK1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Entwickler
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> möglichst einfach eine Client Server Kommunikation implementieren 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>SRO</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Summe für Thema &#x27;Client Server Kommunikation&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>5.0 punkte</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='4' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Betriebswirtschaftiche Aspekte</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>BWL1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> Marketing Maßnahmen auswählen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> die Nachfrage von Passagieren einer Flugroute für mein Unternehmen zu verbessern bzw das Image zu verbessern</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>BWL3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Bilanz über mein Unternehmen einsehen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> zu sehen ob mein Unternehmen profitabel ist</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>BWL4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> das ein Gewinner nach einer definierten Zeit ermittelt wird, welcher in dieser Zeit am besten gewirtschaftet hat
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Mt Blick auf Bilanzwert und Gewinn</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>BWL5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> ,dass Spieler die wirtschaftlich handlungsunfähig sind, automatisch als Verlierer ausscheidet
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Summe für Thema &#x27;Betriebswirtschaftiche Aspekte&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>0.0 punkte</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='4' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Frontend</Data>
+      </Cell>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>FRO1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Anzeige des Spielnamens als ansprechende Animation bei Spielstart sehen
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Flugtafeleffekt</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>FRO3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> dass eine anschauliche Animation erscheint während der User auf weitere User wartet
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Flugtafeleffekt</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>FRO2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> einen Dialog vor Spielbeginn angezeigt bekommen
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> meine Gegner mit Airlinenamen übersichtlich anzuschehen </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Story FRO3 in den Dialog als Header einfügen&#10;&#13;b) Airlinename der Gegner anzeigen&#10;&#13;c) Ab 2 Spieler Start Button Enabled</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>FRO4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> im Routenauswahldialog ein Tooltip zu den verfügbaren Flugzeugen haben
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> mir Basisdaten des Flugzeuges einblenden zu lassen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Summe für Thema &#x27;Frontend&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>0.0 punkte</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='3' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Backend</Data>
+      </Cell>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-4&#x27;>
+  <Data ss:Type='String'>BAC1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> in Echtzeit mit mehreren Usern spielen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>PTR</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-4&#x27;>
+  <Data ss:Type='String'>BAC2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> einen Algorithmus einsetzten
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> die Passagieranzahl für eine Route zu ermitteln</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Einflussfaktoren sind: Firmenimage, Allgemeine Nachfrage, Service der Airline, Flugticketpreis, Konkurrenz auf der Route </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>BAC3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> Ereignisse Stattfinden lassen, welche die Nachfrage für Routen ändert, Image verschlechtert, ...
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Streiks&#10;&#13;b) Flugzeug absturtz&#10;&#13;c) Skandale</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Summe für Thema &#x27;Backend&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>5.0 punkte</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+
+    <Row ss:AutoFitHeight='0' ss:Height='18'>
+      <Cell ss:MergeAcross='3' ss:StyleID='backlog-summary'>
+        <Data ss:Type='String'>Summe für Backlog &#x27;AirlineManager&#x27;</Data>
+      </Cell>
+      <Cell ss:MergeAcross='4' ss:StyleID='backlog-total'>
+        <Data ss:Type='String'>22.0 punkte</Data>
+      </Cell>
+    </Row>
+  </Table>
+  <WorksheetOptions xmlns='urn:schemas-microsoft-com:office:excel'>
+    <PageLayoutZoom>0</PageLayoutZoom>
+    <Selected />
+    <Panes />
+    <ProtectObjects>False</ProtectObjects>
+    <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+</Worksheet>
+  <Worksheet ss:Name='Story List'>
+  <Table>
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Theme-->
+    <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--ID-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--User Story-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Acceptance Criteria-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Comments-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Sprint-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Status-->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Score -->
+    <Row>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Thema</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>ID</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>User Story</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Akzeptanzkriterien</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Kommentare</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Sprint</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Status</Data>
+      </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'><span class="translation_missing" title="translation missing: de.backlog.points">Points</span></Data>
+        </Cell>
+    </Row>
+        <Row>
+      <Cell>
+  <Data ss:Type='String'>Konzept</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>KON1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> ein Spielkonzept der Simulation nachlesen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>ANE</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>1.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Konzept</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>KON3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> ein Aktivitätsdiagramm oder Use Case Diagramm erhalten
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> eine Übersicht aller Interaktionen darzustellen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>ANE</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>1.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Konzept</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>KON2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> das Architektur Konzept des Backends als UML-Diagramm erhalten 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>PTR</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Konzept</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>KON5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> ein Konzeptpapier mit betriebswirtschaftliche Möglichkeiten einer Airline erhalten 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> mögliche Szenarios zu implemntieren</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>HBA</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>SPI4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> einen Airlinenamen selbst definieren können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Benutzer gibt Namen ein&#10;&#13;b) Server erhält Namen und ordnet diesen dem User zu</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>PTR, VMA</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>SPI1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> unterschiedliche Flugzeuge kaufen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) planeListDialog umbauen&#10;&#13;b) showPlanesDialog implementieren</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>SPI2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Route planen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Route auswählen&#10;&#13;b) Konkurrenz auf der Route anzeigen&#10;&#13;c) Flugzeug aufwählen&#10;&#13;d) Ticketpreis definieren&#10;&#13;e) Route belegen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI10</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> einen Flughafen selektieren können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> von ihm ausgehende mögliche Routen angezeigt zu bekommen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Flughafen selektieren&#10;&#13;b) Routen anzeigen/auswählen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI6</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> meine Routen verwalten können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) showRoutesDialog implementieren&#10;&#13;b) Edit Felder für Ticketpreis, Kapazität&#10;&#13;c) Routendetails anzeigen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>SPI8</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> Kredite aufnehmen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Zinsen werden berechnet&#10;&#13;b) Zinsen werden automatisch abgezogen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Auswahl an Kreditgebern erhalten
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) chooseKreditDialog implementieren&#10;&#13;b) Auswahl an verschieden Krediten</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>In progress</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI7</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> den Standort meiner Flugzeuge ändern können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> neue Routen auswählen zu können</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Wird bei Auswahl einer Route als extra Kosten dazu gerechnet</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> mit mindestens einem weiteren User gemeinsam Spielen
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI9</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> Personal verwalten können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Personal einstellen&#10;&#13;b) Personal kündigen&#10;&#13;c) Personal schulen&#10;&#13;d) Personalkategorien</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-3&#x27;>
+  <Data ss:Type='String'>SPI11</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> mein Flugzeug auf eine 0-Route setzten 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> Flugzeuge für eine neue Route einsetzten zu können</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) 0 Route beim Flugzeug kauf (Flugzeug im Hanger)&#10;&#13;b) Flugzeug von bestehender Route auf 0 Route setzten können</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI12</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> meine IT verwalten können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> um Kosten einzusparen, Image zu steigern</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Webauftritt&#10;&#13;b) ERP-System</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Spielprinzip</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>SPI13</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Auswahl an Service Leistungen haben
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> meinen Firmenimage oder Komfort zu verbessern </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Auswahl an Service Leistungen&#10;&#13;b) Überblick welche Leistung welchen Effekt mit sich bringt</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Client Server Kommunikation</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>CSK1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Entwickler
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> möglichst einfach eine Client Server Kommunikation implementieren 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>SRO</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Betriebswirtschaftiche Aspekte</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>BWL1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> Marketing Maßnahmen auswählen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> die Nachfrage von Passagieren einer Flugroute für mein Unternehmen zu verbessern bzw das Image zu verbessern</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Betriebswirtschaftiche Aspekte</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>BWL3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Bilanz über mein Unternehmen einsehen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> zu sehen ob mein Unternehmen profitabel ist</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Betriebswirtschaftiche Aspekte</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>BWL4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> das ein Gewinner nach einer definierten Zeit ermittelt wird, welcher in dieser Zeit am besten gewirtschaftet hat
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Mt Blick auf Bilanzwert und Gewinn</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Betriebswirtschaftiche Aspekte</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>BWL5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> ,dass Spieler die wirtschaftlich handlungsunfähig sind, automatisch als Verlierer ausscheidet
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Frontend</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>FRO1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> eine Anzeige des Spielnamens als ansprechende Animation bei Spielstart sehen
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Flugtafeleffekt</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Frontend</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>FRO3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> dass eine anschauliche Animation erscheint während der User auf weitere User wartet
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Flugtafeleffekt</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Frontend</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>FRO2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> einen Dialog vor Spielbeginn angezeigt bekommen
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> meine Gegner mit Airlinenamen übersichtlich anzuschehen </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Story FRO3 in den Dialog als Header einfügen&#10;&#13;b) Airlinename der Gegner anzeigen&#10;&#13;c) Ab 2 Spieler Start Button Enabled</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Frontend</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-2&#x27;>
+  <Data ss:Type='String'>FRO4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> im Routenauswahldialog ein Tooltip zu den verfügbaren Flugzeugen haben
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> mir Basisdaten des Flugzeuges einblenden zu lassen</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Backend</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-4&#x27;>
+  <Data ss:Type='String'>BAC1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> User
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> in Echtzeit mit mehreren Usern spielen können
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>PTR</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Accepted</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Backend</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-4&#x27;>
+  <Data ss:Type='String'>BAC2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> einen Algorithmus einsetzten
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> die Passagieranzahl für eine Route zu ermitteln</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Einflussfaktoren sind: Firmenimage, Allgemeine Nachfrage, Service der Airline, Flugticketpreis, Konkurrenz auf der Route </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Backend</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>BAC3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Als</Font> Produktmanager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">möchte ich</Font> Ereignisse Stattfinden lassen, welche die Nachfrage für Routen ändert, Image verschlechtert, ...
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">um</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Streiks&#10;&#13;b) Flugzeug absturtz&#10;&#13;c) Skandale</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+
+  </Table>
+  <WorksheetOptions xmlns='urn:schemas-microsoft-com:office:excel'>
+    <PageLayoutZoom>0</PageLayoutZoom>
+    <Selected />
+    <Panes />
+    <ProtectObjects>False</ProtectObjects>
+    <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+  <AutoFilter x:Range='R1C1:R1C8' xmlns='urn:schemas-microsoft-com:office:excel'></AutoFilter>
+</Worksheet>
+</Workbook>

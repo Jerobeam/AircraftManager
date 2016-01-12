@@ -64,13 +64,16 @@ public class Game {
 		this.calendar.add(Calendar.HOUR_OF_DAY, 1);
 		if (calendar.get(Calendar.MONTH)!= currentMonth){
 			tickMonth();
+			currentMonth = calendar.get(Calendar.MONTH); 
 		}
 		if (calendar.get(Calendar.HOUR_OF_DAY)== 0){
 			tickDay();
 		}
 	}
 	public void tickMonth(){
-		
+		for(Airline airline : airlines){
+			airline.monthlyCalculation();
+		}
 	}
 	public void tickDay(){
 		createFlights();
@@ -118,8 +121,15 @@ public class Game {
 					.add("fk", a.getFK())
 					.add("sum", a.getBilanzSum())
 					.add("planes", a.getPlanesJSON())
+					.add("boughtSocialMediaModule", a.getITDept().isBoughtSocialMediaModule())
+					.add("boughtHRModule", a.getITDept().isBoughtHRModule())
+					.add("boughtAccountingModule", a.getITDept().isBoughtAccountingModule())
+					.add("piloten", a.getPiloten())
+					.add("stewardessen", a.getStewardessen())
+					.add("bodenpersonal", a.getBodenpersonal())
+					.add("wartung", a.getWartung())
 					.build();
-
+			System.out.println("FK:" + a.getFK());
 			jsonArray.add(json);
 		}
 
@@ -178,10 +188,16 @@ public class Game {
 		return airport;
 	}
 
-	public void occupyRoute(Route route, Plane plane){
+	public void occupyRoute(Airline airlineOccupy, Route route, Plane plane){
+		int freePilotes = airlineOccupy.getPiloten() - airlineOccupy.getBlockedPilotes();
+		int freeStewards = airlineOccupy.getStewardessen() - airlineOccupy.getBlockedStewards();
+		if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
 		route.occupyRoute(plane);
 		plane.setRouteCosts(route.getCosts());
 		plane.setBookingPrice(route.getBasePrice());
+		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
+		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
+	}
 	}
 
 }

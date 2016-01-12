@@ -49,40 +49,105 @@ th {
 			<td>Accouting Module</td>
 			<td>Verringert die monatlichen Buchhaltungskosten</td>
 			<td>1000€/Monat</td>
-			<td><Button onclick="sendBuyAccountingModuleRequest()"
-					type="submit" class="pure-button pure-button-primary">Kaufen</Button></td>
+			<td>
+				<Button id="buyAccountingModuleButton" onclick="sendBuyAccountingModuleRequest()"
+					type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+				<Button id="sellAccountingModuleButton" onclick="sendSellAccountingModuleRequest()"
+					type="submit" class="pure-button pure-button-primary" style="display: none;">Abbestellen</Button>
+			</td>		
 		</tr>
 		<tr>
 			<td>HR Module</td>
 			<td>Verringert Abrechnungskosten in der Personalabteilung</td>
 			<td>1000€/Monat</td>
-			<td><Button onclick="buyHRModule()" type="submit"
-					class="pure-button pure-button-primary">Kaufen</Button></td>
+			<td><Button id="buyHRModuleButton" onclick="sendBuyHRModuleRequest()" type="submit"
+					class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+				<Button id="sellHRModuleButton" onclick="sendSellHRModuleRequest()" type="submit"
+					class="pure-button pure-button-primary" style="display: none;">Abbestellen</Button>
+			</td>
+					
 		</tr>
 		<tr>
 			<td>Social Media Analyse Software</td>
 			<td>Verbessert die Marketingeffizienz</td>
 			<td>1000€/Monat</td>
-			<td><Button onclick="sendBuySocialMediaSoftwareRequest()"
-					type="submit" class="pure-button pure-button-primary">Kaufen</Button></td>
+			<td><Button id="buySocialMediaSoftwareButton" onclick="sendBuySocialMediaSoftwareRequest()"
+					type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+				<Button id="sellSocialMediaSoftwareButton" onclick="sendSellSocialMediaSoftwareRequest()"
+					type="submit" class="pure-button pure-button-primary" style="display: none;">Abbestellen</Button>
+			</td>
 		</tr>
-
 	</table>
-	<end>
-	</end>
+	
+	<button onclick="closeDialog()" class="pure-button" style="margin-top: 15px margin-bottom: 5px; float: right;">Schließen</button>
+	
 	<script type="text/javascript">
-		function sendBuyAccountingModuleRequest() {
-			parent.parent.send("buyAccountingModule§"
-					+ parent.parent.getPlayerName());
-			parent.closeMenu();
+		playerData = parent.parent.getPlayerData();
+		var boughtAccountingModule = playerData.boughtAccountingModule;
+		var boughtHRModule = playerData.boughtHRModule;
+		var boughtSocialMediaModule = playerData.boughtSocialMediaModule;
+	
+		//Accounting Module Bought?
+		if(boughtAccountingModule){
+			document.getElementById("buyAccountingModuleButton").style.display = "none";
+			document.getElementById("sellAccountingModuleButton").style.display = "initial";
+		}else{
+			document.getElementById("buyAccountingModuleButton").style.display = "initial";
+			document.getElementById("sellAccountingModuleButton").style.display = "none";
 		}
+		
+		//HR Module Bought?
+		if(boughtHRModule){
+			document.getElementById("buyHRModuleButton").style.display = "none";
+			document.getElementById("sellHRModuleButton").style.display = "initial";
+		}else{
+			document.getElementById("buyHRModuleButton").style.display = "initial";
+			document.getElementById("sellHRModuleButton").style.display = "none";
+		}
+		
+		//SocialMediaSoftware Bought?
+		if(boughtSocialMediaModule){
+			document.getElementById("buySocialMediaSoftwareButton").style.display = "none";
+			document.getElementById("sellSocialMediaSoftwareButton").style.display = "initial";
+		}else{
+			document.getElementById("buySocialMediaSoftwareButton").style.display = "initial";
+			document.getElementById("sellSocialMediaSoftwareButton").style.display = "none";
+		}
+			
+		function sendBuyAccountingModuleRequest() {
+			parent.parent.send("buyAccountingModule§" + parent.parent.getPlayerName());
+			document.getElementById("buyAccountingModuleButton").style.display = "none";
+			document.getElementById("sellAccountingModuleButton").style.display = "initial";
+		}
+		function sendSellAccountingModuleRequest() {
+			parent.parent.send("sellAccountingModule§" + parent.parent.getPlayerName());
+			document.getElementById("buyAccountingModuleButton").style.display = "initial";
+			document.getElementById("sellAccountingModuleButton").style.display = "none";
+		}
+		
 		function sendBuyHRModuleRequest() {
 			parent.parent.send("buyHRModule§" + parent.parent.getPlayerName());
-			parent.closeMenu();
+			document.getElementById("buyHRModuleButton").style.display = "none";
+			document.getElementById("sellHRModuleButton").style.display = "initial";
 		}
+		function sendSellHRModuleRequest() {
+			parent.parent.send("sellHRModule§" + parent.parent.getPlayerName());
+			document.getElementById("buyHRModuleButton").style.display = "initial";
+			document.getElementById("sellHRModuleButton").style.display = "none";
+		}
+		
 		function sendBuySocialMediaSoftwareRequest() {
-			parent.parent.send("buySocialMediaSoftware§"
-					+ parent.parent.getPlayerName());
+			parent.parent.send("buySocialMediaSoftware§" + parent.parent.getPlayerName());
+			document.getElementById("buySocialMediaSoftwareButton").style.display = "none";
+			document.getElementById("sellSocialMediaSoftwareButton").style.display = "initial";
+		}
+		function sendSellSocialMediaSoftwareRequest() {
+			parent.parent.send("sellSocialMediaSoftware§" + parent.parent.getPlayerName());
+			document.getElementById("buySocialMediaSoftwareButton").style.display = "initial";
+			document.getElementById("sellSocialMediaSoftwareButton").style.display = "none";
+		}
+		
+		function closeDialog(){
 			parent.closeMenu();
 		}
 	</script>

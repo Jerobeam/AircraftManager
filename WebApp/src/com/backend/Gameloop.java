@@ -18,11 +18,7 @@ public class Gameloop extends Thread {
 	
 	public void run(){
 		while(true){
-			g.tick();
-			for(int i = 0; i < g.getAirlines().size(); i++){
-				g.getAirlines().get(i).monthlyCalculation();
-			}
-			
+			g.tick();		
 			String json = Json.createObjectBuilder()
 		            .add("date", g.getDate().toString())
 		            .add("players", g.getGameData())

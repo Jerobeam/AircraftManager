@@ -11,27 +11,29 @@
 <link rel="stylesheet" href="pure.css">
 <style>
 body {
-	width: 600px;
+	width: 605px;
 	height: 100%;
 	color: #6C6C6C;
 }
 
 header {
-	height: 15px; 
+	height: 25px; 
 	text-align: center; 
-	margin-left: 10px;
+	background-color: #000;
+	color: #FFF;
 }
 
-#section {
+section {
 	width: 100%;
-	height: 30%;
 	float: left;
-	text-align: center;
+	text-align: left;	
+    margin-top: 10px;
 }
 
 #m2{ 
-	width: 100%;
-	margin-top: 5px;
+	width: 93%;
+	padding-top: 5px;
+	float: left;
 }
 
 .content{
@@ -53,20 +55,29 @@ header {
 <body bgcolor="white">
 	<script type="text/javascript">
 		function kreditType1(){
-			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§1§" + document.getElementById('sum').value);			
+			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§1§" + document.getElementById('sum').value);	
+			parent.closeMenu();
 		}
 		function kreditType2(){
 			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§2§" + document.getElementById('sum').value);
+			parent.closeMenu();
 			
 		}
 		function kreditType3(){
-			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sum').value);			
+			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sum').value);
+			parent.closeMenu();
+		}
+		
+		function closeDialog(){
+			parent.closeMenu();
 		}
 	</script>
 	<header>
-		<div id="m2"><b>Kredit auswählen</b></div>      
+		<div id="m2">
+            <b>Kredit auswählen</b>
+        </div>
+        <button id="close" onclick="closeDialog()" type="submit" class="pure-button pure-button-primary" style="background-color:#808080; float: right; height: 100%; width: 5%; padding: 0px;"><b>X</b></button>      
 	</header>
-    <hr>
 	<section>
     	<div class="content">
             <div style="float:left;">
@@ -152,8 +163,7 @@ header {
             	<button id="type3" onclick="kreditType3()" type="submit" class="pure-button pure-button-primary" style="margin-top: 35px; margin-bottom: 5px;">Auswählen</button>
             </div> 
         </div> 
-        <hr>  
+        <hr style="margin-bottom: 0px;">  
 	</section>
-
 </body>
 </html>

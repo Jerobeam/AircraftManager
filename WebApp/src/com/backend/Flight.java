@@ -31,6 +31,14 @@ public class Flight {
 		this.numberOfBookings = numberOfBookings;
 	}
 
-	
+	public int getBenefit(){
+		
+		int benefit = plane.getComfort() + plane.getAirline().getImage();
+		return benefit;
+		
+	}
+	public int getBookingPrice(){
+		return plane.getBookingPrice();		
+	}
 	
 }

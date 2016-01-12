@@ -125,18 +125,23 @@ public class Route {
 	public void createBookings() {
 		
 		int toBook = this.getDemand();
-		boolean planesFull= true;
+		boolean planesFull= false;
+		int sumBenefits = 0;
 		
 		for(Flight f : flights){
-			f.setBenefit();
+			sumBenefits = sumBenefits + f.getBenefit();
+			System.out.println("Benefit : " + f.getBenefit());
 		}
+		System.out.println("Demand : " + toBook);
+		System.out.println("Benefit Summe : " + sumBenefits);
 		
-		while (toBook>0 && !planesFull){
+		//while (toBook>0 && !planesFull){
 			for(Flight f : flights){
-				f.setNumberOfBookings(toBook/flights.size());
+				f.setNumberOfBookings(((int)Math.pow(f.getBenefit(),2)/(int)Math.pow(sumBenefits,2))*100*toBook);
 				f.getPlane().addEarnings(f.getNumberOfBookings()*f.getPlane().getBookingPrice());
+				System.out.println(f.getNumberOfBookings());
 			}
-		}
+		//}
 		
 	}
 }

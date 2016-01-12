@@ -89,7 +89,7 @@ public class Airline {
  
             JSONObject planeTypeJSON = (JSONObject) planesJSON.get(type);
             
-            Plane p = new Plane(name, type);
+            Plane p = new Plane(name, type, this);
             p.setLocation(location);
             p.setValue((int)(long)planeTypeJSON.get("value"));
             p.setCapacity((int)(long)planeTypeJSON.get("capacity"));

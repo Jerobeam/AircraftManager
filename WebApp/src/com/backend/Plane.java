@@ -22,6 +22,7 @@ public class Plane {
 	private int steward;
 	private int pilot;
 	private int benefit;
+	private Airline airline;
 
 	public int getPilot() {
 		return pilot;
@@ -31,9 +32,14 @@ public class Plane {
 		this.pilot = pilot;
 	}
 
-	public Plane(String name, String type){
+	public Plane(String name, String type, Airline airline){
 		this.setName(name);
 		this.setType(type);
+		this.airline = airline;
+	}
+	
+	public Airline getAirline(){
+		return this.airline;
 	}
 	
 	public Airport getLocation() {

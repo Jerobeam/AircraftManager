@@ -17,20 +17,23 @@ body {
 }
 
 header {
-	height: 15px; 
+	height: 25px; 
 	text-align: center; 
-	margin-left: 10px;
+	background-color: #000;
+	color: #FFF;
 }
 
-#section {
+section {
 	width: 100%;
-	height: 30%;
-	text-align: center;
+	float: left;
+	text-align: left;	
+    margin-top: 10px;
 }
 
 #m2{ 
-	width: 100%;
-	margin-top: 5px;
+	width: 93%;
+	padding-top: 5px;
+	float: left;
 }
 
 .content{
@@ -53,11 +56,19 @@ header {
 </style>
 </head>
 
+<script type="text/javascript">
+	function closeDialog(){
+		parent.closeMenu();
+	}
+</script>
+
 <body bgcolor="white">
-	<header>
-		<div id="m2"><b>Von Frankfurt nach Palma de Mallorca</b></div>      
+    <header>
+            <div id="m2">
+                <b>Route planen</b>
+            </div>
+            <button id="close" onclick="closeDialog()" type="submit" class="pure-button pure-button-primary" style="background-color:#808080; float: right; height: 100%; width: 5%; padding: 0px;"><b>X</b></button>      
 	</header>
-    <hr>
 	<section>
 		<div class="content">
         	<b style="font-size: 15px">Konkurrenz auf der Route</b>

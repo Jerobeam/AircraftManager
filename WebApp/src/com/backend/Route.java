@@ -93,8 +93,8 @@ public class Route {
 	public JsonArrayBuilder getPlanesJSON() {
 		JsonObject json;
 		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
-
-		for (Plane p : planes) {
+		ArrayList<Plane> copy = new ArrayList<Plane>(planes);
+		for (Plane p : copy) {
 			json = Json.createObjectBuilder()
 					.add("type", p.getType())
 					.add("name", p.getName())
@@ -126,20 +126,29 @@ public class Route {
 		
 		int toBook = this.getDemand();
 		boolean planesFull= false;
-		int sumBenefits = 0;
+		int sumBenefits = 1;
 		
 		for(Flight f : flights){
-			sumBenefits = sumBenefits + f.getBenefit();
-			System.out.println("Benefit : " + f.getBenefit());
+			if (f.getBenefit()>0){
+			sumBenefits = sumBenefits + f.getBenefit();}
 		}
+		
 		System.out.println("Demand : " + toBook);
 		System.out.println("Benefit Summe : " + sumBenefits);
 		
 		//while (toBook>0 && !planesFull){
 			for(Flight f : flights){
-				f.setNumberOfBookings(((int)Math.pow(f.getBenefit(),2)/(int)Math.pow(sumBenefits,2))*100*toBook);
+				System.out.println(((double)f.getBenefit()/sumBenefits)*toBook);
+				int maxBookings;
+				if (f.getBenefit() <= 0){maxBookings = 0;}else{
+				maxBookings = (int)(((double)f.getBenefit()/sumBenefits)*toBook);
+				}
+				if (maxBookings> f.getPlane().getCapacity()){
+					maxBookings = f.getPlane().getCapacity();
+				}
+				f.setNumberOfBookings(maxBookings);
 				f.getPlane().addEarnings(f.getNumberOfBookings()*f.getPlane().getBookingPrice());
-				System.out.println(f.getNumberOfBookings());
+				
 			}
 		//}
 		

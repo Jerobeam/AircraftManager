@@ -83,6 +83,12 @@ public class AirlineServerEndpoint {
 			game.addPlayer(request[1]);
 			System.out.println(game.getPlayerCount());
 			break;
+		case "changePrice":
+			Airline airlinePriceChange = game.getAirlineByName(request[1]);
+			String planeNamePriceChange = request[2];
+			int price = Integer.parseInt(request[3]);
+			game.changePrice(airlinePriceChange.getPlaneByName(planeNamePriceChange),price);
+			break;
 		case "buyPlane":
 			//Messagetype of (Airline,Planetype, Planename, Planelocationairport)
 			Airline airlineBuy = game.getAirlineByName(request[1]);
@@ -93,6 +99,7 @@ public class AirlineServerEndpoint {
 //			game.getAirlineByName(request[1]).buyPlane(request[2],request[3]);
 			break;
 		case "occupyRoute":
+			System.out.println("Occupy Route called");
 			Airline airlineOccupy = game.getAirlineByName(request[1]);
 			String planeNameOccupy = request[2];
 			String routeName = request[3];

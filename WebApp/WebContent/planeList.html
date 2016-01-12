@@ -44,6 +44,7 @@ th {
     <th>Fluege/Tag</th>
     <th>Einnahmen/Tag</th>
     <th>Kosten/Tag</th>
+    <th>Ticketpreis</th>
   </tr>
   
 </table>
@@ -70,6 +71,7 @@ var cell5 = row.insertCell(4);
 var cell6 = row.insertCell(5);
 var cell7 = row.insertCell(6);
 var cell8 = row.insertCell(7);
+var cell9 = row.insertCell(8);
 
 //Add some text to the new cells:
 cell1.innerHTML = playerData.planes[i].name;
@@ -80,8 +82,16 @@ cell5.innerHTML = playerData.planes[i].value;
 cell6.innerHTML = playerData.planes[i].flightsPerDay;
 cell7.innerHTML = playerData.planes[i].earnings;
 cell8.innerHTML = playerData.planes[i].costs;
+var pe = "<input id='price"+ i +"' type='number' min='0' max='3000' step='5' value='"+ playerData.planes[i].bookingPrice +"' onclick='sendPriceChange("
+		+ i 
+		+ ")'>";
+cell9.innerHTML = pe;
 }
-
+function sendPriceChange(i){
+	element = i;
+	parent.parent.send("changePrice§"+parent.parent.getPlayerName()+"§"+playerData.planes[i].name+"§"+ document.getElementById('price'+i).value);
+	console.log("changePrice§"+parent.parent.getPlayerName()+"§"+playerData.planes[i].name+"§"+ document.getElementById('price'+i).value)
+}
 function closeDialog(){
 	parent.closeMenu();
 }

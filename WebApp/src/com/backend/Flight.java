@@ -3,12 +3,14 @@ package com.backend;
 public class Flight {
 
 	private Plane plane;
+	private Route route;
 	//Duration in full hours
 	private double duration;
 	private int numberOfBookings;
 	
-	public Flight(Plane plane){
+	public Flight(Plane plane, Route route){
 		this.setPlane(plane);
+		this.route = route;
 	}
 
 	public Plane getPlane() {
@@ -33,7 +35,9 @@ public class Flight {
 
 	public int getBenefit(){
 		
-		int benefit = plane.getComfort() + plane.getAirline().getImage();
+		int priceBenefit = ((int)((double)route.getBasePrice()/(double)plane.getBookingPrice()*100))-100;
+		System.out.println("PriceBenefit:" + priceBenefit);
+		int benefit = plane.getComfort() + plane.getAirline().getImage() +priceBenefit;
 		return benefit;
 		
 	}

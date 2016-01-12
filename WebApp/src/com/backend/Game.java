@@ -94,8 +94,9 @@ public class Game {
 				p.resetEarnings();
 				int numberOfFlights = (int) (24/((double)r.getDistance()/(double)p.getSpeed()+1));
 				p.setFlightsPerDay(numberOfFlights);
+				System.out.println("Number flights =" + numberOfFlights);
 				for (int i=0;i<numberOfFlights;i++){
-					Flight flight = new Flight(p);
+					Flight flight = new Flight(p,r);
 					r.addFlight(flight);
 				}
 			}
@@ -111,8 +112,8 @@ public class Game {
 
 		JsonObject json;
 		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
-
-		for (Airline a : airlines) {
+		ArrayList<Airline> copy = new ArrayList<Airline>(airlines);
+		for (Airline a : copy) {
 			json = Json.createObjectBuilder().add("name", a.getName())
 					.add("bank", a.getMoney())
 					.add("av", a.getAV())
@@ -129,7 +130,6 @@ public class Game {
 					.add("bodenpersonal", a.getBodenpersonal())
 					.add("wartung", a.getWartung())
 					.build();
-			System.out.println("FK:" + a.getFK());
 			jsonArray.add(json);
 		}
 
@@ -139,14 +139,15 @@ public class Game {
 	public JsonArrayBuilder getRoutesJSON(){
 		JsonObject json;
 		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
-
-		for (Route r : routes) {
+		ArrayList<Route> copy = new ArrayList<Route>(routes);
+		for (Route r : copy) {
 			json = Json.createObjectBuilder()
 					.add("name", r.getName())
 					.add("distance", r.getDistance())
 					.add("demand", r.getDemand())
 					.add("costs", r.getCosts())
 					.add("planes",r.getPlanesJSON())
+					.add("basicPrice", r.getBasePrice())
 					//.add("flights", r.getFlightsJSON())
 					.build();
 			
@@ -191,13 +192,18 @@ public class Game {
 	public void occupyRoute(Airline airlineOccupy, Route route, Plane plane){
 		int freePilotes = airlineOccupy.getPiloten() - airlineOccupy.getBlockedPilotes();
 		int freeStewards = airlineOccupy.getStewardessen() - airlineOccupy.getBlockedStewards();
-		if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
+		//if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
 		route.occupyRoute(plane);
 		plane.setRouteCosts(route.getCosts());
 		plane.setBookingPrice(route.getBasePrice());
 		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
 		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
+	//}
 	}
+
+	public void changePrice( Plane plane, int price) {
+		plane.setBookingPrice(price);
+		
 	}
 
 }

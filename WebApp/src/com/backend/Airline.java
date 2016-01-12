@@ -189,6 +189,7 @@ public class Airline {
 					.add("flightsPerDay", p.getFlightsPerDay())
 					.add("costs", p.getCosts())
 					.add("earnings", p.getEarnings())
+					.add("bookingPrice", p.getBookingPrice())
 					.build();
 			
 			jsonArray.add(json);

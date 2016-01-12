@@ -35,6 +35,66 @@ public class Airline {
 	private final HR HRDept = new HR();
 	private final Accounting AccountingDept = new Accounting();
 	
+	private final int PILOTENKOSTEN = 5000;
+	private final int STWDKOSTEN = 2000;
+	private final int BODENPERSONALKOSTEN = 2500;
+	private final int WARTUNGKOSTEN = 3000;
+	
+	private int Piloten = 0;
+	private int Stewardessen = 0;
+	private int Bodenpersonal = 0;
+	private int Wartung = 0;
+	private int blockedPilotes = 0;
+	private int blockedStewards = 0;
+	
+	public int getBlockedPilotes() {
+		return blockedPilotes;
+	}
+
+	public void setBlockedPilotes(int blockedPilotes) {
+		this.blockedPilotes = blockedPilotes;
+	}
+
+	public int getBlockedStewards() {
+		return blockedStewards;
+	}
+
+	public void setBlockedStewards(int blockedStewards) {
+		this.blockedStewards = blockedStewards;
+	}
+
+	public int getPiloten() {
+		return Piloten;
+	}
+
+	public void setPiloten(int piloten) {
+		if(piloten >= this.blockedPilotes)Piloten = piloten;
+	}
+
+	public int getStewardessen() {
+		return Stewardessen;
+	}
+
+	public void setStewardessen(int stewardessen) {
+		if(stewardessen >= this.blockedStewards)Stewardessen = stewardessen;
+	}
+
+	public int getBodenpersonal() {
+		return Bodenpersonal;
+	}
+
+	public void setBodenpersonal(int bodenpersonal) {
+		Bodenpersonal = bodenpersonal;
+	}
+
+	public int getWartung() {
+		return Wartung;
+	}
+
+	public void setWartung(int wartung) {
+		Wartung = wartung;
+	}
+
 	public Airline(String name, long money) {
 
 		this.setName(name);
@@ -178,6 +238,9 @@ public class Airline {
 			c.tick();
 		}
 		
+		int Personalkosten = 0;
+		Personalkosten = this.Piloten*this.PILOTENKOSTEN+this.Stewardessen*this.STWDKOSTEN+this.Bodenpersonal*this.BODENPERSONALKOSTEN+this.Wartung * this.WARTUNGKOSTEN;
+		this.setMoney(this.getMoney()-Personalkosten);
 		//billing departments
 		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts() - this.getHRDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts();
 		this.setMoney(moneyNew);

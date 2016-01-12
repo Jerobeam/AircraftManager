@@ -171,7 +171,7 @@ canvas {
 			
 			
 			login = document.createElement( 'div' );
-			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='setNameDialog.html'></iframe>";
+			login.innerHTML = "<iframe frameBorder='0' width='300' height='200' src='setNameDialog.html' scrolling='no'></iframe>";
 			login.style.width = '340px';
 			login.style.height = '200px';
 			objectCSS = new THREE.CSS3DObject( login );
@@ -338,7 +338,7 @@ canvas {
 		function openAllPlanesDialog(){
 			//switchRenderer();
 			cssScene.remove(objectCSS);
-			login.innerHTML = "<iframe frameBorder='0' width='800' height='400' src='allPlanesDialog.html' scrolling='no'></iframe>";
+			login.innerHTML = "<iframe frameBorder='0' width='600' height='400' src='allPlanesDialog.html' scrolling='no'></iframe>";
 			login.style.width = '800px';
 			login.style.height = '400px';
 			objectCSS = new THREE.CSS3DObject( login );

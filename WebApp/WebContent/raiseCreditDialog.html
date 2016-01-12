@@ -55,14 +55,17 @@ section {
 <body bgcolor="white">
 	<script type="text/javascript">
 		function kreditType1(){
-			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§1§" + document.getElementById('sum').value);			
+			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§1§" + document.getElementById('sum').value);	
+			parent.closeMenu();
 		}
 		function kreditType2(){
 			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§2§" + document.getElementById('sum').value);
+			parent.closeMenu();
 			
 		}
 		function kreditType3(){
-			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sum').value);			
+			parent.parent.send("takeCredit§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sum').value);
+			parent.closeMenu();
 		}
 		
 		function closeDialog(){

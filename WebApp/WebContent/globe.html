@@ -370,6 +370,17 @@ canvas {
 			objectCSS.position.set(0,0.5,-4);
 			cssScene.add(objectCSS);
 		}
+		function openC190Dialog(){
+			//switchRenderer();
+			cssScene.remove(objectCSS);
+			login.innerHTML = "<iframe frameBorder='0' width='400' height='400' src='c190Dialog.html' scrolling='no'></iframe>";
+			login.style.width = '400px';
+			login.style.height = '400px';
+			objectCSS = new THREE.CSS3DObject( login );
+			objectCSS.scale.multiplyScalar( 0.004);
+			objectCSS.position.set(0,0.5,-4);
+			cssScene.add(objectCSS);
+		}
 		
 		function openITDialog(){
 			switchRenderer();

@@ -27,7 +27,9 @@ canvas {
 		var cssScene;
 		var cssRenderer;
 		var renderer;
-		var raycaster = new THREE.Raycaster();
+		
+		var routeToOpen = 0;
+		
 		var mouse = new THREE.Vector2();
 		var earthMesh;
 		var cityMesh = [];
@@ -75,6 +77,10 @@ canvas {
 			
 			renderer.render(scene, camera);
 			cssRenderer.render(cssScene,camera2);
+			if(routeToOpen != 0){
+				parent.openRoute(routeToOpen);
+				routeToOpen = 0;
+			}
 			//stats.update();
 		}
 
@@ -101,13 +107,14 @@ canvas {
 			geometry.vertices = curve.getPoints(50);
 
 			var material = new THREE.LineBasicMaterial({
-				color : 0x0000cc
+				color : 0x0000cc,
+				linewidth: 0.001
 			});
 
 			spline = new THREE.Line(geometry, material);
 			scene.add(spline);
 			//!TODO:CHANGE
-			spline.name = "Frankfurt-Mallorca"
+			spline.name = cityMesh0.name + "-" + cityMesh1.name
 		}
 
 		function createCities(file) {
@@ -150,10 +157,22 @@ canvas {
 				//cityMesh[i].add(textMesh);
 
 			}
-
-			//TEMP
-			createLine(cityMesh[0],cityMesh[1]);
-			//
+			createLine(cityMesh[2],cityMesh[3]);
+			createLine(cityMesh[1],cityMesh[2]);
+			createLine(cityMesh[1],cityMesh[3]);
+			createLine(cityMesh[0],cityMesh[2]);
+			createLine(cityMesh[0],cityMesh[3]);
+			
+			createLine(cityMesh[4],cityMesh[0]);
+			createLine(cityMesh[4],cityMesh[1]);
+			createLine(cityMesh[4],cityMesh[2]);
+			
+			for(var i=0;i<cityMesh.length;i++){
+				for(var j=0;j<cityMesh.length-i;j++){
+				//createLine(cityMesh[i],cityMesh[j]);
+				console.log("!");
+				}
+			}
 		}
 
 		function init() {
@@ -209,6 +228,7 @@ canvas {
 			earthMesh = new THREE.Mesh(geometry, material);
 			scene.add(earthMesh);
 			earthMesh.add(camera);
+			camera.rotation.x += camera.rotation.x * Math.PI / 180;
 			//--------------------------------------------------------------------------------------------
 
 			$.ajax({
@@ -246,22 +266,26 @@ canvas {
 		}
 
 		function onDocumentMouseDown(event) {
+			
+			var raycaster = new THREE.Raycaster();
 			raycaster.setFromCamera(mouse, camera);
 			var intersects = raycaster.intersectObjects(scene.children);
 			if (intersects[0]) {
 				if (intersects[0].object.name != undefined && intersects[0].object.name!=""){
 				routeSelection= intersects[0].object.name;
-				openRoute(intersects[0].object.name);}
+				routeToOpen = intersects[0].object.name;
+				}
 			}
 		}
 
 		function onMouseMove(event) {
-			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+			console.log(event.clientY);
+			mouse.x = (event.clientX / window.innerWidth ) * 2 - 1;
+			mouse.y = -(event.clientY / window.innerHeight ) * 2 + 1;
 		}
 
 		function onDocumentKeyDown(event) {
-			switchRenderer();
+			controls.enabled = false;
 			
 		
 		}
@@ -270,6 +294,7 @@ canvas {
 		}
 		
 		function switchRenderer(){
+			
 			if (menuActive){
 				document.body.removeChild(cssRenderer.domElement);menuActive = false;}
 				else{
@@ -325,6 +350,7 @@ canvas {
 		}
 		
 		function openRoute(routeName){
+			
 			switchRenderer();
 			cssScene.remove(objectCSS);
 			login.innerHTML = "<iframe frameBorder='0' width='340' height='200' src='routeDialog.html' scrolling='no'></iframe>";

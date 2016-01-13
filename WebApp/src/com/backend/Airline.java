@@ -130,11 +130,13 @@ public class Airline {
 //			
 //		}
 		System.out.println("buyPlane called");
-		Plane p = this.createPlaneFromJson(name, type, location);
-		if (this.getMoney()>= p.getPrice()){
-			this.planes.add(p);
-			this.money = this.money - p.getPrice();
-			System.out.println("Plane bought" + p.getName());
+		if(name.length() >= 1){
+			Plane p = this.createPlaneFromJson(name, type, location);
+			if (this.getMoney()>= p.getPrice()){
+				this.planes.add(p);
+				this.money = this.money - p.getPrice();
+				System.out.println("Plane bought" + p.getName());
+			}
 		}
 	}
 

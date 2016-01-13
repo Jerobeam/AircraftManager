@@ -32,10 +32,30 @@ th {
 	background-color: black;
 	color: white;
 }
+
+header {
+    border: 1px solid #cbcbcb;
+	height: 25px; 
+	text-align: center; 
+	background-color: #000;
+	color: #FFF;
+	width: 100%;
+}
+#m2{ 
+	width: 93%;
+	padding-top: 5px;
+	float: left;
+}
 </style>
 
 </head>
 <body>
+    <header>
+        <div id="m2">
+            <b>IT verwalten</b>
+        </div>
+        <button id="close" onclick="closeDialog()" type="submit" class="pure-button pure-button-primary" style="background-color:#808080; float: right; height: 100%; width: 5%; padding: 0px;"><b>X</b></button>      
+    </header>
 
 	<table id="Table">
 		<tr>
@@ -78,8 +98,6 @@ th {
 			</td>
 		</tr>
 	</table>
-	
-	<button onclick="closeDialog()" class="pure-button" style="margin-top: 15px margin-bottom: 5px; float: right;">Schließen</button>
 	
 	<script type="text/javascript">
 		playerData = parent.parent.getPlayerData();

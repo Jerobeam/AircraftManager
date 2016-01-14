@@ -251,19 +251,22 @@ public class Airline {
 	}
 	
 	public void takeCreditType1(int amount){
-		if(this.getEK()/(this.getFK()+amount) > 2){
+		double ek = this.getEK();
+		if(ek /(this.getFK()+amount) > 2.0){
 			int back = (int) (amount*0.1);
 			credits.add(new Credit(this,amount,2,back));
 		}
 	}
 	public void takeCreditType2(int amount){
-		if(this.getEK()/(this.getFK()+amount) > 1.5){
+		double ek = this.getEK();
+		if(ek /(this.getFK()+amount) > 1.5){
 			int back = (int) (amount*0.08);
 			credits.add(new Credit(this,amount,3,back));
 		}
 	}
 	public void takeCreditType3(int amount){
-		if(this.getEK()/(this.getFK()+amount) > 1){
+		double ek = this.getEK();
+		if(ek /(this.getFK()+amount) > 1){
 			int back = (int) (amount*0.06);
 			credits.add(new Credit(this,amount,5,back));
 		}

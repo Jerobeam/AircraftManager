@@ -35,14 +35,64 @@ public class Game {
 		loop = new Gameloop(this);
 		loop.start();
 		
-		Airport fraport = new Airport("Frankfurt Airport", 1337);
-		airports.add(fraport);
-		Airport pmi = new Airport("Palma de Mallorca Airport", 8888);
-		airports.add(pmi);
-		Route fraPmi = new Route("Frankfurt-Mallorca", pmi, fraport,120);
-		fraPmi.setDistance(1612);
-		fraPmi.setDemand(800);
-		routes.add(fraPmi);
+		
+		
+		Airport frankfurt = new Airport("Frankfurt Airport", 1500);
+		airports.add(frankfurt);
+		Airport mallorca = new Airport("Palma de Mallorca Airport", 2300);
+		airports.add(mallorca);
+		Airport moskau = new Airport("Moskau Airport", 1200);
+		airports.add(moskau);
+		Airport london = new Airport("London Airport", 1900);
+		airports.add(london);
+		Airport teneriffa = new Airport("Teneriffa Airport", 2000);
+		airports.add(teneriffa);
+		
+		
+		Route fra_mal = new Route("Frankfurt-Mallorca", mallorca, frankfurt, 120);
+		fra_mal.setDistance(1612);
+		fra_mal.setDemand(1100);
+		routes.add(fra_mal);
+		
+		Route mos_lon =  new Route("Moskau-London", moskau, london ,200);
+		mos_lon.setDistance(2510);
+		mos_lon.setDemand(500);
+		routes.add(mos_lon);
+		
+		Route mos_fra =  new Route("Moskau-Frankfurt", moskau, frankfurt ,180);
+		mos_fra.setDistance(2021);
+		mos_fra.setDemand(400);
+		routes.add(mos_fra);
+		
+		Route mos_mal =  new Route("Moskau-Mallorca", moskau, mallorca ,290);
+		mos_mal.setDistance(3091);
+		mos_mal.setDemand(750);
+		routes.add(mos_mal);
+		
+		Route lon_ten =  new Route("London-Teneriffa", london, teneriffa ,190);
+		lon_ten.setDistance(2900);
+		lon_ten.setDemand(900);
+		routes.add(lon_ten);
+		
+		Route lon_mal =  new Route("London-Mallorca", london, mallorca ,105);
+		lon_mal.setDistance(1350);
+		lon_mal.setDemand(900);
+		routes.add(lon_mal);
+		
+		Route fra_ten =  new Route("Frankfurt-Teneriffa", frankfurt, teneriffa ,200);
+		fra_ten.setDistance(3250);
+		fra_ten.setDemand(850);
+		routes.add(fra_ten);
+		
+		Route mal_ten =  new Route("Mallorca-Teneriffa", mallorca, teneriffa ,120);
+		mal_ten.setDistance(2250);
+		mal_ten.setDemand(500);
+		routes.add(mal_ten);
+		
+		
+		
+		
+		
 	}
 
 	public Gameloop getLoop() {

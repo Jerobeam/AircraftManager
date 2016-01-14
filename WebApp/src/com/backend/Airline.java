@@ -238,7 +238,7 @@ public class Airline {
 
 	public void monthlyCalculation() {
 		for (Credit c : credits) {
-			c.tick();
+			c.iterationStep();
 		}
 		
 		int Personalkosten = 0;

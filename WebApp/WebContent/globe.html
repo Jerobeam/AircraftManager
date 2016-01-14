@@ -37,43 +37,94 @@ canvas {
 		
 		var menuActive = true;
 		var login;
-		var spline;
-		var curve;
+		var spline = [];
+		var splineCounter = 0;
+		var curve=[];
 		var routeSelection = "";
 
-		var plane;
-		var t = 0;
-		var pt, radians, axis, tangent;
+		var planes = [];
+		var planeCounter = 0;
+		var t  = [];
+		var pt =[], radians = [], axis = [], tangent =[];
 		var up = new THREE.Vector3(0, 0, 1);
-		var axis = new THREE.Vector3();
+		var axis =[] ;
 		
+		
+		setInterval(function(){ 
+			//if (planeCounter == 0){
+			//	}
+			routes = parent.getRouteData();
+			for (var i =0;i<routes.length;i++){
+				if (routes[i].planes.length >0){
+					for (var j = 0;j<spline.length;j++){
+						if (spline[j].name == routes[i].name){
+							for (var z = 0;z<routes[i].planes;z++){
+								for (var u = 0;u< planes.length;u++){
+									if (routes[i].planes[z].name == planes[u].name){
+										if (planes[u].userData.route == routes[i].name){
+											
+										}else{
+											createPlane(u,routes[i].planes[z].name);
+											planes[u].userData.route = j;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			
+		}, 5000);
 		
 
 		loader.load('plane01.json', function(geometry) {
-			plane = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
-				color : 0xFFFFFF,
-				shading : THREE.FlatShading
-			}));
-			plane.scale.multiplyScalar(0.1);
-			scene.add(plane);
+			
+			initPlanes(geometry);
+			
+			
 		});
-
+		
+		function initPlanes(geometry){
+			
+			for(var i = 0;i<80;i++){
+				
+				t[i] = 0;
+				axis[i] = new THREE.Vector3();
+				planes[i] = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
+					color : 0xFFFFFF,
+					shading : THREE.FlatShading
+				}));
+				planes[i].scale.multiplyScalar(0.1);
+			}
+				
+		}
+		function createPlane(i,name){
+			
+			scene.add(planes[i]);
+			planes[i].name = name;
+			planeCounter++;
+		}
+		
 		function render() {
 			requestAnimationFrame(render);
 
 			//Plane movement---------------------------------------
-			pt = curve.getPoint(t);
-			plane.position.set(pt.x, pt.y, pt.z);
-			tangent = curve.getTangent(t).normalize();
-			axis.crossVectors(up, tangent).normalize();
-			radians = Math.acos(up.dot(tangent));
+			for(var i=0;i<80;i++){
+			y = planes[i].userData.route;
+			pt[i] = curve[y].getPoint(t[i]);
+			planes[i].position.set(pt[i].x, pt[i].y, pt[i].z);
+			tangent[i] = curve[y].getTangent(t[i]).normalize();
+			axis[i].crossVectors(up, tangent[i]).normalize();
+			radians[i] = Math.acos(up.dot(tangent[i]));
 
-			if (t < 0.2) {
-				plane.quaternion.setFromAxisAngle(axis, radians);
+			if (t[i] < 0.2) {
+				planes[0].quaternion.setFromAxisAngle(axis[i], radians[i]);
 			}
 
-			t = (t >= 1) ? 0 : t += 0.001;
+			t[i] = (t[i] >= 1) ? 0 : t[i] += 0.001;
 			//-----------------------------------------------------
+			}
 			
 			renderer.render(scene, camera);
 			cssRenderer.render(cssScene,camera2);
@@ -83,11 +134,13 @@ canvas {
 			}
 			//stats.update();
 		}
+		
 
 		function createLine(cityMesh0, cityMesh1) {
-
+			
+			
 			var a = new THREE.Vector3(0, 0, 0);
-			cityMesh[0].position.distanceTo(cityMesh1.position);
+			cityMesh0.position.distanceTo(cityMesh1.position);
 			var v1 = new THREE.Vector3(0, 0, 0);
 			var v2 = new THREE.Vector3(0, 0, 0);
 			v1.copy(cityMesh0.position);
@@ -101,20 +154,21 @@ canvas {
 			while (10.2 > a.length()) {
 				a.multiplyScalar(1.05);
 			}
-			curve = new THREE.SplineCurve3([ v1, a.multiplyScalar(1), v2 ]);
+			curve[splineCounter] = new THREE.SplineCurve3([ v1, a.multiplyScalar(1), v2 ]);
 
 			var geometry = new THREE.Geometry();
-			geometry.vertices = curve.getPoints(50);
+			geometry.vertices = curve[splineCounter].getPoints(50);
 
 			var material = new THREE.LineBasicMaterial({
 				color : 0x0000cc,
 				linewidth: 0.001
 			});
 
-			spline = new THREE.Line(geometry, material);
-			scene.add(spline);
+			spline[splineCounter] = new THREE.Line(geometry, material);
+			scene.add(spline[splineCounter]);
 			//!TODO:CHANGE
-			spline.name = cityMesh0.name + "-" + cityMesh1.name
+			spline[splineCounter].name = cityMesh0.name + "-" + cityMesh1.name;
+			splineCounter++;
 		}
 
 		function createCities(file) {
@@ -238,6 +292,8 @@ canvas {
 					createCities(file)
 				}
 			});
+			
+			
 			cssRenderer	= new THREE.CSS3DRenderer();
 			cssRenderer.setSize( window.innerWidth, window.innerHeight );
 			cssRenderer.domElement.style.position = 'absolute';
@@ -280,7 +336,7 @@ canvas {
 		}
 
 		function onMouseMove(event) {
-			console.log(event.clientY);
+			
 			mouse.x = (event.clientX / window.innerWidth ) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight ) * 2 + 1;
 		}

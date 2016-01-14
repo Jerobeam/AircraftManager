@@ -133,8 +133,6 @@ public class Route {
 			sumBenefits = sumBenefits + f.getBenefit();}
 		}
 		
-		System.out.println("Demand : " + toBook);
-		System.out.println("Benefit Summe : " + sumBenefits);
 		
 		//while (toBook>0 && !planesFull){
 			for(Flight f : flights){

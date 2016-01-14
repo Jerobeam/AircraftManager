@@ -22,7 +22,7 @@ public class Credit {
 	}
 	private int payRent;
 	private int repayment;
-	public void tick(){
+	public void iterationStep(){
 		if(amount > 0){
 			if(amount > repayment){
 				owner.setMoney(owner.getMoney() - repayment);

@@ -53,6 +53,14 @@ public class Marketing {
 		}
 	}
 	
+	public void decreaseImage(Airline airline, double decreasement){
+		if ((airline.getImage() - decreasement) >=0) {
+			airline.setImage(airline.getImage() - decreasement);			
+		}else{
+			airline.setImage(0.0);
+		}
+	}
+	
 	public boolean isSponsoring() {
 		return sponsoring;
 	}
@@ -87,6 +95,17 @@ public class Marketing {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 50000);
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + 3);
 			this.setSponsoring(true);
+		}
+	}
+	
+	public void stopSponsoring(Airline airline){
+		if(this.isSponsoring()){
+			this.setMonthlyCosts(this.getMonthlyCosts() - 50000);
+			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() - 3);
+			
+			//reduce Image once because of "disappointment of fans"
+			this.decreaseImage(airline, 2);
+			this.setSponsoring(false);
 		}
 	}
 	

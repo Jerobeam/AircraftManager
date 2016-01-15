@@ -255,9 +255,7 @@ public class Airline {
 		}
 
 		// image loss over time
-		if (this.getImage() >= 1) {
-			this.setImage(this.getImage() - 1);
-		}
+		this.getMarketingDept().decreaseImage(this, 1);
 	}
 
 	public void takeCreditType1(int amount) {

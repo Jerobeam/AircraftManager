@@ -78,6 +78,7 @@ public class Marketing {
 		}else if (amount>=2500000){
 			this.increaseImage(airline, 5.5);			
 		}
+		System.out.println("Donate called");
 	}
 	
 	//Schriftzug Design für Flugzeuge

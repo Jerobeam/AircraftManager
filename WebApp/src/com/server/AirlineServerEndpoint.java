@@ -136,6 +136,9 @@ public class AirlineServerEndpoint {
 		case "sellAccountingModule":
 			game.getAirlineByName(request[1]).getITDept().sellAccountingModule(game.getAirlineByName(request[1]));
 			break;
+		case "donate":
+			game.getAirlineByName(request[1]).getMarketingDept().donate(game.getAirlineByName(request[1]), Long.parseLong(request[2]));
+			break;
 		default:
 			break;
 		}

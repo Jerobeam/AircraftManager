@@ -200,10 +200,9 @@ public class Plane {
 		this.range = this.range+950;
 	}
 	
-	public void setOutsideCleaning(){
-		this.upgrades.setOutsideCleaning(true);
-		this.airline.setMoney(this.airline.getMoney() - 50000);
-		this.fuelCosts = (int)(this.getFuelCosts()*0.99);
+	public void buyOutsideCleaning(){
+		this.upgrades.setBuyOutsideCleaning(true);
+		this.airline.setMoney(this.airline.getMoney() - 50000);		
 	}
 	
 	public void entertainmentPackage(int value){
@@ -247,4 +246,19 @@ public class Plane {
 			}
 		}
 	}
+
+	public boolean getBuyPlaneCleaning() {
+		return this.upgrades.isBuyOutsideCleaning();
+	}
+	
+	public void setOutsideCleaning(boolean value){
+		this.upgrades.isDoOutsideCleaning();
+		if(value){
+			this.fuelCosts = (int)(this.getFuelCosts()*0.99);
+		}
+	}
+	public boolean getOutsideCleaning(){
+		return this.upgrades.isDoOutsideCleaning();
+	}
+	
 }

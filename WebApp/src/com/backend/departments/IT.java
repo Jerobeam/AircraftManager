@@ -7,6 +7,8 @@ public class IT {
 	private boolean boughtSocialMediaModule;
 	private boolean boughtHRModule;
 	private boolean boughtAccountingModule;
+	//Costfactor influenced by the HR Module --> reduces "personalkosten" in Airline class
+	private double hrCostsFactor = 1.0;
 
 	public IT() {
 		// TODO: realistic values
@@ -49,8 +51,7 @@ public class IT {
 	public void buyHRModule(Airline airline) {
 		// TODO: realistic values
 		if (!this.isBoughtHRModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
-			airline.getHRDept().setCostReduction(airline.getHRDept().getCostReduction() - 0.1);
+			this.setHrCostsFactor(0.9);
 			this.setBoughtHRModule(true);
 		}
 		System.out.println("buyHRModule called");
@@ -59,8 +60,7 @@ public class IT {
 	public void sellHRModule(Airline airline) {
 		// TODO: realistic values
 		if (this.isBoughtHRModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() - 1000);
-			airline.getHRDept().setCostReduction(airline.getHRDept().getCostReduction() + 0.1);
+			this.setHrCostsFactor(1);
 			this.setBoughtHRModule(false);
 		}
 		System.out.println("sellHRModule called");
@@ -109,5 +109,15 @@ public class IT {
 	public void setBoughtAccountingModule(boolean boughtAccountingModule) {
 		this.boughtAccountingModule = boughtAccountingModule;
 	}
+
+	public double getHrCostsFactor() {
+		return hrCostsFactor;
+	}
+
+	private void setHrCostsFactor(double hrCostsFactor) {
+		this.hrCostsFactor = hrCostsFactor;
+	}
+	
+	
 
 }

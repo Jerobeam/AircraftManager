@@ -13,7 +13,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.backend.departments.Accounting;
-import com.backend.departments.HR;
 import com.backend.departments.IT;
 import com.backend.departments.Marketing;
 import com.backend.departments.Service;
@@ -34,18 +33,17 @@ public class Airline {
 	//Set Departments
 	private final Marketing MarketingDept = new Marketing();
 	private final IT ITDept = new IT();
-	private final HR HRDept = new HR();
 	private final Accounting AccountingDept = new Accounting();
 	
 	private final int PILOTENKOSTEN = 5000;
 	private final int STWDKOSTEN = 2000;
 	private final int BODENPERSONALKOSTEN = 2500;
-	private final int WARTUNGKOSTEN = 3000;
+	private final int WARTUNGSPERSONALKOSTEN = 3000;
 	
 	private int Piloten = 0;
 	private int Stewardessen = 0;
 	private int Bodenpersonal = 0;
-	private int Wartung = 0;
+	private int WartungsPersonal = 0;
 	private int blockedPilotes = 0;
 	private int blockedStewards = 0;
 	
@@ -90,11 +88,11 @@ public class Airline {
 	}
 
 	public int getWartung() {
-		return Wartung;
+		return WartungsPersonal;
 	}
 
 	public void setWartung(int wartung) {
-		Wartung = wartung;
+		WartungsPersonal = wartung;
 	}
 
 	public Airline(String name, long money) {
@@ -122,15 +120,6 @@ public class Airline {
 
 	public void buyPlane(String type,String name, Airport location) {
 		
-//		if (type.equals("A320")){
-//			
-//				Airport air = new Airport();//Change!
-//				A320 p =  new A320(name, air);
-//				if (this.getMoney()>= p.getPrice()){
-//				this.planes.add(p);
-//				this.money = this.money - p.getPrice();}
-//			
-//		}
 		System.out.println("buyPlane called");
 		if(name.length() >= 1){
 			Plane p = this.createPlaneFromJson(name, type, location);
@@ -147,7 +136,6 @@ public class Airline {
 		 
         try {
  
-        	//TODO: Make path generic
             Object fileObject = parser.parse(new InputStreamReader(getClass().getResourceAsStream("planes.json")));
             JSONObject planesJSON = (JSONObject) fileObject;
  
@@ -243,13 +231,12 @@ public class Airline {
 			c.iterationStep();
 		}
 		
-		int Personalkosten = 0;
-		Personalkosten = this.Piloten*this.PILOTENKOSTEN+this.Stewardessen*this.STWDKOSTEN+this.Bodenpersonal*this.BODENPERSONALKOSTEN+this.Wartung * this.WARTUNGKOSTEN;
-		this.setMoney(this.getMoney()-Personalkosten);
+		int personalkosten = 0;
+		personalkosten = (int)((this.Piloten*this.PILOTENKOSTEN+this.Stewardessen*this.STWDKOSTEN+this.Bodenpersonal*this.BODENPERSONALKOSTEN+this.WartungsPersonal*this.WARTUNGSPERSONALKOSTEN) * this.getITDept().getHrCostsFactor());
 		//billing departments
-		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts() - this.getHRDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts();
+		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten;
 		this.setMoney(moneyNew);
-		this.ek = this.ek - this.getITDept().getMonthlyCosts() - this.getHRDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts(); 
+		this.ek = this.ek - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten; 
 	}
 	
 	public void takeCreditType1(int amount){
@@ -294,10 +281,6 @@ public class Airline {
 
 	public IT getITDept() {
 		return ITDept;
-	}
-
-	public HR getHRDept() {
-		return HRDept;
 	}
 
 	public Accounting getAccountingDept() {

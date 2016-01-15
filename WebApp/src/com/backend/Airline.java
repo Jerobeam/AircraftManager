@@ -27,7 +27,8 @@ public class Airline {
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
-	private int image;
+	//TODO: Balance startImage 
+	private double image = 10;
 	private Service services;
 	
 	//Set Departments
@@ -126,6 +127,7 @@ public class Airline {
 			if (this.getMoney()>= p.getPrice()){
 				this.planes.add(p);
 				this.money = this.money - p.getPrice();
+				//if lettering from marketing is bought increase image
 				System.out.println("Plane bought" + p.getName());
 			}
 		}
@@ -207,7 +209,7 @@ public class Airline {
 		for (Plane p : planes) {
 			sum = p.getEarnings() - p.getCosts();
 		}
-		this.ek = this.ek + sum;
+		this.ek = this.getEK() + sum;
 		this.money = this.money + sum;
 	}
 	
@@ -243,7 +245,7 @@ public class Airline {
 		//billing departments
 		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten;
 		this.setMoney(moneyNew);
-		this.ek = this.ek - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten; 
+		this.ek = this.getEK() - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten; 
 	}
 	
 	public void takeCreditType1(int amount){
@@ -270,6 +272,7 @@ public class Airline {
 	public long getEK() {
 		return this.ek;
 	}
+	
 	public long getFK() {
 		long fremdkap = 0;
 		for (Credit c : credits) {
@@ -294,11 +297,11 @@ public class Airline {
 		return AccountingDept;
 	}
 
-	public int getImage() {
+	public double getImage() {
 		return image;
 	}
 
-	public void setImage(int image) {
+	public void setImage(double image) {
 		this.image = image;
 	}
 

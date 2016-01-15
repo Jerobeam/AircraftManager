@@ -175,6 +175,8 @@ public class Game {
 					.add("boughtSocialMediaModule", a.getITDept().isBoughtSocialMediaModule())
 					.add("boughtHRModule", a.getITDept().isBoughtHRModule())
 					.add("boughtAccountingModule", a.getITDept().isBoughtAccountingModule())
+					.add("isLettering", a.getMarketingDept().isLettering())
+					.add("isSponsoring", a.getMarketingDept().isSponsoring())
 					.add("piloten", a.getPiloten())
 					.add("stewardessen", a.getStewardessen())
 					.add("bodenpersonal", a.getBodenpersonal())

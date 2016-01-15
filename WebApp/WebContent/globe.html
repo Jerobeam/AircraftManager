@@ -56,7 +56,10 @@ canvas {
 			routes = parent.getRouteData();
 			for(var i=0;i<routes.length;i++){
 				for(var j=0;j<routes[i].planes.length;j++){
-					console.log("FF");
+					if (!planeExists(routes[i].planes[j].name)){
+						createPlane(routes[i].planes[j].name,routes[i].name);
+						console.log("Plane created!");
+					}
 				}
 			}
 				
@@ -75,10 +78,10 @@ canvas {
 
 		loader.load('plane01.json', function(geometry) {
 			planeGeom = geometry;
-			createPlane("XX");		
+			//createPlane("XX");		
 		});
 		
-		function createPlane(name){
+		function createPlane(name,routeName){
 			
 			planes[planeCounter] = new THREE.Mesh(planeGeom, new THREE.MeshPhongMaterial({
 				color : 0xFFFFFF,
@@ -87,6 +90,12 @@ canvas {
 			planes[planeCounter].scale.multiplyScalar(0.1);
 			scene.add(planes[planeCounter]);
 			planes[planeCounter].name = name;
+			planes[planeCounter].userData = { route: routeName };
+			for (var i=0;i<spline.length;i++){
+				if (routeName == spline[i].name){
+					planes[planeCounter].userData = {route: routeName, routeNr: i };
+				}
+			}
 			t[planeCounter] = 0;
 			axis[planeCounter] = new THREE.Vector3( );
 			planeCounter++;
@@ -96,22 +105,24 @@ canvas {
 			requestAnimationFrame(render);
 
 			//Plane movement---------------------------------------
-			var i = 0;
-			var y = 0;
 			
-			pt[i] = curve[0].getPoint(t[i]);
+			
+			for(var i = 0;i< planes.length;i++){
+				
+			var y = planes[i].userData.routeNr;	
+			pt[i] = curve[y].getPoint(t[i]);
 			planes[i].position.set(pt[i].x, pt[i].y, pt[i].z);
 			tangent[i] = curve[y].getTangent(t[i]).normalize();
 			axis[i].crossVectors(up, tangent[i]).normalize();
 			radians[i] = Math.acos(up.dot(tangent[i]));
 
 			if (t[i] < 0.2) {
-				planes[0].quaternion.setFromAxisAngle(axis[i], radians[i]);
+				planes[i].quaternion.setFromAxisAngle(axis[i], radians[i]);
 			}
 
 			t[i] = (t[i] >= 1) ? 0 : t[i] += 0.001;
 			//-----------------------------------------------------
-			
+			}
 			
 			
 			renderer.render(scene, camera);

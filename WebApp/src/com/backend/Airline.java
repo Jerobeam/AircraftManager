@@ -189,7 +189,13 @@ public class Airline {
 					.add("costs", p.getCosts())
 					.add("earnings", p.getEarnings())
 					.add("bookingPrice", p.getBookingPrice())
-					.build();
+					.add("winglets", p.getUpgrades().isWinglets())
+					.add("newEngine", p.getUpgrades().isNewEngine())
+					.add("buyOutsideCleaning", p.getUpgrades().isBuyOutsideCleaning())
+					.add("doOutsideCleaning", p.getUpgrades().isDoOutsideCleaning())
+					.add("entertainmentPackage", p.getUpgrades().getEntertainmentPackage())
+					.add("seat", p.getUpgrades().getSeat())					
+			        .build();
 
 			jsonArray.add(json);
 		}
@@ -487,5 +493,14 @@ public class Airline {
 			}
 		}
 	}
+
+	public Service getServices() {
+		return services;
+	}
+
+	public void setServices(Service services) {
+		this.services = services;
+	}
+	
 
 }

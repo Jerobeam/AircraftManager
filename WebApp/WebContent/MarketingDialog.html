@@ -162,6 +162,25 @@ header {
 								style="display: initial;">Ausführen</Button>
 						</td>
 					</tr>
+					
+					<tr>
+						<td>Sponsoring</td>
+						<td>Biete RB Leipzig endlich einen anständigen Sponsor<br> 
+								Verbessert das Image auf Dauer - Beim Aufgeben der Sponsoring-Aktivität werden Fans jedoch enttäuscht</td>
+						<td>
+							50.000€/Monat
+						<td>
+							<Button id="sponsorButton"
+								onclick="sendSponsorRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: initial;">Werde Sponsor</Button>
+							<Button id="sponsorStopButton"
+								onclick="sendSponsorStopRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: none;">Werde Sponsor</Button>
+						</td>
+					</tr>
+					
 				</table>
 			</div>
 		</div>
@@ -181,6 +200,15 @@ header {
 			var select = document.getElementById('spendenSelect');
 			var spende = document.getElementById('spendenSelect').options[select.selectedIndex].text
 			alert("Spende in Höhe von " + spende + " getätigt")
+		}
+		
+		function sendSponsorRequest(){
+			document.getElementById("sponsorButton").style.display = "none";
+			document.getElementById("sponsorStopButton").style.display = "initial";
+		}
+		function sendSponsorStopRequest(){
+			document.getElementById("sponsorButton").style.display = "initial";
+			document.getElementById("sponsorStopButton").style.display = "none";
 		}
 		
 		function closeDialog(){

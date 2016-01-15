@@ -31,7 +31,7 @@ public class IT {
 		if (!this.isBoughtSocialMediaModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
 			double efficiency = airline.getMarketingDept().getEfficiency();
-			airline.getMarketingDept().setEfficiency(efficiency + 0.05);
+			airline.getMarketingDept().setEfficiency(efficiency + 0.1);
 			this.setBoughtSocialMediaModule(true);
 		}
 		System.out.println("buySocialMediaSoftware called");

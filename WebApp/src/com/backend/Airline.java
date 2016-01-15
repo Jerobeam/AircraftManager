@@ -15,6 +15,7 @@ import org.json.simple.parser.JSONParser;
 import com.backend.departments.Accounting;
 import com.backend.departments.IT;
 import com.backend.departments.Marketing;
+import com.backend.departments.Service;
 
 public class Airline {
 
@@ -27,6 +28,7 @@ public class Airline {
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
 	private int image;
+	private Service services;
 	
 	//Set Departments
 	private final Marketing MarketingDept = new Marketing();

@@ -2,6 +2,8 @@ package com.backend;
 
 import javax.json.JsonValue;
 
+import com.backend.departments.PlaneUpgrade;
+
 public class Plane {
 
 	private String name;
@@ -23,6 +25,7 @@ public class Plane {
 	private int pilot;
 	private int benefit;
 	private Airline airline;
+	private PlaneUpgrade upgrades;
 
 	public int getPilot() {
 		return pilot;

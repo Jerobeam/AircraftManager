@@ -183,7 +183,7 @@ header {
 					
 					<tr>
 						<td>Schriftzugdesign</td>
-						<td>Entwickle ein hochwertiges Schriftzug Design für alle aktuellen und zukünftigen Flugzeuge<br> 
+						<td>Entwickle ein hochwertiges Schriftzug-Design für alle aktuellen und zukünftigen Flugzeuge<br> 
 								Verbessert das Image auf Dauer abhängig von den gekauften Flugzeugen</td>
 						<td>
 							einmalig 300.000€
@@ -203,7 +203,56 @@ header {
 			<input type="radio" id="tab-2" name="tab-group-1"> <label
 				for="tab-2">Werbung</label>
 			<div class="content">
-				<p>Stuff for Tab Two</p>
+				<p style="margin-left:1rem;"><b>Werbung erhört das Image über die Zeit, jedoch stagniert der Imagezuwachs auf Dauer</b></p>
+				<table id="Table">
+					<tr>
+						<th>Art</th>
+						<th>Beschreibung</th>
+						<th>Kosten</th>
+						<th></th>
+					</tr>
+
+					<tr>
+						<td>Print Werbung für Flughäfen</td>
+						<td>Erhöht das Image auf Dauer abhängig von den angeflogenen Flughäfen</td>
+						<td>
+							150.000€/Monat
+						<td>
+							<Button id="printAdButton"
+								onclick="sendPrintAdRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: initial;">Kaufen</Button>
+							<Button id="stopPrintAdButton"
+								onclick="sendStopPrintAdRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: none;">Abbestellen</Button>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>Online Werbung</td>
+						<td>Paket 1: Schwacher monatlicher Imagezuwachs - langsam Effizienzabstieg
+						<br>Paket 2: Starker monatlicher Imagezuwachs - schnellerer Effizienzabstieg</td>
+						<td>
+							Bitte wählen:
+							<br>
+							<select id="donationSelect">
+							  <option value="paket1">Paket 1: 200.000</option>
+							  <option value="paket2">Paket 2: 400.000</option>
+							</select> €/Monat</td>
+						<td>
+							<Button id="onlineAdButton"
+								onclick="sendOnlineAdRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: initial;">Kaufen</Button>
+							<Button id="stopOnlineAdButton"
+								onclick="sendStopOnlineAdRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: none;">Abbestellen</Button>
+						</td>
+					</tr>
+					
+				</table>
 			</div>
 		</div>
 	</div>

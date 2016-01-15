@@ -145,6 +145,9 @@ public class AirlineServerEndpoint {
 		case "stopSponsoring":
 			game.getAirlineByName(request[1]).getMarketingDept().stopSponsoring(game.getAirlineByName(request[1]));
 			break;
+		case "designPlaneLettering":
+			game.getAirlineByName(request[1]).getMarketingDept().designPlaneLettering(game.getAirlineByName(request[1]));
+			break;
 		default:
 			break;
 		}

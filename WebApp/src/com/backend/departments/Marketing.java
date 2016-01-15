@@ -89,6 +89,7 @@ public class Marketing {
 			int amountPlanes= airline.getPlanes().size();
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + amountPlanes * 0.7);
 			this.setLettering(true);
+			System.out.println("designed Plane Lettering");
 		}		
 	}
 	

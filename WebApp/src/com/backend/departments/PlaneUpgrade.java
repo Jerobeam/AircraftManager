@@ -2,7 +2,7 @@ package com.backend.departments;
 
 public class PlaneUpgrade {	
 	private boolean winglets = false; //Verbessert Treibstoffverbrauch bis 3,5%
-	private boolean newEngine = false; //Verbessert Treibstoffverauch bis 15% -> steigert Image(Umweltschutz, Lärmschutz)-> erhöt Reichweite bis 950km
+	private boolean newEngine = false; //Verbessert Treibstoffverauch bis 15% -> steigert Image(Umweltschutz, Lärmschutz)-> erhöt Reichweite bis 550km
 	private boolean buyOutsideCleaning = false; //Verbessert Treibstoffverauch 1%
 	private boolean doOutsideCleaning = false;
 	

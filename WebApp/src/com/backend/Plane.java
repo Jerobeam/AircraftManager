@@ -197,7 +197,7 @@ public class Plane {
 		this.upgrades.setNewEngine(true);
 		this.airline.setMoney(this.airline.getMoney() - 10000000);
 		this.fuelCosts = (int)(this.getFuelCosts()*0.85);
-		this.range = this.range+950;
+		this.range = this.range+550;
 		//Image steigert sich muss noch implementiert werden
 	}
 	

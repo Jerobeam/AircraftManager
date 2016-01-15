@@ -4,7 +4,7 @@
     "capacity": 180,
     "comfort": 30,
     "speed": 891,
-    "range": 6150,
+    "range": 3000,
     "fuelCosts": 2700,
     "upkeepCosts": 3500,
     "price": 8000000,
@@ -25,12 +25,12 @@
     "steward": 6,
     "value": 21500000
   },
-  "C190": {
+  "E190": {
     "picture": "../Embraer190.png",
     "capacity": 118,
     "comfort": 20,
     "speed": 835,
-    "range": 3390,
+    "range": 2390,
     "fuelCosts": 1700,
     "upkeepCosts": 2500,
     "price": 4000000,

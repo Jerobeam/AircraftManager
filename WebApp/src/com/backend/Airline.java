@@ -128,6 +128,9 @@ public class Airline {
 				this.planes.add(p);
 				this.money = this.money - p.getPrice();
 				//if lettering from marketing is bought increase image
+				if(this.getMarketingDept().isLettering()){
+					this.getMarketingDept().setMonthlyImageIncreasement(this.getMarketingDept().getMonthlyImageIncreasement() + 0.7);
+				}
 				System.out.println("Plane bought" + p.getName());
 			}
 		}
@@ -239,6 +242,16 @@ public class Airline {
 		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten;
 		this.setMoney(moneyNew);
 		this.ek = this.getEK() - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten; 
+	
+		//image loss over time
+		if(this.getImage()>=1){
+			this.setImage(this.getImage()-1);				
+		}
+		
+		//monthly Image increasement
+		if (this.getMarketingDept().getMonthlyImageIncreasement()>0){
+			this.getMarketingDept().increaseImage(this, this.getMarketingDept().getMonthlyImageIncreasement());
+		}
 	}
 	
 	public void takeCreditType1(int amount){

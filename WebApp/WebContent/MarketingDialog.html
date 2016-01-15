@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<!--  --><html>
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="pure.css">
@@ -118,7 +118,7 @@ header {
 </style>
 </head>
 
-<body>
+<body style="background-color:white;">
 
 	<header>
 		<div id="m2">
@@ -151,13 +151,13 @@ header {
 						<td>
 							Bitte wählen:
 							<br>
-							<select id="spendenSelect">
+							<select id="donationSelect">
 							  <option value="1000000">1.000.000</option>
-							  <option value="25000000">2.500.000</option>
+							  <option value="2500000">2.500.000</option>
 							</select>€</td>
 						<td>
-							<Button id="spendenButton"
-								onclick="sendSpendenRequest()" type="submit"
+							<Button id="donationButton"
+								onclick="sendDonationRequest()" type="submit"
 								class="pure-button pure-button-primary"
 								style="display: initial;">Ausführen</Button>
 						</td>
@@ -177,7 +177,21 @@ header {
 							<Button id="sponsorStopButton"
 								onclick="sendSponsorStopRequest()" type="submit"
 								class="pure-button pure-button-primary"
-								style="display: none;">Werde Sponsor</Button>
+								style="display: none;">Beende Sponsoring</Button>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>Schriftzugdesign</td>
+						<td>Entwickle ein hochwertiges Schriftzug Design für alle aktuellen und zukünftigen Flugzeuge<br> 
+								Verbessert das Image auf Dauer abhängig von den gekauften Flugzeugen</td>
+						<td>
+							einmalig 300.000€
+						<td>
+							<Button id="letteringButton"
+								onclick="sendLetteringRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: initial;">Ausführen</Button>
 						</td>
 					</tr>
 					
@@ -194,12 +208,30 @@ header {
 		</div>
 	</div>
 	<script type="text/javascript">
-		//playerData = parent.parent.getPlayerData();
+		playerData = parent.parent.getPlayerData();
+		var isLettering = playerData.isLettering;
+		var isSponsoring = playerData.isSponsoring;
 		
-		function sendSpendenRequest(){
-			var select = document.getElementById('spendenSelect');
-			var spende = document.getElementById('spendenSelect').options[select.selectedIndex].text
-			alert("Spende in Höhe von " + spende + " getätigt")
+		//Lettering bought?
+		if(isLettering){
+			document.getElementById("letteringButton").disabled = true;
+		}
+		
+		//Sponsoring activated?
+		if(isSponsoring){
+			document.getElementById("sponsorButton").style.display = "none";
+			document.getElementById("sponsorStopButton").style.display = "initial";
+		}else{
+			document.getElementById("sponsorButton").style.display = "initial";
+			document.getElementById("sponsorStopButton").style.display = "none";
+		}
+		
+		function sendDonationRequest(){
+			var select = document.getElementById('donationSelect');
+			var donationDisplay = document.getElementById('donationSelect').options[select.selectedIndex].text
+			var donation = document.getElementById('donationSelect').options[select.selectedIndex].value;
+			parent.parent.send("donate§" + parent.parent.getPlayerName() + "§" + donation);
+			alert("Spende in Höhe von " + donationDisplay + " getätigt")
 		}
 		
 		function sendSponsorRequest(){
@@ -209,6 +241,10 @@ header {
 		function sendSponsorStopRequest(){
 			document.getElementById("sponsorButton").style.display = "initial";
 			document.getElementById("sponsorStopButton").style.display = "none";
+		}
+		
+		function sendLetteringRequest(){
+			document.getElementById("letteringButton").disabled = true;
 		}
 		
 		function closeDialog(){

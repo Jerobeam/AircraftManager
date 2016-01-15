@@ -47,7 +47,8 @@ public class Marketing {
 	
 	public void increaseImage(Airline airline, double increasment){
 		if ((airline.getImage() + increasment) <=100) {
-			airline.setImage(airline.getImage() + (increasment*this.getEfficiency()));			
+			airline.setImage(airline.getImage() + (increasment*this.getEfficiency()));	
+			System.out.println("Image erhöht um: " + increasment);
 		}else{
 			airline.setImage(100.0);
 		}
@@ -78,7 +79,7 @@ public class Marketing {
 		}else if (amount>=2500000){
 			this.increaseImage(airline, 5.5);			
 		}
-		System.out.println("Donate called");
+		System.out.println("Donate called with: " + amount);
 	}
 	
 	//Schriftzug Design für Flugzeuge

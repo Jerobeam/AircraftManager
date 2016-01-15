@@ -226,6 +226,8 @@ public class Airline {
 	}
 
 	public void monthlyCalculation() {
+		System.out.println("Monatliches Image alt: " + this.getImage());
+		System.out.println("Monatliche Imageerhöhung: " + this.getMarketingDept().getMonthlyImageIncreasement());
 		for (Credit c : credits) {
 			c.iterationStep();
 		}
@@ -256,6 +258,7 @@ public class Airline {
 
 		// image loss over time
 		this.getMarketingDept().decreaseImage(this, 1);
+		System.out.println("Monatliches Image neu: " + this.getImage());
 	}
 
 	public void takeCreditType1(int amount) {
@@ -315,6 +318,7 @@ public class Airline {
 	}
 
 	public void setImage(double image) {
+		System.out.println("Image von " + this.getImage() + " auf " + image + " gesetzt");
 		this.image = image;
 	}
 

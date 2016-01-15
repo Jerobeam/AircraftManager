@@ -179,10 +179,17 @@ public class Airline {
 		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
 
 		for (Plane p : planes) {
-			json = Json.createObjectBuilder().add("type", p.getType()).add("name", p.getName())
-					.add("value", p.getValue()).add("comfort", p.getComfort()).add("capacity", p.getCapacity())
-					.add("flightsPerDay", p.getFlightsPerDay()).add("costs", p.getCosts())
-					.add("earnings", p.getEarnings()).add("bookingPrice", p.getBookingPrice()).build();
+			json = Json.createObjectBuilder()
+					.add("type", p.getType())
+					.add("name", p.getName())
+					.add("value", p.getValue())
+					.add("comfort", p.getComfort())
+					.add("capacity", p.getCapacity())
+					.add("flightsPerDay", p.getFlightsPerDay())
+					.add("costs", p.getCosts())
+					.add("earnings", p.getEarnings())
+					.add("bookingPrice", p.getBookingPrice())
+					.build();
 
 			jsonArray.add(json);
 		}

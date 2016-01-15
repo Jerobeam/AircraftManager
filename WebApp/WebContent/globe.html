@@ -396,9 +396,9 @@ canvas {
 		function openPersonal(){
 			switchRenderer();
 			cssScene.remove(objectCSS);
-			login.innerHTML = "<iframe frameBorder='0' width='400' height='300' src='setPersonalDialog.html' scrolling='no'></iframe>";
+			login.innerHTML = "<iframe frameBorder='0' width='400' height='573' src='setPersonalDialog.html' scrolling='no'></iframe>";
 			login.style.width = '400px';
-			login.style.height = '300px';
+			login.style.height = '573px';
 			objectCSS = new THREE.CSS3DObject( login );
 			objectCSS.scale.multiplyScalar( 0.004);
 			objectCSS.position.set(0,0.5,-4);
@@ -432,9 +432,9 @@ canvas {
 		function openAllPlanesDialog(){
 			//switchRenderer();
 			cssScene.remove(objectCSS);
-			login.innerHTML = "<iframe frameBorder='0' width='600' height='400' src='allPlanesDialog.html' scrolling='no'></iframe>";
+			login.innerHTML = "<iframe frameBorder='0' width='600' height='365' src='allPlanesDialog.html' scrolling='no'></iframe>";
 			login.style.width = '800px';
-			login.style.height = '400px';
+			login.style.height = '365px';
 			objectCSS = new THREE.CSS3DObject( login );
 			objectCSS.scale.multiplyScalar( 0.004);
 			objectCSS.position.set(0,0.5,-4);
@@ -463,19 +463,39 @@ canvas {
 			objectCSS.position.set(0,0.5,-4);
 			cssScene.add(objectCSS);
 		}
-		
-		function openMarketingDialog(){
-			switchRenderer();
+		function openA350Dialog(){
+			//switchRenderer();
 			cssScene.remove(objectCSS);
-			login.innerHTML = "<iframe frameBorder='0' width='800' height='430' src='MarketingDialog.html' scrolling='no'></iframe>";
-			login.style.width = '800px';
-			login.style.height = '430px';
+			login.innerHTML = "<iframe frameBorder='0' width='400' height='400' src='a350Dialog.html' scrolling='no'></iframe>";
+			login.style.width = '400px';
+			login.style.height = '400px';
 			objectCSS = new THREE.CSS3DObject( login );
 			objectCSS.scale.multiplyScalar( 0.004);
 			objectCSS.position.set(0,0.5,-4);
 			cssScene.add(objectCSS);
 		}
-		
+		function openB787Dialog(){
+			//switchRenderer();
+			cssScene.remove(objectCSS);
+			login.innerHTML = "<iframe frameBorder='0' width='400' height='400' src='b787Dialog.html' scrolling='no'></iframe>";
+			login.style.width = '400px';
+			login.style.height = '400px';
+			objectCSS = new THREE.CSS3DObject( login );
+			objectCSS.scale.multiplyScalar( 0.004);
+			objectCSS.position.set(0,0.5,-4);
+			cssScene.add(objectCSS);
+		}
+		function openMarketingDialog(){
+            switchRenderer();
+            cssScene.remove(objectCSS);
+            login.innerHTML = "<iframe frameBorder='0' width='800' height='430' src='MarketingDialog.html' scrolling='no'></iframe>";
+            login.style.width = '800px';
+            login.style.height = '430px';
+            objectCSS = new THREE.CSS3DObject( login );
+            objectCSS.scale.multiplyScalar( 0.004);
+            objectCSS.position.set(0,0.5,-4);
+            cssScene.add(objectCSS);
+        }
 		function openITDialog(){
 			switchRenderer();
 			cssScene.remove(objectCSS);

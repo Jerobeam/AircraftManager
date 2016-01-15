@@ -123,6 +123,10 @@ public class Game {
 	public void tickMonth(){
 		for(Airline airline : airlines){
 			airline.monthlyCalculation();
+			//image loss over time
+			if(airline.getImage()>=1){
+				airline.setImage(airline.getImage()-1);				
+			}
 		}
 	}
 	public void tickDay(){

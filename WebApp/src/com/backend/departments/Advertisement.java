@@ -1,4 +1,4 @@
-package com.backend;
+package com.backend.departments;
 
 public abstract class Advertisement {
 	private double imageFactor;

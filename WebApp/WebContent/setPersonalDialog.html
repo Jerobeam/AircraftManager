@@ -63,11 +63,9 @@ section {
 		}
 		function setGroundCrew(){
 			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sumGroundCrew').value);
-			parent.closeMenu();
 		}
 		function setMaintenance(){
 			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§4§" + document.getElementById('sumMaintenance').value);
-			parent.closeMenu();
 		}
 		function closeDialog(){
 			parent.closeMenu();

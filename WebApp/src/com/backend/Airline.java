@@ -28,7 +28,7 @@ public class Airline {
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
 	//TODO: Balance startImage 
-	private int image = 10;
+	private double image = 10;
 	private Service services;
 	
 	//Set Departments
@@ -127,6 +127,7 @@ public class Airline {
 			if (this.getMoney()>= p.getPrice()){
 				this.planes.add(p);
 				this.money = this.money - p.getPrice();
+				//if lettering from marketing is bought increase image
 				System.out.println("Plane bought" + p.getName());
 			}
 		}
@@ -289,11 +290,11 @@ public class Airline {
 		return AccountingDept;
 	}
 
-	public int getImage() {
+	public double getImage() {
 		return image;
 	}
 
-	public void setImage(int image) {
+	public void setImage(double image) {
 		this.image = image;
 	}
 

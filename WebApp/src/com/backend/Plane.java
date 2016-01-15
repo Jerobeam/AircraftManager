@@ -279,5 +279,13 @@ public class Plane {
 	public boolean getOutsideCleaning(){
 		return this.upgrades.isDoOutsideCleaning();
 	}
+
+	public PlaneUpgrade getUpgrades() {
+		return upgrades;
+	}
+
+	public void setUpgrades(PlaneUpgrade upgrades) {
+		this.upgrades = upgrades;
+	}
 	
 }

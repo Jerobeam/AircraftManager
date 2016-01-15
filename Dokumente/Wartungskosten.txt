@@ -1,0 +1,11 @@
+
+Durchschnitt:
+
+3.1 Millionen $ pro Flugzeug
+(Min: $ 0.5 Mill.; Max: $ 9.0 Mill.)
+
+$1.167 per flight hour 
+(Min: $282; Max: $5.253)
+
+$3.021 per flight cycle
+(Min: $418; Max: $17.533)

@@ -199,11 +199,13 @@ header {
 			</div>
 		</div>
 
+
 		<div class="tab">
 			<input type="radio" id="tab-2" name="tab-group-1"> <label
 				for="tab-2">Werbung</label>
 			<div class="content">
-				<p style="margin-left:1rem;"><b>Werbung erhört das Image über die Zeit, jedoch stagniert der Imagezuwachs auf Dauer</b></p>
+				<br>
+				<b style="margin-left:1rem;">Werbung erhört das Image über die Zeit, jedoch stagniert der Imagezuwachs auf Dauer</b>
 				<table id="Table">
 					<tr>
 						<th>Art</th>
@@ -236,7 +238,7 @@ header {
 						<td>
 							Bitte wählen:
 							<br>
-							<select id="donationSelect">
+							<select id="onlineAdSelect">
 							  <option value="paket1">Paket 1: 200.000</option>
 							  <option value="paket2">Paket 2: 400.000</option>
 							</select> €/Monat</td>
@@ -252,6 +254,29 @@ header {
 						</td>
 					</tr>
 					
+					<tr>
+						<td>TV Werbung</td>
+						<td>Paket 1: Schwacher monatlicher Imagezuwachs - langsam Effizienzabstieg
+						<br>Paket 2: Starker monatlicher Imagezuwachs - schnellerer Effizienzabstieg</td>
+						<td>
+							Bitte wählen:
+							<br>
+							<select id="tvAdSelect">
+							  <option value="paket1">Paket 1: 200.000</option>
+							  <option value="paket2">Paket 2: 400.000</option>
+							</select> €/Monat</td>
+						<td>
+							<Button id="tvAdButton"
+								onclick="sendTvAdRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: initial;">Kaufen</Button>
+							<Button id="stopTvAdButton"
+								onclick="sendStopTvAdRequest()" type="submit"
+								class="pure-button pure-button-primary"
+								style="display: none;">Abbestellen</Button>
+						</td>
+					</tr>
+					
 				</table>
 			</div>
 		</div>
@@ -260,6 +285,8 @@ header {
 		playerData = parent.parent.getPlayerData();
 		var isLettering = playerData.isLettering;
 		var isSponsoring = playerData.isSponsoring;
+		
+		//************Aktionen Funktionen (Tab1)
 		
 		//Lettering bought?
 		if(isLettering){
@@ -298,6 +325,68 @@ header {
 			parent.parent.send("designPlaneLettering§" + parent.parent.getPlayerName());
 			parent.parent.send("designPlaneLettering§" + parent.parent.getPlayerName());
 			document.getElementById("letteringButton").disabled = true;
+		}
+		
+		//************Werbung Aktionen (Tab 2)
+		var isTvAd = playerData.isTvAd;
+		var isPrintAd = playerData.isPrintAd;
+		var isOnlineAd = playerData.isOnlineAd;
+		
+		//TV Ad bought?
+		if(isTvAd){
+			document.getElementById("tvAdButton").style.display = "none";
+			document.getElementById("stopTvAdButton").style.display = "initial";
+		}else{
+			document.getElementById("tvAdButton").style.display = "initial";
+			document.getElementById("StopTvAdButton").style.display = "none";
+		}
+		function sendTvAdRequest(){
+			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
+			document.getElementById("tvAdButton").style.display = "none";
+			document.getElementById("StopTvAdButton").style.display = "initial";
+		}
+		function sendStopTvAdRequest(){
+			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
+			document.getElementById("tvAdButton").style.display = "initial";
+			document.getElementById("StopTvAdButton").style.display = "none";
+		}
+		
+		//Online Ad bought?
+		if(isOnlineAd){
+			document.getElementById("onlineAdButton").style.display = "none";
+			document.getElementById("stopOnlineAdButton").style.display = "initial";
+		}else{
+			document.getElementById("onlineAdButton").style.display = "initial";
+			document.getElementById("stopOnlineAdButton").style.display = "none";
+		}
+		function sendOnlineAdRequest(){
+			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
+			document.getElementById("onlineAdButton").style.display = "none";
+			document.getElementById("stopOnlineAdButton").style.display = "initial";
+		}
+		function sendStopTvAdRequest(){
+			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
+			document.getElementById("onlineAdButton").style.display = "initial";
+			document.getElementById("stopOnlineAdButton").style.display = "none";
+		}
+		
+		//Print Ad bought?
+		if(isPrintAd){
+			document.getElementById("printAdButton").style.display = "none";
+			document.getElementById("stopPrintAdButton").style.display = "initial";
+		}else{
+			document.getElementById("printAdButton").style.display = "initial";
+			document.getElementById("stopPrintAdButton").style.display = "none";
+		}
+		function sendPrintAdRequest(){
+			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
+			document.getElementById("printAdButton").style.display = "none";
+			document.getElementById("stopPrintAdButton").style.display = "initial";
+		}
+		function sendStopTvAdRequest(){
+			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
+			document.getElementById("printAdButton").style.display = "initial";
+			document.getElementById("stopPrintAdButton").style.display = "none";
 		}
 		
 		function closeDialog(){

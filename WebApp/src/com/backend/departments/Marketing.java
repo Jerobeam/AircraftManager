@@ -97,6 +97,7 @@ public class Marketing {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 50000);
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + 3);
 			this.setSponsoring(true);
+			System.out.println("becomeSponsor called");
 		}
 	}
 	
@@ -108,6 +109,8 @@ public class Marketing {
 			//reduce Image once because of "disappointment of fans"
 			this.decreaseImage(airline, 2);
 			this.setSponsoring(false);
+			
+			System.out.println("stopSponsoring called");
 		}
 	}
 	

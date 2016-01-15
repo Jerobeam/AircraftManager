@@ -139,6 +139,12 @@ public class AirlineServerEndpoint {
 		case "donate":
 			game.getAirlineByName(request[1]).getMarketingDept().donate(game.getAirlineByName(request[1]), Long.parseLong(request[2]));
 			break;
+		case "becomeSponsor":
+			game.getAirlineByName(request[1]).getMarketingDept().becomeSponsor(game.getAirlineByName(request[1]));
+			break;
+		case "stopSponsoring":
+			game.getAirlineByName(request[1]).getMarketingDept().stopSponsoring(game.getAirlineByName(request[1]));
+			break;
 		default:
 			break;
 		}

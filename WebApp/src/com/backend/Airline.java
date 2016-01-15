@@ -27,7 +27,8 @@ public class Airline {
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
-	private int image;
+	//TODO: Balance startImage 
+	private int image = 10;
 	private Service services;
 	
 	//Set Departments
@@ -207,7 +208,7 @@ public class Airline {
 		for (Plane p : planes) {
 			sum = p.getEarnings() - p.getCosts();
 		}
-		this.ek = this.ek + sum;
+		this.ek = this.getEK() + sum;
 		this.money = this.money + sum;
 	}
 	
@@ -236,7 +237,7 @@ public class Airline {
 		//billing departments
 		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten;
 		this.setMoney(moneyNew);
-		this.ek = this.ek - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten; 
+		this.ek = this.getEK() - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts() - personalkosten; 
 	}
 	
 	public void takeCreditType1(int amount){
@@ -263,6 +264,7 @@ public class Airline {
 	public long getEK() {
 		return this.ek;
 	}
+	
 	public long getFK() {
 		long fremdkap = 0;
 		for (Credit c : credits) {

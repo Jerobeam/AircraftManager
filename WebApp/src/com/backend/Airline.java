@@ -29,7 +29,7 @@ public class Airline {
 	private int planeCount = 0;
 	// TODO: Balance startImage
 	private double image = 10;
-	private Service services;
+	private Service services = new Service();
 
 	// Set Departments
 	private final Marketing MarketingDept = new Marketing();
@@ -230,7 +230,7 @@ public class Airline {
 			c.iterationStep();
 		}
 		for (Plane p : planes) {
-			if (p.getOutsideCleaning()) {
+			if (p.getOutsideCleaning() == true) {
 				p.setOutsideCleaning(false);
 			}
 			if (p.getBuyPlaneCleaning()) {

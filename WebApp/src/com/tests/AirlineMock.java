@@ -25,6 +25,18 @@ public class AirlineMock extends Airline{
 			p.setPilot(2);
 			p.setSteward(3);
 		}
+		if(type.equals("A350")){
+			p.setCapacity(314);
+			p.setComfort(35);
+			p.setSpeed(910);
+			p.setRange(14350);
+			p.setFuelCosts(3500);
+			p.setUpkeepCosts(4000);
+			p.setPrice(21500000);
+			p.setValue(21500000);
+			p.setPilot(2);
+			p.setSteward(6);
+		}
 		return p;
 	}
 

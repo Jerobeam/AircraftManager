@@ -25,7 +25,7 @@ public class Plane {
 	private int pilot;
 	private int benefit;
 	private Airline airline;
-	private PlaneUpgrade upgrades;
+	private PlaneUpgrade upgrades = new PlaneUpgrade();
 
 	public int getPilot() {
 		return pilot;

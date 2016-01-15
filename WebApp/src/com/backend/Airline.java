@@ -235,7 +235,14 @@ public class Airline {
 		for (Credit c : credits) {
 			c.iterationStep();
 		}
-		
+		for (Plane p : planes){
+			if(p.getOutsideCleaning()){
+				p.setOutsideCleaning(false);
+			}
+			if(p.getBuyPlaneCleaning()){
+				p.setOutsideCleaning(true);
+			}
+		}
 		int personalkosten = 0;
 		personalkosten = (int)((this.Piloten*this.PILOTENKOSTEN+this.Stewardessen*this.STWDKOSTEN+this.Bodenpersonal*this.BODENPERSONALKOSTEN+this.WartungsPersonal*this.WARTUNGSPERSONALKOSTEN) * this.getITDept().getHrCostsFactor());
 		//billing departments

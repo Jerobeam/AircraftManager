@@ -187,4 +187,78 @@ public class Plane {
 		this.steward = steward;
 	}
 	
+	public void setWinglets(){
+		this.upgrades.setWinglets(true);
+		this.airline.setMoney(this.airline.getMoney() - 500000);
+		this.setFuelCosts((int)(this.getFuelCosts()*0.965));
+	}	
+	
+	public void setNewEngine(){
+		this.upgrades.setNewEngine(true);
+		this.airline.setMoney(this.airline.getMoney() - 10000000);
+		this.fuelCosts = (int)(this.getFuelCosts()*0.85);
+		this.range = this.range+950;
+	}
+	
+	public void buyOutsideCleaning(){
+		this.upgrades.setBuyOutsideCleaning(true);
+		this.airline.setMoney(this.airline.getMoney() - 50000);		
+	}
+	
+	public void entertainmentPackage(int value){
+		if((value <= 3) && (value >= 0)){
+			this.upgrades.setEntertainmentPackage(value);
+			switch (value) {
+				case 1:{
+					this.airline.setMoney(this.airline.getMoney() - 300000);
+					this.comfort = this.comfort + 5;
+					this.upgrades.setMonthlyCosts(1000);
+				}
+					
+				case 2:{
+					this.airline.setMoney(this.airline.getMoney() - 500000);
+					this.comfort = this.comfort + 10;
+					this.upgrades.setMonthlyCosts(5000);
+				}
+					
+				case 3:{
+					this.airline.setMoney(this.airline.getMoney() - 1000000);
+					this.comfort = this.comfort + 20;
+					this.upgrades.setMonthlyCosts(10000);
+				}
+			}
+		}
+	}
+	
+	public void setSeats(int value){
+		if((value <= 3) && (value >= 1)){
+			this.upgrades.setSeat(value);
+			switch (value) {
+				case 2:{
+					this.airline.setMoney(this.airline.getMoney() - 750000);
+					this.comfort = this.comfort + 15;
+				}
+					
+				case 3:{
+					this.airline.setMoney(this.airline.getMoney() - 1500000);
+					this.comfort = this.comfort + 25;
+				}
+			}
+		}
+	}
+
+	public boolean getBuyPlaneCleaning() {
+		return this.upgrades.isBuyOutsideCleaning();
+	}
+	
+	public void setOutsideCleaning(boolean value){
+		this.upgrades.isDoOutsideCleaning();
+		if(value){
+			this.fuelCosts = (int)(this.getFuelCosts()*0.99);
+		}
+	}
+	public boolean getOutsideCleaning(){
+		return this.upgrades.isDoOutsideCleaning();
+	}
+	
 }

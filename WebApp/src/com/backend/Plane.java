@@ -198,6 +198,7 @@ public class Plane {
 		this.airline.setMoney(this.airline.getMoney() - 10000000);
 		this.fuelCosts = (int)(this.getFuelCosts()*0.85);
 		this.range = this.range+950;
+		//Image steigert sich muss noch implementiert werden
 	}
 	
 	public void buyOutsideCleaning(){
@@ -212,19 +213,19 @@ public class Plane {
 				case 1:{
 					this.airline.setMoney(this.airline.getMoney() - 300000);
 					this.comfort = this.comfort + 5;
-					this.upgrades.setMonthlyCosts(1000);
+					this.upgrades.setMonthlyCosts(5000);
 				}
 					
 				case 2:{
 					this.airline.setMoney(this.airline.getMoney() - 500000);
 					this.comfort = this.comfort + 10;
-					this.upgrades.setMonthlyCosts(5000);
+					this.upgrades.setMonthlyCosts(10000);
 				}
 					
 				case 3:{
 					this.airline.setMoney(this.airline.getMoney() - 1000000);
 					this.comfort = this.comfort + 20;
-					this.upgrades.setMonthlyCosts(10000);
+					this.upgrades.setMonthlyCosts(20000);
 				}
 			}
 		}

@@ -313,6 +313,156 @@ public class Airline {
 		this.monthlyCosts = monthlyCosts;
 	}
 	
+	public void setNewspaper(boolean value){
+		this.services.setNewsPaper(value);
+		if(value){
+			for (Plane p : planes){
+				 p.setComfort(p.getComfort()+1);
+			}
+			this.monthlyCosts = (this.monthlyCosts + (planes.size()*10000));
+		} else {
+			for (Plane p : planes){
+				 p.setComfort(p.getComfort()-1);
+			}
+			this.monthlyCosts = (this.monthlyCosts - (planes.size()*10000));
+		}
+	}
+	
+	public void setWlanAboard(boolean value){
+		this.services.setWlanAboard(value);
+		if(value){
+			for (Plane p : planes){
+				 p.setComfort(p.getComfort()+2);
+			}
+			this.money -= 50000;
+			this.monthlyCosts = (this.monthlyCosts + (planes.size()*20000));
+		} else {
+			for (Plane p : planes){
+				 p.setComfort(p.getComfort()-2);
+			}
+			this.monthlyCosts = (this.monthlyCosts - (planes.size()*20000));
+		}
+	}
+	
+	public void setfreePickupService(boolean value){
+		this.services.setFreePickupService(value);
+		if(value){		
+			for (Plane p : planes){
+				 p.setComfort(p.getComfort()+5);
+			}
+			this.money -= 100000;
+			this.monthlyCosts += 50000;
+		} else {
+			for (Plane p : planes){
+				 p.setComfort(p.getComfort()-5);
+			}
+			this.monthlyCosts -= 50000;
+		}
+	}
+	
+	public void setfreeSeatReservation(boolean value){
+		this.services.setFreeSeatReservation(value);
+		if(value){
+			for (Plane p : planes){
+				 p.setComfort(p.getComfort()+1);
+			}
+			this.money -= 10000;
+			this.monthlyCosts += 5000;		
+		} else {
+			for (Plane p : planes){
+				 p.setComfort(p.getComfort()-1);
+			}
+			this.monthlyCosts -= 5000;	
+		}
+	}
+	
+	public void setAirportLounge(int value){
+		if((value <= 2) && (value >= 0)){
+			this.services.setAirportLounge(value);
+			switch (value) {
+			    case 0:{
+			    	if(this.services.getAirportLounge() == 1){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()-5);
+						}
+						this.monthlyCosts -= 50000;
+					} else if (this.services.getAirportLounge() == 2){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()-10);
+						}
+						this.monthlyCosts -= 150000;
+					}
+			    }
+				case 1:{
+					if(this.services.getAirportLounge() < 1){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()+5);
+						}
+						this.money -= 100000;
+						this.monthlyCosts += 50000;
+					} else if (this.services.getAirportLounge() > 1){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()-5);
+						}
+						this.monthlyCosts -= 100000;
+					}
+				}
+					
+				case 2:{
+					if(this.services.getAirportLounge() < 2){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()+10);
+						}
+						this.money -= 500000;
+						this.monthlyCosts += 150000;
+					}
+				}			
+			}
+		}		
+	}
+	
+	public void setCateringPackage(int value){
+		if((value <= 3) && (value >= 0)){
+			this.services.setCateringPackage(value);
+			switch (value) {
+			    case 0:{
+			    	if(this.services.getCateringPackage() == 1){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()-3);
+						}
+						this.monthlyCosts = (this.monthlyCosts - (planes.size()*10000));
+					} else if (this.services.getCateringPackage() == 2){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()-7);
+						}
+						this.monthlyCosts -= (this.monthlyCosts - (planes.size()*50000));
+					}
+			    }
+				case 1:{
+					if(this.services.getCateringPackage() < 1){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()+3);
+						}
+						this.monthlyCosts = (this.monthlyCosts + (planes.size()*10000));
+					} else if (this.services.getCateringPackage() > 1){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()-4);
+						}
+						this.monthlyCosts = (this.monthlyCosts - (planes.size()*40000));
+					}
+				}
+					
+				case 2:{
+					if(this.services.getCateringPackage() < 2){
+						for (Plane p : planes){
+							 p.setComfort(p.getComfort()+7);
+						}
+						this.monthlyCosts = (this.monthlyCosts + (planes.size()*50000));
+					}
+				}
+			}
+		}
+	}
 	
 	
 }

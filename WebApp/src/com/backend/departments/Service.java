@@ -11,8 +11,8 @@ public class Service {
 	private boolean newsPaper = false; //Steigert Komfort aller Planes
 	private boolean freeSeatReservation = false; //Steigert Komfort
 	private boolean freePickupService = false; //Steigert Komfort aller Planes
-	
 	private boolean wlanAboard = false; //Steigert Komfort aller Planes
+	
 	public int getMonthlyCosts() {
 		return monthlyCosts;
 	}

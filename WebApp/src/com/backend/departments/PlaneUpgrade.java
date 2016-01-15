@@ -1,8 +1,6 @@
 package com.backend.departments;
 
-public class PlaneUpgrade {
-	private int monthlyCosts;
-	
+public class PlaneUpgrade {	
 	private boolean winglets = false; //Verbessert Treibstoffverbrauch bis 3,5%
 	private boolean newEngine = false; //Verbessert Treibstoffverauch bis 15% -> steiger Image(Umweltschutz, Lärmschutz)-> erhöt Reichweite bis 950km
 	private boolean buyOutsideCleaning = false; //Verbessert Treibstoffverauch 1%
@@ -12,12 +10,6 @@ public class PlaneUpgrade {
 	private int seat = 1;// 1 = Standart, 2 = Ledersitze, 3 = Luxussitze
 	
 	
-	public int getMonthlyCosts() {
-		return monthlyCosts;
-	}
-	public void setMonthlyCosts(int monthlyCosts) {
-		this.monthlyCosts = monthlyCosts;
-	}
 	public boolean isWinglets() {
 		return winglets;
 	}

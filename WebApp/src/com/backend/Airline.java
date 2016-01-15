@@ -233,10 +233,10 @@ public class Airline {
 		}
 		for (Plane p : planes) {
 			if (p.getOutsideCleaning() == true) {
-				p.setOutsideCleaning(false);
+				p.setDoOutsideCleaning(false);
 			}
 			if (p.getBuyPlaneCleaning()) {
-				p.setOutsideCleaning(true);
+				p.setDoOutsideCleaning(true);
 			}
 		}
 		int personalkosten = 0;

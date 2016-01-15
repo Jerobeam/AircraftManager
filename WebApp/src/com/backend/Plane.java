@@ -211,21 +211,36 @@ public class Plane {
 			this.upgrades.setEntertainmentPackage(value);
 			switch (value) {
 				case 1:{
-					this.airline.setMoney(this.airline.getMoney() - 300000);
-					this.comfort = this.comfort + 5;
-					this.upgrades.setMonthlyCosts(5000);
+					if(value > this.upgrades.getEntertainmentPackage()){
+						this.airline.setMoney(this.airline.getMoney() - 300000);
+						this.comfort = this.comfort + 5;
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+5000);
+					} else if(this.upgrades.getEntertainmentPackage() == 2){
+						this.comfort = this.comfort - 5;
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()-5000);
+					} else if(this.upgrades.getEntertainmentPackage() == 3){
+						this.comfort = this.comfort - 15;
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()-15000);						
+					}
 				}
 					
 				case 2:{
-					this.airline.setMoney(this.airline.getMoney() - 500000);
-					this.comfort = this.comfort + 10;
-					this.upgrades.setMonthlyCosts(10000);
+					if(value > this.upgrades.getEntertainmentPackage()){
+						this.airline.setMoney(this.airline.getMoney() - 500000);
+						this.comfort = this.comfort + 10;
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+10000);
+					} else if(this.upgrades.getEntertainmentPackage() == 3){
+						this.comfort = this.comfort - 10;
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()-10000);
+					}
 				}
 					
 				case 3:{
-					this.airline.setMoney(this.airline.getMoney() - 1000000);
-					this.comfort = this.comfort + 20;
-					this.upgrades.setMonthlyCosts(20000);
+					if(value > this.upgrades.getEntertainmentPackage()){
+						this.airline.setMoney(this.airline.getMoney() - 1000000);
+						this.comfort = this.comfort + 20;
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+20000);
+					}
 				}
 			}
 		}
@@ -236,13 +251,16 @@ public class Plane {
 			this.upgrades.setSeat(value);
 			switch (value) {
 				case 2:{
-					this.airline.setMoney(this.airline.getMoney() - 750000);
-					this.comfort = this.comfort + 15;
-				}
-					
+					if(this.upgrades.getSeat() < value){
+						this.airline.setMoney(this.airline.getMoney() - 750000);
+						this.comfort = this.comfort + 15;
+					}
+				}					
 				case 3:{
-					this.airline.setMoney(this.airline.getMoney() - 1500000);
-					this.comfort = this.comfort + 25;
+					if(this.upgrades.getSeat() < value){
+						this.airline.setMoney(this.airline.getMoney() - 1500000);
+						this.comfort = this.comfort + 25;
+					}
 				}
 			}
 		}
@@ -252,7 +270,7 @@ public class Plane {
 		return this.upgrades.isBuyOutsideCleaning();
 	}
 	
-	public void setOutsideCleaning(boolean value){
+	public void setDoOutsideCleaning(boolean value){
 		this.upgrades.isDoOutsideCleaning();
 		if(value){
 			this.fuelCosts = (int)(this.getFuelCosts()*0.99);

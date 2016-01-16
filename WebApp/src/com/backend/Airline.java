@@ -12,7 +12,6 @@ import javax.json.JsonValue;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.backend.departments.Accounting;
 import com.backend.departments.IT;
 import com.backend.departments.Marketing;
 import com.backend.departments.Service;
@@ -34,7 +33,6 @@ public class Airline {
 	// Set Departments
 	private final Marketing MarketingDept = new Marketing();
 	private final IT ITDept = new IT();
-	private final Accounting AccountingDept = new Accounting();
 
 	private final int PILOTENKOSTEN = 5000;
 	private final int STWDKOSTEN = 2000;
@@ -252,16 +250,22 @@ public class Airline {
 				p.setDoOutsideCleaning(true);
 			}
 		}
+		//billing hr
 		int personalkosten = 0;
 		personalkosten = (int) ((this.Piloten * this.PILOTENKOSTEN + this.Stewardessen * this.STWDKOSTEN
 				+ this.Bodenpersonal * this.BODENPERSONALKOSTEN + this.WartungsPersonal * this.WARTUNGSPERSONALKOSTEN)
 				* this.getITDept().getHrCostsFactor());
+		
+		//billing accounting depending on amount of planes
+		int planesAmount = this.getPlanes().size();
+		int accountingCosts = (int)(10000 + (planesAmount * 2500 * this.getITDept().getAccountingCostsFactor()) + 0.5);
+		
 		// billing departments
 		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts()
-				- this.getAccountingDept().getMonthlyCosts() - this.getMarketingDept().getMonthlyCosts()
+				- accountingCosts - this.getMarketingDept().getMonthlyCosts()
 				- personalkosten;
 		this.setMoney(moneyNew);
-		this.ek = this.getEK() - this.getITDept().getMonthlyCosts() - this.getAccountingDept().getMonthlyCosts()
+		this.ek = this.getEK() - this.getITDept().getMonthlyCosts() - accountingCosts
 				- this.getMarketingDept().getMonthlyCosts() - personalkosten;
 
 		// monthly Image increasement
@@ -320,10 +324,6 @@ public class Airline {
 
 	public IT getITDept() {
 		return ITDept;
-	}
-
-	public Accounting getAccountingDept() {
-		return AccountingDept;
 	}
 
 	public double getImage() {

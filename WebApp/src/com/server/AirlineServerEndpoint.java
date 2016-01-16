@@ -149,22 +149,22 @@ public class AirlineServerEndpoint {
 			game.getAirlineByName(request[1]).getMarketingDept().designPlaneLettering(game.getAirlineByName(request[1]));
 			break;
 		case "pickupService":
-			game.getAirlineByName(request[1]).setfreePickupService(Boolean.parseBoolean(request[2]));
+			game.getAirlineByName(request[1]).getServices().setFreePickupService(Boolean.parseBoolean(request[2]));
 			break;	
 		case "seatReservation":
-			game.getAirlineByName(request[1]).setfreeSeatReservation(Boolean.parseBoolean(request[2]));
+			game.getAirlineByName(request[1]).getServices().setFreeSeatReservation(Boolean.parseBoolean(request[2]));
 			break;	
 		case "wlan":
-			game.getAirlineByName(request[1]).setWlanAboard(Boolean.parseBoolean(request[2]));
+			game.getAirlineByName(request[1]).getServices().setWlanAboard(Boolean.parseBoolean(request[2]));
 			break;	
 		case "newspaper":
-			game.getAirlineByName(request[1]).setNewspaper(Boolean.parseBoolean(request[2]));
+			game.getAirlineByName(request[1]).getServices().setNewsPaper(Boolean.parseBoolean(request[2]));
 			break;	
 		case "setLoungePackage":
-			game.getAirlineByName(request[1]).setAirportLounge(Integer.parseInt(request[2]));
+			game.getAirlineByName(request[1]).getServices().setAirportLounge(Integer.parseInt(request[2]));
 			break;	
 		case "setCateringPackage":
-			game.getAirlineByName(request[1]).setCateringPackage(Integer.parseInt(request[2]));
+			game.getAirlineByName(request[1]).getServices().setCateringPackage(Integer.parseInt(request[2]));
 			break;	
 		default:
 			break;

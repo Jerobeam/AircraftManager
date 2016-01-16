@@ -181,11 +181,11 @@ public class Game {
 					.add("stewardessen", a.getStewardessen())
 					.add("bodenpersonal", a.getBodenpersonal())
 					.add("wartung", a.getWartung())
-					.add("CateringPackage", a.getServices().getCateringPackage())
+					.add("cateringPackage", a.getServices().getCateringPackage())
 					.add("airportLounge", a.getServices().getAirportLounge())
 					.add("newsPaper", a.getServices().isNewsPaper())
 					.add("freeSeatReservation", a.getServices().isFreeSeatReservation())
-					.add("freePickupService", a.getServices().isFreeSeatReservation())
+					.add("freePickupService", a.getServices().isFreePickupService())
 					.add("wlanAboard", a.getServices().isWlanAboard())
 
 					.build();

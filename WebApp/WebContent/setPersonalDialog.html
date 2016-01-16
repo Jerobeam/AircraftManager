@@ -54,23 +54,6 @@ section {
 </head>
 
 <body bgcolor="white">
-	<script type="text/javascript">
-		function setPilots(){
-			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§1§" + document.getElementById('sumPilots').value);	
-		}		
-		function setStewards(){
-			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§2§" + document.getElementById('sumStewards').value);
-		}
-		function setGroundCrew(){
-			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sumGroundCrew').value);
-		}
-		function setMaintenance(){
-			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§4§" + document.getElementById('sumMaintenance').value);
-		}
-		function closeDialog(){
-			parent.closeMenu();
-		}
-	</script>
 	<header>
 		<div id="m2">
             <b>Personal verwalten</b>
@@ -170,5 +153,37 @@ section {
             </div>
         </div> 
 	</section>
+	<script type="text/javascript">
+		playerData = parent.parent.getPlayerData();
+		var pilotes = playerData.piloten;
+		var stewards = playerData.stewardessen;
+		var groundCrew = playerData.bodenpersonal;
+		var maintenance = playerData.wartung;
+	
+		document.getElementById('sumPilots').value = pilotes;
+		document.getElementById('sumStewards').value = stewards;
+		document.getElementById('sumGroundCrew').value = groundCrew;
+		document.getElementById('sumMaintenance').value = maintenance;
+		
+		function setPilots(){
+			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§1§" + document.getElementById('sumPilots').value);	
+			alert((parseInt(document.getElementById('sumPilots').value)-pilotes) + " Piloten eingestellt")
+		}		
+		function setStewards(){
+			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§2§" + document.getElementById('sumStewards').value);
+			alert((parseInt(document.getElementById('sumStewards').value)-pilotes) + " Stewardessen eingestellt")
+		}
+		function setGroundCrew(){
+			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sumGroundCrew').value);
+			alert((parseInt(document.getElementById('sumGroundCrew').value)-pilotes) + " Bodenpersonal eingestellt")
+		}
+		function setMaintenance(){
+			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§4§" + document.getElementById('sumMaintenance').value);
+			alert((parseInt(document.getElementById('sumMaintenance').value)-pilotes) + " Wartungspersonal eingestellt")
+		}
+		function closeDialog(){
+			parent.closeMenu();
+		}
+	</script>
 </body>
 </html>

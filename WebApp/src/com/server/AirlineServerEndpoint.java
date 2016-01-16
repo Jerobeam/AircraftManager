@@ -114,8 +114,8 @@ public class AirlineServerEndpoint {
 		case "setPersonal":
 			Airline airline = game.getAirlineByName(request[1]);
 			if(request[2].equals("1"))airline.setPiloten(Integer.parseInt(request[3]));
-			if(request[2].equals("2"))airline.setBodenpersonal(Integer.parseInt(request[3]));
-			if(request[2].equals("3"))airline.setStewardessen(Integer.parseInt(request[3]));
+			if(request[2].equals("2"))airline.setStewardessen(Integer.parseInt(request[3]));
+			if(request[2].equals("3"))airline.setBodenpersonal(Integer.parseInt(request[3]));		
 			if(request[2].equals("4"))airline.setWartung(Integer.parseInt(request[3]));
 			break;
 		case "buySocialMediaSoftware":

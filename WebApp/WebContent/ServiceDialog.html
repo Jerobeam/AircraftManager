@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="pure.css">
+<style>
+table {
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	border-collapse: collapse;
+	height: 90%;
+	width: 100%;
+}
+
+end {
+	height: 10%;
+	width: 100%;
+}
+
+th, td {
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	padding: 8px;
+	background-color: #F2F2F2
+}
+
+tr:nth-child(even) {
+	background-color: white
+}
+
+th {
+	background-color: black;
+	color: white;
+}
+
+header {
+    border: 1px solid #cbcbcb;
+	height: 25px; 
+	text-align: center; 
+	background-color: #000;
+	color: #FFF;
+	width: 100%;
+}
+#m2{ 
+	width: 93%;
+	padding-top: 5px;
+	float: left;
+}
+.content{
+	font-size:14px;
+}
+</style>
+
+</head>
+<body>
+    <header>
+        <div id="m2">
+            <b>Serviceleistungen auswählen</b>
+        </div>
+        <button id="close" onclick="closeDialog()" type="submit" class="pure-button pure-button-primary" style="background-color:#808080; float: right; height: 100%; width: 5%; padding: 0px;"><b>X</b></button>      
+    </header>
+
+	<table id="Table">
+		<tr>
+			<th>Aktion</th>
+			<th>Beschreibung</th>
+            <th>Kosten</th>
+			<th>Auswahl</th>
+            <th></th>
+		</tr>
+
+		<tr>
+			<td>Catering Packet</td>
+			<td class="content">
+                Paket 0: Keine Catering anbieten, es entstehen keine Kosten und kein Effekt <br/>
+                Paket 1: Einfache Speisen und Getränke kostenlos an Bord. Komfortsteigerung <b>3 Punkte</b><br/>
+                Paket 2: Große Auswahl an Speisen und Getränken an Bord. Komfortsteigerung <b>7 Punkte</b> <br/>            
+            </td>
+            <td class="content">
+                Paket 0: Keine Kosten <br/>
+                Paket 1: 10000€ monatlich pro Flugzeug<br/>
+                Paket 2: 50000€ monatlich pro Flugzeug<br/>  
+            </td>
+			<td>
+                  <select id="catering" class="content">
+                    <option value="0">Kein Packet</option>
+                    <option value="1">Packet 1</option>
+                    <option value="2">Packet 2</option>
+                  </select>
+          	</td>
+			<td>
+				<Button id="setCateringPackageBtn" onclick="setCateringPackage()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+			</td>		
+		</tr>
+		<tr>
+			<td>Airport Lounge</td>
+			<td class="content">
+                Paket 0: Keine Lounge anbieten, es entstehen keine Kosten und kein Effekt <br/>
+                Paket 1: Einfache Speisen,Getränke und Sitzplätze kostenlos am Flughafen. Komfortsteigerung <b>5 Punkte</b><br/>
+                Paket 2: Große Lounge mit gemütlichen Sitzplätzen, reichlich Speisen und Getränke. Komfortsteigerung: <b>10 Punkte</b> <br/>            
+            </td>
+            <td class="content">
+                Paket 0: Keine Kosten <br/>
+                Paket 1: Einmalige Kosten für den Bau: 100.000€; Monatliche Kosten zum betreiben 50.000€<br/>
+                Paket 2: Einmalige Kosten für den Bau: 500.000€; Monatliche Kosten zum betreiben 150.000€<br/>  
+            </td>
+			<td>
+                  <select id="lounge" class="content">
+                    <option value="0">Kein Packet</option>
+                    <option value="1">Packet 1</option>
+                    <option value="2">Packet 2</option>
+                  </select>
+          	</td>
+			<td>
+				<Button id="setLoungeBtn" onclick="setAirportLounge()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+			</td>		
+		</tr>
+        <tr>
+			<td>Zeitungen und Magazine</td>
+			<td class="content">
+                Auswahl an kostenlosen Zeitungen und Magazinen an Bord. Komfortsteigerung <b>1 Punkt</b> <br/>          
+            </td>
+            <td class="content">
+                Monatlich 10.000€ pro Flugzeug <br/>
+            </td>
+			<td>
+            
+          	</td>
+			<td>
+				<button id="newspaperBtn" onclick="setNewspaper()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+			</td>		
+		</tr>
+		<tr>
+			<td>Wlan</td>
+			<td class="content">
+                Kostenloses Wlan an Bord. Komfortsteigerung <b>2 Punkt</b> <br/>
+            </td>
+            <td class="content">
+                Monatlich 20.000€ pro Flugzeug <br/>
+            </td>
+			<td>
+            
+          	</td>
+			<td>
+				<button id="wlanBtn" onclick="setWlan()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+			</td>		
+		</tr>
+        <tr>
+			<td>Sitzplatzreservierung</td>
+			<td class="content">
+                Kostenlosese Sitzplatzreservierung. Komfortsteigerung <b>1 Punkt</b> <br/>
+            </td>
+            <td class="content">
+                10.000€ einmalig für die Einführung. Monatlich 5.000€ Verwaltungskosten <br/>
+            </td>
+			<td>
+            
+          	</td>
+			<td>
+				<button id="seatReservationBtn" onclick="setSeatReservation()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+			</td>		
+		</tr>
+        <tr>
+			<td>Abholservice</td>
+			<td class="content">
+                Kostenlosese Abholservice für Reisende in der nähe des Flughafens. Komfortsteigerung <b>5 Punkt</b> <br/>
+            </td>
+            <td class="content">
+                100.000€ einmalig für die Einführung. Monatlich 50.000€ für den Betrieb <br/>
+            </td>
+			<td>
+            
+          	</td>
+			<td>
+				<button id="pickupServiceBtn" onclick="setPickupService()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+			</td>		
+		</tr>
+	</table>
+	
+	<script type="text/javascript">
+		playerData = parent.parent.getPlayerData();
+		var isPickupService = playerData.freePickupService;
+		var isSeatReservation = playerData.freeSeatReservation;
+		var isWlan = playerData.wlanAboard;
+		var isNewspaper = playerData.newsPaper;
+		
+		var cateringPackageValue = playerData.cateringPackage;
+		var airportLoungeValue = playerData.airportLounge;
+		
+		var selectCatering = document.getElementById("catering");
+		document.getElementById("catering").options.selectedIndex = cateringPackageValue;
+		
+		var selectLounge = document.getElementById("lounge");
+		document.getElementById("lounge").options.selectedIndex = airportLoungeValue;
+		
+		if(isPickupService){
+			document.getElementById("pickupServiceBtn").value = false;
+			document.getElementById("pickupServiceBtn").innerHTML = "Abbestellen";
+		}else{
+			document.getElementById("pickupServiceBtn").value = true;
+			document.getElementById("pickupServiceBtn").innerHTML = "Kaufen";
+		}
+		
+		if(isSeatReservation){
+			document.getElementById("seatReservationBtn").value = false;
+			document.getElementById("seatReservationBtn").innerHTML = "Abbestellen";
+		}else{
+			document.getElementById("seatReservationBtn").value = true;
+			document.getElementById("seatReservationBtn").innerHTML = "Kaufen";
+		}
+		
+		if(isWlan){
+			document.getElementById("wlanBtn").value = false;
+			document.getElementById("wlanBtn").innerHTML = "Abbestellen";
+		}else{
+			document.getElementById("wlanBtn").value = true;
+			document.getElementById("wlanBtn").innerHTML = "Kaufen";
+		}
+			
+		if(isNewspaper){
+			document.getElementById("newspaperBtn").value = false;
+			document.getElementById("newspaperBtn").innerHTML = "Abbestellen";
+		}else{
+			document.getElementById("newspaperBtn").value = true;
+			document.getElementById("newspaperBtn").innerHTML = "Kaufen";
+		}
+		
+		function setPickupService() {
+			var value = document.getElementById("pickupServiceBtn").value;
+			if(value == "true"){
+				parent.parent.send("pickupService§" + parent.parent.getPlayerName()+"§"+ value);
+				document.getElementById("pickupServiceBtn").value = false;
+				document.getElementById("pickupServiceBtn").innerHTML = "Abbestellen";
+			} else {
+				parent.parent.send("pickupService§" + parent.parent.getPlayerName()+"§"+ value);
+				document.getElementById("pickupServiceBtn").value = true;
+				document.getElementById("pickupServiceBtn").innerHTML = "Kaufen";
+			}
+		}
+		function setSeatReservation() {
+			var value = document.getElementById("seatReservationBtn").value;
+			if(value == "true"){
+			parent.parent.send("seatReservation§" + parent.parent.getPlayerName()+"§"+ value);
+			document.getElementById("seatReservationBtn").value = false;
+			document.getElementById("seatReservationBtn").innerHTML = "Abbestellen";
+			} else {
+					parent.parent.send("seatReservation§" + parent.parent.getPlayerName()+"§"+ value);
+					document.getElementById("seatReservationBtn").value = true;
+					document.getElementById("seatReservationBtn").innerHTML = "Kaufen";
+			}
+		}
+		function setWlan() {
+			var value = document.getElementById("wlanBtn").value;
+			if(value == "true"){
+				parent.parent.send("wlan§" + parent.parent.getPlayerName()+"§"+ value);
+				document.getElementById("wlanBtn").value = false;
+				document.getElementById("wlanBtn").innerHTML = "Abbestellen";
+			} else {
+				parent.parent.send("wlan§" + parent.parent.getPlayerName()+"§"+ value);
+				document.getElementById("wlanBtn").value = true;
+				document.getElementById("wlanBtn").innerHTML = "Kaufen";
+			}
+		}
+		function setNewspaper() {
+			var value = document.getElementById("newspaperBtn").value;
+			if(value == "true"){
+				parent.parent.send("newspaper§" + parent.parent.getPlayerName()+"§"+ value);
+				document.getElementById("newspaperBtn").value = false;
+				document.getElementById("newspaperBtn").innerHTML = "Abbestellen";
+			} else {
+				parent.parent.send("newspaper§" + parent.parent.getPlayerName()+"§"+ value);
+				document.getElementById("newspaperBtn").value = true;
+				document.getElementById("newspaperBtn").innerHTML = "Kaufen";
+			}
+		}
+		function setCateringPackage() {
+			var select = document.getElementById("catering");
+			var packet = document.getElementById("catering").options[select.selectedIndex].value;
+			parent.parent.send("setCateringPackage§" + parent.parent.getPlayerName()+"§"+ packet);
+			alert("Packet "+ packet +" gekauft");
+		}
+		function setAirportLounge() {
+			var select = document.getElementById("lounge");
+			var packet = document.getElementById("lounge").options[select.selectedIndex].value;
+			parent.parent.send("setLoungePackage§" + parent.parent.getPlayerName()+"§"+ packet);
+			alert("Packet "+ packet +" gekauft");
+		}
+		
+		function closeDialog(){
+			parent.closeMenu();
+		}
+	</script>
+</body>
+</html>

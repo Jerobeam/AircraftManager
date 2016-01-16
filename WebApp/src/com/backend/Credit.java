@@ -1,6 +1,10 @@
 package com.backend;
 
 public class Credit {
+	Airline owner;
+	private int amount;
+	private int payRent;
+	private int repayment;
 	public Credit(Airline o, int a, int p, int r )
 	{
 		owner = o;
@@ -9,8 +13,6 @@ public class Credit {
 		repayment = r;
 		owner.setMoney(owner.getMoney() + amount);
 	}
-	Airline owner;
-	private int amount;
 	public int getAmount() {
 		return amount;
 	}
@@ -20,8 +22,6 @@ public class Credit {
 	public int getRepayment() {
 		return repayment;
 	}
-	private int payRent;
-	private int repayment;
 	public void iterationStep(){
 		if(amount > 0){
 			if(amount > repayment){

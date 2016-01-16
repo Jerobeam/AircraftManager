@@ -258,7 +258,7 @@ public class Airline {
 		
 		//billing accounting depending on amount of planes
 		int planesAmount = this.getPlanes().size();
-		int accountingCosts = (int)(10000 + (planesAmount * 2500 * this.getITDept().getAccountingCostsFactor()) + 0.5);
+		int accountingCosts = (int)(5000 + (planesAmount * 3500 * this.getITDept().getAccountingCostsFactor()) + 0.5);
 		
 		// billing departments
 		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts()

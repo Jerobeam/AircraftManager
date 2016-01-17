@@ -171,15 +171,15 @@ section {
 		}		
 		function setStewards(){
 			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§2§" + document.getElementById('sumStewards').value);
-			alert((parseInt(document.getElementById('sumStewards').value)-pilotes) + " Stewardessen eingestellt")
+			alert((parseInt(document.getElementById('sumStewards').value)-stewards) + " Stewardessen eingestellt")
 		}
 		function setGroundCrew(){
 			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§3§" + document.getElementById('sumGroundCrew').value);
-			alert((parseInt(document.getElementById('sumGroundCrew').value)-pilotes) + " Bodenpersonal eingestellt")
+			alert((parseInt(document.getElementById('sumGroundCrew').value)-groundCrew) + " Bodenpersonal eingestellt")
 		}
 		function setMaintenance(){
 			parent.parent.send("setPersonal§"+parent.parent.getPlayerName()+ "§4§" + document.getElementById('sumMaintenance').value);
-			alert((parseInt(document.getElementById('sumMaintenance').value)-pilotes) + " Wartungspersonal eingestellt")
+			alert((parseInt(document.getElementById('sumMaintenance').value)-maintenance) + " Wartungspersonal eingestellt")
 		}
 		function closeDialog(){
 			parent.closeMenu();

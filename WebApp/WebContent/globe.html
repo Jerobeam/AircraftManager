@@ -518,6 +518,17 @@ canvas {
 			objectCSS.scale.multiplyScalar( 0.004);
 			objectCSS.position.set(0,0.5,-4);
 			cssScene.add(objectCSS);
+		}	
+		function planeUpgradesDialog(){
+			//switchRenderer();
+			cssScene.remove(objectCSS);
+			login.innerHTML = "<iframe frameBorder='0' width='1100' height='570' src='planeUpgradesDialog.html' scrolling='no'></iframe>";
+			login.style.width = '1100px';
+			login.style.height = '570px';
+			objectCSS = new THREE.CSS3DObject( login );
+			objectCSS.scale.multiplyScalar( 0.004);
+			objectCSS.position.set(0,0.5,-4);
+			cssScene.add(objectCSS);
 		}
 		function closeMenu(){
 			if (menuActive){

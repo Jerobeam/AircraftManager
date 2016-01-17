@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="pure.css">
+<style>
+table {
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	border-collapse: collapse;
+	height: 90%;
+	width: 100%;
+}
+
+end {
+	height: 10%;
+	width: 100%;
+}
+
+th, td {
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	padding: 8px;
+	background-color: #F2F2F2
+}
+
+tr:nth-child(even) {
+	background-color: white
+}
+
+th {
+	background-color: black;
+	color: white;
+}
+
+header {
+    border: 1px solid #cbcbcb;
+	height: 25px; 
+	text-align: center; 
+	background-color: #000;
+	color: #FFF;
+	width: 100%;
+}
+#m2{ 
+	width: 93%;
+	padding-top: 5px;
+	float: left;
+}
+.content{
+	font-size:14px;
+}
+</style>
+
+</head>
+<body>
+    <header>
+        <div id="m2">
+            <b>Flugzeug Upgrades auswählen</b>
+        </div>
+        <button id="close" onclick="closeDialog()" type="submit" class="pure-button pure-button-primary" style="background-color:#808080; float: right; height: 100%; width: 5%; padding: 0px;"><b>X</b></button>      
+    </header>
+
+	<table id="Table">
+		<tr>
+			<th>Aktion</th>
+			<th>Beschreibung</th>
+            <th>Kosten</th>
+			<th>Auswahl</th>
+            <th></th>
+		</tr>
+		<tr>
+			<td>Winglets<br/>
+				<select id="plane" class="content">
+                    <option value="0">--wählen--</option>
+                </select>
+            </td>
+			<td class="content">
+               Sind an den Enden der Tragflächen angebrachte Anbauten. Sie vergingern den Treibstoffverbrauch um <b>3,5 %</b> <br/>          
+            </td>
+            <td class="content">
+                Das ausrüsten eines Flugzeuges kostet 500.000€ <br/>
+            </td>
+			<td>
+            
+          	</td>
+			<td>
+				<button id="wingletsBtn" onclick="setWinglets()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+			</td>		
+		</tr>
+		<tr>
+			<td>Moderne Triebwerke<br/>
+				<select id="plane" class="content">
+                    <option value="0">--wählen--</option>
+                </select>
+            </td>
+			<td class="content">
+               Moderne Triebwerke reduzieren den Treibstoffverbrauch um <b>15 %</b> und erhöhen die Reichweite um <b>550 km</b> <br/>          
+            </td>
+            <td class="content">
+                Das ausrüsten eines Flugzeuges kostet 10.000.000€ <br/>
+            </td>
+			<td>
+            
+          	</td>
+			<td>
+				<button id="engineBtn" onclick="setEngine()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+			</td>		
+		</tr>
+		<tr>
+			<td>
+				Außen Reinigung <br>
+				<select id="plane" class="content">
+                    <option value="0">--wählen--</option>
+                </select>
+			</td>
+			<td class="content">
+               Eine Reinigung der äußeren Hülle des Flugzeuges wird ein Monat im voraus gebucht und reduziert den Treibstoffverbrauch im folgenden Monat um <b>1 %</b><br/>          
+            </td>
+            <td class="content">
+                Die kosten für eine Reinigung der Flugzeughülle kostet einmalig 50.000€ und kann monatlich ausgeführt werden. <br/>
+            </td>
+			<td>
+            
+          	</td>
+			<td>
+				<button id="engineBtn" onclick="setEngine()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+			</td>		
+		</tr>
+		<tr>
+			<td>Flugzeugsitze <br/>
+				<select id="plane" class="content">
+                    <option value="0">--wählen--</option>
+                </select>
+			</td>
+			<td class="content">
+                Paket 0:<u>Standardsitze</u> die in jedem Flugzeug verbaut sind <br/>
+                Paket 1: Einbau von <u>Ledersitzen</u> welche eine Komfortsteigerung von <b>15 Punkten</b> bringen<br/>
+                Paket 2:<u>Luxussitze</u> die dem Flugzeug eine Komfortsteigerung von <b>25 Punkten</b> bringt<br/>            
+            </td>
+            <td class="content">
+                <u>Paket 0:</u> Keine Kosten <br/>
+                <u>Paket 1:</u> Einmalige Kosten für die Anschaffung und den Einbau: 750.000€; <br/>
+                <u>Paket 2:</u> Einmalige Kosten für die Anschaffung und den Einbau: 1.500.000€; <br/>  
+            </td>
+			<td>
+                  <select id="seat" class="content">
+                    <option value="0">Standardsitze</option>
+                    <option value="1">Ledersitze</option>
+                    <option value="2">Luxussitze</option>
+                  </select>
+          	</td>
+			<td>
+				<Button id="setSeatBtn" onclick="setSeat()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+			</td>		
+		</tr>
+		<tr>
+			<td>Entertainment Packet<br/>
+				<select id="plane" class="content">
+                    <option value="0">--wählen--</option>
+                </select>
+            </td>
+			<td class="content">
+                <u>Paket 0:</u> Kleines Packet mit Kopfhörern,Musik und Gemeinschafts-Monitoren, steigert den Komfort um <b>5 Punkte</b>  <br/>
+                <u>Paket 1:</u> Das mittlere Packet erweitert das kleine mit eingebauten Touch-Monitoren in den vorderen Sitzen mit kleiner auswahl an Spielen, Serien und Filmen, steigert den Komfort um <b>10 Punkte</b><br/>
+                <u>Paket 2:</u> Umfangreiche Auswahl an Serien,Filme, Spiele, Musik. Zusätzlich zu dem Touch-Monitor gibt es ein Tablet zur Nutzung während des Fluges. Komfortsteigerung <b>20 Punkten</b><br/>            
+            </td>
+            <td class="content">
+                <u>Paket 0:</u> Einmalige Kosten für die Anschaffung und den Einbau: 300.000€; Monatliche Kosten für Lizensen und Gebühren: 5.000€<br/>
+                <u>Paket 1:</u> Einmalige Kosten für die Anschaffung und den Einbau: 500.000€; Monatliche Kosten für Lizensen und Gebühren: 10.000€<br/>
+                <u>Paket 2:</u> Einmalige Kosten für die Anschaffung und den Einbau: 1.000.000€; Monatliche Kosten für Lizensen und Gebühren: 20.000€<br/>  
+            </td>
+			<td>
+                  <select id="entertainment" class="content">
+                    <option value="0">--wählen--</option>
+                    <option value="1">Paket 1</option>
+                    <option value="2">Paket 2</option>
+                     <option value="3">Paket 3</option>
+                  </select>
+          	</td>
+			<td>
+				<Button id="setSeatBtn" onclick="setSeat()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+			</td>		
+		</tr>
+	</table>
+	
+	<script type="text/javascript">
+		playerData = parent.parent.getPlayerData();
+		
+		function closeDialog(){
+			parent.closeMenu();
+		}
+	</script>
+</body>
+</html>

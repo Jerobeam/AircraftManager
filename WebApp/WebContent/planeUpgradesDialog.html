@@ -35,7 +35,7 @@ th {
 
 header {
     border: 1px solid #cbcbcb;
-	height: 25px; 
+	height: 30px; 
 	text-align: center; 
 	background-color: #000;
 	color: #FFF;
@@ -55,6 +55,9 @@ header {
 <body>
     <header>
         <div id="m2">
+       	    <select id="plane" class="content" style="float: left; margin-left: 5px; color: black;">
+               <option value="0">--wählen--</option>
+            </select>
             <b>Flugzeug Upgrades auswählen</b>
         </div>
         <button id="close" onclick="closeDialog()" type="submit" class="pure-button pure-button-primary" style="background-color:#808080; float: right; height: 100%; width: 5%; padding: 0px;"><b>X</b></button>      
@@ -69,11 +72,7 @@ header {
             <th></th>
 		</tr>
 		<tr>
-			<td>Winglets<br/>
-				<select id="plane" class="content">
-                    <option value="0">--wählen--</option>
-                </select>
-            </td>
+			<td>Winglets</td>
 			<td class="content">
                Sind an den Enden der Tragflächen angebrachte Anbauten. Sie vergingern den Treibstoffverbrauch um <b>3,5 %</b> <br/>          
             </td>
@@ -88,11 +87,7 @@ header {
 			</td>		
 		</tr>
 		<tr>
-			<td>Moderne Triebwerke<br/>
-				<select id="plane" class="content">
-                    <option value="0">--wählen--</option>
-                </select>
-            </td>
+			<td>Moderne Triebwerke</td>
 			<td class="content">
                Moderne Triebwerke reduzieren den Treibstoffverbrauch um <b>15 %</b> und erhöhen die Reichweite um <b>550 km</b> <br/>          
             </td>
@@ -107,12 +102,7 @@ header {
 			</td>		
 		</tr>
 		<tr>
-			<td>
-				Außen Reinigung <br>
-				<select id="plane" class="content">
-                    <option value="0">--wählen--</option>
-                </select>
-			</td>
+			<td>Außen Reinigung</td>
 			<td class="content">
                Eine Reinigung der äußeren Hülle des Flugzeuges wird ein Monat im voraus gebucht und reduziert den Treibstoffverbrauch im folgenden Monat um <b>1 %</b><br/>          
             </td>
@@ -127,20 +117,16 @@ header {
 			</td>		
 		</tr>
 		<tr>
-			<td>Flugzeugsitze <br/>
-				<select id="plane" class="content">
-                    <option value="0">--wählen--</option>
-                </select>
-			</td>
+			<td>Flugzeugsitze</td>
 			<td class="content">
-                Paket 0:<u>Standardsitze</u> die in jedem Flugzeug verbaut sind <br/>
-                Paket 1: Einbau von <u>Ledersitzen</u> welche eine Komfortsteigerung von <b>15 Punkten</b> bringen<br/>
-                Paket 2:<u>Luxussitze</u> die dem Flugzeug eine Komfortsteigerung von <b>25 Punkten</b> bringt<br/>            
+                <u>Standardsitze</u> die in jedem Flugzeug verbaut sind <br/>
+                Einbau von <u>Ledersitzen</u> welche eine Komfortsteigerung von <b>15 Punkten</b> bringen<br/>
+                <u>Luxussitze</u> die dem Flugzeug eine Komfortsteigerung von <b>25 Punkten</b> bringt<br/>            
             </td>
             <td class="content">
-                <u>Paket 0:</u> Keine Kosten <br/>
-                <u>Paket 1:</u> Einmalige Kosten für die Anschaffung und den Einbau: 750.000€; <br/>
-                <u>Paket 2:</u> Einmalige Kosten für die Anschaffung und den Einbau: 1.500.000€; <br/>  
+                <u>Standardsitze:</u> Keine Kosten <br/>
+                <u>Ledersitzen:</u> Einmalige Kosten für die Anschaffung und den Einbau: 750.000€; <br/>
+                <u>Luxussitze:</u> Einmalige Kosten für die Anschaffung und den Einbau: 1.500.000€; <br/>  
             </td>
 			<td>
                   <select id="seat" class="content">
@@ -154,20 +140,16 @@ header {
 			</td>		
 		</tr>
 		<tr>
-			<td>Entertainment Packet<br/>
-				<select id="plane" class="content">
-                    <option value="0">--wählen--</option>
-                </select>
-            </td>
+			<td>Entertainment Packet</td>
 			<td class="content">
-                <u>Paket 0:</u> Kleines Packet mit Kopfhörern,Musik und Gemeinschafts-Monitoren, steigert den Komfort um <b>5 Punkte</b>  <br/>
-                <u>Paket 1:</u> Das mittlere Packet erweitert das kleine mit eingebauten Touch-Monitoren in den vorderen Sitzen mit kleiner auswahl an Spielen, Serien und Filmen, steigert den Komfort um <b>10 Punkte</b><br/>
-                <u>Paket 2:</u> Umfangreiche Auswahl an Serien,Filme, Spiele, Musik. Zusätzlich zu dem Touch-Monitor gibt es ein Tablet zur Nutzung während des Fluges. Komfortsteigerung <b>20 Punkten</b><br/>            
+                <u>Paket 1:</u> Kleines Packet mit Kopfhörern,Musik und Gemeinschafts-Monitoren, steigert den Komfort um <b>5 Punkte</b>  <br/>
+                <u>Paket 2:</u> Das mittlere Packet erweitert das kleine mit eingebauten Touch-Monitoren in den vorderen Sitzen mit kleiner auswahl an Spielen, Serien und Filmen, steigert den Komfort um <b>10 Punkte</b><br/>
+                <u>Paket 3:</u> Umfangreiche Auswahl an Serien,Filme, Spiele, Musik. Zusätzlich zu dem Touch-Monitor gibt es ein Tablet zur Nutzung während des Fluges. Komfortsteigerung <b>20 Punkten</b><br/>            
             </td>
             <td class="content">
-                <u>Paket 0:</u> Einmalige Kosten für die Anschaffung und den Einbau: 300.000€; Monatliche Kosten für Lizensen und Gebühren: 5.000€<br/>
-                <u>Paket 1:</u> Einmalige Kosten für die Anschaffung und den Einbau: 500.000€; Monatliche Kosten für Lizensen und Gebühren: 10.000€<br/>
-                <u>Paket 2:</u> Einmalige Kosten für die Anschaffung und den Einbau: 1.000.000€; Monatliche Kosten für Lizensen und Gebühren: 20.000€<br/>  
+                <u>Paket 1:</u> Einmalige Kosten für die Anschaffung und den Einbau: 300.000€; Monatliche Kosten für Lizensen und Gebühren: 5.000€<br/>
+                <u>Paket 2:</u> Einmalige Kosten für die Anschaffung und den Einbau: 500.000€; Monatliche Kosten für Lizensen und Gebühren: 10.000€<br/>
+                <u>Paket 3:</u> Einmalige Kosten für die Anschaffung und den Einbau: 1.000.000€; Monatliche Kosten für Lizensen und Gebühren: 20.000€<br/>  
             </td>
 			<td>
                   <select id="entertainment" class="content">
@@ -178,14 +160,23 @@ header {
                   </select>
           	</td>
 			<td>
-				<Button id="setSeatBtn" onclick="setSeat()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+				<Button id="setEntertainmentBtn" onclick="setEntertainment()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
 			</td>		
 		</tr>
 	</table>
 	
 	<script type="text/javascript">
-		playerData = parent.parent.getPlayerData();
+		var playerData = parent.parent.getPlayerData();		
 		
+		for (var i=0;i<playerData.planes.length;i++){
+			var select = document.getElementById("plane");
+			var option = document.createElement("option");
+			option.text = playerData.planes[i].name;
+			option.value = (i+1).toString();
+			select.add(option);
+		}
+		
+		alert("test");
 		function closeDialog(){
 			parent.closeMenu();
 		}

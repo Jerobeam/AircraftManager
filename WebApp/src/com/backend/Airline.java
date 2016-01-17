@@ -243,11 +243,11 @@ public class Airline {
 			c.iterationStep();
 		}
 		for (Plane p : planes) {
-			if (p.getOutsideCleaning() == true) {
-				p.setDoOutsideCleaning(false);
+			if (p.getUpgrades().isDoOutsideCleaning()) {
+				p.getUpgrades().setDoOutsideCleaning(false);
 			}
-			if (p.getBuyPlaneCleaning()) {
-				p.setDoOutsideCleaning(true);
+			if (p.getUpgrades().isBuyOutsideCleaning()) {
+				p.getUpgrades().setDoOutsideCleaning(true);
 			}
 		}
 		//billing hr

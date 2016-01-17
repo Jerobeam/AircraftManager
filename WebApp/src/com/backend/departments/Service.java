@@ -31,7 +31,6 @@ public class Service {
 	}
 	public void setCateringPackage(int value) {
 		if((value <= 3) && (value >= 0)){
-			this.cateringPackage = value;
 			ArrayList<Plane> planes = airline.getPlanes();
 			switch (value) {
 			    case 0:{
@@ -46,6 +45,7 @@ public class Service {
 						}
 						this.monthlyCosts = (this.monthlyCosts - (planes.size()*50000));
 					}
+			    	break;
 			    }
 				case 1:{
 					if(this.cateringPackage < 1){
@@ -59,6 +59,7 @@ public class Service {
 						}
 						this.monthlyCosts = (this.monthlyCosts - (planes.size()*40000));
 					}
+					break;
 				}
 					
 				case 2:{
@@ -68,8 +69,10 @@ public class Service {
 						}
 						this.monthlyCosts = (this.monthlyCosts + (planes.size()*50000));
 					}
+					break;
 				}
 			}
+			this.cateringPackage = value;
 		}
 	}
 	public int getAirportLounge() {
@@ -77,7 +80,6 @@ public class Service {
 	}
 	public void setAirportLounge(int value) {
 		if((value <= 2) && (value >= 0)){
-			this.airportLounge = value;
 			ArrayList<Plane> planes = airline.getPlanes();
 			switch (value) {
 			    case 0:{
@@ -92,6 +94,7 @@ public class Service {
 						}
 						this.monthlyCosts -= 150000;
 					}
+			    	break;
 			    }
 				case 1:{
 					if(this.airportLounge < 1){
@@ -106,6 +109,7 @@ public class Service {
 						}
 						this.monthlyCosts -= 100000;
 					}
+					break;
 				}
 					
 				case 2:{
@@ -116,8 +120,10 @@ public class Service {
 						airline.setMoney(airline.getMoney()-500000);
 						this.monthlyCosts += 150000;
 					}
+					break;
 				}			
 			}
+			this.airportLounge = value;
 		}	
 	}
 	public boolean isWlanAboard() {

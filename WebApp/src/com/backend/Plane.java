@@ -25,7 +25,7 @@ public class Plane {
 	private int pilot;
 	private int benefit;
 	private Airline airline;
-	private PlaneUpgrade upgrades = new PlaneUpgrade();
+	private PlaneUpgrade upgrades = new PlaneUpgrade(this, airline);
 
 	public int getPilot() {
 		return pilot;
@@ -185,99 +185,6 @@ public class Plane {
 
 	public void setSteward(int steward) {
 		this.steward = steward;
-	}
-	
-	public void setWinglets(){
-		this.upgrades.setWinglets(true);
-		this.airline.setMoney(this.airline.getMoney() - 500000);
-		this.setFuelCosts((int)(this.getFuelCosts()*0.965));
-	}	
-	
-	public void setNewEngine(){
-		this.upgrades.setNewEngine(true);
-		this.airline.setMoney(this.airline.getMoney() - 10000000);
-		this.fuelCosts = (int)(this.getFuelCosts()*0.85);
-		this.range = this.range+550;
-		//Image steigert sich muss noch implementiert werden
-	}
-	
-	public void buyOutsideCleaning(){
-		this.upgrades.setBuyOutsideCleaning(true);
-		this.airline.setMoney(this.airline.getMoney() - 50000);		
-	}
-	
-	public void entertainmentPackage(int value){
-		if((value <= 3) && (value >= 0)){
-			this.upgrades.setEntertainmentPackage(value);
-			switch (value) {
-				case 1:{
-					if(value > this.upgrades.getEntertainmentPackage()){
-						this.airline.setMoney(this.airline.getMoney() - 300000);
-						this.comfort = this.comfort + 5;
-						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+5000);
-					} else if(this.upgrades.getEntertainmentPackage() == 2){
-						this.comfort = this.comfort - 5;
-						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()-5000);
-					} else if(this.upgrades.getEntertainmentPackage() == 3){
-						this.comfort = this.comfort - 15;
-						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()-15000);						
-					}
-				}
-					
-				case 2:{
-					if(value > this.upgrades.getEntertainmentPackage()){
-						this.airline.setMoney(this.airline.getMoney() - 500000);
-						this.comfort = this.comfort + 10;
-						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+10000);
-					} else if(this.upgrades.getEntertainmentPackage() == 3){
-						this.comfort = this.comfort - 10;
-						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()-10000);
-					}
-				}
-					
-				case 3:{
-					if(value > this.upgrades.getEntertainmentPackage()){
-						this.airline.setMoney(this.airline.getMoney() - 1000000);
-						this.comfort = this.comfort + 20;
-						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+20000);
-					}
-				}
-			}
-		}
-	}
-	
-	public void setSeats(int value){
-		if((value <= 3) && (value >= 1)){
-			this.upgrades.setSeat(value);
-			switch (value) {
-				case 2:{
-					if(this.upgrades.getSeat() < value){
-						this.airline.setMoney(this.airline.getMoney() - 750000);
-						this.comfort = this.comfort + 15;
-					}
-				}					
-				case 3:{
-					if(this.upgrades.getSeat() < value){
-						this.airline.setMoney(this.airline.getMoney() - 1500000);
-						this.comfort = this.comfort + 25;
-					}
-				}
-			}
-		}
-	}
-
-	public boolean getBuyPlaneCleaning() {
-		return this.upgrades.isBuyOutsideCleaning();
-	}
-	
-	public void setDoOutsideCleaning(boolean value){
-		this.upgrades.isDoOutsideCleaning();
-		if(value){
-			this.fuelCosts = (int)(this.getFuelCosts()*0.99);
-		}
-	}
-	public boolean getOutsideCleaning(){
-		return this.upgrades.isDoOutsideCleaning();
 	}
 
 	public PlaneUpgrade getUpgrades() {

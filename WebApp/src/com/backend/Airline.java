@@ -30,8 +30,8 @@ public class Airline {
 	private double image = 10;
 
 	// Set Departments
-	private final Marketing MarketingDept = new Marketing();
-	private final IT ITDept = new IT();
+	private final Marketing MarketingDept = new Marketing(this);
+	private final IT ITDept = new IT(this);
 	private Service services = new Service(this);
 
 	private final int PILOTENKOSTEN = 5000;
@@ -270,11 +270,11 @@ public class Airline {
 
 		// monthly Image increasement
 		if (this.getMarketingDept().getMonthlyImageIncreasement() > 0) {
-			this.getMarketingDept().increaseImage(this, this.getMarketingDept().getMonthlyImageIncreasement());
+			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasement());
 		}
 
 		// image loss over time
-		this.getMarketingDept().decreaseImage(this, 1);
+		this.getMarketingDept().decreaseImage(1);
 		System.out.println("Monatliches Image neu: " + this.getImage());
 	}
 

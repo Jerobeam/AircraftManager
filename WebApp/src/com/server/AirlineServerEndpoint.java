@@ -119,34 +119,34 @@ public class AirlineServerEndpoint {
 			if(request[2].equals("4"))airline.setWartung(Integer.parseInt(request[3]));
 			break;
 		case "buySocialMediaSoftware":
-			game.getAirlineByName(request[1]).getITDept().buySocialMediaSoftware(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getITDept().buySocialMediaSoftware();
 			break;
 		case "buyHRModule":
-			game.getAirlineByName(request[1]).getITDept().buyHRModule(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getITDept().buyHRModule();
 			break;
 		case "buyAccountingModule":
-			game.getAirlineByName(request[1]).getITDept().buyAccountingModule(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getITDept().buyAccountingModule();
 			break;
 		case "sellSocialMediaSoftware":
-			game.getAirlineByName(request[1]).getITDept().sellSocialMediaSoftware(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getITDept().sellSocialMediaSoftware();
 			break;
 		case "sellHRModule":
-			game.getAirlineByName(request[1]).getITDept().sellHRModule(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getITDept().sellHRModule();
 			break;
 		case "sellAccountingModule":
-			game.getAirlineByName(request[1]).getITDept().sellAccountingModule(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getITDept().sellAccountingModule();
 			break;
 		case "donate":
-			game.getAirlineByName(request[1]).getMarketingDept().donate(game.getAirlineByName(request[1]), Long.parseLong(request[2]));
+			game.getAirlineByName(request[1]).getMarketingDept().donate(Long.parseLong(request[2]));
 			break;
 		case "becomeSponsor":
-			game.getAirlineByName(request[1]).getMarketingDept().becomeSponsor(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getMarketingDept().becomeSponsor();
 			break;
 		case "stopSponsoring":
-			game.getAirlineByName(request[1]).getMarketingDept().stopSponsoring(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getMarketingDept().stopSponsoring();
 			break;
 		case "designPlaneLettering":
-			game.getAirlineByName(request[1]).getMarketingDept().designPlaneLettering(game.getAirlineByName(request[1]));
+			game.getAirlineByName(request[1]).getMarketingDept().designPlaneLettering();
 			break;
 		case "pickupService":
 			game.getAirlineByName(request[1]).getServices().setFreePickupService(Boolean.parseBoolean(request[2]));

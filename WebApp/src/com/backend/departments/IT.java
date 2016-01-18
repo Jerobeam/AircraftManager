@@ -10,13 +10,15 @@ public class IT {
 	//Costfactor influenced by the HR Module --> reduces "personalkosten" in Airline class
 	private double hrCostsFactor = 1.0;
 	private double accountingCostsFactor = 1.0;
+	private Airline airline;
 
-	public IT() {
+	public IT(Airline airline) {
 		// TODO: realistic values
 		this.setMonthlyCosts(10000);
 		this.setBoughtAccountingModule(false);
 		this.setBoughtHRModule(false);
 		this.setBoughtSocialMediaModule(false);
+		this.setAirline(airline);
 	}
 
 	public int getMonthlyCosts() {
@@ -27,29 +29,29 @@ public class IT {
 		this.monthlyCosts = monthlyCosts;
 	}
 
-	public void buySocialMediaSoftware(Airline airline) {
+	public void buySocialMediaSoftware() {
 		// TODO: realistic values
 		if (!this.isBoughtSocialMediaModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
-			double efficiency = airline.getMarketingDept().getEfficiency();
-			airline.getMarketingDept().setEfficiency(efficiency + 0.1);
+			double efficiency = this.getAirline().getMarketingDept().getEfficiency();
+			this.getAirline().getMarketingDept().setEfficiency(efficiency + 0.1);
 			this.setBoughtSocialMediaModule(true);
 		}
 		System.out.println("buySocialMediaSoftware called");
 	}
 	
-	public void sellSocialMediaSoftware(Airline airline) {
+	public void sellSocialMediaSoftware() {
 		// TODO: realistic values
 		if (this.isBoughtSocialMediaModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() - 1000);
-			double efficiency = airline.getMarketingDept().getEfficiency();
-			airline.getMarketingDept().setEfficiency(efficiency - 0.1);
+			double efficiency = this.getAirline().getMarketingDept().getEfficiency();
+			this.getAirline().getMarketingDept().setEfficiency(efficiency - 0.1);
 			this.setBoughtSocialMediaModule(false);
 		}
 		System.out.println("sellSocialMediaSoftware called");
 	}
 
-	public void buyHRModule(Airline airline) {
+	public void buyHRModule() {
 		// TODO: realistic values
 		if (!this.isBoughtHRModule()) {
 			this.setHrCostsFactor(0.9);
@@ -58,7 +60,7 @@ public class IT {
 		System.out.println("buyHRModule called");
 	}
 	
-	public void sellHRModule(Airline airline) {
+	public void sellHRModule() {
 		// TODO: realistic values
 		if (this.isBoughtHRModule()) {
 			this.setHrCostsFactor(1);
@@ -67,7 +69,7 @@ public class IT {
 		System.out.println("sellHRModule called");
 	}
 
-	public void buyAccountingModule(Airline airline) {
+	public void buyAccountingModule() {
 		// TODO: realistic values
 		if (!this.isBoughtAccountingModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
@@ -77,7 +79,7 @@ public class IT {
 		System.out.println("buyAccountingModule called");
 	}
 	
-	public void sellAccountingModule(Airline airline) {
+	public void sellAccountingModule() {
 		// TODO: realistic values
 		if (!this.isBoughtAccountingModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() - 1000);
@@ -126,8 +128,12 @@ public class IT {
 	public void setAccountingCostsFactor(double accountingCostsFactor) {
 		this.accountingCostsFactor = accountingCostsFactor;
 	}
-	
-	
-	
 
+	public Airline getAirline() {
+		return airline;
+	}
+
+	public void setAirline(Airline airline) {
+		this.airline = airline;
+	}
 }

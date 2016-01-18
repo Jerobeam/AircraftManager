@@ -9,6 +9,7 @@ public class Marketing {
 	private boolean lettering = false;
 	private boolean sponsoring = false;
 	private double monthlyImageIncreasement = 0;
+	private Airline airline;
 	
 	public double getMonthlyImageIncreasement() {
 		return monthlyImageIncreasement;
@@ -26,7 +27,8 @@ public class Marketing {
 		this.lettering = lettering;
 	}
 
-	public Marketing(){
+	public Marketing(Airline airline){
+		this.setAirline(airline);
 	}
 		
 	public double getEfficiency() {
@@ -45,20 +47,20 @@ public class Marketing {
 		this.monthlyCosts = monthlyCosts;
 	}
 	
-	public void increaseImage(Airline airline, double increasment){
-		if ((airline.getImage() + increasment) <=100) {
-			airline.setImage(airline.getImage() + (increasment*this.getEfficiency()));	
+	public void increaseImage(double increasment){
+		if ((this.getAirline().getImage() + increasment) <=100) {
+			this.getAirline().setImage(this.getAirline().getImage() + (increasment*this.getEfficiency()));	
 			System.out.println("Image erhöht um: " + increasment);
 		}else{
-			airline.setImage(100.0);
+			this.getAirline().setImage(100.0);
 		}
 	}
 	
-	public void decreaseImage(Airline airline, double decreasement){
-		if ((airline.getImage() - decreasement) >=0) {
-			airline.setImage(airline.getImage() - decreasement);			
+	public void decreaseImage(double decreasement){
+		if ((this.getAirline().getImage() - decreasement) >=0) {
+			this.getAirline().setImage(this.getAirline().getImage() - decreasement);			
 		}else{
-			airline.setImage(0.0);
+			this.getAirline().setImage(0.0);
 		}
 	}
 	
@@ -72,28 +74,28 @@ public class Marketing {
 	
 	//Marketingaktionen:
 
-	public void donate(Airline airline, long amount){
-		airline.setMoney(airline.getMoney() - amount);
+	public void donate(long amount){
+		this.getAirline().setMoney(airline.getMoney() - amount);
 		if (amount<2500000){
-			this.increaseImage(airline, 2);			
+			this.increaseImage(2);			
 		}else if (amount>=2500000){
-			this.increaseImage(airline, 5.5);			
+			this.increaseImage(5.5);			
 		}
 		System.out.println("Donate called with: " + amount);
 	}
 	
 	//Schriftzug Design für Flugzeuge
-	public void designPlaneLettering(Airline airline){
+	public void designPlaneLettering(){
 		if (!this.isLettering()) {
-			airline.setMoney(airline.getMoney() - 300000);
-			int amountPlanes= airline.getPlanes().size();
+			this.getAirline().setMoney(this.getAirline().getMoney() - 300000);
+			int amountPlanes= this.getAirline().getPlanes().size();
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + amountPlanes * 0.7);
 			this.setLettering(true);
 			System.out.println("designed Plane Lettering");
 		}		
 	}
 	
-	public void becomeSponsor(Airline airline){
+	public void becomeSponsor(){
 		if(!this.isSponsoring()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 50000);
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + 3);
@@ -102,17 +104,25 @@ public class Marketing {
 		}
 	}
 	
-	public void stopSponsoring(Airline airline){
+	public void stopSponsoring(){
 		if(this.isSponsoring()){
 			this.setMonthlyCosts(this.getMonthlyCosts() - 50000);
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() - 3);
 			
 			//reduce Image once because of "disappointment of fans"
-			this.decreaseImage(airline, 2);
+			this.decreaseImage(2);
 			this.setSponsoring(false);
 			
 			System.out.println("stopSponsoring called");
 		}
+	}
+
+	public Airline getAirline() {
+		return airline;
+	}
+
+	public void setAirline(Airline airline) {
+		this.airline = airline;
 	}
 	
 	

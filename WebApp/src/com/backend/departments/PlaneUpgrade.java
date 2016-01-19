@@ -32,19 +32,23 @@ public class PlaneUpgrade {
 		return winglets;
 	}
 	public void setWinglets(boolean value) {
-		this.winglets = value;
-		this.airline.setMoney(this.airline.getMoney() - 500000);
-		plane.setFuelCosts((int)(plane.getFuelCosts()*0.965));
+		if(value){
+			this.winglets = value;
+			this.airline.setMoney(this.airline.getMoney() - 500000);
+			plane.setFuelCosts((int)(plane.getFuelCosts()*0.965));
+		}
 	}
 	public boolean isNewEngine() {
 		return newEngine;
 	}
 	public void setNewEngine(boolean value) {
-		this.newEngine = value;
-		this.airline.setMoney(this.airline.getMoney() - 10000000);
-		plane.setFuelCosts((int)(plane.getFuelCosts()*0.85));
-		plane.setRange(plane.getRange()+550);
-		this.airline.setImage(this.airline.getImage()+10); //Absprache wie viel groﬂe die Imagesteigerung sein soll
+		if(value){
+			this.newEngine = value;
+			this.airline.setMoney(this.airline.getMoney() - 10000000);
+			plane.setFuelCosts((int)(plane.getFuelCosts()*0.85));
+			plane.setRange(plane.getRange()+550);
+			this.airline.setImage(this.airline.getImage()+10); //Absprache wie viel groﬂe die Imagesteigerung sein soll
+		}
 	}
 	public boolean isBuyOutsideCleaning() {
 		return buyOutsideCleaning;

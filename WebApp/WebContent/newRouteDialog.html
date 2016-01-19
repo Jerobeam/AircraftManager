@@ -187,10 +187,12 @@ section {
 		}
 		
 		function occupyRoute(){
+			var price = document.getElementById("routePrice").value;			
 			var select = document.getElementById("plane");
 			var pname = document.getElementById("plane").options[select.selectedIndex].innerText;
-			var price = document.getElementById("routePrice").value;
-			parent.parent.occupyRoute(pname+"§"+parent.getRouteSelection()+"§"+price);
+			if(pname != "--wählen--"){
+				parent.parent.occupyRoute(pname+"§"+parent.getRouteSelection()+"§"+price);
+			}
 			parent.closeMenu();
 		}
 	</script>

@@ -248,6 +248,7 @@ public class Airline {
 			}
 			if (p.getUpgrades().isBuyOutsideCleaning()) {
 				p.getUpgrades().setDoOutsideCleaning(true);
+				p.getUpgrades().setBuyOutsideCleaning(false);
 			}
 		}
 		//billing hr

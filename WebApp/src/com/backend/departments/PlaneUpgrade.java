@@ -12,6 +12,7 @@ public class PlaneUpgrade {
 	private boolean newEngine = false; //Verbessert Treibstoffverauch bis 15% -> steigert Image(Umweltschutz, Lärmschutz)-> erhöt Reichweite bis 550km
 	private boolean buyOutsideCleaning = false; //Verbessert Treibstoffverauch 1%
 	private boolean doOutsideCleaning = false;
+	private int fuelCostReduced; 
 	
 	private int entertainmentPackage = 0; // 0 = Keins; 3 = das Beste
 	private int seat = 1;// 1 = Standart, 2 = Ledersitze, 3 = Luxussitze
@@ -56,10 +57,13 @@ public class PlaneUpgrade {
 		return doOutsideCleaning;
 	}
 	public void setDoOutsideCleaning(boolean value) {
-		this.doOutsideCleaning = value;
-		if(value){
-			plane.setFuelCosts((int)(plane.getFuelCosts()*0.99));
+		if((this.doOutsideCleaning == false) && (value == true)){
+			fuelCostReduced  = (int)(plane.getFuelCosts()*0.01);
+			plane.setFuelCosts(plane.getFuelCosts() - fuelCostReduced);
+		} else if ((this.doOutsideCleaning == true) && (value == false)) {
+			plane.setFuelCosts(plane.getFuelCosts() + fuelCostReduced);
 		}
+		this.doOutsideCleaning = value;
 	}
 	public int getEntertainmentPackage() {
 		return entertainmentPackage;

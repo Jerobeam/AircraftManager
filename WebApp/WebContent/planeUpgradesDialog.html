@@ -83,7 +83,7 @@ header {
             
           	</td>
 			<td>
-				<button id="wingletsBtn" onclick="setWinglets()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+				<button id="wingletsBtn" onclick="setWinglets()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="winglets">Kaufen</button>
 			</td>		
 		</tr>
 		<tr>
@@ -98,7 +98,7 @@ header {
             
           	</td>
 			<td>
-				<button id="engineBtn" onclick="setEngine()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+				<button id="engineBtn" onclick="setEngine()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="newEngine">Kaufen</button>
 			</td>		
 		</tr>
 		<tr>
@@ -113,7 +113,7 @@ header {
             
           	</td>
 			<td>
-				<button id="cleaningBtn" onclick="setCleaning()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+				<button id="cleaningBtn" onclick="setCleaning()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="buyOutsideCleaning">Kaufen</button>
 			</td>		
 		</tr>
 		<tr>
@@ -136,7 +136,7 @@ header {
                   </select>
           	</td>
 			<td>
-				<Button id="setSeatBtn" onclick="setSeat()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+				<Button id="setSeatBtn" onclick="setSeat()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="seat">Kaufen</Button>
 			</td>		
 		</tr>
 		<tr>
@@ -160,7 +160,7 @@ header {
                   </select>
           	</td>
 			<td>
-				<Button id="setEntertainmentBtn" onclick="setEntertainment()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+				<Button id="setEntertainmentBtn" onclick="setEntertainment()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="enterteinmentPackage">Kaufen</Button>
 			</td>		
 		</tr>
 	</table>
@@ -194,19 +194,69 @@ header {
 					
 					if(isWinglets){
 						document.getElementById("wingletsBtn").disabled = true;
+					} else {
+						document.getElementById("wingletsBtn").disabled = false;
 					}
 					
 					if(isNewEngine){
 						document.getElementById("engineBtn").disabled = true;
+					} else {
+						document.getElementById("engineBtn").disabled = false;
 					}
 					
 					if(isBuyOutsideCleaning){
 						document.getElementById("cleaningBtn").disabled = true;
+					} else {
+						document.getElementById("cleaningBtn").disabled = false;
 					}
 				}
 			}
 		}
 		
+		function setWinglets(){
+			var select = document.getElementById("plane");
+			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+			var type = document.getElementById("wingletsBtn").value;
+			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
+			document.getElementById("wingletsBtn").disabled = true;
+		}
+		
+		function setEngine(){
+			var select = document.getElementById("plane");
+			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+			var type = document.getElementById("engineBtn").value;
+			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
+			document.getElementById("engineBtn").disabled = true;
+		}
+		
+		function setCleaning(){
+			var select = document.getElementById("plane");
+			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+			var type = document.getElementById("cleaningBtn").value;
+			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
+			document.getElementById("cleaningBtn").disabled = true;
+		}
+		
+		function setEntertainment(){
+			var select = document.getElementById("plane");
+			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+			var type = document.getElementById("setEntertainmentBtn").value;
+			
+			var select = document.getElementById("entertainment");
+			var value = document.getElementById("entertainment").options[select.selectedIndex].value;
+			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§" + value);
+		}
+		
+		function setSeat(){
+			var select = document.getElementById("plane");
+			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+			var type = document.getElementById("setSeatBtn").value;
+			
+			var select = document.getElementById("seat");
+			var value = document.getElementById("seat").options[select.selectedIndex].value;
+			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§" + value);
+		}
+
 		function closeDialog(){
 			parent.closeMenu();
 		}

@@ -165,6 +165,10 @@ public class AirlineServerEndpoint {
 			break;	
 		case "setCateringPackage":
 			game.getAirlineByName(request[1]).getServices().setCateringPackage(Integer.parseInt(request[2]));
+			break;
+		case "setPlaneUpgrades":
+			System.out.println(request[1] + " " + request[2] + " " + request[3] + " " + request[4]);
+			game.getAirlineByName(request[1]).setPlaneUpgrades(request[2], request[3], request[4]);
 			break;	
 		default:
 			break;

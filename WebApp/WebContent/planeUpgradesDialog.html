@@ -55,7 +55,7 @@ header {
 <body>
     <header>
         <div id="m2">
-       	    <select id="plane" class="content" style="float: left; margin-left: 5px; color: black;">
+       	    <select  onchange="setValues()" id="plane" class="content" style="float: left; margin-left: 5px; color: black;">
                <option value="0">--wählen--</option>
             </select>
             <b>Flugzeug Upgrades auswählen</b>
@@ -113,7 +113,7 @@ header {
             
           	</td>
 			<td>
-				<button id="engineBtn" onclick="setEngine()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
+				<button id="cleaningBtn" onclick="setCleaning()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value=true>Kaufen</button>
 			</td>		
 		</tr>
 		<tr>
@@ -166,7 +166,7 @@ header {
 	</table>
 	
 	<script type="text/javascript">
-		var playerData = parent.parent.getPlayerData();		
+		var playerData = parent.parent.getPlayerData();
 		
 		for (var i=0;i<playerData.planes.length;i++){
 			var select = document.getElementById("plane");
@@ -174,6 +174,37 @@ header {
 			option.text = playerData.planes[i].name;
 			option.value = (i+1).toString();
 			select.add(option);
+		}
+		
+		function setValues(){
+			var select = document.getElementById("plane");
+			var packet = document.getElementById("plane").options[select.selectedIndex].innerText;
+			for (var i=0;i<playerData.planes.length;i++){
+				if(playerData.planes[i].name == packet){
+					var plane = playerData.planes[i];
+					var isWinglets = plane.winglets;
+					var isNewEngine = plane.newEngine;
+					var isBuyOutsideCleaning = plane.buyOutsideCleaning;
+					
+					var seatValue = plane.seat;
+					document.getElementById("seat").options.selectedIndex = seatValue-1;
+					
+					var entertainmentPackage = plane.entertainmentPackage;
+					document.getElementById("entertainment").options.selectedIndex = entertainmentPackage;
+					
+					if(isWinglets){
+						document.getElementById("wingletsBtn").disabled = true;
+					}
+					
+					if(isNewEngine){
+						document.getElementById("engineBtn").disabled = true;
+					}
+					
+					if(isBuyOutsideCleaning){
+						document.getElementById("cleaningBtn").disabled = true;
+					}
+				}
+			}
 		}
 		
 		function closeDialog(){

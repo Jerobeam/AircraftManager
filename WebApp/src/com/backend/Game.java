@@ -248,12 +248,12 @@ public class Game {
 		return airport;
 	}
 
-	public void occupyRoute(Airline airlineOccupy, Route route, Plane plane){
+	public void occupyRoute(Airline airlineOccupy, Route route, Plane plane, int price){
 		int freePilotes = airlineOccupy.getPiloten() - airlineOccupy.getBlockedPilotes();
 		int freeStewards = airlineOccupy.getStewardessen() - airlineOccupy.getBlockedStewards();
 		//if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
 		route.occupyRoute(plane);
-		plane.setRouteCosts(route.getCosts());
+		plane.setRouteCosts(price);
 		plane.setBookingPrice(route.getBasePrice());
 		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
 		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());

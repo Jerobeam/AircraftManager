@@ -254,7 +254,7 @@ public class Game {
 		//if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
 		route.occupyRoute(plane);
 		plane.setRouteCosts(price);
-		plane.setBookingPrice(route.getBasePrice());
+		plane.setBookingPrice(price);
 		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
 		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
 	//}

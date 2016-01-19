@@ -25,7 +25,7 @@ public class Plane {
 	private int pilot;
 	private int benefit;
 	private Airline airline;
-	private PlaneUpgrade upgrades = new PlaneUpgrade(this, airline);
+	private PlaneUpgrade upgrades;
 
 	public int getPilot() {
 		return pilot;
@@ -39,6 +39,7 @@ public class Plane {
 		this.setName(name);
 		this.setType(type);
 		this.airline = airline;
+		this.upgrades = new PlaneUpgrade(this, airline);
 	}
 	
 	public Airline getAirline(){

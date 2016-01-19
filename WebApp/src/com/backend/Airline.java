@@ -352,33 +352,29 @@ public class Airline {
 	}
 	
 	public void setPlaneUpgrades(String planeName,String upgrade, String value){
-		for (Plane p : planes) {
-			if(p.getName().equals(planeName)){
-				System.out.println(planeName);
-				switch(upgrade){
-					case "winglets": {
-						System.out.println(value);
-						p.getUpgrades().setWinglets(Boolean.parseBoolean(value));
-						break;
-					}
-					case "newEngine": {
-						p.getUpgrades().setNewEngine(Boolean.parseBoolean(value));
-						break;
-					}
-					case "buyOutsideCleaning": {
-						p.getUpgrades().setBuyOutsideCleaning(Boolean.parseBoolean(value));
-						break;
-					}
-					case "seat": {
-						p.getUpgrades().setSeat(Integer.parseInt(value));
-						break;
-					}
-					case "enterteinmentPackage": {
-						p.getUpgrades().setEntertainmentPackage(Integer.parseInt(value));
-						break;
-					}
+			Plane p =this.getPlaneByName(planeName);
+			switch(upgrade){
+				case "winglets": {
+					System.out.println(value);
+					p.getUpgrades().setWinglets(Boolean.parseBoolean(value));
+					break;
+				}
+				case "newEngine": {
+					p.getUpgrades().setNewEngine(Boolean.parseBoolean(value));
+					break;
+				}
+				case "buyOutsideCleaning": {
+					p.getUpgrades().setBuyOutsideCleaning(Boolean.parseBoolean(value));
+					break;
+				}
+				case "seat": {
+					p.getUpgrades().setSeat(Integer.parseInt(value));
+					break;
+				}
+				case "enterteinmentPackage": {
+					p.getUpgrades().setEntertainmentPackage(Integer.parseInt(value));
+					break;
 				}
 			}
 		}
-	}
 }

@@ -13,7 +13,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.backend.departments.IT;
-import com.backend.departments.InternetAd;
 import com.backend.departments.Marketing;
 import com.backend.departments.Service;
 import com.backend.departments.TVAd;
@@ -35,9 +34,6 @@ public class Airline {
 	private final Marketing MARKETINGDEPT = new Marketing(this);
 	private final IT ITDEPT = new IT(this);
 	private Service services = new Service(this);
-	
-	//Set Advertisements
-	private final InternetAd INTERNETAD = new InternetAd(0, this);
 
 	//Personalkosten
 	private final int PILOTENKOSTEN = 5000;
@@ -251,9 +247,6 @@ public class Airline {
 			c.iterationStep();
 		}
 		
-		//iterate advertisements
-		this.INTERNETAD.iterate();
-		
 		for (Plane p : planes) {
 			if (p.getUpgrades().isDoOutsideCleaning()) {
 				p.getUpgrades().setDoOutsideCleaning(false);
@@ -280,7 +273,14 @@ public class Airline {
 		this.setMoney(moneyNew);
 		this.ek = this.getEK() - this.getITDept().getMonthlyCosts() - accountingCosts
 				- this.getMarketingDept().getMonthlyCosts() - personalkosten - this.services.getMonthlyCosts();
-
+		
+		//check if Social Analyse Software isBough
+		if (this.getITDept().isBoughtSocialMediaModule()) {
+			this.getMarketingDept().setEfficiency(this.getMarketingDept().getEfficiency() + 0.1);
+		}else{
+			this.getMarketingDept().setEfficiency(1.0);
+		}
+		
 		// monthly Image increasement
 		if (this.getMarketingDept().getMonthlyImageIncreasement() > 0) {
 			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasement() * this.getMarketingDept().getEfficiency());
@@ -391,9 +391,4 @@ public class Airline {
 			}
 		}
 
-	public InternetAd getINTERNETAD() {
-		return INTERNETAD;
-	}
-	
-	
 }

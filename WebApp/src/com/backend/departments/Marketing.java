@@ -11,9 +11,17 @@ public class Marketing {
 	private double monthlyImageIncreasement = 0;
 	private Airline airline;
 	
+
+	//Set Advertisements
+	private final InternetAd INTERNETAD = new InternetAd(0, this);
+	private final TVAd TVAD = new TVAd(0, this);
+	
 	public double getMonthlyImageIncreasement() {
+		//iterate advertisements
+		this.getINTERNETAD().iterate();
+		this.getTVAD().iterate();
 		//add advertisment increasement
-		double increasementByAdvertisement = this.getAirline().getINTERNETAD().getMonthlyImageIncreasement();
+		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement();
 		return (monthlyImageIncreasement + increasementByAdvertisement);
 	}
 
@@ -43,7 +51,7 @@ public class Marketing {
 
 	public int getMonthlyCosts() {
 		//add monthly costs for advertisements
-		int advertisementCosts = this.getAirline().getINTERNETAD().getMonthlyCosts();
+		int advertisementCosts = this.getINTERNETAD().getMonthlyCosts() + this.getTVAD().getMonthlyCosts();
 		return (monthlyCosts + advertisementCosts);
 	}
 	
@@ -128,9 +136,13 @@ public class Marketing {
 	public void setAirline(Airline airline) {
 		this.airline = airline;
 	}
-	
-	public void changeAdvertisementSize(Advertisement ad, int size){
-		ad.setSize(size);
+
+	public InternetAd getINTERNETAD() {
+		return INTERNETAD;
+	}
+
+	public TVAd getTVAD() {
+		return TVAD;
 	}
 	
 }

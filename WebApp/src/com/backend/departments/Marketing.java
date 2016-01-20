@@ -15,14 +15,13 @@ public class Marketing {
 	//Set Advertisements
 	private final InternetAd INTERNETAD = new InternetAd(0, this);
 	private final TVAd TVAD = new TVAd(0, this);
-	private final PrintAd PRINTAD = new PrintAd(0, this);
 	
 	public double getMonthlyImageIncreasement() {
 		//iterate advertisements
 		this.getINTERNETAD().iterate();
 		this.getTVAD().iterate();
 		//add advertisment increasement
-		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement() + this.getPRINTAD().getMonthlyImageIncreasement();
+		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement();
 		return (monthlyImageIncreasement + increasementByAdvertisement);
 	}
 
@@ -52,7 +51,7 @@ public class Marketing {
 
 	public int getMonthlyCosts() {
 		//add monthly costs for advertisements
-		int advertisementCosts = this.getINTERNETAD().getMonthlyCosts() + this.getTVAD().getMonthlyCosts() + this.getPRINTAD().getMonthlyCosts();
+		int advertisementCosts = this.getINTERNETAD().getMonthlyCosts() + this.getTVAD().getMonthlyCosts();
 		return (monthlyCosts + advertisementCosts);
 	}
 	
@@ -145,11 +144,5 @@ public class Marketing {
 	public TVAd getTVAD() {
 		return TVAD;
 	}
-
-	public PrintAd getPRINTAD() {
-		return PRINTAD;
-	}
-	
-	
 	
 }

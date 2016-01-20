@@ -75,6 +75,10 @@ public class Route {
 	public void occupyRoute(Plane plane) {
 		this.planes.add(plane);
 	}
+	
+	public void deletePlane(Plane plane) {
+		this.planes.remove(plane);
+	}
 	public JsonArrayBuilder getFlightsJSON() {
 		JsonObject json;
 		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
@@ -98,6 +102,7 @@ public class Route {
 			json = Json.createObjectBuilder()
 					.add("type", p.getType())
 					.add("name", p.getName())
+					.add("owner", p.getAirline().getName())
 					.build();
 
 			jsonArray.add(json);

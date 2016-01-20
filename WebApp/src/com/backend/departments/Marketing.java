@@ -109,16 +109,16 @@ public class Marketing {
 	
 	public void becomeSponsor(){
 		if(!this.isSponsoring()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() + 50000);
-			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + 3);
+			this.setMonthlyCosts(this.getMonthlyCosts() + 200000);
+			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + 2);
 			this.setSponsoring(true);
 		}
 	}
 	
 	public void stopSponsoring(){
 		if(this.isSponsoring()){
-			this.setMonthlyCosts(this.getMonthlyCosts() - 50000);
-			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() - 3);
+			this.setMonthlyCosts(this.getMonthlyCosts() - 200000);
+			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() - 2);
 			
 			//reduce Image once because of "disappointment of fans"
 			this.decreaseImage(5);

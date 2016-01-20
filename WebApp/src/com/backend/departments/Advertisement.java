@@ -36,6 +36,8 @@ public abstract class Advertisement {
 	public void setMonthlyCosts(int costs) {
 		this.monthlyCosts = costs;
 	}
+	
+	public void setSize(int size){}
 
 	public int getSize() {
 		return size;

@@ -23,6 +23,7 @@ public class InternetAd extends Advertisement {
 		this.setSize(size);
 	}
 	
+	@Override
 	public void setSize(int size) {
 		if (size > 0 && size <=2) {
 			if (InternetAd.currentCostLevel <=4) {
@@ -59,8 +60,10 @@ public class InternetAd extends Advertisement {
 		
 		this.size = size;
 	}
-	
-	//Decrease monthly Image grow over times
+
+
+
+		//Decrease monthly Image grow over times
 		public void iterate() {
 			switch (this.getSize()) {
 			//regenerate monthlyImage

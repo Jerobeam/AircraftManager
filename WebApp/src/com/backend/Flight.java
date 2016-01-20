@@ -36,7 +36,7 @@ public class Flight {
 	public int getBenefit(){
 		
 		int priceBenefit = ((int)((double)route.getBasePrice()/(double)plane.getBookingPrice()*100))-100;
-		System.out.println("PriceBenefit:" + priceBenefit);
+		//System.out.println("PriceBenefit:" + priceBenefit);
 		int benefit = plane.getComfort() + (int)(plane.getAirline().getImage() + 0.5) +priceBenefit;
 		return benefit;
 		

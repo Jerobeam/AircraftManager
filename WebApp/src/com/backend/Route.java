@@ -141,7 +141,7 @@ public class Route {
 		
 		//while (toBook>0 && !planesFull){
 			for(Flight f : flights){
-				System.out.println(((double)f.getBenefit()/sumBenefits)*toBook);
+				//System.out.println(((double)f.getBenefit()/sumBenefits)*toBook);
 				int maxBookings;
 				if (f.getBenefit() <= 0){maxBookings = 0;}else{
 				maxBookings = (int)(((double)f.getBenefit()/sumBenefits)*toBook);

@@ -137,18 +137,6 @@ public class AirlineServerEndpoint {
 		case "sellAccountingModule":
 			game.getAirlineByName(request[1]).getITDept().sellAccountingModule();
 			break;
-		case "donate":
-			game.getAirlineByName(request[1]).getMarketingDept().donate(Long.parseLong(request[2]));
-			break;
-		case "becomeSponsor":
-			game.getAirlineByName(request[1]).getMarketingDept().becomeSponsor();
-			break;
-		case "stopSponsoring":
-			game.getAirlineByName(request[1]).getMarketingDept().stopSponsoring();
-			break;
-		case "designPlaneLettering":
-			game.getAirlineByName(request[1]).getMarketingDept().designPlaneLettering();
-			break;
 		case "pickupService":
 			game.getAirlineByName(request[1]).getServices().setFreePickupService(Boolean.parseBoolean(request[2]));
 			break;	
@@ -171,6 +159,27 @@ public class AirlineServerEndpoint {
 			System.out.println(request[1] + " " + request[2] + " " + request[3] + " " + request[4]);
 			game.getAirlineByName(request[1]).setPlaneUpgrades(request[2], request[3], request[4]);
 			break;	
+		
+		//Marketing
+		case "donate":
+			game.getAirlineByName(request[1]).getMarketingDept().donate(Long.parseLong(request[2]));
+			break;
+		case "becomeSponsor":
+			game.getAirlineByName(request[1]).getMarketingDept().becomeSponsor();
+			break;
+		case "stopSponsoring":
+			game.getAirlineByName(request[1]).getMarketingDept().stopSponsoring();
+			break;
+		case "designPlaneLettering":
+			game.getAirlineByName(request[1]).getMarketingDept().designPlaneLettering();
+			break;
+		//Advertisement
+		case "setInternetAdSize":
+			game.getAirlineByName(request[1]).getMarketingDept().getINTERNETAD().setSize(Integer.parseInt(request[2]));
+			break;
+		case "setTVAdSize":
+			game.getAirlineByName(request[1]).getMarketingDept().getTVAD().setSize(Integer.parseInt(request[2]));
+			break;
 		default:
 			break;
 		}

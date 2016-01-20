@@ -288,6 +288,8 @@ public class Airline {
 
 		// image loss over time
 		this.getMarketingDept().decreaseImage(1);
+		this.getMarketingDept().getINTERNETAD().iterate();
+		this.getMarketingDept().getTVAD().iterate();
 		System.out.println("Monatliches Image neu: " + this.getImage());
 	}
 

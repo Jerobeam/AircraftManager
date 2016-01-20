@@ -7,7 +7,7 @@
 <style>
 .tabs {
 	position: relative;
-	min-height: 22rem; 
+	min-height: 24rem; 
 	clear: both;
 	margin: 25px;
 }
@@ -130,6 +130,11 @@ header {
 			<b>X</b>
 		</button>
 	</header>
+	<div>
+			<br>
+			<b style="margin-left:1rem;">Jeden Monat verliert eine Airline an Bekanntheit, sprich einen Imagepunkt. Mit Marketing kann man dem entgegenwirken.</b>
+			<br>
+		</div>
 	<div class="tabs">
 
 		<div class="tab">
@@ -147,7 +152,7 @@ header {
 					<tr>
 						<td>Spenden</td>
 						<td>Einmalige Spende an eine wohltätige Einrichtung <br> 
-								Verbessert das Image einmalig</td>
+								Verbessert das Image einmalig um <b>+2/ + 5,5</b> Imagepunkte</td>
 						<td>
 							Bitte wählen:
 							<br>
@@ -166,7 +171,7 @@ header {
 					<tr>
 						<td>Sponsoring</td>
 						<td>Biete RB Leipzig endlich einen anständigen Sponsor<br> 
-								Verbessert das Image auf Dauer - Beim Aufgeben der Sponsoring-Aktivität werden Fans jedoch enttäuscht</td>
+								Verbessert das Image auf Dauer (<b>+3</b> Imagepunkte/ Monat) - Beim Aufgeben der Sponsoring-Aktivität werden Fans jedoch enttäuscht (<b>-5</b> Imagepunkte)</td>
 						<td>
 							50.000€/Monat
 						<td>
@@ -184,7 +189,7 @@ header {
 					<tr>
 						<td>Schriftzugdesign</td>
 						<td>Entwickle ein hochwertiges Schriftzug-Design für alle aktuellen und zukünftigen Flugzeuge<br> 
-								Verbessert das Image auf Dauer abhängig von den gekauften Flugzeugen</td>
+								Verbessert das Image auf Dauer abhängig von den gekauften Flugzeugen (<b>+0,7</b> Imagepunkte pro Flugzeug)</td>
 						<td>
 							einmalig 300.000€
 						<td>
@@ -204,8 +209,6 @@ header {
 			<input type="radio" id="tab-2" name="tab-group-1"> <label
 				for="tab-2">Werbung</label>
 			<div class="content">
-				<br>
-				<b style="margin-left:1rem;">Werbung erhört das Image über die Zeit, jedoch stagniert der Imagezuwachs auf Dauer</b>
 				<table id="Table">
 					<tr>
 						<th>Art</th>
@@ -213,67 +216,48 @@ header {
 						<th>Kosten</th>
 						<th></th>
 					</tr>
-
-					<tr>
-						<td>Print Werbung für Flughäfen</td>
-						<td>Erhöht das Image auf Dauer abhängig von den angeflogenen Flughäfen</td>
-						<td>
-							150.000€/Monat
-						<td>
-							<Button id="printAdButton"
-								onclick="sendPrintAdRequest()" type="submit"
-								class="pure-button pure-button-primary"
-								style="display: initial;">Kaufen</Button>
-							<Button id="stopPrintAdButton"
-								onclick="sendStopPrintAdRequest()" type="submit"
-								class="pure-button pure-button-primary"
-								style="display: none;">Abbestellen</Button>
-						</td>
-					</tr>
-					
+			
 					<tr>
 						<td>Online Werbung</td>
-						<td>Paket 1: Schwacher monatlicher Imagezuwachs - langsam Effizienzabstieg
-						<br>Paket 2: Starker monatlicher Imagezuwachs - schnellerer Effizienzabstieg</td>
+						<td>
+							Kein Paket: Die Imagestagnation (falls vorhanden) regeneriert sich monatlich um <b>10%</b><br>
+						<br>Paket 1 (wenig Werbung): <b>+5</b> monatlicher Imagezuwachs im ersten Monat; <b>-10%</b> monatlicher Imagezuwachs pro Monat (min. +1,5 Image/Monat)<br>
+						<br>Paket 2 (viel Werbung): <b>+12</b> monatlicher Imagezuwachs im ersten Monat; <b>-25%</b> monatlicher Imagezuwachs pro Monat (min. +2 Image/Monat)</td>
 						<td>
 							Bitte wählen:
 							<br>
-							<select id="onlineAdSelect">
-							  <option value="paket1">Paket 1: 200.000</option>
-							  <option value="paket2">Paket 2: 400.000</option>
+							<select id="internetAdSelect">
+							  <option value="0">kein Paket</option>
+							  <option value="1">Paket 1: </option>
+							  <option value="2">Paket 2: </option>
 							</select> €/Monat</td>
 						<td>
-							<Button id="onlineAdButton"
-								onclick="sendOnlineAdRequest()" type="submit"
+							<Button id="internetAdButton"
+								onclick="sendSetInternetAdSizeRequest()" type="submit"
 								class="pure-button pure-button-primary"
-								style="display: initial;">Kaufen</Button>
-							<Button id="stopOnlineAdButton"
-								onclick="sendStopOnlineAdRequest()" type="submit"
-								class="pure-button pure-button-primary"
-								style="display: none;">Abbestellen</Button>
+								style="display: initial;">Ausführen</Button>
 						</td>
 					</tr>
 					
 					<tr>
 						<td>TV Werbung</td>
-						<td>Paket 1: Schwacher monatlicher Imagezuwachs - langsam Effizienzabstieg
-						<br>Paket 2: Starker monatlicher Imagezuwachs - schnellerer Effizienzabstieg</td>
+						<td>
+						Kein Paket: Die Imagestagnation (falls vorhanden) regeneriert sich monatlich um <b>15%</b><br>
+						<br>Paket 1 (wenig Werbung): <b>+4</b> monatlicher Imagezuwachs im ersten Monat; <b>-15%</b> monatlicher Imagezuwachs pro Monat (min. +1,2 Image/Monat)<br>
+						<br>Paket 2 (viel Werbung): <b>+9,6</b> monatlicher Imagezuwachs im ersten Monat; <b>-30%</b> monatlicher Imagezuwachs pro Monat (min. +1,6 Image/Monat)</td>
 						<td>
 							Bitte wählen:
 							<br>
 							<select id="tvAdSelect">
-							  <option value="paket1">Paket 1: 200.000</option>
-							  <option value="paket2">Paket 2: 400.000</option>
+							  <option value="0">kein Paket</option>
+							  <option value="1">Paket 1: </option>
+							  <option value="2">Paket 2: </option>
 							</select> €/Monat</td>
 						<td>
 							<Button id="tvAdButton"
-								onclick="sendTvAdRequest()" type="submit"
+								onclick="sendSetTvAdSizeRequest()" type="submit"
 								class="pure-button pure-button-primary"
-								style="display: initial;">Kaufen</Button>
-							<Button id="stopTvAdButton"
-								onclick="sendStopTvAdRequest()" type="submit"
-								class="pure-button pure-button-primary"
-								style="display: none;">Abbestellen</Button>
+								style="display: initial;">Ausführen</Button>
 						</td>
 					</tr>
 					
@@ -304,8 +288,8 @@ header {
 		
 		function sendDonationRequest(){
 			var select = document.getElementById('donationSelect');
-			var donationDisplay = document.getElementById('donationSelect').options[select.selectedIndex].text
-			var donation = document.getElementById('donationSelect').options[select.selectedIndex].value;
+			var donationDisplay = select.options[select.selectedIndex].text
+			var donation = select.options[select.selectedIndex].value;
 			parent.parent.send("donate§" + parent.parent.getPlayerName() + "§" + donation);
 			alert("Spende in Höhe von " + donationDisplay + " getätigt")
 		}
@@ -332,62 +316,18 @@ header {
 		var isPrintAd = playerData.isPrintAd;
 		var isOnlineAd = playerData.isOnlineAd;
 		
-		//TV Ad bought?
-		if(isTvAd){
-			document.getElementById("tvAdButton").style.display = "none";
-			document.getElementById("stopTvAdButton").style.display = "initial";
-		}else{
-			document.getElementById("tvAdButton").style.display = "initial";
-			document.getElementById("StopTvAdButton").style.display = "none";
-		}
-		function sendTvAdRequest(){
-			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
-			document.getElementById("tvAdButton").style.display = "none";
-			document.getElementById("StopTvAdButton").style.display = "initial";
-		}
-		function sendStopTvAdRequest(){
-			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
-			document.getElementById("tvAdButton").style.display = "initial";
-			document.getElementById("StopTvAdButton").style.display = "none";
+		function sendSetInternetAdSizeRequest(){
+			var select = document.getElementById('internetAdSelect');
+			var size = select.options[select.selectedIndex].value;
+			parent.parent.send("setInternetAdSize§" + parent.parent.getPlayerName() + "§" + size);
 		}
 		
-		//Online Ad bought?
-		if(isOnlineAd){
-			document.getElementById("onlineAdButton").style.display = "none";
-			document.getElementById("stopOnlineAdButton").style.display = "initial";
-		}else{
-			document.getElementById("onlineAdButton").style.display = "initial";
-			document.getElementById("stopOnlineAdButton").style.display = "none";
-		}
-		function sendOnlineAdRequest(){
-			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
-			document.getElementById("onlineAdButton").style.display = "none";
-			document.getElementById("stopOnlineAdButton").style.display = "initial";
-		}
-		function sendStopTvAdRequest(){
-			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
-			document.getElementById("onlineAdButton").style.display = "initial";
-			document.getElementById("stopOnlineAdButton").style.display = "none";
+		function sendSetTvAdSizeRequest(){
+			var select = document.getElementById('tvAdSelect');
+			var size = select.options[select.selectedIndex].value;
+			parent.parent.send("setTVAdSize§" + parent.parent.getPlayerName() + "§" + size);
 		}
 		
-		//Print Ad bought?
-		if(isPrintAd){
-			document.getElementById("printAdButton").style.display = "none";
-			document.getElementById("stopPrintAdButton").style.display = "initial";
-		}else{
-			document.getElementById("printAdButton").style.display = "initial";
-			document.getElementById("stopPrintAdButton").style.display = "none";
-		}
-		function sendPrintAdRequest(){
-			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
-			document.getElementById("printAdButton").style.display = "none";
-			document.getElementById("stopPrintAdButton").style.display = "initial";
-		}
-		function sendStopTvAdRequest(){
-			parent.parent.send("XYZ§" + parent.parent.getPlayerName());
-			document.getElementById("printAdButton").style.display = "initial";
-			document.getElementById("stopPrintAdButton").style.display = "none";
-		}
 		
 		function closeDialog(){
 			parent.closeMenu();

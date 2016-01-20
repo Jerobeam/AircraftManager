@@ -17,9 +17,6 @@ public class Marketing {
 	private final TVAd TVAD = new TVAd(0, this);
 	
 	public double getMonthlyImageIncreasement() {
-		//iterate advertisements
-		this.getINTERNETAD().iterate();
-		this.getTVAD().iterate();
 		//add advertisment increasement
 		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement();
 		return (monthlyImageIncreasement + increasementByAdvertisement);
@@ -122,7 +119,7 @@ public class Marketing {
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() - 3);
 			
 			//reduce Image once because of "disappointment of fans"
-			this.decreaseImage(2);
+			this.decreaseImage(5);
 			this.setSponsoring(false);
 			
 			System.out.println("stopSponsoring called");

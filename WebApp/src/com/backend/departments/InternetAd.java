@@ -56,7 +56,7 @@ public class InternetAd extends Advertisement {
 		default:
 			break;
 		}
-		
+		System.out.println("Internetsize von " + this.getSize() + " auf " + size + " gesetzt");
 		this.size = size;
 	}
 

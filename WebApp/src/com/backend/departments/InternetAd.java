@@ -67,14 +67,14 @@ public class InternetAd extends Advertisement {
 			//regenerate monthlyImage
 			case 0:
 				//increase bigger helper variable
-				if (this.getCurrentBigIncreasement()<InternetAd.INITIALINCREASEMENTBIG) {
+				if ((this.getCurrentBigIncreasement() * InternetAd.REGENERATIONRATE)<InternetAd.INITIALINCREASEMENTBIG) {
 					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * InternetAd.REGENERATIONRATE);
 				}else{
 					this.setCurrentBigIncreasement(InternetAd.INITIALINCREASEMENTBIG);
 				}
 				
 				//increase smaller helper variable
-				if (this.getCurrentSmallIncreasement()<InternetAd.INITIALINCREASEMENTSMALL) {
+				if ((this.getCurrentSmallIncreasement() * InternetAd.REGENERATIONRATE)<InternetAd.INITIALINCREASEMENTSMALL) {
 					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * InternetAd.REGENERATIONRATE);
 				}else{
 					this.setCurrentSmallIncreasement(InternetAd.INITIALINCREASEMENTSMALL);
@@ -86,14 +86,14 @@ public class InternetAd extends Advertisement {
 			case 1:
 				
 				//decrease bigger helper variable
-				if (this.getCurrentBigIncreasement()>InternetAd.MINIMALINCREASEMENTBIG) {
+				if ((this.getCurrentBigIncreasement() * InternetAd.DECREASEMENTRATESMALL)>InternetAd.MINIMALINCREASEMENTBIG) {
 					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * InternetAd.DECREASEMENTRATESMALL);
 				}else{
 					this.setCurrentBigIncreasement(InternetAd.MINIMALINCREASEMENTBIG);
 				}
 				
 				//decrease smaller helper variable
-				if (this.getCurrentSmallIncreasement()>InternetAd.MINIMALINCREASEMENTSMALL) {
+				if ((this.getCurrentSmallIncreasement() * InternetAd.DECREASEMENTRATESMALL)>InternetAd.MINIMALINCREASEMENTSMALL) {
 					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * InternetAd.DECREASEMENTRATESMALL);
 				}else{
 					this.setCurrentSmallIncreasement(InternetAd.MINIMALINCREASEMENTSMALL);
@@ -106,14 +106,14 @@ public class InternetAd extends Advertisement {
 			//decrease monthly Image more for bigger package
 			case 2:
 				//decrease bigger helper variable
-				if (this.getCurrentBigIncreasement()>InternetAd.MINIMALINCREASEMENTBIG) {
+				if ((this.getCurrentBigIncreasement() * InternetAd.DECREASEMENTRATEBIG)>InternetAd.MINIMALINCREASEMENTBIG) {
 					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * InternetAd.DECREASEMENTRATEBIG);
 				}else{
 					this.setCurrentBigIncreasement(InternetAd.MINIMALINCREASEMENTBIG);
 				}
 				
 				//decrease smaller helper variable
-				if (this.getCurrentSmallIncreasement()>InternetAd.MINIMALINCREASEMENTSMALL) {
+				if ((this.getCurrentSmallIncreasement() * InternetAd.DECREASEMENTRATEBIG)>InternetAd.MINIMALINCREASEMENTSMALL) {
 					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * InternetAd.DECREASEMENTRATEBIG);
 				}else{
 					this.setCurrentSmallIncreasement(InternetAd.MINIMALINCREASEMENTSMALL);

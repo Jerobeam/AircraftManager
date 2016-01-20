@@ -67,14 +67,14 @@ public class TVAd extends Advertisement {
 			//regenerate monthlyImage
 			case 0:
 				//increase bigger helper variable
-				if (this.getCurrentBigIncreasement()<TVAd.INITIALINCREASEMENTBIG) {
+				if ((this.getCurrentBigIncreasement() * TVAd.REGENERATIONRATE)<TVAd.INITIALINCREASEMENTBIG) {
 					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * TVAd.REGENERATIONRATE);
 				}else{
 					this.setCurrentBigIncreasement(TVAd.INITIALINCREASEMENTBIG);
 				}
 				
 				//increase smaller helper variable
-				if (this.getCurrentSmallIncreasement()<TVAd.INITIALINCREASEMENTSMALL) {
+				if ((this.getCurrentSmallIncreasement() * TVAd.REGENERATIONRATE)<TVAd.INITIALINCREASEMENTSMALL) {
 					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * TVAd.REGENERATIONRATE);
 				}else{
 					this.setCurrentSmallIncreasement(TVAd.INITIALINCREASEMENTSMALL);
@@ -86,14 +86,14 @@ public class TVAd extends Advertisement {
 			case 1:
 				
 				//decrease bigger helper variable
-				if (this.getCurrentBigIncreasement()>TVAd.MINIMALINCREASEMENTBIG) {
+				if ((this.getCurrentBigIncreasement() * TVAd.DECREASEMENTRATESMALL)>TVAd.MINIMALINCREASEMENTBIG) {
 					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * TVAd.DECREASEMENTRATESMALL);
 				}else{
 					this.setCurrentBigIncreasement(TVAd.MINIMALINCREASEMENTBIG);
 				}
 				
 				//decrease smaller helper variable
-				if (this.getCurrentSmallIncreasement()>TVAd.MINIMALINCREASEMENTSMALL) {
+				if ((this.getCurrentSmallIncreasement() * TVAd.DECREASEMENTRATESMALL)>TVAd.MINIMALINCREASEMENTSMALL) {
 					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * TVAd.DECREASEMENTRATESMALL);
 				}else{
 					this.setCurrentSmallIncreasement(TVAd.MINIMALINCREASEMENTSMALL);
@@ -106,14 +106,14 @@ public class TVAd extends Advertisement {
 			//decrease monthly Image more for bigger package
 			case 2:
 				//decrease bigger helper variable
-				if (this.getCurrentBigIncreasement()>TVAd.MINIMALINCREASEMENTBIG) {
+				if ((this.getCurrentBigIncreasement() * TVAd.DECREASEMENTRATEBIG)>TVAd.MINIMALINCREASEMENTBIG) {
 					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * TVAd.DECREASEMENTRATEBIG);
 				}else{
 					this.setCurrentBigIncreasement(TVAd.MINIMALINCREASEMENTBIG);
 				}
 				
 				//decrease smaller helper variable
-				if (this.getCurrentSmallIncreasement()>TVAd.MINIMALINCREASEMENTSMALL) {
+				if ((this.getCurrentSmallIncreasement() * TVAd.DECREASEMENTRATEBIG)>TVAd.MINIMALINCREASEMENTSMALL) {
 					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * TVAd.DECREASEMENTRATEBIG);
 				}else{
 					this.setCurrentSmallIncreasement(TVAd.MINIMALINCREASEMENTSMALL);

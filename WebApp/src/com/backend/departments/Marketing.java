@@ -14,7 +14,7 @@ public class Marketing {
 	public double getMonthlyImageIncreasement() {
 		//add advertisment increasement
 		double increasementByAdvertisement = this.getAirline().getINTERNETAD().getMonthlyImageIncreasement();
-		return (monthlyImageIncreasement + increasementByAdvertisement) * this.getEfficiency();
+		return (monthlyImageIncreasement + increasementByAdvertisement);
 	}
 
 	public void setMonthlyImageIncreasement(double monthlyImageIncreasement) {

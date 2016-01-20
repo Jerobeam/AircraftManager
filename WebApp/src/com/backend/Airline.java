@@ -283,7 +283,7 @@ public class Airline {
 
 		// monthly Image increasement
 		if (this.getMarketingDept().getMonthlyImageIncreasement() > 0) {
-			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasement());
+			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasement() * this.getMarketingDept().getEfficiency());
 		}
 
 		// image loss over time

@@ -12,7 +12,9 @@ public class Marketing {
 	private Airline airline;
 	
 	public double getMonthlyImageIncreasement() {
-		return monthlyImageIncreasement;
+		//add advertisment increasement
+		double increasementByAdvertisement = this.getAirline().getINTERNETAD().getMonthlyImageIncreasement();
+		return (monthlyImageIncreasement + increasementByAdvertisement) * this.getEfficiency();
 	}
 
 	public void setMonthlyImageIncreasement(double monthlyImageIncreasement) {
@@ -40,7 +42,9 @@ public class Marketing {
 	}
 
 	public int getMonthlyCosts() {
-		return monthlyCosts;
+		//add monthly costs for advertisements
+		int advertisementCosts = this.getAirline().getINTERNETAD().getMonthlyCosts();
+		return (monthlyCosts + advertisementCosts);
 	}
 	
 	public void setMonthlyCosts(int monthlyCosts) {
@@ -125,6 +129,8 @@ public class Marketing {
 		this.airline = airline;
 	}
 	
-	
+	public void changeAdvertisementSize(Advertisement ad, int size){
+		ad.setSize(size);
+	}
 	
 }

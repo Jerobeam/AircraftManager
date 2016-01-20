@@ -19,6 +19,7 @@ public class Marketing {
 	public double getMonthlyImageIncreasement() {
 		//add advertisment increasement
 		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement();
+		System.out.println("Imagezuwachs durch TV Werbung: " + this.getTVAD().getMonthlyImageIncreasement());
 		return (monthlyImageIncreasement + increasementByAdvertisement);
 	}
 
@@ -59,7 +60,6 @@ public class Marketing {
 	public void increaseImage(double increasment){
 		if ((this.getAirline().getImage() + increasment) <=100) {
 			this.getAirline().setImage(this.getAirline().getImage() + (increasment*this.getEfficiency()));	
-			System.out.println("Image erhöht um: " + increasment);
 		}else{
 			this.getAirline().setImage(100.0);
 		}
@@ -90,7 +90,6 @@ public class Marketing {
 		}else if (amount>=2500000){
 			this.increaseImage(5.5);			
 		}
-		System.out.println("Donate called with: " + amount);
 	}
 	
 	//Schriftzug Design für Flugzeuge
@@ -100,7 +99,6 @@ public class Marketing {
 			int amountPlanes= this.getAirline().getPlanes().size();
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + amountPlanes * 0.7);
 			this.setLettering(true);
-			System.out.println("designed Plane Lettering");
 		}		
 	}
 	
@@ -109,7 +107,6 @@ public class Marketing {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 50000);
 			this.setMonthlyImageIncreasement(this.getMonthlyImageIncreasement() + 3);
 			this.setSponsoring(true);
-			System.out.println("becomeSponsor called");
 		}
 	}
 	
@@ -121,8 +118,6 @@ public class Marketing {
 			//reduce Image once because of "disappointment of fans"
 			this.decreaseImage(5);
 			this.setSponsoring(false);
-			
-			System.out.println("stopSponsoring called");
 		}
 	}
 

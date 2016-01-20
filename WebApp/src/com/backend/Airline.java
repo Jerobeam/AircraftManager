@@ -239,9 +239,7 @@ public class Airline {
 	}
 
 	public void monthlyCalculation() {
-		System.out.println("Monatliches Image alt: " + this.getImage());
-		System.out.println("Monatliche Imageerhöhung: " + this.getMarketingDept().getMonthlyImageIncreasement());
-		
+		System.out.println("Image alt: " + this.getImage());
 		//iterate Credits
 		for (Credit c : credits) {
 			c.iterationStep();
@@ -283,14 +281,16 @@ public class Airline {
 		
 		// monthly Image increasement
 		if (this.getMarketingDept().getMonthlyImageIncreasement() > 0) {
-			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasement() * this.getMarketingDept().getEfficiency());
+			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasement());
 		}
 
 		// image loss over time
 		this.getMarketingDept().decreaseImage(1);
 		this.getMarketingDept().getINTERNETAD().iterate();
 		this.getMarketingDept().getTVAD().iterate();
-		System.out.println("Monatliches Image neu: " + this.getImage());
+		
+		System.out.println("Image neu: " + this.getImage());
+		System.out.println("----------------------------------");
 	}
 
 	public void takeCreditType1(int amount) {
@@ -346,7 +346,6 @@ public class Airline {
 	}
 
 	public void setImage(double image) {
-		System.out.println("Image von " + this.getImage() + " auf " + image + " gesetzt");
 		this.image = image;
 	}
 

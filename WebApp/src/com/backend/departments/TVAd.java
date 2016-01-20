@@ -56,7 +56,6 @@ public class TVAd extends Advertisement {
 		default:
 			break;
 		}
-		System.out.println("TVsize von " + this.getSize() + " auf " + size + " gesetzt");
 		this.size = size;
 	}
 

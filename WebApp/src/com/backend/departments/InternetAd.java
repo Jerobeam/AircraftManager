@@ -1,7 +1,5 @@
 package com.backend.departments;
 
-import com.backend.Airline;
-
 public class InternetAd extends Advertisement {
 	
 	private static final double REGENERATIONRATE = 1.1; //Regenerierungsrate des monathelichen Imagezuwachses, wenn keine Werbung aktiv ist (Paket 0)
@@ -17,15 +15,16 @@ public class InternetAd extends Advertisement {
 	private double currentSmallIncreasement = InternetAd.INITIALINCREASEMENTSMALL; //magezuwachs, wie er aktuelle für wenig Werbung wäre
 	private double currentBigIncreasement = InternetAd.INITIALINCREASEMENTBIG; //Imagezuwachs, wie er aktuelle für viel Werbung wäre
 	
-	public InternetAd(int size, Airline airline) {
-		super(airline);
+	public InternetAd(int size, Marketing marketing) {
+		super(marketing);
 		
 		this.setSize(size);
 	}
 	
 	@Override
 	public void setSize(int size) {
-		if (size > 0 && size <=2) {
+		//only increase currentCostLevel if someone switches from "no advert." to "any advert."
+		if (size > 0 && size <=2 && this.getSize() == 0) {
 			if (InternetAd.currentCostLevel <=4) {
 				InternetAd.currentCostLevel++;
 			}else{

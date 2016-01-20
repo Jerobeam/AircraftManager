@@ -17,9 +17,14 @@ public class Marketing {
 	private final TVAd TVAD = new TVAd(0, this);
 	
 	public double getMonthlyImageIncreasement() {
+		return this.monthlyImageIncreasement;
+	}
+	
+	public double getMonthlyImageIncreasementWithAds(){
 		//add advertisment increasement
 		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement();
 		System.out.println("Imagezuwachs durch TV Werbung: " + this.getTVAD().getMonthlyImageIncreasement());
+		System.out.println("Imagezuwachs durch Internet Werbung: " + this.getINTERNETAD().getMonthlyImageIncreasement());
 		return (monthlyImageIncreasement + increasementByAdvertisement);
 	}
 
@@ -58,7 +63,7 @@ public class Marketing {
 	}
 	
 	public void increaseImage(double increasment){
-		if ((this.getAirline().getImage() + increasment) <=100) {
+		if ((this.getAirline().getImage() + (increasment*this.getEfficiency())) <=100) {
 			this.getAirline().setImage(this.getAirline().getImage() + (increasment*this.getEfficiency()));	
 		}else{
 			this.getAirline().setImage(100.0);

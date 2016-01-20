@@ -274,14 +274,14 @@ public class Airline {
 		
 		//check if Social Analyse Software isBough
 		if (this.getITDept().isBoughtSocialMediaModule()) {
-			this.getMarketingDept().setEfficiency(this.getMarketingDept().getEfficiency() + 0.1);
+			this.getMarketingDept().setEfficiency(1.1);
 		}else{
 			this.getMarketingDept().setEfficiency(1.0);
 		}
 		
 		// monthly Image increasement
-		if (this.getMarketingDept().getMonthlyImageIncreasement() > 0) {
-			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasement());
+		if (this.getMarketingDept().getMonthlyImageIncreasementWithAds() > 0) {
+			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasementWithAds());
 		}
 
 		// image loss over time

@@ -109,9 +109,9 @@ sectionRight {
 			letterCount : 15
 		});
 		board.setValue('Airline Manager');
-
+		var ip = location.host;
 		var websocket = new WebSocket(
-				"ws://localhost:8080/WebApp/AirlineServerEndpoint");
+				"ws://" + ip +"/WebApp/AirlineServerEndpoint");
 
 		websocket.onmessage = onMessage;
 

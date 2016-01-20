@@ -53,15 +53,34 @@ canvas {
 		
 		
 		setInterval(function(){ 
+			var owned;
 			routes = parent.getRouteData();
 			for(var i=0;i<routes.length;i++){
 				for(var j=0;j<routes[i].planes.length;j++){
 					if (!planeExists(routes[i].planes[j].name)){
-						createPlane(routes[i].planes[j].name,routes[i].name);
+						if (parent.getPlayerName() == routes[i].planes[j].owner)
+							{ owned = true;} else {owned = false;}
+						createPlane(routes[i].planes[j].name,routes[i].name,owned);
 						console.log("Plane created!");
+					}else{
+						
+						for(var x=0;x<planes.length;x++){
+							if(routes[i].planes[j].name == planes[x].name){
+								for (var y=0;y<spline.length;y++){
+									if (routes[i].name == spline[y].name){
+										planes[x].userData = {route: routes[i].planes[j].name, routeNr: y };
+									}
+								}
+							}
+						}
+						
+						
+						
 					}
 				}
 			}
+			
+			
 				
 		}, 5000);
 		
@@ -81,12 +100,18 @@ canvas {
 			//createPlane("XX");		
 		});
 		
-		function createPlane(name,routeName){
-			
+		function createPlane(name,routeName,owned){
+			if (owned){
 			planes[planeCounter] = new THREE.Mesh(planeGeom, new THREE.MeshPhongMaterial({
 				color : 0xFFFFFF,
 				shading : THREE.FlatShading
-			}));
+			}));}
+			else{
+				planes[planeCounter] = new THREE.Mesh(planeGeom, new THREE.MeshPhongMaterial({
+					color : 0xb20000,
+					shading : THREE.FlatShading
+				}));}
+			
 			planes[planeCounter].scale.multiplyScalar(0.1);
 			scene.add(planes[planeCounter]);
 			planes[planeCounter].name = name;

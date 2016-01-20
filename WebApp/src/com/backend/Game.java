@@ -252,6 +252,14 @@ public class Game {
 		int freePilotes = airlineOccupy.getPiloten() - airlineOccupy.getBlockedPilotes();
 		int freeStewards = airlineOccupy.getStewardessen() - airlineOccupy.getBlockedStewards();
 		//if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
+		for (Route r : routes) {
+			ArrayList<Plane> planes = r.getPlanes();
+			for(Plane p: planes){
+				if (p.getName() == plane.getName()){
+					r.deletePlane(plane);
+				}
+			}
+		}
 		route.occupyRoute(plane);
 		plane.setBookingPrice(route.getBasePrice());
 		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());

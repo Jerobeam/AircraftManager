@@ -144,5 +144,8 @@ public class InternetAd extends Advertisement {
 			this.currentBigIncreasement = currentBigIncreasement;
 		}
 		
+		public static int getCurrentPrice(){
+			return InternetAd.costLevels[InternetAd.currentCostLevel];
+		}
 		
 }

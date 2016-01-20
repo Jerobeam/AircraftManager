@@ -224,9 +224,9 @@ header {
 						<br>Paket 1 (wenig Werbung): <b>+5</b> monatlicher Imagezuwachs im ersten Monat; <b>-10%</b> monatlicher Imagezuwachs pro Monat (min. +1,5 Image/Monat)<br>
 						<br>Paket 2 (viel Werbung): <b>+12</b> monatlicher Imagezuwachs im ersten Monat; <b>-25%</b> monatlicher Imagezuwachs pro Monat (min. +2 Image/Monat)</td>
 						<td>
-							Bitte wählen:
+							Paket ändern:
 							<br>
-							<select id="internetAdSelect">
+							<select id="internetAdSelect" onchange="onChangeInternetAdSelect()">
 							  <option value="0">kein Paket</option>
 							  <option value="1">Paket 1: </option>
 							  <option value="2">Paket 2: </option>
@@ -235,7 +235,7 @@ header {
 							<Button id="internetAdButton"
 								onclick="sendSetInternetAdSizeRequest()" type="submit"
 								class="pure-button pure-button-primary"
-								style="display: initial;">Ausführen</Button>
+								style="display: initial;" disabled="disabled">Ändern</Button>
 						</td>
 					</tr>
 					
@@ -246,9 +246,9 @@ header {
 						<br>Paket 1 (wenig Werbung): <b>+4</b> monatlicher Imagezuwachs im ersten Monat; <b>-15%</b> monatlicher Imagezuwachs pro Monat (min. +1,2 Image/Monat)<br>
 						<br>Paket 2 (viel Werbung): <b>+9,6</b> monatlicher Imagezuwachs im ersten Monat; <b>-30%</b> monatlicher Imagezuwachs pro Monat (min. +1,6 Image/Monat)</td>
 						<td>
-							Bitte wählen:
+							Paket ändern:
 							<br>
-							<select id="tvAdSelect">
+							<select id="tvAdSelect" onchange="onChangeTvAdSelect()">
 							  <option value="0">kein Paket</option>
 							  <option value="1">Paket 1: </option>
 							  <option value="2">Paket 2: </option>
@@ -257,7 +257,7 @@ header {
 							<Button id="tvAdButton"
 								onclick="sendSetTvAdSizeRequest()" type="submit"
 								class="pure-button pure-button-primary"
-								style="display: initial;">Ausführen</Button>
+								style="display: initial;" disabled="disabled">Ändern</Button>
 						</td>
 					</tr>
 					
@@ -312,19 +312,48 @@ header {
 		}
 		
 		//************Werbung Aktionen (Tab 2)
-		var isTvAd = playerData.isTvAd;
-		var isPrintAd = playerData.isPrintAd;
-		var isOnlineAd = playerData.isOnlineAd;
+		var tvAdSize = playerData.tvAdSize;
+		var internetAdSize = playerData.internetAdSize;
+		
+		var currentInternetAdCosts = playerData.currentInternetAdCosts;
+		var currentTvAdCosts = playerData.currentTvAdCosts;
+		
+		var tvAdSelect = document.getElementById("tvAdSelect");
+		tvAdSelect.options[1].text = tvAdSelect.options[1].text + " " + currentTvAdCosts;
+		tvAdSelect.options[2].text = tvAdSelect.options[2].text + " " + (currentTvAdCosts*2);
+		tvAdSelect.selectedIndex = tvAdSize;
+		
+		var internetAdSelect = document.getElementById("internetAdSelect");
+		internetAdSelect.options[1].text = internetAdSelect.options[1].text + " " + currentInternetAdCosts;
+		internetAdSelect.options[2].text = internetAdSelect.options[2].text + " " + (currentInternetAdCosts*2);
+		internetAdSelect.selectedIndex = internetAdSize;
+		
+		function onChangeInternetAdSelect(){
+			if(internetAdSize === internetAdSelect.selectedIndex){
+				document.getElementById("internetAdButton").disabled = true;
+			}else{
+				document.getElementById("internetAdButton").disabled = false;
+			}
+		}
+		function onChangeTvAdSelect(){
+			if(tvAdSize === tvAdSelect.selectedIndex){
+				document.getElementById("tvAdButton").disabled = true;
+			}else{
+				document.getElementById("tvAdButton").disabled = false;
+			}
+		}
 		
 		function sendSetInternetAdSizeRequest(){
 			var select = document.getElementById('internetAdSelect');
 			var size = select.options[select.selectedIndex].value;
+			internetAdSize = size;
 			parent.parent.send("setInternetAdSize§" + parent.parent.getPlayerName() + "§" + size);
 		}
 		
 		function sendSetTvAdSizeRequest(){
 			var select = document.getElementById('tvAdSelect');
 			var size = select.options[select.selectedIndex].value;
+			tvAdSize = size;
 			parent.parent.send("setTVAdSize§" + parent.parent.getPlayerName() + "§" + size);
 		}
 		

@@ -10,6 +10,8 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 
+import com.backend.departments.InternetAd;
+import com.backend.departments.TVAd;
 import com.server.AirlineServerEndpoint;
 
 public class Game {
@@ -187,7 +189,11 @@ public class Game {
 					.add("freeSeatReservation", a.getServices().isFreeSeatReservation())
 					.add("freePickupService", a.getServices().isFreePickupService())
 					.add("wlanAboard", a.getServices().isWlanAboard())
-
+					.add("tvAdSize", a.getMarketingDept().getTVAD().getSize())
+					.add("internetAdSize", a.getMarketingDept().getINTERNETAD().getSize())
+					.add("currentTvAdCosts", TVAd.getCurrentPrice())
+					.add("currentInternetAdCosts", InternetAd.getCurrentPrice())
+					
 					.build();
 			jsonArray.add(json);
 		}

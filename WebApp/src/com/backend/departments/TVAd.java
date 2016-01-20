@@ -143,5 +143,9 @@ public class TVAd extends Advertisement {
 		public void setCurrentBigIncreasement(double currentBigIncreasement) {
 			this.currentBigIncreasement = currentBigIncreasement;
 		}
+		
+		public static int getCurrentPrice(){
+			return TVAd.costLevels[TVAd.currentCostLevel];
+		}
 
 }

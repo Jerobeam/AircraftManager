@@ -28,7 +28,7 @@ public class Airline {
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
 	// TODO: Balance startImage
-	private double image = 10;
+	private double image = 5;
 
 	// Set Departments
 	private final Marketing MARKETINGDEPT = new Marketing(this);

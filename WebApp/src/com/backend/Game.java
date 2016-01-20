@@ -252,6 +252,7 @@ public class Game {
 		int freePilotes = airlineOccupy.getPiloten() - airlineOccupy.getBlockedPilotes();
 		int freeStewards = airlineOccupy.getStewardessen() - airlineOccupy.getBlockedStewards();
 		//if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
+		route.occupyRoute(plane);
 		plane.setBookingPrice(route.getBasePrice());
 		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
 		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());

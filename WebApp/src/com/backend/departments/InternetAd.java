@@ -4,10 +4,18 @@ import com.backend.Airline;
 
 public class InternetAd extends Advertisement {
 	
+	private static final double REGENERATIONRATE = 1.1; //Regenerierungsrate des monathelichen Imagezuwachses, wenn keine Werbung aktiv ist (Paket 0)
+	private static final double DECREASEMENTRATESMALL = 0.9; //Imageverlustrater bei wenig Werbung
+	private static final double DECREASEMENTRATEBIG = 0.75; //Imageverlust bei viel Werbung
+	private static final double INITIALINCREASEMENTSMALL = 5.0; //Initialer Imagezuwachs bei wenig Werbung
+	private static final double INITIALINCREASEMENTBIG = 12.0; //Initialer Imagezuwachs bei viel Werbung
+	private static final double MINIMALINCREASEMENTSMALL = 1.5; //Minimaler Imagezuwachs bei wenig Werbung
+	private static final double MINIMALINCREASEMENTBIG = 2; //Minimaler Imagezuwachs bei viel Werbung
+	
 	private static byte currentCostLevel = 0; //Welcher Preis ist der aktuelle?
 	private static int costLevels[] = {200000, 220000, 250000, 300000}; //4 Verschiedene Preise, Großes Paket kostet doppelt soviel
-	private double helperForSmallerPackage = 5; //initialer Imagezuwachs für wenig Werbung
-	private double helperForBiggerPackage = 12; //initialer Imagezuwachs für viel Werbung
+	private double currentSmallIncreasement = InternetAd.INITIALINCREASEMENTSMALL; //magezuwachs, wie er aktuelle für wenig Werbung wäre
+	private double currentBigIncreasement = InternetAd.INITIALINCREASEMENTBIG; //Imagezuwachs, wie er aktuelle für viel Werbung wäre
 	
 	public InternetAd(int size, Airline airline) {
 		super(airline);
@@ -35,7 +43,7 @@ public class InternetAd extends Advertisement {
 			}else{
 				this.setMonthlyCosts(InternetAd.costLevels[currentCostLevel]);
 			}
-			this.setMonthlyImageIncreasement(this.getHelperForSmallerPackage());
+			this.setMonthlyImageIncreasement(this.getCurrentSmallIncreasement());
 			break;
 		case 2:
 			if(this.getSize()==1){
@@ -43,7 +51,7 @@ public class InternetAd extends Advertisement {
 			}else{
 				this.setMonthlyCosts(InternetAd.costLevels[currentCostLevel]*2);
 			}
-			this.setMonthlyImageIncreasement(this.getHelperForBiggerPackage());
+			this.setMonthlyImageIncreasement(this.getCurrentBigIncreasement());
 			break;
 		default:
 			break;
@@ -58,17 +66,17 @@ public class InternetAd extends Advertisement {
 			//regenerate monthlyImage
 			case 0:
 				//increase bigger helper variable
-				if (this.getHelperForBiggerPackage()<12.0) {
-					this.setHelperForBiggerPackage(this.getHelperForBiggerPackage() * 1.1);
+				if (this.getCurrentBigIncreasement()<InternetAd.INITIALINCREASEMENTBIG) {
+					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * InternetAd.REGENERATIONRATE);
 				}else{
-					this.setHelperForBiggerPackage(12);
+					this.setCurrentBigIncreasement(InternetAd.INITIALINCREASEMENTBIG);
 				}
 				
 				//increase smaller helper variable
-				if (this.getHelperForSmallerPackage()<5.0) {
-					this.setHelperForSmallerPackage(this.getHelperForSmallerPackage() * 1.1);
+				if (this.getCurrentSmallIncreasement()<InternetAd.INITIALINCREASEMENTSMALL) {
+					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * InternetAd.REGENERATIONRATE);
 				}else{
-					this.setHelperForSmallerPackage(5.0);
+					this.setCurrentSmallIncreasement(InternetAd.INITIALINCREASEMENTSMALL);
 				}
 				break;
 				
@@ -77,41 +85,41 @@ public class InternetAd extends Advertisement {
 			case 1:
 				
 				//decrease bigger helper variable
-				if (this.getHelperForBiggerPackage()>2.0) {
-					this.setHelperForBiggerPackage(this.getHelperForBiggerPackage() * 0.9);
+				if (this.getCurrentBigIncreasement()>InternetAd.MINIMALINCREASEMENTBIG) {
+					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * InternetAd.DECREASEMENTRATESMALL);
 				}else{
-					this.setHelperForBiggerPackage(2);
+					this.setCurrentBigIncreasement(InternetAd.MINIMALINCREASEMENTBIG);
 				}
 				
 				//decrease smaller helper variable
-				if (this.getHelperForSmallerPackage()>1.5) {
-					this.setHelperForSmallerPackage(this.getHelperForSmallerPackage() * 0.9);
+				if (this.getCurrentSmallIncreasement()>InternetAd.MINIMALINCREASEMENTSMALL) {
+					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * InternetAd.DECREASEMENTRATESMALL);
 				}else{
-					this.setHelperForSmallerPackage(1.5);
+					this.setCurrentSmallIncreasement(InternetAd.MINIMALINCREASEMENTSMALL);
 				}
 				
 				//set monthly Image
-				this.setMonthlyImageIncreasement(this.getHelperForSmallerPackage());
+				this.setMonthlyImageIncreasement(this.getCurrentSmallIncreasement());
 				break;
 				
 			//decrease monthly Image more for bigger package
 			case 2:
 				//decrease bigger helper variable
-				if (this.getHelperForBiggerPackage()>2.0) {
-					this.setHelperForBiggerPackage(this.getHelperForBiggerPackage() * 0.75);
+				if (this.getCurrentBigIncreasement()>InternetAd.MINIMALINCREASEMENTBIG) {
+					this.setCurrentBigIncreasement(this.getCurrentBigIncreasement() * InternetAd.DECREASEMENTRATEBIG);
 				}else{
-					this.setHelperForBiggerPackage(2);
+					this.setCurrentBigIncreasement(InternetAd.MINIMALINCREASEMENTBIG);
 				}
 				
 				//decrease smaller helper variable
-				if (this.getHelperForSmallerPackage()>1.5) {
-					this.setHelperForSmallerPackage(this.getHelperForSmallerPackage() * 0.75);
+				if (this.getCurrentSmallIncreasement()>InternetAd.MINIMALINCREASEMENTSMALL) {
+					this.setCurrentSmallIncreasement(this.getCurrentSmallIncreasement() * InternetAd.DECREASEMENTRATEBIG);
 				}else{
-					this.setHelperForSmallerPackage(1.5);
+					this.setCurrentSmallIncreasement(InternetAd.MINIMALINCREASEMENTSMALL);
 				}
 				
 				//set monthly Image
-				this.setMonthlyImageIncreasement(this.getHelperForBiggerPackage());
+				this.setMonthlyImageIncreasement(this.getCurrentBigIncreasement());
 				break;
 
 			default:
@@ -119,20 +127,20 @@ public class InternetAd extends Advertisement {
 			}
 		}
 		
-		public double getHelperForSmallerPackage() {
-			return helperForSmallerPackage;
+		public double getCurrentSmallIncreasement() {
+			return currentSmallIncreasement;
 		}
 
-		public void setHelperForSmallerPackage(double helperForSmallerPackage) {
-			this.helperForSmallerPackage = helperForSmallerPackage;
+		public void setCurrentSmallIncreasement(double currentSmallIncreasement) {
+			this.currentSmallIncreasement = currentSmallIncreasement;
 		}
 
-		public double getHelperForBiggerPackage() {
-			return helperForBiggerPackage;
+		public double getCurrentBigIncreasement() {
+			return currentBigIncreasement;
 		}
 
-		public void setHelperForBiggerPackage(double helperForBiggerPackage) {
-			this.helperForBiggerPackage = helperForBiggerPackage;
+		public void setCurrentBigIncreasement(double currentBigIncreasement) {
+			this.currentBigIncreasement = currentBigIncreasement;
 		}
 		
 		

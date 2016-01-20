@@ -273,7 +273,14 @@ public class Airline {
 		this.setMoney(moneyNew);
 		this.ek = this.getEK() - this.getITDept().getMonthlyCosts() - accountingCosts
 				- this.getMarketingDept().getMonthlyCosts() - personalkosten - this.services.getMonthlyCosts();
-
+		
+		//check if Social Analyse Software isBough
+		if (this.getITDept().isBoughtSocialMediaModule()) {
+			this.getMarketingDept().setEfficiency(this.getMarketingDept().getEfficiency() + 0.1);
+		}else{
+			this.getMarketingDept().setEfficiency(1.0);
+		}
+		
 		// monthly Image increasement
 		if (this.getMarketingDept().getMonthlyImageIncreasement() > 0) {
 			this.getMarketingDept().increaseImage(this.getMarketingDept().getMonthlyImageIncreasement() * this.getMarketingDept().getEfficiency());

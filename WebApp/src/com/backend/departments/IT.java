@@ -33,8 +33,6 @@ public class IT {
 		// TODO: realistic values
 		if (!this.isBoughtSocialMediaModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
-			double efficiency = this.getAirline().getMarketingDept().getEfficiency();
-			this.getAirline().getMarketingDept().setEfficiency(efficiency + 0.1);
 			this.setBoughtSocialMediaModule(true);
 		}
 		System.out.println("buySocialMediaSoftware called");
@@ -44,8 +42,6 @@ public class IT {
 		// TODO: realistic values
 		if (this.isBoughtSocialMediaModule()) {
 			this.setMonthlyCosts(this.getMonthlyCosts() - 1000);
-			double efficiency = this.getAirline().getMarketingDept().getEfficiency();
-			this.getAirline().getMarketingDept().setEfficiency(efficiency - 0.1);
 			this.setBoughtSocialMediaModule(false);
 		}
 		System.out.println("sellSocialMediaSoftware called");

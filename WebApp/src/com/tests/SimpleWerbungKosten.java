@@ -15,7 +15,7 @@ public class SimpleWerbungKosten {
 		
 		a.monthlyCalculation();
 		
-		if(a.getMoney() != (1000000- 400000)) fail("falsche Berechnung der Kosten");
+		if(a.getMoney() != (1000000- 405000)) fail("falsche Berechnung der Kosten");
 	}
 
 }

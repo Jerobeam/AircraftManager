@@ -3,7 +3,7 @@ package com.backend.departments;
 import com.backend.Airline;
 
 public class IT {
-	private int monthlyCosts;
+	private int monthlyCosts = 0;
 	private boolean boughtSocialMediaModule;
 	private boolean boughtHRModule;
 	private boolean boughtAccountingModule;
@@ -13,8 +13,6 @@ public class IT {
 	private Airline airline;
 
 	public IT(Airline airline) {
-		// TODO: realistic values
-		this.setMonthlyCosts(10000);
 		this.setBoughtAccountingModule(false);
 		this.setBoughtHRModule(false);
 		this.setBoughtSocialMediaModule(false);

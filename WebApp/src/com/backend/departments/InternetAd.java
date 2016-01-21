@@ -23,14 +23,6 @@ public class InternetAd extends Advertisement {
 	
 	@Override
 	public void setSize(int size) {
-		//only increase currentCostLevel if someone switches from "no advert." to "any advert."
-		if (size > 0 && size <=2 && this.getSize() == 0) {
-			if (InternetAd.currentCostLevel <=4) {
-				InternetAd.currentCostLevel++;
-			}else{
-				InternetAd.currentCostLevel = 4;
-			}
-		}
 		
 		switch (size) {
 		case 0:
@@ -56,6 +48,16 @@ public class InternetAd extends Advertisement {
 		default:
 			break;
 		}
+		
+		//only increase currentCostLevel if someone switches from "no advert." to "any advert."
+		if (size > 0 && size <=2 && this.getSize() == 0) {
+			if (InternetAd.currentCostLevel <=4) {
+				InternetAd.currentCostLevel++;
+			}else{
+				InternetAd.currentCostLevel = 4;
+			}
+		}
+		
 		this.size = size;
 	}
 

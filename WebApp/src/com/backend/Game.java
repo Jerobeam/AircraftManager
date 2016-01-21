@@ -146,7 +146,7 @@ public class Game {
 				p.resetEarnings();
 				int numberOfFlights = (int) (24/((double)r.getDistance()/(double)p.getSpeed()+1));
 				p.setFlightsPerDay(numberOfFlights);
-				System.out.println("Number flights =" + numberOfFlights);
+				//System.out.println("Number flights =" + numberOfFlights);
 				for (int i=0;i<numberOfFlights;i++){
 					Flight flight = new Flight(p,r);
 					r.addFlight(flight);
@@ -263,6 +263,7 @@ public class Game {
 			for(Plane p: planes){
 				if (p.getName() == plane.getName()){
 					r.deletePlane(plane);
+					break;
 				}
 			}
 		}
@@ -272,10 +273,30 @@ public class Game {
 		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
 	//}
 	}
-
+	public void occupyRoute(Airline airlineOccupy, Route route, Plane plane, int price){
+		int freePilotes = airlineOccupy.getPiloten() - airlineOccupy.getBlockedPilotes();
+		int freeStewards = airlineOccupy.getStewardessen() - airlineOccupy.getBlockedStewards();
+		//if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
+		for (Route r : routes) {
+			ArrayList<Plane> planes = r.getPlanes();
+			for(Plane p: planes){
+				if (p.getName() == plane.getName()){
+					r.deletePlane(plane);
+					break;
+				}
+			}
+		}
+		route.occupyRoute(plane);
+		plane.setBookingPrice(price);
+		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
+		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
+	//}
+	}
+	
 	public void changePrice( Plane plane, int price) {
 		plane.setBookingPrice(price);
 		
 	}
 
+	
 }

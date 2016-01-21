@@ -103,6 +103,7 @@ sectionRight {
 		var playerName;
 		var playerData;
 		var routeData;
+		var gameData;
 
 		var board = new DepartureBoard(document.getElementById('test'), {
 			rowCount : 1,
@@ -129,6 +130,7 @@ sectionRight {
 			}
 			routeData = data.routes;
 			playerData = data.players[playerNumber];
+			gameData = data.players;
 			document.getElementById("time").innerHTML = data.date;
 			document.getElementById("bank").innerHTML = "Bank: " + data.players[playerNumber].bank
 					+ "€";
@@ -148,6 +150,9 @@ sectionRight {
 		}
 		function getRouteData(){
 			return routeData;
+		}
+		function getGameData() {
+			return gameData;
 		}
 		function openRoute(s){
 			document.getElementById('globe').contentWindow.openRoute(s);

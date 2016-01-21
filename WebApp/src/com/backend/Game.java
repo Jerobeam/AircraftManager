@@ -293,7 +293,7 @@ public class Game {
 	//}
 	}
 	
-	public void changePrice( Plane plane, int price) {
+	public void changePrice(Plane plane, int price) {
 		plane.setBookingPrice(price);
 		
 	}

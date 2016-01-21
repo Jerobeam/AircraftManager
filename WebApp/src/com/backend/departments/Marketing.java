@@ -25,7 +25,7 @@ public class Marketing {
 		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement();
 		System.out.println("Imagezuwachs durch TV Werbung: " + this.getTVAD().getMonthlyImageIncreasement());
 		System.out.println("Imagezuwachs durch Internet Werbung: " + this.getINTERNETAD().getMonthlyImageIncreasement());
-		return (monthlyImageIncreasement + increasementByAdvertisement);
+		return (this.monthlyImageIncreasement + increasementByAdvertisement);
 	}
 
 	public void setMonthlyImageIncreasement(double monthlyImageIncreasement) {

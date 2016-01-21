@@ -50,13 +50,13 @@ public class TVAd extends Advertisement {
 		}
 		
 		//only increase currentCostLevel if someone switches from "no advert." to "any advert."
-				if (size > 0 && size <=2 && this.getSize() == 0) {
-					if (TVAd.currentCostLevel <=4) {
-						TVAd.currentCostLevel++;
-					}else{
-						TVAd.currentCostLevel = 4;
-					}
-				}
+		if (size > 0 && size <=2 && this.getSize() == 0) {
+			if (TVAd.currentCostLevel <=4) {
+				TVAd.currentCostLevel++;
+			}else{
+				TVAd.currentCostLevel = 4;
+			}
+		}
 		
 		this.size = size;
 	}

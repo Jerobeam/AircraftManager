@@ -13,53 +13,55 @@ public class SzenarioService {
 		
 		GameMock g = new GameMock(new AirlineServerEndpointDummy());
 		
-		AirlineMock a = new AirlineMock("testA",10000000);
+		AirlineMock a = new AirlineMock("testA",100000000);
 		
 		g.getAirlines().add(a);
 		
 		Airport frankfurt = new Airport("frankfurt",1);
 		
-		a.buyPlane("A350", "testA", frankfurt);
+		a.buyPlane("A350", "testA1", frankfurt);
 		
-		a.setPiloten(2);
+		a.buyPlane("A350", "testA2", frankfurt);
 		
-		a.setStewardessen(6);
+		a.setPiloten(4);
 		
-		g.occupyRoute(a, g.getRouteByName("Moskau-Frankfurt"), a.getPlaneByName("testA"));
+		a.setStewardessen(12);
 		
-		AirlineMock b = new AirlineMock("testB",10000000);
+		g.occupyRoute(a, g.getRouteByName("Moskau-Frankfurt"), a.getPlaneByName("testA1"));
+		
+		g.occupyRoute(a, g.getRouteByName("Frankfurt-Teneriffa"), a.getPlaneByName("testA2"));
+		
+		AirlineMock b = new AirlineMock("testB",100000000);
 		
 		g.getAirlines().add(b);
 		
-		b.buyPlane("A350", "testB", frankfurt);
+		b.buyPlane("A350", "testB1", frankfurt);
 		
-		b.setPiloten(2);
+		b.buyPlane("A350", "testB2", frankfurt);
 		
-		b.setStewardessen(6);
+		b.setPiloten(4);
 		
-		g.occupyRoute(b, g.getRouteByName("Moskau-Frankfurt"), b.getPlaneByName("testB"));
+		b.setStewardessen(12);
 		
-		AirlineMock c = new AirlineMock("testC",10000000);
+		g.occupyRoute(b, g.getRouteByName("Moskau-Frankfurt"), b.getPlaneByName("testB1"));
 		
-		g.getAirlines().add(c);
+		g.occupyRoute(b, g.getRouteByName("Frankfurt-Teneriffa"), b.getPlaneByName("testB2"));
 		
-		c.buyPlane("A350", "testC", frankfurt);
+		//SERVICELEISTUNGEN KAUFEN FÜR AIRLINE B
 		
-		c.setPiloten(2);
+		b.getServices().setAirportLounge(2);
 		
-		c.setStewardessen(6);
+		b.getServices().setCateringPackage(2);
 		
-		//SERVICELEISTUNGEN KAUFEN FÜR AIRLINE C
+		b.getMarketingDept().getINTERNETAD().setSize(2);
 		
-		c.getPlaneByName("testC").setBookingPrice(250);
+		b.getPlaneByName("testB1").setBookingPrice(250);
 		
-		g.occupyRoute(c, g.getRouteByName("Moskau-Frankfurt"), c.getPlaneByName("testC"));
-		
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < 100; i++){
 			g.tickDay();
 		}
 		
-		if(a.getMoney() > c.getMoney()){fail("Airline mit schlechterer Taktik hat mehr Geld");}
+		if(a.getMoney() > b.getMoney()){fail("Airline mit schlechterer Taktik hat mehr Geld");}
 	}
 
 }

@@ -123,7 +123,6 @@ public class Airline {
 
 	public void buyPlane(String type, String name, Airport location) {
 
-		System.out.println("buyPlane called");
 		if (name.length() >= 1) {
 			Plane p = this.createPlaneFromJson(name, type, location);
 			if (this.getMoney() >= p.getPrice()) {
@@ -134,7 +133,6 @@ public class Airline {
 					this.getMarketingDept()
 							.setMonthlyImageIncreasement(this.getMarketingDept().getMonthlyImageIncreasement() + 0.7);
 				}
-				System.out.println("Plane bought" + p.getName());
 			}
 		}
 	}
@@ -239,7 +237,6 @@ public class Airline {
 	}
 
 	public void monthlyCalculation() {
-		System.out.println("Image alt: " + this.getImage());
 		//iterate Credits
 		for (Credit c : credits) {
 			c.iterationStep();
@@ -288,9 +285,6 @@ public class Airline {
 		this.getMarketingDept().decreaseImage(1);
 		this.getMarketingDept().getINTERNETAD().iterate();
 		this.getMarketingDept().getTVAD().iterate();
-		
-		System.out.println("Image neu: " + this.getImage());
-		System.out.println("----------------------------------");
 	}
 
 	public void takeCreditType1(int amount) {

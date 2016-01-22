@@ -23,8 +23,6 @@ public class Marketing {
 	public double getMonthlyImageIncreasementWithAds(){
 		//add advertisment increasement
 		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement();
-		System.out.println("Imagezuwachs durch TV Werbung: " + this.getTVAD().getMonthlyImageIncreasement());
-		System.out.println("Imagezuwachs durch Internet Werbung: " + this.getINTERNETAD().getMonthlyImageIncreasement());
 		return (this.monthlyImageIncreasement + increasementByAdvertisement);
 	}
 

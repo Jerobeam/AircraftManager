@@ -329,14 +329,14 @@ header {
 		internetAdSelect.selectedIndex = internetAdSize;
 		
 		function onChangeInternetAdSelect(){
-			if(internetAdSize === internetAdSelect.selectedIndex){
+			if(parseInt(internetAdSize) === internetAdSelect.selectedIndex){
 				document.getElementById("internetAdButton").disabled = true;
 			}else{
 				document.getElementById("internetAdButton").disabled = false;
 			}
 		}
 		function onChangeTvAdSelect(){
-			if(tvAdSize === tvAdSelect.selectedIndex){
+			if(parseInt(tvAdSize) === tvAdSelect.selectedIndex){
 				document.getElementById("tvAdButton").disabled = true;
 			}else{
 				document.getElementById("tvAdButton").disabled = false;

@@ -80,14 +80,14 @@ header {
                 Paket 2: 50000€ monatlich pro Flugzeug<br/>  
             </td>
 			<td>
-                  <select id="catering" class="content">
+                  <select id="catering" class="content" onchange="onCateringChange()">
                     <option value="0">Kein Packet</option>
                     <option value="1">Packet 1</option>
                     <option value="2">Packet 2</option>
                   </select>
           	</td>
 			<td>
-				<Button id="setCateringPackageBtn" onclick="setCateringPackage()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+				<Button id="setCateringPackageBtn" onclick="setCateringPackage()" type="submit" class="pure-button pure-button-primary" style="display: initial;" disabled="disabled">Kaufen</Button>
 			</td>		
 		</tr>
 		<tr>
@@ -101,14 +101,14 @@ header {
                 Paket 2: Einmalige Kosten für den Bau: 500.000€; Monatliche Kosten zum betreiben 150.000€<br/>  
             </td>
 			<td>
-                  <select id="lounge" class="content">
+                  <select id="lounge" class="content" onchange="onLoungeChange()">
                     <option value="0">Kein Packet</option>
                     <option value="1">Packet 1</option>
                     <option value="2">Packet 2</option>
                   </select>
           	</td>
 			<td>
-				<Button id="setLoungeBtn" onclick="setAirportLounge()" type="submit" class="pure-button pure-button-primary" style="display: initial;">Kaufen</Button>
+				<Button id="setLoungeBtn" onclick="setAirportLounge()" type="submit" class="pure-button pure-button-primary" style="display: initial;" disabled="disabled">Kaufen</Button>
 			</td>		
 		</tr>
         <tr>
@@ -188,6 +188,21 @@ header {
 		
 		var selectLounge = document.getElementById("lounge");
 		document.getElementById("lounge").options.selectedIndex = airportLoungeValue;
+		
+		function onCateringChange(){
+			if(parseInt(cateringPackageValue) === selectCatering.selectedIndex){
+				document.getElementById("setCateringPackageBtn").disabled = true;
+			}else{
+				document.getElementById("setCateringPackageBtn").disabled = false;
+			}
+		}
+		function onLoungeChange(){
+			if(parseInt(airportLoungeValue) === selectLounge.selectedIndex){
+				document.getElementById("setLoungeBtn").disabled = true;
+			}else{
+				document.getElementById("setLoungeBtn").disabled = false;
+			}
+		}
 		
 		if(isPickupService){
 			document.getElementById("pickupServiceBtn").value = false;
@@ -272,14 +287,16 @@ header {
 		function setCateringPackage() {
 			var select = document.getElementById("catering");
 			var packet = document.getElementById("catering").options[select.selectedIndex].value;
+			cateringPackageValue = packet;
 			parent.parent.send("setCateringPackage§" + parent.parent.getPlayerName()+"§"+ packet);
-			alert("Packet "+ packet +" gekauft");
+			document.getElementById("setCateringPackageBtn").disabled = true;
 		}
 		function setAirportLounge() {
 			var select = document.getElementById("lounge");
 			var packet = document.getElementById("lounge").options[select.selectedIndex].value;
+			airportLoungeValue = packet;
 			parent.parent.send("setLoungePackage§" + parent.parent.getPlayerName()+"§"+ packet);
-			alert("Packet "+ packet +" gekauft");
+			document.getElementById("setLoungeBtn").disabled = true;
 		}
 		
 		function closeDialog(){

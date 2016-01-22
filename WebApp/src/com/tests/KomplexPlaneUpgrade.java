@@ -35,7 +35,7 @@ public class KomplexPlaneUpgrade {
 		
 		a.getPlaneByName("test").getUpgrades().setWinglets(true);
 		
-		a.getPlaneByName("test").getUpgrades().setSeat(1);
+		a.getPlaneByName("test").getUpgrades().setSeat(0);
 		
 		moneystart = a.getMoney();
 		

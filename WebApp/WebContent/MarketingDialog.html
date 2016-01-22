@@ -227,7 +227,7 @@ header {
 							Paket ändern:
 							<br>
 							<select id="internetAdSelect" onchange="onChangeInternetAdSelect()">
-							  <option value="0">kein Paket</option>
+							  <option value="0">Kein Paket</option>
 							  <option value="1">Paket 1: </option>
 							  <option value="2">Paket 2: </option>
 							</select> €/Monat</td>
@@ -249,7 +249,7 @@ header {
 							Paket ändern:
 							<br>
 							<select id="tvAdSelect" onchange="onChangeTvAdSelect()">
-							  <option value="0">kein Paket</option>
+							  <option value="0">Kein Paket</option>
 							  <option value="1">Paket 1: </option>
 							  <option value="2">Paket 2: </option>
 							</select> €/Monat</td>
@@ -291,7 +291,7 @@ header {
 			var donationDisplay = select.options[select.selectedIndex].text
 			var donation = select.options[select.selectedIndex].value;
 			parent.parent.send("donate§" + parent.parent.getPlayerName() + "§" + donation);
-			alert("Spende in Höhe von " + donationDisplay + " getätigt")
+			alert("Spende in Höhe von " + donationDisplay + " getätigt");
 		}
 		
 		function sendSponsorRequest(){

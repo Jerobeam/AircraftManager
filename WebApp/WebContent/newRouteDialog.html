@@ -87,7 +87,7 @@ section {
                         	<div class="chooseHead" style="text-align: center"><b>Flugzeug wählen</b></div>
                             <div style="border-radius: 20px; border: 1px solid black; height: 50%; width:90%; margin-left: 5px;">				
                             	<div style="margin: 20px">	
-                                    <select id="plane" class="content">
+                                    <select id="plane" class="content" onchange="onPlaneChange()">
                     					<option value="0">--wählen--</option>
                     				</select>
                                 </div>
@@ -138,6 +138,12 @@ section {
 		var playerData = parent.parent.getPlayerData();
 		setRouteName(parent.getRouteSelection());
 		
+		var selectedPlane = document.getElementById("plane").options.selectedIndex;
+		
+		function onPlaneChange(){
+			selectedPlane = document.getElementById("plane").options.selectedIndex;
+		}
+		
 		for (var i=0;i<playerData.planes.length;i++){
 			var select = document.getElementById("plane");
 			var option = document.createElement("option");
@@ -151,7 +157,6 @@ section {
 		}
 		
 		function setRouteName(routeName){
-			console.log(routeName);
 			document.getElementById("routeName").innerHTML =  routeName;	
 			setValues(routeName);
 		}
@@ -222,13 +227,17 @@ section {
 		}
 		
 		function occupyRoute(){
-			var price = document.getElementById("routePrice").value;			
-			var select = document.getElementById("plane");
-			var pname = document.getElementById("plane").options[select.selectedIndex].innerText;
-			if(pname != "--wählen--"){
-				parent.parent.occupyRoute(pname+"§"+parent.getRouteSelection()+"§"+price);
+			if (selectedPlane != 0) {
+				var price = document.getElementById("routePrice").value;			
+				var select = document.getElementById("plane");
+				var pname = document.getElementById("plane").options[select.selectedIndex].innerText;
+				if(pname != "--wählen--"){
+					parent.parent.occupyRoute(pname+"§"+parent.getRouteSelection()+"§"+price);
+				}
+				parent.closeMenu();
+			}else{
+				alert("Bitte wähle zuerst ein zu setzendes Flugzeug aus")
 			}
-			parent.closeMenu();
 		}
 	</script>
 </body>

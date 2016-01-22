@@ -107,7 +107,7 @@ header {
                Eine Reinigung der äußeren Hülle des Flugzeuges wird ein Monat im voraus gebucht und reduziert den Treibstoffverbrauch im folgenden Monat um <b>1 %</b><br/>          
             </td>
             <td class="content">
-                Die kosten für eine Reinigung der Flugzeughülle kostet einmalig 50.000€ und kann monatlich ausgeführt werden. <br/>
+                Die Kosten für eine Reinigung der Flugzeughülle betragen einmalig 50.000€. Die Reinigung kann monatlich ausgeführt werden. <br/>
             </td>
 			<td>
             
@@ -129,14 +129,14 @@ header {
                 <u>Luxussitze:</u> Einmalige Kosten für die Anschaffung und den Einbau: 1.500.000€; <br/>  
             </td>
 			<td>
-                  <select id="seat" class="content">
+                  <select id="seat" class="content" onchange="onSeatChange()">
                     <option value="0">Standardsitze</option>
                     <option value="1">Ledersitze</option>
                     <option value="2">Luxussitze</option>
                   </select>
           	</td>
 			<td>
-				<Button id="setSeatBtn" onclick="setSeat()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="seat">Kaufen</Button>
+				<Button id="setSeatBtn" onclick="setSeat()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="seat" disabled="disabled">Kaufen</Button>
 			</td>		
 		</tr>
 		<tr>
@@ -152,21 +152,40 @@ header {
                 <u>Paket 3:</u> Einmalige Kosten für die Anschaffung und den Einbau: 1.000.000€; Monatliche Kosten für Lizensen und Gebühren: 20.000€<br/>  
             </td>
 			<td>
-                  <select id="entertainment" class="content">
-                    <option value="0">--wählen--</option>
+                  <select id="entertainment" class="content" onchange="onEntertainmentChange()">
+                    <option value="0">Kein Paket</option>
                     <option value="1">Paket 1</option>
                     <option value="2">Paket 2</option>
                      <option value="3">Paket 3</option>
                   </select>
           	</td>
 			<td>
-				<Button id="setEntertainmentBtn" onclick="setEntertainment()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="enterteinmentPackage">Kaufen</Button>
+				<Button id="setEntertainmentBtn" onclick="setEntertainment()" type="submit" class="pure-button pure-button-primary" style="display: initial;" value="enterteinmentPackage" disabled="disabled">Kaufen</Button>
 			</td>		
 		</tr>
 	</table>
 	
 	<script type="text/javascript">
 		var playerData = parent.parent.getPlayerData();
+		var seatValue = 0;
+		var entertainmentPackage = 0;
+		var selectedPlane = document.getElementById("plane").options.selectedIndex;
+		
+		function onEntertainmentChange(){
+			if(parseInt(entertainmentPackage) === entertainment.selectedIndex){
+				document.getElementById("setEntertainmentBtn").disabled = true;
+			}else{
+				document.getElementById("setEntertainmentBtn").disabled = false;
+			}
+		}
+		
+		function onSeatChange(){
+			if(parseInt(seatValue) === seat.selectedIndex){
+				document.getElementById("setSeatBtn").disabled = true;
+			}else{
+				document.getElementById("setSeatBtn").disabled = false;
+			}
+		}
 		
 		for (var i=0;i<playerData.planes.length;i++){
 			var select = document.getElementById("plane");
@@ -178,7 +197,8 @@ header {
 		
 		function setValues(){
 			var select = document.getElementById("plane");
-			var packet = document.getElementById("plane").options[select.selectedIndex].innerText;
+			selectedPlane = select.options.selectedIndex;
+			var packet = select.options[select.selectedIndex].innerText;
 			for (var i=0;i<playerData.planes.length;i++){
 				if(playerData.planes[i].name == packet){
 					var plane = playerData.planes[i];
@@ -186,10 +206,10 @@ header {
 					var isNewEngine = plane.newEngine;
 					var isBuyOutsideCleaning = plane.buyOutsideCleaning;
 					
-					var seatValue = plane.seat;
-					document.getElementById("seat").options.selectedIndex = seatValue-1;
+					seatValue = plane.seat;
+					document.getElementById("seat").options.selectedIndex = seatValue;
 					
-					var entertainmentPackage = plane.entertainmentPackage;
+					entertainmentPackage = plane.entertainmentPackage;
 					document.getElementById("entertainment").options.selectedIndex = entertainmentPackage;
 					
 					if(isWinglets){
@@ -209,52 +229,79 @@ header {
 					} else {
 						document.getElementById("cleaningBtn").disabled = false;
 					}
+					document.getElementById("setSeatBtn").disabled = true;
+					document.getElementById("setEntertainmentBtn").disabled = true;
 				}
 			}
 		}
 		
 		function setWinglets(){
-			var select = document.getElementById("plane");
-			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
-			var type = document.getElementById("wingletsBtn").value;
-			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
-			document.getElementById("wingletsBtn").disabled = true;
+			if (selectedPlane != 0) {
+				var select = document.getElementById("plane");
+				var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+				var type = document.getElementById("wingletsBtn").value;
+				parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
+				document.getElementById("wingletsBtn").disabled = true;
+			}else{
+				alert("Bitte wähle zunächst ein zu verbesserndes Flugzeug aus");
+			}
 		}
 		
 		function setEngine(){
-			var select = document.getElementById("plane");
-			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
-			var type = document.getElementById("engineBtn").value;
-			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
-			document.getElementById("engineBtn").disabled = true;
+			if (selectedPlane != 0) {
+				var select = document.getElementById("plane");
+				var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+				var type = document.getElementById("engineBtn").value;
+				parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
+				document.getElementById("engineBtn").disabled = true;
+			}else{
+				alert("Bitte wähle zunächst ein zu verbesserndes Flugzeug aus");
+			}
 		}
 		
 		function setCleaning(){
-			var select = document.getElementById("plane");
-			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
-			var type = document.getElementById("cleaningBtn").value;
-			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
-			document.getElementById("cleaningBtn").disabled = true;
+			if (selectedPlane != 0) {
+				var select = document.getElementById("plane");
+				var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+				var type = document.getElementById("cleaningBtn").value;
+				parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§"+ "true");
+				document.getElementById("cleaningBtn").disabled = true;
+			}else{
+				alert("Bitte wähle zunächst ein zu verbesserndes Flugzeug aus");
+			}
+			
 		}
 		
 		function setEntertainment(){
-			var select = document.getElementById("plane");
-			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
-			var type = document.getElementById("setEntertainmentBtn").value;
-			
-			var select = document.getElementById("entertainment");
-			var value = document.getElementById("entertainment").options[select.selectedIndex].value;
-			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§" + value);
+			if (selectedPlane != 0) {
+				var select = document.getElementById("plane");
+				var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+				var type = document.getElementById("setEntertainmentBtn").value;
+				
+				var select = document.getElementById("entertainment");
+				var value = document.getElementById("entertainment").options[select.selectedIndex].value;
+				entertainmentPackage = value;
+				parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§" + value);
+				document.getElementById("setEntertainmentBtn").disabled = true;
+			}else{
+				alert("Bitte wähle zunächst ein zu verbesserndes Flugzeug aus");
+			}
 		}
 		
 		function setSeat(){
-			var select = document.getElementById("plane");
-			var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
-			var type = document.getElementById("setSeatBtn").value;
-			
-			var select = document.getElementById("seat");
-			var value = document.getElementById("seat").options[select.selectedIndex].value;
-			parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§" + value);
+			if (selectedPlane != 0) {
+				var select = document.getElementById("plane");
+				var planeName = document.getElementById("plane").options[select.selectedIndex].innerText;
+				var type = document.getElementById("setSeatBtn").value;
+				
+				var select = document.getElementById("seat");
+				var value = document.getElementById("seat").options[select.selectedIndex].value;
+				seatValue = value;
+				parent.parent.send("setPlaneUpgrades§" + parent.parent.getPlayerName()+"§"+ planeName +"§"+ type +"§" + value);
+				document.getElementById("setSeatBtn").disabled = true;
+			}else{
+				alert("Bitte wähle zunächst ein zu verbesserndes Flugzeug aus");
+			}
 		}
 
 		function closeDialog(){

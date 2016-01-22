@@ -15,7 +15,7 @@ public class PlaneUpgrade {
 	private int fuelCostReduced; 
 	
 	private int entertainmentPackage = 0; // 0 = Keins; 3 = das Beste
-	private int seat = 1;// 1 = Standart, 2 = Ledersitze, 3 = Luxussitze
+	private int seat = 0;// 0 = Standart, 1 = Ledersitze, 2 = Luxussitze
 	
 	public PlaneUpgrade(Plane plane, Airline airline){
 		this.plane = plane;
@@ -115,16 +115,16 @@ public class PlaneUpgrade {
 		return seat;
 	}
 	public void setSeat(int value) {
-		if((value <= 3) && (value >= 1)){			
+		if((value <= 2) && (value >= 0)){			
 			switch (value) {
-				case 2:{
+				case 1:{
 					if(this.seat < value){
 						this.airline.setMoney(this.airline.getMoney() - 750000);
 						plane.setComfort(plane.getComfort() + 15);
 					}
 					break;
 				}					
-				case 3:{
+				case 2:{
 					if(this.seat < value){
 						this.airline.setMoney(this.airline.getMoney() - 1500000);
 						plane.setComfort(plane.getComfort() + 25);

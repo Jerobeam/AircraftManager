@@ -193,6 +193,7 @@ public class Game {
 					.add("internetAdSize", a.getMarketingDept().getINTERNETAD().getSize())
 					.add("currentTvAdCosts", TVAd.getCurrentPrice())
 					.add("currentInternetAdCosts", InternetAd.getCurrentPrice())
+					.add("image", a.getImage())
 					
 					.build();
 			jsonArray.add(json);

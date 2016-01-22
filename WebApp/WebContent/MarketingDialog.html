@@ -348,6 +348,7 @@ header {
 			var size = select.options[select.selectedIndex].value;
 			internetAdSize = size;
 			parent.parent.send("setInternetAdSize§" + parent.parent.getPlayerName() + "§" + size);
+			document.getElementById("internetAdButton").disabled = true;
 		}
 		
 		function sendSetTvAdSizeRequest(){
@@ -355,6 +356,7 @@ header {
 			var size = select.options[select.selectedIndex].value;
 			tvAdSize = size;
 			parent.parent.send("setTVAdSize§" + parent.parent.getPlayerName() + "§" + size);
+			document.getElementById("tvAdButton").disabled = true;
 		}
 		
 		

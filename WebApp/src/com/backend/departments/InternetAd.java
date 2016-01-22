@@ -31,7 +31,7 @@ public class InternetAd extends Advertisement {
 			break;
 		case 1:
 			if(this.getSize()==2){
-				this.setMonthlyCosts(this.getMonthlyCosts()*2);
+				this.setMonthlyCosts((int)(this.getMonthlyCosts()*0.5));
 			}else{
 				this.setMonthlyCosts(InternetAd.costLevels[currentCostLevel]);
 			}
@@ -39,7 +39,7 @@ public class InternetAd extends Advertisement {
 			break;
 		case 2:
 			if(this.getSize()==1){
-				this.setMonthlyCosts((int)(this.getMonthlyCosts()*0.5));
+				this.setMonthlyCosts(this.getMonthlyCosts()*2);
 			}else{
 				this.setMonthlyCosts(InternetAd.costLevels[currentCostLevel]*2);
 			}
@@ -51,10 +51,10 @@ public class InternetAd extends Advertisement {
 		
 		//only increase currentCostLevel if someone switches from "no advert." to "any advert."
 		if (size > 0 && size <=2 && this.getSize() == 0) {
-			if (InternetAd.currentCostLevel <=4) {
+			if (InternetAd.currentCostLevel <3) {
 				InternetAd.currentCostLevel++;
 			}else{
-				InternetAd.currentCostLevel = 4;
+				InternetAd.currentCostLevel = 3;
 			}
 		}
 		

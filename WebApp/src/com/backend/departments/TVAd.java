@@ -31,7 +31,7 @@ public class TVAd extends Advertisement {
 			break;
 		case 1:
 			if(this.getSize()==2){
-				this.setMonthlyCosts(this.getMonthlyCosts()*2);
+				this.setMonthlyCosts((int)(this.getMonthlyCosts()*0.5));
 			}else{
 				this.setMonthlyCosts(TVAd.costLevels[currentCostLevel]);
 			}
@@ -39,7 +39,7 @@ public class TVAd extends Advertisement {
 			break;
 		case 2:
 			if(this.getSize()==1){
-				this.setMonthlyCosts((int)(this.getMonthlyCosts()*0.5));
+				this.setMonthlyCosts(this.getMonthlyCosts()*2);
 			}else{
 				this.setMonthlyCosts(TVAd.costLevels[currentCostLevel]*2);
 			}
@@ -51,10 +51,10 @@ public class TVAd extends Advertisement {
 		
 		//only increase currentCostLevel if someone switches from "no advert." to "any advert."
 		if (size > 0 && size <=2 && this.getSize() == 0) {
-			if (TVAd.currentCostLevel <=4) {
+			if (TVAd.currentCostLevel <3) {
 				TVAd.currentCostLevel++;
 			}else{
-				TVAd.currentCostLevel = 4;
+				TVAd.currentCostLevel = 3;
 			}
 		}
 		

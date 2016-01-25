@@ -312,7 +312,9 @@ public class Airline {
 	}
 
 	public long getEK() {
-		return this.ek;
+		long eigenkap = 0;
+		eigenkap = this.getAV() + this.getMoney();
+		return eigenkap;
 	}
 
 	public long getFK() {

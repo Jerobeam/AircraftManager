@@ -28,56 +28,52 @@ public class IT {
 	}
 
 	public void buySocialMediaSoftware() {
-		// TODO: realistic values
 		if (!this.isBoughtSocialMediaModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
+			this.setMonthlyCosts(this.getMonthlyCosts() + 25000);
 			this.setBoughtSocialMediaModule(true);
 		}
 		System.out.println("buySocialMediaSoftware called");
 	}
 	
 	public void sellSocialMediaSoftware() {
-		// TODO: realistic values
 		if (this.isBoughtSocialMediaModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() - 1000);
+			this.setMonthlyCosts(this.getMonthlyCosts() - 25000);
 			this.setBoughtSocialMediaModule(false);
 		}
 		System.out.println("sellSocialMediaSoftware called");
 	}
 
 	public void buyHRModule() {
-		// TODO: realistic values
 		if (!this.isBoughtHRModule()) {
-			this.setHrCostsFactor(0.9);
+			this.setHrCostsFactor(0.95);
+			this.setMonthlyCosts(this.getMonthlyCosts() + 50000);
 			this.setBoughtHRModule(true);
 		}
 		System.out.println("buyHRModule called");
 	}
 	
 	public void sellHRModule() {
-		// TODO: realistic values
 		if (this.isBoughtHRModule()) {
 			this.setHrCostsFactor(1);
+			this.setMonthlyCosts(this.getMonthlyCosts() - 50000);
 			this.setBoughtHRModule(false);
 		}
 		System.out.println("sellHRModule called");
 	}
 
 	public void buyAccountingModule() {
-		// TODO: realistic values
 		if (!this.isBoughtAccountingModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() + 1000);
-			this.setAccountingCostsFactor(this.getAccountingCostsFactor() - 0.15);
+			this.setMonthlyCosts(this.getMonthlyCosts() + 40000);
+			this.setAccountingCostsFactor(this.getAccountingCostsFactor() - 0.1);
 			this.setBoughtAccountingModule(true);
 		}
 		System.out.println("buyAccountingModule called");
 	}
 	
 	public void sellAccountingModule() {
-		// TODO: realistic values
 		if (!this.isBoughtAccountingModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() - 1000);
-			this.setAccountingCostsFactor(this.getAccountingCostsFactor() + 0.15);
+			this.setMonthlyCosts(this.getMonthlyCosts() - 40000);
+			this.setAccountingCostsFactor(this.getAccountingCostsFactor() + 0.1);
 			this.setBoughtAccountingModule(false);
 		}
 		System.out.println("sellAccountingModule called");

@@ -27,7 +27,6 @@ public class Airline {
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	private ArrayList<Credit> credits = new ArrayList<Credit>();
 	private int planeCount = 0;
-	// TODO: Balance startImage
 	private double image = 5;
 
 	// Set Departments

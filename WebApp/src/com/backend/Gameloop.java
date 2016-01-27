@@ -32,7 +32,6 @@ public class Gameloop extends Thread {
 			try {
 				this.sleep(TICKTIME);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

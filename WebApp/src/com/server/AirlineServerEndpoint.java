@@ -62,7 +62,7 @@ public class AirlineServerEndpoint {
 				sendToSession(session, message);
 			}
 		}catch(Exception e){
-			System.out.println("Unbekannter Fehler");
+			System.out.println("Desync");
 		}
 	}
 

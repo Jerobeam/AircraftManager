@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="pure.css">
+<style>
+table {
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	border-collapse: collapse;
+	height: 90%;
+	width: 100%;
+}
+
+end {
+	height: 10%;
+	width: 100%;
+}
+
+th, td {
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	padding: 8px;
+	background-color: #F2F2F2
+}
+
+tr:nth-child(even) {
+	background-color: white
+}
+
+th {
+	background-color: black;
+	color: white;
+}
+
+header {
+	border: 1px solid #cbcbcb;
+	height: 25px;
+	text-align: center;
+	background-color: #000;
+	color: #FFF;
+	width: 100%;
+}
+
+#m2 {
+	width: 93%;
+	padding-top: 5px;
+	float: left;
+}
+</style>
+
+</head>
+<body>
+	<header>
+		<div id="m2">
+			<b>Konkurrenzübersicht</b>
+		</div>
+		<button id="close" onclick="closeDialog()" type="submit"
+			class="pure-button pure-button-primary"
+			style="background-color: #808080; float: right; height: 100%; width: 5%; padding: 0px;">
+			<b>X</b>
+		</button>
+	</header>
+
+	<table id="Table">
+		<tr>
+			<th>Spieler</th>
+			<th>Airline-Name</th>
+			<th>Eigenkapital</th>
+			<th>Fremdkapital</th>
+			<th>Flugzeuganzahl</th>
+		</tr>
+
+		<tr>
+			<td>1</td>
+			<td id="name1"></td>
+			<td id="ek1"></td>
+			<td id="fk1"></td>
+			<td id="planes1"></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td id="name2"></td>
+			<td id="ek2"></td>
+			<td id="fk2"></td>
+			<td id="planes2"></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td id="name3"></td>
+			<td id="ek3"></td>
+			<td id="fk3"></td>
+			<td id="planes3"></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td id="name4"></td>
+			<td id="ek4"></td>
+			<td id="fk4"></td>
+			<td id="planes4"></td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		var gameData;
+		var player1Data;
+		var player2Data;
+		var player3Data;
+		var player4Data;
+
+		gameData = parent.parent.getGameData();
+
+		//Player 1
+		player1Data = gameData[0];
+		if (player1Data != undefined) {
+			document.getElementById("name1").innerHTML = player1Data.name;
+			document.getElementById("ek1").innerHTML = player1Data.ek;
+			document.getElementById("fk1").innerHTML = player1Data.fk;
+			document.getElementById("planes1").innerHTML = player1Data.planes.length;
+		} else {
+			document.getElementById("name1").innerHTML = "Nicht verbunden";
+			document.getElementById("ek1").innerHTML = "-";
+			document.getElementById("fk1").innerHTML = "-";
+			document.getElementById("planes1").innerHTML = "-";
+		}
+
+		//Player 2
+		player2Data = gameData[1];
+		if (player2Data != undefined) {
+			document.getElementById("name2").innerHTML = player2Data.name;
+			document.getElementById("ek2").innerHTML = player2Data.ek;
+			document.getElementById("fk2").innerHTML = player2Data.fk;
+			document.getElementById("planes2").innerHTML = player2Data.planes.length;
+		} else {
+			document.getElementById("name2").innerHTML = "Nicht verbunden";
+			document.getElementById("ek2").innerHTML = "-";
+			document.getElementById("fk2").innerHTML = "-";
+			document.getElementById("planes2").innerHTML = "-";
+		}
+
+		//Player 3
+		player3Data = gameData[2];
+		if (player3Data != undefined) {
+			document.getElementById("name3").innerHTML = player3Data.name;
+			document.getElementById("ek3").innerHTML = player3Data.ek;
+			document.getElementById("fk3").innerHTML = player3Data.fk;
+			document.getElementById("planes3").innerHTML = player3Data.planes.length;
+		} else {
+			document.getElementById("name3").innerHTML = "Nicht verbunden";
+			document.getElementById("ek3").innerHTML = "-";
+			document.getElementById("fk3").innerHTML = "-";
+			document.getElementById("planes3").innerHTML = "-";
+		}
+
+		//Player 4
+		player4Data = gameData[3];
+		if (player4Data != undefined) {
+			document.getElementById("name4").innerHTML = player4Data.name;
+			document.getElementById("ek4").innerHTML = player4Data.ek;
+			document.getElementById("fk4").innerHTML = player4Data.fk;
+			document.getElementById("planes4").innerHTML = player4Data.planes.length;
+		} else {
+			document.getElementById("name4").innerHTML = "Nicht verbunden";
+			document.getElementById("ek4").innerHTML = "-";
+			document.getElementById("fk4").innerHTML = "-";
+			document.getElementById("planes4").innerHTML = "-";
+		}
+		
+		function refreshData() {
+			setTimeout(function() {
+				
+				gameData = parent.parent.getGameData();
+
+				//Player 1
+				player1Data = gameData[0];
+				if (player1Data != undefined) {
+					document.getElementById("name1").innerHTML = player1Data.name;
+					document.getElementById("ek1").innerHTML = player1Data.ek;
+					document.getElementById("fk1").innerHTML = player1Data.fk;
+					document.getElementById("planes1").innerHTML = player1Data.planes.length;
+				} else {
+					document.getElementById("name1").innerHTML = "Nicht verbunden";
+					document.getElementById("ek1").innerHTML = "-";
+					document.getElementById("fk1").innerHTML = "-";
+					document.getElementById("planes1").innerHTML = "-";
+				}
+
+				//Player 2
+				player2Data = gameData[1];
+				if (player2Data != undefined) {
+					document.getElementById("name2").innerHTML = player2Data.name;
+					document.getElementById("ek2").innerHTML = player2Data.ek;
+					document.getElementById("fk2").innerHTML = player2Data.fk;
+					document.getElementById("planes2").innerHTML = player2Data.planes.length;
+				} else {
+					document.getElementById("name2").innerHTML = "Nicht verbunden";
+					document.getElementById("ek2").innerHTML = "-";
+					document.getElementById("fk2").innerHTML = "-";
+					document.getElementById("planes2").innerHTML = "-";
+				}
+
+				//Player 3
+				player3Data = gameData[2];
+				if (player3Data != undefined) {
+					document.getElementById("name3").innerHTML = player3Data.name;
+					document.getElementById("ek3").innerHTML = player3Data.ek;
+					document.getElementById("fk3").innerHTML = player3Data.fk;
+					document.getElementById("planes3").innerHTML = player3Data.planes.length;
+				} else {
+					document.getElementById("name3").innerHTML = "Nicht verbunden";
+					document.getElementById("ek3").innerHTML = "-";
+					document.getElementById("fk3").innerHTML = "-";
+					document.getElementById("planes3").innerHTML = "-";
+				}
+
+				//Player 4
+				player4Data = gameData[3];
+				if (player4Data != undefined) {
+					document.getElementById("name4").innerHTML = player4Data.name;
+					document.getElementById("ek4").innerHTML = player4Data.ek;
+					document.getElementById("fk4").innerHTML = player4Data.fk;
+					document.getElementById("planes4").innerHTML = player4Data.planes.length;
+				} else {
+					document.getElementById("name4").innerHTML = "Nicht verbunden";
+					document.getElementById("ek4").innerHTML = "-";
+					document.getElementById("fk4").innerHTML = "-";
+					document.getElementById("planes4").innerHTML = "-";
+				}
+				this.refreshData();
+			}, 500)
+		}
+		this.refreshData();
+
+
+		function closeDialog() {
+			parent.closeMenu();
+		}
+	</script>
+</body>
+</html>

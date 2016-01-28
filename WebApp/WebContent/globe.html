@@ -532,6 +532,17 @@ canvas {
 			objectCSS.position.set(0,0.5,-4);
 			cssScene.add(objectCSS);
 		}
+		function openAllPlayersDialog(){
+			switchRenderer();
+			cssScene.remove(objectCSS);
+			login.innerHTML = "<iframe frameBorder='0' width='800' height='400' src='AllPlayersDialog.html' scrolling='no'></iframe>";
+			login.style.width = '800px';
+			login.style.height = '400px';
+			objectCSS = new THREE.CSS3DObject( login );
+			objectCSS.scale.multiplyScalar( 0.004);
+			objectCSS.position.set(0,0.5,-4);
+			cssScene.add(objectCSS);
+		}
 		
 		function openServiceDialog(){
 			switchRenderer();

@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" href="pure.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="hint.min.css"></link>
 <style>
 body {
 	width: 400px;
@@ -32,7 +33,7 @@ section {
 }
 
 #m2{ 
-	width: 93%;
+	width: 90%;
 	padding-top: 5px;
 	float: left;
 }
@@ -54,7 +55,8 @@ section {
 </head>
 
 <body bgcolor="white">
-	<header>
+	<header class="hint--bottom" data-hint="Routenbelegung nur durch Mindestanzahl an Personal möglich">
+		<div><img alt="" src="./content/fragezeichen.png" style="height: 100%; width: 5%; float:left;margin-top: 2px;"></div>
 		<div id="m2">
             <b>Personal verwalten</b>
         </div>
@@ -184,6 +186,9 @@ section {
 		function closeDialog(){
 			parent.closeMenu();
 		}
+		$(document).ready(function(){
+		    $('[data-toggle="tooltip"]').tooltip();   
+		});
 	</script>
 </body>
 </html>

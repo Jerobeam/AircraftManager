@@ -182,7 +182,7 @@ public class Game {
 					.add("piloten", a.getPiloten())
 					.add("stewardessen", a.getStewardessen())
 					.add("bodenpersonal", a.getBodenpersonal())
-					.add("wartung", a.getWartung())
+					.add("wartung", a.getWartungspersonal())
 					.add("cateringPackage", a.getServices().getCateringPackage())
 					.add("airportLounge", a.getServices().getAirportLounge())
 					.add("newsPaper", a.getServices().isNewsPaper())
@@ -258,45 +258,79 @@ public class Game {
 	public void occupyRoute(Airline airlineOccupy, Route route, Plane plane){
 		int freePilotes = airlineOccupy.getPiloten() - airlineOccupy.getBlockedPilotes();
 		int freeStewards = airlineOccupy.getStewardessen() - airlineOccupy.getBlockedStewards();
-		//if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
-		for (Route r : routes) {
-			ArrayList<Plane> planes = r.getPlanes();
-			for(Plane p: planes){
-				if (p.getName() == plane.getName()){
-					r.deletePlane(plane);
-					break;
+		int minGroundCrew = (route.getAirport1().getGroundCrew() + route.getAirport2().getGroundCrew());
+		int freeGroundCrew = airlineOccupy.getBodenpersonal() - airlineOccupy.getBlockedGroundCrew();
+		int minMaintenance = getMinMaintenanceCrew(airlineOccupy);
+		
+		if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards && minGroundCrew <= freeGroundCrew && minMaintenance == airlineOccupy.getWartungspersonal()){
+			for (Route r : routes) {
+				ArrayList<Plane> planes = r.getPlanes();
+				for(Plane p: planes){
+					if (p.getName() == plane.getName()){
+						r.deletePlane(plane);
+						break;
+					}
 				}
 			}
+			route.occupyRoute(plane);
+			plane.setBookingPrice(route.getBasePrice());
+			airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
+			airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
+			airlineOccupy.setBlockedGroundCrew(airlineOccupy.getBlockedGroundCrew()+ minGroundCrew);
+			airlineOccupy.setBlockedMaintenance(airlineOccupy.getBlockedMaintenance()+ minMaintenance);
 		}
-		route.occupyRoute(plane);
-		plane.setBookingPrice(route.getBasePrice());
-		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
-		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
-	//}
 	}
 	public void occupyRoute(Airline airlineOccupy, Route route, Plane plane, int price){
 		int freePilotes = airlineOccupy.getPiloten() - airlineOccupy.getBlockedPilotes();
 		int freeStewards = airlineOccupy.getStewardessen() - airlineOccupy.getBlockedStewards();
-		//if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards){
-		for (Route r : routes) {
-			ArrayList<Plane> planes = r.getPlanes();
-			for(Plane p: planes){
-				if (p.getName() == plane.getName()){
-					r.deletePlane(plane);
-					break;
+		int minGroundCrew = (route.getAirport1().getGroundCrew() + route.getAirport2().getGroundCrew());
+		int freeGroundCrew = airlineOccupy.getBodenpersonal() - airlineOccupy.getBlockedGroundCrew();
+		int minMaintenance = getMinMaintenanceCrew(airlineOccupy);
+		
+		if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards && minGroundCrew <= freeGroundCrew && minMaintenance == airlineOccupy.getWartungspersonal()){
+			for (Route r : routes) {
+				ArrayList<Plane> planes = r.getPlanes();
+				for(Plane p: planes){
+					if (p.getName() == plane.getName()){
+						r.deletePlane(plane);
+						break;
+					}
 				}
 			}
+			route.occupyRoute(plane);
+			plane.setBookingPrice(price);
+			airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
+			airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
+			airlineOccupy.setBlockedGroundCrew(airlineOccupy.getBlockedGroundCrew()+ minGroundCrew);
+			airlineOccupy.setBlockedMaintenance(airlineOccupy.getBlockedMaintenance()+ minMaintenance);
 		}
-		route.occupyRoute(plane);
-		plane.setBookingPrice(price);
-		airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
-		airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
-	//}
 	}
 	
+	private int getMinMaintenanceCrew(Airline airline) {
+		ArrayList<Plane> planes = airline.getPlanes();
+		ArrayList<String> planeTypes = new ArrayList<String>();
+		boolean containingType = false;
+		String type = "";
+		for (Plane p : planes) {
+			type = p.getType();
+			for (String s: planeTypes) {
+				if(s.equals(type)){
+					containingType=true;
+				}
+			}
+			if(!containingType){
+				planeTypes.add(type);
+			}
+			containingType = false;
+		}
+		int minMaintenanceCrew = 8; // Es werden pro unterschiedlichem Flugzeugtyp 8 Wartungsmitarbeiter benötigt
+		minMaintenanceCrew *= planeTypes.size(); //Hier wird die Mindestanzahl von Wartungspersonal mit der Anzahl der genutzten Flugzeugtypen multipliziert 
+
+		return minMaintenanceCrew;
+	}
+
 	public void changePrice(Plane plane, int price) {
 		plane.setBookingPrice(price);
-		
 	}
 
 	

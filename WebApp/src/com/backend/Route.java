@@ -20,6 +20,8 @@ public class Route {
 
 	public Route(String name, Airport airport1, Airport airport2,int basePrice) {
 		this.setName(name);
+		this.setAirport1(airport1);
+		this.setAirport2(airport2);
 		this.costs = airport1.getSlotCosts() + airport2.getSlotCosts();
 		this.basePrice = basePrice;
 	}

@@ -35,8 +35,8 @@ public class Airline {
 	private Service services = new Service(this);
 
 	//Personalkosten
-	private final int PILOTENKOSTEN = 5000;
-	private final int STWDKOSTEN = 2000;
+	private final int PILOTENKOSTEN = 10000;
+	private final int STWDKOSTEN = 5000;
 	private final int BODENPERSONALKOSTEN = 2500;
 	private final int WARTUNGSPERSONALKOSTEN = 3000;
 
@@ -46,6 +46,24 @@ public class Airline {
 	private int WartungsPersonal = 0;
 	private int blockedPilotes = 0;
 	private int blockedStewards = 0;
+	private int blockedBodenpersonal = 0;
+	private int blockedWartungspersonal = 0;
+
+	public int getBlockedGroundCrew() {
+		return blockedBodenpersonal;
+	}
+
+	public void setBlockedGroundCrew(int blockedGroundCrew) {
+		this.blockedBodenpersonal = blockedGroundCrew;
+	}
+
+	public int getBlockedMaintenance() {
+		return blockedWartungspersonal;
+	}
+
+	public void setBlockedMaintenance(int blockedMaintenance) {
+		this.blockedWartungspersonal = blockedMaintenance;
+	}
 
 	public int getBlockedPilotes() {
 		return blockedPilotes;
@@ -86,15 +104,17 @@ public class Airline {
 	}
 
 	public void setBodenpersonal(int bodenpersonal) {
-		Bodenpersonal = bodenpersonal;
+		if (Bodenpersonal >= this.blockedBodenpersonal)
+			Bodenpersonal = bodenpersonal;
 	}
 
-	public int getWartung() {
+	public int getWartungspersonal() {
 		return WartungsPersonal;
 	}
 
-	public void setWartung(int wartung) {
-		WartungsPersonal = wartung;
+	public void setWartungspersonal(int wartung) {
+		if (WartungsPersonal >= this.blockedWartungspersonal)
+			WartungsPersonal = wartung;
 	}
 
 	public Airline(String name, long money) {

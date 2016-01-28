@@ -45,6 +45,7 @@ th {
     <th>Einnahmen/Tag</th>
     <th>Kosten/Tag</th>
     <th>Ticketpreis</th>
+    <th>Route</th>
   </tr>
   
 </table>
@@ -73,6 +74,7 @@ var cell6 = row.insertCell(5);
 var cell7 = row.insertCell(6);
 var cell8 = row.insertCell(7);
 var cell9 = row.insertCell(8);
+var cell10 = row.insertCell(9);
 
 //Add some text to the new cells:
 cell1.innerHTML = playerData.planes[i].name;
@@ -87,6 +89,17 @@ var pe = "<input id='price"+ i +"' type='number' min='0' max='3000' step='5' val
 		+ i 
 		+ ")'>";
 cell9.innerHTML = pe;
+
+var data = parent.parent.getRouteData();
+for (var j=0;j<data.length;j++){
+	for (var k=0;k<data[j].planes.length;k++){
+		if (playerData.planes[i].name == data[j].planes[k].name){
+			cell10.innerHTML = data[j].name;
+		}
+	}
+}
+
+
 }
 function sendPriceChange(i){
 	element = i;

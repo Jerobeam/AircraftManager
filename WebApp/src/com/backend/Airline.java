@@ -174,28 +174,32 @@ public class Airline {
 	public JsonArrayBuilder getPlanesJSON() {
 		JsonObject json;
 		JsonArrayBuilder jsonArray = Json.createArrayBuilder();
+		try {
+			for (Plane p : planes) {
+				json = Json.createObjectBuilder()
+						.add("type", p.getType())
+						.add("name", p.getName())
+						.add("value", p.getValue())
+						.add("comfort", p.getComfort())
+						.add("capacity", p.getCapacity())
+						.add("flightsPerDay", p.getFlightsPerDay())
+						.add("costs", p.getCosts())
+						.add("earnings", p.getEarnings())
+						.add("bookingPrice", p.getBookingPrice())
+						.add("winglets", p.getUpgrades().isWinglets())
+						.add("newEngine", p.getUpgrades().isNewEngine())
+						.add("buyOutsideCleaning", p.getUpgrades().isBuyOutsideCleaning())
+						.add("doOutsideCleaning", p.getUpgrades().isDoOutsideCleaning())
+						.add("entertainmentPackage", p.getUpgrades().getEntertainmentPackage())
+						.add("seat", p.getUpgrades().getSeat())					
+				        .build();
 
-		for (Plane p : planes) {
-			json = Json.createObjectBuilder()
-					.add("type", p.getType())
-					.add("name", p.getName())
-					.add("value", p.getValue())
-					.add("comfort", p.getComfort())
-					.add("capacity", p.getCapacity())
-					.add("flightsPerDay", p.getFlightsPerDay())
-					.add("costs", p.getCosts())
-					.add("earnings", p.getEarnings())
-					.add("bookingPrice", p.getBookingPrice())
-					.add("winglets", p.getUpgrades().isWinglets())
-					.add("newEngine", p.getUpgrades().isNewEngine())
-					.add("buyOutsideCleaning", p.getUpgrades().isBuyOutsideCleaning())
-					.add("doOutsideCleaning", p.getUpgrades().isDoOutsideCleaning())
-					.add("entertainmentPackage", p.getUpgrades().getEntertainmentPackage())
-					.add("seat", p.getUpgrades().getSeat())					
-			        .build();
-
-			jsonArray.add(json);
+				jsonArray.add(json);
+			}
+		} catch (Exception e) {
+			System.out.println("Desync.");
 		}
+		
 		return jsonArray;
 	}
 

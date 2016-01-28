@@ -32,7 +32,6 @@ public class IT {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 10000);
 			this.setBoughtSocialMediaModule(true);
 		}
-		System.out.println("buySocialMediaSoftware called");
 	}
 	
 	public void sellSocialMediaSoftware() {
@@ -40,7 +39,6 @@ public class IT {
 			this.setMonthlyCosts(this.getMonthlyCosts() - 10000);
 			this.setBoughtSocialMediaModule(false);
 		}
-		System.out.println("sellSocialMediaSoftware called");
 	}
 
 	public void buyHRModule() {
@@ -49,7 +47,6 @@ public class IT {
 			this.setMonthlyCosts(this.getMonthlyCosts() + 5000);
 			this.setBoughtHRModule(true);
 		}
-		System.out.println("buyHRModule called");
 	}
 	
 	public void sellHRModule() {
@@ -58,7 +55,6 @@ public class IT {
 			this.setMonthlyCosts(this.getMonthlyCosts() - 5000);
 			this.setBoughtHRModule(false);
 		}
-		System.out.println("sellHRModule called");
 	}
 
 	public void buyAccountingModule() {
@@ -67,7 +63,6 @@ public class IT {
 			this.setAccountingCostsFactor(this.getAccountingCostsFactor() - 0.1);
 			this.setBoughtAccountingModule(true);
 		}
-		System.out.println("buyAccountingModule called");
 	}
 	
 	public void sellAccountingModule() {
@@ -76,7 +71,6 @@ public class IT {
 			this.setAccountingCostsFactor(this.getAccountingCostsFactor() + 0.1);
 			this.setBoughtAccountingModule(false);
 		}
-		System.out.println("sellAccountingModule called");
 	}
 
 	public boolean isBoughtSocialMediaModule() {

@@ -57,8 +57,12 @@ public class AirlineServerEndpoint {
 	}
 
 	private void sendToAllConnectedSessions(JsonObject message) {
-		for (Session session : sessions) {
-			sendToSession(session, message);
+		try{
+			for (Session session : sessions) {
+				sendToSession(session, message);
+			}
+		}catch(Exception e){
+			System.out.println("Unbekannter Fehler");
 		}
 	}
 

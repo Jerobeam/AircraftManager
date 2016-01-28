@@ -316,7 +316,7 @@ public class Airline {
 
 	public long getEK() {
 		long eigenkap = 0;
-		eigenkap = this.getAV() + this.getMoney();
+		eigenkap = this.getAV() + this.getMoney() - this.getFK();
 		return eigenkap;
 	}
 

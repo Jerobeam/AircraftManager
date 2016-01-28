@@ -29,7 +29,7 @@ public class IT {
 
 	public void buySocialMediaSoftware() {
 		if (!this.isBoughtSocialMediaModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() + 25000);
+			this.setMonthlyCosts(this.getMonthlyCosts() + 10000);
 			this.setBoughtSocialMediaModule(true);
 		}
 		System.out.println("buySocialMediaSoftware called");
@@ -37,7 +37,7 @@ public class IT {
 	
 	public void sellSocialMediaSoftware() {
 		if (this.isBoughtSocialMediaModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() - 25000);
+			this.setMonthlyCosts(this.getMonthlyCosts() - 10000);
 			this.setBoughtSocialMediaModule(false);
 		}
 		System.out.println("sellSocialMediaSoftware called");
@@ -46,7 +46,7 @@ public class IT {
 	public void buyHRModule() {
 		if (!this.isBoughtHRModule()) {
 			this.setHrCostsFactor(0.95);
-			this.setMonthlyCosts(this.getMonthlyCosts() + 50000);
+			this.setMonthlyCosts(this.getMonthlyCosts() + 5000);
 			this.setBoughtHRModule(true);
 		}
 		System.out.println("buyHRModule called");
@@ -55,7 +55,7 @@ public class IT {
 	public void sellHRModule() {
 		if (this.isBoughtHRModule()) {
 			this.setHrCostsFactor(1);
-			this.setMonthlyCosts(this.getMonthlyCosts() - 50000);
+			this.setMonthlyCosts(this.getMonthlyCosts() - 5000);
 			this.setBoughtHRModule(false);
 		}
 		System.out.println("sellHRModule called");
@@ -63,7 +63,7 @@ public class IT {
 
 	public void buyAccountingModule() {
 		if (!this.isBoughtAccountingModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() + 40000);
+			this.setMonthlyCosts(this.getMonthlyCosts() + 2000);
 			this.setAccountingCostsFactor(this.getAccountingCostsFactor() - 0.1);
 			this.setBoughtAccountingModule(true);
 		}
@@ -72,7 +72,7 @@ public class IT {
 	
 	public void sellAccountingModule() {
 		if (!this.isBoughtAccountingModule()) {
-			this.setMonthlyCosts(this.getMonthlyCosts() - 40000);
+			this.setMonthlyCosts(this.getMonthlyCosts() - 2000);
 			this.setAccountingCostsFactor(this.getAccountingCostsFactor() + 0.1);
 			this.setBoughtAccountingModule(false);
 		}

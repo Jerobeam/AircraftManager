@@ -194,7 +194,6 @@ public class Game {
 					.add("currentTvAdCosts", TVAd.getCurrentPrice())
 					.add("currentInternetAdCosts", InternetAd.getCurrentPrice())
 					.add("image", a.getImage())
-					
 					.build();
 			jsonArray.add(json);
 		}

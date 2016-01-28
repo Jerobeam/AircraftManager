@@ -4,7 +4,6 @@ import com.backend.Airline;
 import com.backend.Plane;
 
 public class PlaneUpgrade {	
-	private int monthlyCosts;
 	private Plane plane;
 	private Airline airline;
 	
@@ -22,12 +21,6 @@ public class PlaneUpgrade {
 		this.airline = airline;
 	}
 	
-	public int getMonthlyCosts() {
-		return monthlyCosts;
-	}
-	public void setMonthlyCosts(int monthlyCosts) {
-		this.monthlyCosts = monthlyCosts;
-	}
 	public boolean isWinglets() {
 		return winglets;
 	}

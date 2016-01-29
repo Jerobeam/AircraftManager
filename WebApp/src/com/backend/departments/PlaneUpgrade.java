@@ -66,10 +66,10 @@ public class PlaneUpgrade {
 		return entertainmentPackage;
 	}
 	public void setEntertainmentPackage(int value) {
-		if((value <= 3) && (value >= 0)){
+		if((value <= 3) && (value > 0)){
 			switch (value) {
 				case 1:{
-					if(value > this.entertainmentPackage){
+					if(this.entertainmentPackage == 0){
 						this.airline.setMoney(this.airline.getMoney() - 300000);
 						plane.setComfort(plane.getComfort() + 5);
 						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+5000);
@@ -80,25 +80,40 @@ public class PlaneUpgrade {
 						plane.setComfort(plane.getComfort() - 15);
 						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()-15000);						
 					}
+					break;
 				}
 					
 				case 2:{
-					if(value > this.entertainmentPackage){
+					if(this.entertainmentPackage == 0){
 						this.airline.setMoney(this.airline.getMoney() - 500000);
 						plane.setComfort(plane.getComfort() + 10);
 						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+10000);
+					} else if(this.entertainmentPackage == 1){
+						this.airline.setMoney(this.airline.getMoney() - 400000); //Da Packet 1 schon vorhanden ist und einige Ger‰te wiederverwendet werden
+						plane.setComfort(plane.getComfort() + 5);
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+5000);
 					} else if(this.entertainmentPackage == 3){
 						plane.setComfort(plane.getComfort() - 10);
 						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()-10000);
 					}
+					break;
 				}
 					
 				case 3:{
-					if(value > this.entertainmentPackage){
+					if(this.entertainmentPackage == 0){
 						this.airline.setMoney(this.airline.getMoney() - 1000000);
 						plane.setComfort(plane.getComfort() + 20);
 						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+20000);
+					} else if(this.entertainmentPackage == 1){
+						this.airline.setMoney(this.airline.getMoney() - 900000); //Da Packet 1 schon vorhanden ist und einige Ger‰te wiederverwendet werden
+						plane.setComfort(plane.getComfort() + 15);
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+15000);
+					} else if(this.entertainmentPackage == 2){
+						this.airline.setMoney(this.airline.getMoney() - 600000); //Da Packet 2 schon vorhanden ist und ein Groﬂteil der Ger‰te wiederverwendet werden
+						plane.setComfort(plane.getComfort() + 10);
+						this.airline.setMonthlyCosts(this.airline.getMonthlyCosts()+10000);
 					}
+					break;
 				}
 			}
 			this.entertainmentPackage = value;

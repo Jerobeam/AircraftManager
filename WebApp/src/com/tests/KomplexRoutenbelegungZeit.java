@@ -24,6 +24,10 @@ public class KomplexRoutenbelegungZeit {
 		
 		a.setStewardessen(3);
 		
+		a.setBodenpersonal(8);
+		
+		a.setWartungspersonal(8);
+		
 		g.occupyRoute(a, g.getRouteByName("Frankfurt-Mallorca"), a.getPlaneByName("test"));
 		
 		if(g.getRouteByName("Frankfurt-Mallorca").getPlanes().size() != 1){fail("Fehler belegen von Route");}

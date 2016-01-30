@@ -27,6 +27,10 @@ public class SzenarioService {
 		
 		a.setStewardessen(12);
 		
+		a.setBodenpersonal(16);
+		
+		a.setWartungspersonal(8);
+		
 		g.occupyRoute(a, g.getRouteByName("Moskau-Frankfurt"), a.getPlaneByName("testA1"));
 		
 		g.occupyRoute(a, g.getRouteByName("Frankfurt-Teneriffa"), a.getPlaneByName("testA2"));
@@ -42,6 +46,10 @@ public class SzenarioService {
 		b.setPiloten(4);
 		
 		b.setStewardessen(12);
+		
+		b.setBodenpersonal(16);
+		
+		b.setWartungspersonal(8);
 		
 		g.occupyRoute(b, g.getRouteByName("Moskau-Frankfurt"), b.getPlaneByName("testB1"));
 		

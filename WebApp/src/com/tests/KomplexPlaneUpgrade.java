@@ -23,6 +23,10 @@ public class KomplexPlaneUpgrade {
 		
 		a.setStewardessen(3);
 		
+		a.setBodenpersonal(8);
+		
+		a.setWartungspersonal(8);
+		
 		g.occupyRoute(a, g.getRouteByName("Frankfurt-Mallorca"), a.getPlaneByName("test"));
 		
 		long moneystart = a.getMoney();

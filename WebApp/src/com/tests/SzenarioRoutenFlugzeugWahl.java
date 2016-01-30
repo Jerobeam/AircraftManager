@@ -21,11 +21,15 @@ public class SzenarioRoutenFlugzeugWahl {
 		
 		a.buyPlane("A350", "testA", frankfurt);
 		
-		a.setPiloten(2);
+		a.setPiloten(3);
 		
-		a.setStewardessen(6);
+		a.setStewardessen(8);
 		
-		g.occupyRoute(a, g.getRouteByName("Moskau-Mallorca"), a.getPlaneByName("testA"));
+		a.setBodenpersonal(16);
+		
+		a.setWartungspersonal(8);
+		
+		g.occupyRoute(a, g.getRouteByName("Frankfurt-Mallorca"), a.getPlaneByName("testA"));
 		
 		AirlineMock b = new AirlineMock("testB",30000000);
 		
@@ -33,11 +37,15 @@ public class SzenarioRoutenFlugzeugWahl {
 		
 		b.buyPlane("A350", "testB", frankfurt);
 		
-		b.setPiloten(2);
+		b.setPiloten(3);
 		
-		b.setStewardessen(6);
+		b.setStewardessen(8);
 		
-		g.occupyRoute(b, g.getRouteByName("Moskau-Frankfurt"), b.getPlaneByName("testB"));
+		b.setBodenpersonal(16);
+		
+		b.setWartungspersonal(8);
+		
+		g.occupyRoute(b, g.getRouteByName("Moskau-Mallorca"), b.getPlaneByName("testB"));
 		
 		for(int i = 0; i < 10; i++){
 			g.tickDay();

@@ -27,6 +27,10 @@ public class KomplexPersonal {
 		
 		a.setStewardessen(3);
 		
+		a.setBodenpersonal(8);
+		
+		a.setWartungspersonal(8);
+		
 		g.occupyRoute(a, g.getRouteByName("Frankfurt-Mallorca"), a.getPlaneByName("test"));
 		
 		if(g.getRouteByName("Frankfurt-Mallorca").getPlanes().size() != 1){fail("Fehler belegen von Route");}
@@ -43,6 +47,8 @@ public class KomplexPersonal {
 		
 		a.setStewardessen(6);
 		
+		a.setBodenpersonal(16);
+				
 		g.occupyRoute(a, g.getRouteByName("Frankfurt-Mallorca"), a.getPlaneByName("test2"));
 		
 		if(a.getBlockedPilotes() != 4 && a.getBlockedStewards() != 6){fail("Personal nicht beschäftigt");}

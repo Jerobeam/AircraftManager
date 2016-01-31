@@ -269,7 +269,7 @@ public class Game {
 		int freeGroundCrew = airlineOccupy.getBodenpersonal() - airlineOccupy.getBlockedGroundCrew();
 		int minMaintenance = getMinMaintenanceCrew(airlineOccupy);
 		
-		if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards && minGroundCrew <= freeGroundCrew && minMaintenance == airlineOccupy.getWartungspersonal()){
+		if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards && minGroundCrew <= freeGroundCrew && minMaintenance <= airlineOccupy.getWartungspersonal()){
 			for (Route r : routes) {
 				ArrayList<Plane> planes = r.getPlanes();
 				for(Plane p: planes){
@@ -294,7 +294,7 @@ public class Game {
 		int freeGroundCrew = airlineOccupy.getBodenpersonal() - airlineOccupy.getBlockedGroundCrew();
 		int minMaintenance = getMinMaintenanceCrew(airlineOccupy);
 		
-		if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards && minGroundCrew <= freeGroundCrew && minMaintenance == airlineOccupy.getWartungspersonal()){
+		if(plane.getPilot() <= freePilotes && plane.getSteward() <= freeStewards && minGroundCrew <= freeGroundCrew && minMaintenance <= airlineOccupy.getWartungspersonal()){
 			for (Route r : routes) {
 				ArrayList<Plane> planes = r.getPlanes();
 				for(Plane p: planes){

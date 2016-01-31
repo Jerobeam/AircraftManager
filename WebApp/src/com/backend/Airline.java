@@ -113,7 +113,7 @@ public class Airline {
 	}
 
 	public void setWartungspersonal(int wartung) {
-		if (WartungsPersonal >= this.blockedWartungspersonal)
+		//if (WartungsPersonal >= this.blockedWartungspersonal)
 			WartungsPersonal = wartung;
 	}
 

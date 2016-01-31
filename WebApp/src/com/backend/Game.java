@@ -283,7 +283,7 @@ public class Game {
 			airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
 			airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
 			airlineOccupy.setBlockedGroundCrew(airlineOccupy.getBlockedGroundCrew()+ minGroundCrew);
-			airlineOccupy.setBlockedMaintenance(airlineOccupy.getBlockedMaintenance()+ minMaintenance);
+			airlineOccupy.setBlockedMaintenance(minMaintenance);
 		}
 	}
 	public void occupyRoute(Airline airlineOccupy, Route route, Plane plane, int price){
@@ -308,7 +308,7 @@ public class Game {
 			airlineOccupy.setBlockedPilotes(airlineOccupy.getBlockedPilotes()+plane.getPilot());
 			airlineOccupy.setBlockedStewards(airlineOccupy.getBlockedStewards()+plane.getSteward());
 			airlineOccupy.setBlockedGroundCrew(airlineOccupy.getBlockedGroundCrew()+ minGroundCrew);
-			airlineOccupy.setBlockedMaintenance(airlineOccupy.getBlockedMaintenance()+ minMaintenance);
+			airlineOccupy.setBlockedMaintenance(minMaintenance);
 		}
 	}
 	

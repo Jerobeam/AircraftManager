@@ -98,6 +98,10 @@ header {
 			<td style="border-bottom: 2px solid #000000">Kreditrückzahlungen / Monat</td>
 			<td id="monthlyCredit" style="border-bottom: 2px solid #000000"></td>
 		</tr>
+		<tr>
+			<td style="border-bottom: 2px solid #000000">Buchhaltungskosten / Monat</td>
+			<td id="monthlyAccounting" style="border-bottom: 2px solid #000000"></td>
+		</tr>
 	</table>
 
 	<script type="text/javascript">
@@ -106,19 +110,21 @@ header {
 		playerData = parent.parent.getPlayerData();
 		document.getElementById("airlineName").innerHTML = playerData.name;
 		
-		document.getElementById("monthlyUpgrades").innerHTML = playerData.upgradeCosts;
+		document.getElementById("monthlyUpgrades").innerHTML = playerData.upgradeCosts + " €";
 		
-		document.getElementById("monthlyPersonal").innerHTML = playerData.personalCosts;
+		document.getElementById("monthlyPersonal").innerHTML = playerData.personalCosts + " €";
 		
-		document.getElementById("monthlyMarketing").innerHTML = playerData.marketingCosts;
-		document.getElementById("currentImage").innerHTML = playerData.image;
-		document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement;
+		document.getElementById("monthlyMarketing").innerHTML = playerData.marketingCosts + " €";
+		document.getElementById("currentImage").innerHTML = playerData.image + " Punkte";
+		document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement + " Punkte";
 		
-		document.getElementById("monthlyService").innerHTML = playerData.serviceCosts;
+		document.getElementById("monthlyService").innerHTML = playerData.serviceCosts + " €";
 		
-		document.getElementById("monthlyIT").innerHTML = playerData.ITCosts;
+		document.getElementById("monthlyIT").innerHTML = playerData.ITCosts + " €";
 		
-		document.getElementById("monthlyCredit").innerHTML = playerData.creditCosts;
+		document.getElementById("monthlyCredit").innerHTML = playerData.creditCosts + " €";
+		
+		document.getElementById("monthlyAccounting").innerHTML = playerData.accountingCosts + " €";
 		
 		function refreshData() {
 			setTimeout(function() {
@@ -126,19 +132,21 @@ header {
 				playerData = parent.parent.getPlayerData();
 				document.getElementById("airlineName").innerHTML = playerData.name;
 				
-				document.getElementById("monthlyUpgrades").innerHTML = playerData.upgradeCosts;
+				document.getElementById("monthlyUpgrades").innerHTML = playerData.upgradeCosts + " €";
 				
-				document.getElementById("monthlyPersonal").innerHTML = playerData.personalCosts;
+				document.getElementById("monthlyPersonal").innerHTML = playerData.personalCosts + " €";
 				
-				document.getElementById("monthlyMarketing").innerHTML = playerData.marketingCosts;
-				document.getElementById("currentImage").innerHTML = playerData.image;
-				document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement;
+				document.getElementById("monthlyMarketing").innerHTML = playerData.marketingCosts + " €";
+				document.getElementById("currentImage").innerHTML = playerData.image + " Punkte";
+				document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement + " Punkte";
 				
-				document.getElementById("monthlyService").innerHTML = playerData.serviceCosts;
+				document.getElementById("monthlyService").innerHTML = playerData.serviceCosts + " €";
 				
-				document.getElementById("monthlyIT").innerHTML = playerData.ITCosts;
+				document.getElementById("monthlyIT").innerHTML = playerData.ITCosts + " €";
 				
-				document.getElementById("monthlyCredit").innerHTML = playerData.creditCosts;
+				document.getElementById("monthlyCredit").innerHTML = playerData.creditCosts + " €";
+				
+				document.getElementById("monthlyAccounting").innerHTML = playerData.accountingCosts + " €";
 
 				this.refreshData();
 			}, 500)

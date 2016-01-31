@@ -281,8 +281,7 @@ public class Airline {
 				* this.getITDept().getHrCostsFactor());
 		
 		//billing accounting depending on amount of planes
-		int planesAmount = this.getPlanes().size();
-		int accountingCosts = (int)(5000 + (planesAmount * 3500 * this.getITDept().getAccountingCostsFactor()) + 0.5);
+		int accountingCosts = this.getAccountingCosts();
 		
 		// billing departments
 		long moneyNew = this.getMoney() - this.getITDept().getMonthlyCosts()
@@ -423,5 +422,11 @@ public class Airline {
 			repayments += c.getRepayment();
 		}
 		return repayments;
+	}
+	
+	public int getAccountingCosts(){
+		int planesAmount = this.getPlanes().size();
+		int accountingCosts = (int)(5000 + (planesAmount * 3500 * this.getITDept().getAccountingCostsFactor()) + 0.5);
+		return accountingCosts;
 	}
 }

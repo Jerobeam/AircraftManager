@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="pure.css">
+<style>
+table {
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	border-collapse: collapse;
+	height: 90%;
+	width: 100%;
+}
+
+end {
+	height: 10%;
+	width: 100%;
+}
+
+th, td {
+	border: 1px solid #cbcbcb;
+	text-align: left;
+	padding: 8px;
+	background-color: #F2F2F2
+}
+
+tr:nth-child(even) {
+	background-color: white
+}
+
+th {
+	background-color: black;
+	color: white;
+}
+
+header {
+	border: 1px solid #cbcbcb;
+	height: 25px;
+	text-align: center;
+	background-color: #000;
+	color: #FFF;
+	width: 100%;
+}
+
+#m2 {
+	width: 93%;
+	padding-top: 5px;
+	float: left;
+}
+</style>
+
+</head>
+<body>
+	<header>
+		<div id="m2">
+			<b id="airlineName"></b>
+		</div>
+		<button id="close" onclick="closeDialog()" type="submit"
+			class="pure-button pure-button-primary"
+			style="background-color: #808080; float: right; height: 100%; width: 5%; padding: 0px;">
+			<b>X</b>
+		</button>
+	</header>
+
+	<table id="Table">
+		<tr>
+			<th>Eigenschaft</th>
+			<th>Wert</th>
+		</tr>
+		<tr>
+			<td style="border-bottom: 2px solid #000000">Flugzeugupgradekosten / Monat</td>
+			<td id="monthlyUpgrades" style="border-bottom: 2px solid #000000"></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 2px solid #000000">Personalkosten / Monat</td>
+			<td id="monthlyPersonal" style="border-bottom: 2px solid #000000"></td>
+		</tr>
+		<tr>
+			<td>Marketingkosten / Monat</td>
+			<td id="monthlyMarketing"></td>
+		</tr>
+		<tr>
+			<td>Image</td>
+			<td id="currentImage"></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 2px solid #000000">Imagezuwachs / Monat</td>
+			<td id="monthlyImage" style="border-bottom: 2px solid #000000"></td>
+		<tr>
+			<td style="border-bottom: 2px solid #000000">Servicekosten / Monat</td>
+			<td id="monthlyService" style="border-bottom: 2px solid #000000"></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 2px solid #000000">IT-Kosten / Monat</td>
+			<td id="monthlyIT" style="border-bottom: 2px solid #000000"></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 2px solid #000000">Kreditrückzahlungen / Monat</td>
+			<td id="monthlyCredit" style="border-bottom: 2px solid #000000"></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 2px solid #000000">Gewinn / Monat</td>
+			<td id="monthlyBenefit" style="border-bottom: 2px solid #000000"></td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		var playerData;
+
+		playerData = parent.parent.getPlayerData();
+		document.getElementById("airlineName").innerHTML = playerData.name;
+		
+		document.getElementById("monthlyUpgrades").innerHTML = playerData.upgradeCosts;
+		
+		document.getElementById("monthlyPersonal").innerHTML = playerData.personalCosts;
+		
+		document.getElementById("monthlyMarketing").innerHTML = playerData.marketingCosts;
+		document.getElementById("currentImage").innerHTML = playerData.image;
+		document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement;
+		
+		document.getElementById("monthlyService").innerHTML = playerData.serviceCosts;
+		
+		document.getElementById("monthlyIT").innerHTML = playerData.ITCosts;
+		
+		document.getElementById("monthlyCredit").innerHTML = playerData.creditCosts;
+		
+		document.getElementById("monthlyBenefit").innerHTML = playerData.monthlyBenefit;
+		
+		function refreshData() {
+			setTimeout(function() {
+				
+				playerData = parent.parent.getPlayerData();
+				document.getElementById("airlineName").innerHTML = playerData.name;
+				
+				document.getElementById("monthlyUpgrades").innerHTML = playerData.upgradeCosts;
+				
+				document.getElementById("monthlyPersonal").innerHTML = playerData.personalCosts;
+				
+				document.getElementById("monthlyMarketing").innerHTML = playerData.marketingCosts;
+				document.getElementById("currentImage").innerHTML = playerData.image;
+				document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement;
+				
+				document.getElementById("monthlyService").innerHTML = playerData.serviceCosts;
+				
+				document.getElementById("monthlyIT").innerHTML = playerData.ITCosts;
+				
+				document.getElementById("monthlyCredit").innerHTML = playerData.creditCosts;
+				
+				document.getElementById("monthlyBenefit").innerHTML = playerData.monthlyBenefit;
+
+				this.refreshData();
+			}, 500)
+		}
+		this.refreshData();
+
+
+		function closeDialog() {
+			parent.closeMenu();
+		}
+	</script>
+</body>
+</html>

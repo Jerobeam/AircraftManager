@@ -48,6 +48,8 @@ public class Airline {
 	private int blockedStewards = 0;
 	private int blockedBodenpersonal = 0;
 	private int blockedWartungspersonal = 0;
+	
+	private int monthlyBenefit = 0;
 
 	public int getBlockedGroundCrew() {
 		return blockedBodenpersonal;
@@ -259,7 +261,8 @@ public class Airline {
 		return uv;
 	}
 
-	public void monthlyCalculation() {
+	public void monthlyCalculation(){
+		long ekBefore = this.getEK();
 		//iterate Credits
 		for (Credit c : credits) {
 			c.iterationStep();
@@ -289,8 +292,6 @@ public class Airline {
 				- accountingCosts - this.getMarketingDept().getMonthlyCosts()
 				- personalkosten - this.services.getMonthlyCosts();
 		this.setMoney(moneyNew);
-		this.ek = this.getEK() - this.getITDept().getMonthlyCosts() - accountingCosts
-				- this.getMarketingDept().getMonthlyCosts() - personalkosten - this.services.getMonthlyCosts();
 		
 		//check if Social Analyse Software isBough
 		if (this.getITDept().isBoughtSocialMediaModule()) {
@@ -308,6 +309,8 @@ public class Airline {
 		this.getMarketingDept().decreaseImage(1);
 		this.getMarketingDept().getINTERNETAD().iterate();
 		this.getMarketingDept().getTVAD().iterate();
+		
+		this.monthlyBenefit = (int)(this.getEK() - ekBefore);
 	}
 
 	public void takeCreditType1(int amount) {
@@ -410,5 +413,24 @@ public class Airline {
 				}
 			}
 		}
-
+	
+	public int getPersonalCosts(){
+		int personalkosten = 0;
+		personalkosten = (int) ((this.Piloten * this.PILOTENKOSTEN + this.Stewardessen * this.STWDKOSTEN
+				+ this.Bodenpersonal * this.BODENPERSONALKOSTEN + this.WartungsPersonal * this.WARTUNGSPERSONALKOSTEN)
+				* this.getITDept().getHrCostsFactor());
+		return personalkosten;
+	}
+	
+	public int getCreditCosts(){
+		int repayments = 0;
+		for (Credit c : credits) {
+			repayments += c.getRepayment();
+		}
+		return repayments;
+	}
+	
+	public int getMonthlyBenefit(){
+		return this.monthlyBenefit;
+	}
 }

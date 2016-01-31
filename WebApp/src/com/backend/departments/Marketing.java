@@ -29,6 +29,12 @@ public class Marketing {
 	public void setMonthlyImageIncreasement(double monthlyImageIncreasement) {
 		this.monthlyImageIncreasement = monthlyImageIncreasement;
 	}
+	
+	public double getMonthlyImageIncreasementComplete(){
+		//add advertisment increasement
+		double increasementByAdvertisement = this.getINTERNETAD().getMonthlyImageIncreasement() + this.getTVAD().getMonthlyImageIncreasement();
+		return ((this.monthlyImageIncreasement + increasementByAdvertisement)*this.getEfficiency());
+	}
 
 	public boolean isLettering() {
 		return lettering;

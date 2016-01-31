@@ -194,6 +194,14 @@ public class Game {
 					.add("currentTvAdCosts", TVAd.getCurrentPrice())
 					.add("currentInternetAdCosts", InternetAd.getCurrentPrice())
 					.add("image", a.getImage())
+					.add("monthlyImageIncreasement", a.getMarketingDept().getMonthlyImageIncreasementComplete())
+					.add("personalCosts", a.getPersonalCosts())
+					.add("marketingCosts", a.getMarketingDept().getMonthlyCosts())
+					.add("serviceCosts", a.getServices().getMonthlyCosts())
+					.add("ITCosts", a.getITDept().getMonthlyCosts())
+					.add("creditCosts", a.getCreditCosts())
+					.add("upgradeCosts", a.getMonthlyCosts())
+					.add("monthlyBenefit", a.getMonthlyBenefit())
 					.build();
 			jsonArray.add(json);
 		}

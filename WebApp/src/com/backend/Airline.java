@@ -35,10 +35,10 @@ public class Airline {
 	private Service services = new Service(this);
 
 	//Personalkosten
-	private final int PILOTENKOSTEN = 10000;
+	private final int PILOTENKOSTEN = 15000;
 	private final int STWDKOSTEN = 5000;
-	private final int BODENPERSONALKOSTEN = 2500;
-	private final int WARTUNGSPERSONALKOSTEN = 3000;
+	private final int BODENPERSONALKOSTEN = 3000;
+	private final int WARTUNGSPERSONALKOSTEN = 4000;
 
 	private int Piloten = 0;
 	private int Stewardessen = 0;

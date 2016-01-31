@@ -238,7 +238,7 @@ public class Airline {
 		int sum = 0;
 
 		for (Plane p : planes) {
-			sum = p.getEarnings() - p.getCosts();
+			sum += p.getEarnings() - p.getCosts();
 		}
 		this.ek = this.getEK() + sum;
 		this.money = this.money + sum;

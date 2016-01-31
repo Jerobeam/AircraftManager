@@ -40,6 +40,7 @@ public class Plane {
 		this.setType(type);
 		this.airline = airline;
 		this.upgrades = new PlaneUpgrade(this, airline);
+		this.routeCosts = 0;
 	}
 	
 	public Airline getAirline(){

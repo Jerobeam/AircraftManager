@@ -98,10 +98,6 @@ header {
 			<td style="border-bottom: 2px solid #000000">Kreditrückzahlungen / Monat</td>
 			<td id="monthlyCredit" style="border-bottom: 2px solid #000000"></td>
 		</tr>
-		<tr>
-			<td style="border-bottom: 2px solid #000000">Gewinn / Monat</td>
-			<td id="monthlyBenefit" style="border-bottom: 2px solid #000000"></td>
-		</tr>
 	</table>
 
 	<script type="text/javascript">
@@ -124,8 +120,6 @@ header {
 		
 		document.getElementById("monthlyCredit").innerHTML = playerData.creditCosts;
 		
-		document.getElementById("monthlyBenefit").innerHTML = playerData.monthlyBenefit;
-		
 		function refreshData() {
 			setTimeout(function() {
 				
@@ -145,8 +139,6 @@ header {
 				document.getElementById("monthlyIT").innerHTML = playerData.ITCosts;
 				
 				document.getElementById("monthlyCredit").innerHTML = playerData.creditCosts;
-				
-				document.getElementById("monthlyBenefit").innerHTML = playerData.monthlyBenefit;
 
 				this.refreshData();
 			}, 500)

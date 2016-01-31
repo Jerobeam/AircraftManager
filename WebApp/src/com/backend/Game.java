@@ -201,7 +201,6 @@ public class Game {
 					.add("ITCosts", a.getITDept().getMonthlyCosts())
 					.add("creditCosts", a.getCreditCosts())
 					.add("upgradeCosts", a.getMonthlyCosts())
-					.add("monthlyBenefit", a.getMonthlyBenefit())
 					.build();
 			jsonArray.add(json);
 		}

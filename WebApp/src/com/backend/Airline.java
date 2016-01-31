@@ -48,8 +48,6 @@ public class Airline {
 	private int blockedStewards = 0;
 	private int blockedBodenpersonal = 0;
 	private int blockedWartungspersonal = 0;
-	
-	private int monthlyBenefit = 0;
 
 	public int getBlockedGroundCrew() {
 		return blockedBodenpersonal;
@@ -262,7 +260,6 @@ public class Airline {
 	}
 
 	public void monthlyCalculation(){
-		long ekBefore = this.getEK();
 		//iterate Credits
 		for (Credit c : credits) {
 			c.iterationStep();
@@ -309,8 +306,6 @@ public class Airline {
 		this.getMarketingDept().decreaseImage(1);
 		this.getMarketingDept().getINTERNETAD().iterate();
 		this.getMarketingDept().getTVAD().iterate();
-		
-		this.monthlyBenefit = (int)(this.getEK() - ekBefore);
 	}
 
 	public void takeCreditType1(int amount) {
@@ -428,9 +423,5 @@ public class Airline {
 			repayments += c.getRepayment();
 		}
 		return repayments;
-	}
-	
-	public int getMonthlyBenefit(){
-		return this.monthlyBenefit;
 	}
 }

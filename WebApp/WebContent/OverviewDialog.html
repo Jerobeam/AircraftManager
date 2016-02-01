@@ -115,8 +115,8 @@ header {
 		document.getElementById("monthlyPersonal").innerHTML = playerData.personalCosts + " €";
 		
 		document.getElementById("monthlyMarketing").innerHTML = playerData.marketingCosts + " €";
-		document.getElementById("currentImage").innerHTML = playerData.image + " Punkte";
-		document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement + " Punkte";
+		document.getElementById("currentImage").innerHTML = playerData.image.toFixed(2) + " Punkte";
+		document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement.toFixed(2) + " Punkte";
 		
 		document.getElementById("monthlyService").innerHTML = playerData.serviceCosts + " €";
 		
@@ -137,8 +137,8 @@ header {
 				document.getElementById("monthlyPersonal").innerHTML = playerData.personalCosts + " €";
 				
 				document.getElementById("monthlyMarketing").innerHTML = playerData.marketingCosts + " €";
-				document.getElementById("currentImage").innerHTML = playerData.image + " Punkte";
-				document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement + " Punkte";
+				document.getElementById("currentImage").innerHTML = playerData.image.toFixed(2) + " Punkte";
+				document.getElementById("monthlyImage").innerHTML = playerData.monthlyImageIncreasement.toFixed(2) + " Punkte";
 				
 				document.getElementById("monthlyService").innerHTML = playerData.serviceCosts + " €";
 				
